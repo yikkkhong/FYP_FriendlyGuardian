@@ -1,6 +1,26 @@
+# Node.js
 node_modules/
 .env
 dist/
+
+# Build outputs
 build/
+
+# VS Code
 .vscode/
+
+# macOS
 .DS_Store
+
+# Android / Gradle
+.gradle/
+**/build/
+local.properties
+
+# Android Studio
+.idea/
+*.iml
+
+# Keystore (don't upload)
+*.jks
+*.keystore
