@@ -19,6 +19,8 @@ let socket: Socket;
 const App: React.FC = () => {
   const [appMode, setAppMode] = useState<"ELDERLY" | "SME">("ELDERLY");
   const [aiEmotion, setAiEmotion] = useState<EmotionState>("HAPPY");
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [alertData, setAlertData] = useState<ScamAlertData | null>(null);
   const [isConnected, setIsConnected] = useState<boolean>(false);
@@ -71,6 +73,12 @@ const App: React.FC = () => {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.pitch = 0.95;
       utterance.rate = 0.9;
+
+      utterance.onstart = () => setIsSpeaking(true);
+
+      utterance.onend = () => setIsSpeaking(false);
+      utterance.onerror = () => setIsSpeaking(false);
+
       window.speechSynthesis.speak(utterance);
     }
   };
@@ -126,7 +134,7 @@ const App: React.FC = () => {
       {appMode === "ELDERLY" && (
         <main className="companion-hero-container">
           {/* 320x320 Pixel */}
-          <PixelFace emotion={aiEmotion} />
+          <PixelFace emotion={aiEmotion} isSpeaking={isSpeaking} />
 
           {/* dialog box */}
           <div className="speech-bubble">
@@ -134,7 +142,9 @@ const App: React.FC = () => {
             <p className="speech-subtext">
               {isWaitingAi
                 ? "Baymax is thinking..."
-                : "Baymax - Your AI Protection Friend"}
+                : isSpeaking
+                  ? "Baymax is speaking..."
+                  : "Baymax - Your AI Protection Friend"}
             </p>
           </div>
 
