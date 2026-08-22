@@ -1,0 +1,36 @@
+[
+  {
+    "id": "INC-1787388626554-q3vyfj",
+    "saved_at": "2026-08-22T08:50:26.554Z",
+    "text": "Boss urgent transfer to this account 1010105550  RM999999",
+    "sender": "123122",
+    "detected_account": "1010105550",
+    "reason": "Rule Engine: Detected high-risk keywords or account pattern.",
+    "baymax_message": "Oh no! Please do not transfer any money to this account ah!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "4:50:26 pm",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787384263294-wm4arz",
+    "saved_at": "2026-08-22T07:37:43.294Z",
+    "text": "Boss urgent transfer to this account 1010101010  RM999999",
+    "sender": "123122",
+    "detected_account": "1010101010",
+    "reason": "Rule Engine: Detected high-risk keywords or account pattern.",
+    "baymax_message": "Oh no! Please do not transfer any money to this account ah!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "3:37:43 pm"
+  },
+  {
+    "id": "INC-1787328639219",
+    "saved_at": "2026-08-21T16:10:39.219Z",
+    "text": "Urgent transfer RM 500 to Maybank acc 8877665544",
+    "sender": "123123",
+    "detected_account": "8877665544",
+    "reason": "Rule Engine: Detected high-risk keywords or account pattern.",
+    "baymax_message": "Oh no! Please do not transfer any money to this account ah!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "12:10:39 am"
+  }
+]
