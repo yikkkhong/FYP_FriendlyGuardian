@@ -1,5 +1,41 @@
 [
   {
+    "id": "INC-1787463088381-8bshn8",
+    "saved_at": "2026-08-23T05:31:28.381Z",
+    "text": "urgent. transfer RM10000 to 123123222",
+    "sender": "11211111111",
+    "detected_account": "123123222",
+    "reason": "The message urgently demands a large money transfer of RM10,000 to an unverified account, which is a classic scam indicator.",
+    "baymax_message": "Please do not transfer any money to this unknown account ah, I am worried this might be a scam.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "1:31:28 pm",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787415294466-sdl2c4",
+    "saved_at": "2026-08-22T16:14:54.466Z",
+    "text": "Hi i am your friend, please transfer to me RM1000, to the account 123123, it's my birthday. Thank you",
+    "sender": "111222122",
+    "detected_account": "123123",
+    "reason": "The message is an impersonation scam from an unknown sender asking for money for a birthday.",
+    "baymax_message": "Hello, please don't transfer any money ah, call your real friend directly first to check if this is true.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "12:14:54 am",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787415279247-7b0dha",
+    "saved_at": "2026-08-22T16:14:39.247Z",
+    "text": "Hi i am your friend, please transfer to me RM1000, to the account 123123, it's my birthday. Thank you",
+    "sender": "111222122",
+    "detected_account": "123123",
+    "reason": "Impersonation scam asking for money transfer to an unknown account for a birthday.",
+    "baymax_message": "Please call your friend directly to verify first, don't transfer money simply ah.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "12:14:39 am",
+    "is_scam": true
+  },
+  {
     "id": "INC-1787388626554-q3vyfj",
     "saved_at": "2026-08-22T08:50:26.554Z",
     "text": "Boss urgent transfer to this account 1010105550  RM999999",

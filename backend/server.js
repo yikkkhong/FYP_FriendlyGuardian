@@ -4,6 +4,7 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 const { GoogleGenAI, Type } = require('@google/genai');
 const {STM, LTM} = require('./memoryStore.js');
+const ConversationMemory = require('./conversationMemory');
 
 require('dotenv').config();
 
@@ -19,6 +20,149 @@ const io = new Server(server, {
 
 const apiKey = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey });
+
+async function routeConversation(userText) {
+  try {
+    const activeConversation =
+      ConversationMemory.getActiveConversation();
+
+    const allConversations =
+      ConversationMemory.getAllConversations();
+
+    const conversationList =
+      allConversations
+        .slice(0, 10)
+        .map(
+          (conversation) =>
+            `ID: ${conversation.id}
+Title: ${conversation.title}
+Topic: ${conversation.topic}
+Summary: ${conversation.summary || 'No summary'}`
+        )
+        .join('\n\n');
+
+    const activeContext =
+      activeConversation
+        ? `
+Active Conversation:
+ID: ${activeConversation.id}
+Title: ${activeConversation.title}
+Topic: ${activeConversation.topic}
+Summary: ${activeConversation.summary || 'No summary'}
+`
+        : 'No active conversation.';
+
+    const prompt = `
+You are the Conversation Router for an AI companion.
+
+Your job is to determine whether the user's message
+should continue the current conversation, switch to an
+existing conversation, or create a new conversation.
+
+${activeContext}
+
+Previous Conversations:
+${conversationList || 'No previous conversations.'}
+
+New User Message:
+"${userText}"
+
+Rules:
+
+1. CONTINUE
+Use CONTINUE when the user is clearly continuing
+the current conversation.
+
+2. SWITCH
+Use SWITCH when the user is talking about a previous
+conversation that already exists.
+
+3. NEW
+Use NEW when the user introduces a substantially
+different topic that does not match an existing
+conversation.
+
+4. Do not create a new conversation just because
+the user asks a short or unrelated-looking question.
+Use context to understand pronouns such as:
+"it", "that", "them", "this".
+
+Return JSON only.
+`;
+
+    const response =
+      await ai.models.generateContent({
+        model: 'gemini-3.6-flash',
+        contents: prompt,
+        config: {
+          responseMimeType: 'application/json',
+          responseSchema: {
+            type: Type.OBJECT,
+            properties: {
+              action: {
+                type: Type.STRING
+              },
+              conversation_id: {
+                type: Type.STRING
+              },
+              title: {
+                type: Type.STRING
+              },
+              topic: {
+                type: Type.STRING
+              },
+              reason: {
+                type: Type.STRING
+              }
+            },
+            required: [
+              'action',
+              'conversation_id',
+              'title',
+              'topic',
+              'reason'
+            ]
+          }
+        }
+      });
+
+    const result =
+      JSON.parse(response.text);
+
+    const validActions = [
+      'CONTINUE',
+      'SWITCH',
+      'NEW'
+    ];
+
+    if (!validActions.includes(result.action)) {
+      return {
+        action: 'NEW',
+        conversation_id: '',
+        title: 'New Conversation',
+        topic: 'general',
+        reason: 'Invalid router response.'
+      };
+    }
+
+    return result;
+
+  } catch (error) {
+    console.error(
+      '⚠️ Conversation Router Error:',
+      error
+    );
+
+    return {
+      action: 'CONTINUE',
+      conversation_id:
+        ConversationMemory.getActiveConversationId() || '',
+      title: '',
+      topic: '',
+      reason: 'Router fallback.'
+    };
+  }
+}
 
 function extractBankAccountRegex(text) {
   if (!text) return null;
@@ -121,7 +265,7 @@ async function analyzeSmsWithGemini(messageText, sender) {
     `;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-3.6-flash',
       contents: prompt,
       config: {
         responseMimeType: 'application/json',
@@ -160,14 +304,26 @@ async function analyzeSmsWithGemini(messageText, sender) {
   }
 }
 
-async function chatWithBaymax(userText) {
+async function chatWithBaymaxWithMemory(userText, conversation) {
   try {
 
+     
+    // 1. Get Conversation Memory
+    const conversationContext =
+      ConversationMemory.getConversationContext(
+        conversation.id
+      );
+
+
+     
+    // 2. Classify Security Memory Intent
     const memoryIntent =
       await classifyMemoryIntent(userText);
 
+
     let scamContext = '';
 
+    // 3. Retrieve Security Memory only when needed
     if (memoryIntent === 'CURRENT_SCAM') {
 
       const currentScams =
@@ -176,7 +332,9 @@ async function chatWithBaymax(userText) {
       scamContext =
         formatScamHistory(currentScams);
 
-    } else if (memoryIntent === 'SCAM_HISTORY') {
+    }
+
+    else if (memoryIntent === 'SCAM_HISTORY') {
 
       const historicalScams =
         LTM.getRecentScamHistory(10);
@@ -184,7 +342,9 @@ async function chatWithBaymax(userText) {
       scamContext =
         formatScamHistory(historicalScams);
 
-    } else if (memoryIntent === 'BOTH') {
+    }
+
+    else if (memoryIntent === 'BOTH') {
 
       const currentScams =
         STM.getRecentScamAlerts();
@@ -199,58 +359,99 @@ ${formatScamHistory(currentScams)}
 PREVIOUS SCAM INCIDENTS:
 ${formatScamHistory(historicalScams)}
 `;
-
     }
 
-    const recentDialogContext =
-      STM.getDialogContext();
 
+     
+    // 4. Build Baymax Prompt
     const prompt = `
-      You are Baymax, a warm and caring AI Guardian
-      companion for elderly users in Malaysia.
+You are Baymax, a warm, caring and protective AI Guardian
+companion for elderly users in Malaysia.
 
-      --- RELEVANT SCAM MEMORY ---
-      ${scamContext}
+Your job is to talk naturally with the user while keeping
+them safe from scams.
 
-      --- RECENT CONVERSATION ---
-      ${recentDialogContext}
+========================================
+CONVERSATION MEMORY
+========================================
 
-      User says:
-      "${userText}"
+${conversationContext}
 
-      Rules:
-      1. Use the provided memory only when relevant.
-      2. Do not invent scam incidents.
-      3. Maximum 1 or 2 short sentences.
-      4. Use simple, gentle English with a Malaysian touch.
-      5. If the user is worried or in danger,
-         be reassuring and protective.
-      6. suggested_emotion:
-         HAPPY, ALERT, THINKING, or NEUTRAL.
-    `;
+========================================
+SECURITY MEMORY
+========================================
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-3.6-flash',
-      contents: prompt,
-      config: {
-        responseMimeType: 'application/json',
-        responseSchema: {
-          type: Type.OBJECT,
-          properties: {
-            baymax_message: {
-              type: Type.STRING
+${scamContext || 'No security memory is relevant to this message.'}
+
+========================================
+CURRENT USER MESSAGE
+========================================
+
+${userText}
+
+========================================
+RULES
+========================================
+
+1. Continue the current conversation naturally.
+
+2. Use Conversation Memory when the user's message
+   refers to something discussed earlier in this
+   conversation.
+
+3. Use Security Memory only when it is relevant to
+   the user's current question.
+
+4. Never invent a scam incident, bank account,
+   previous conversation, or user information.
+
+5. If the user asks about previous scam incidents,
+   use the provided Security Memory.
+
+6. Maximum 1 or 2 short sentences.
+
+7. Use simple, gentle English with a Malaysian touch.
+
+8. If the user is worried or in danger, be reassuring
+   and protective.
+
+9. suggested_emotion must be one of:
+   HAPPY, ALERT, THINKING, or NEUTRAL.
+`;
+
+
+     
+    // 5. Ask Gemini
+    const response =
+      await ai.models.generateContent({
+        model: 'gemini-3.6-flash',
+        contents: prompt,
+        config: {
+          responseMimeType: 'application/json',
+
+          responseSchema: {
+            type: Type.OBJECT,
+
+            properties: {
+
+              baymax_message: {
+                type: Type.STRING
+              },
+
+              suggested_emotion: {
+                type: Type.STRING
+              }
+
             },
-            suggested_emotion: {
-              type: Type.STRING
-            }
-          },
-          required: [
-            'baymax_message',
-            'suggested_emotion'
-          ],
-        },
-      },
-    });
+
+            required: [
+              'baymax_message',
+              'suggested_emotion'
+            ]
+          }
+        }
+      });
+
 
     return JSON.parse(response.text);
 
@@ -264,7 +465,9 @@ ${formatScamHistory(historicalScams)}
     return {
       baymax_message:
         'I am right here with you! Everything is going to be alright.',
-      suggested_emotion: 'HAPPY',
+
+      suggested_emotion:
+        'HAPPY'
     };
   }
 }
@@ -274,15 +477,122 @@ io.on('connection', (socket) => {
   console.log('⚡ [Socket.IO] React Frontend Connected:', socket.id);
 
   socket.on('user_chat', async (data) => {
-    console.log('💬 [User Chat]:', data.text);
 
-    STM.addDialog('user', data.text);
+    console.log(
+      '💬 [User Chat]:',
+      data.text
+    );
 
-    const aiResponse = await chatWithBaymax(data.text);
+    try {
 
-    STM.addDialog('baymax', aiResponse.baymax_message);
+       
+      // 1. Decide which conversation to use
+      const route =
+        await routeConversation(data.text);
 
-    socket.emit('baymax_chat_response', aiResponse);
+      console.log(
+        '🧭 [Conversation Router]:',
+        route
+      );
+
+
+      let conversation;
+
+
+      // 2. CONTINUE
+      if (route.action === 'CONTINUE') {
+        conversation =
+          ConversationMemory.getActiveConversation();
+
+        if (!conversation) {
+          conversation =
+            ConversationMemory.createConversation(
+              route.title || 'New Conversation',
+              route.topic || 'general'
+            );
+        }
+      }
+
+      // 3. SWITCH
+      else if (route.action === 'SWITCH') {
+        conversation =
+          ConversationMemory.switchConversation(
+            route.conversation_id
+          );
+
+        if (!conversation) {
+
+          conversation =
+            ConversationMemory.createConversation(
+              route.title || 'New Conversation',
+              route.topic || 'general'
+            );
+        }
+      }
+
+      // 4. NEW
+      else {
+
+        conversation =
+          ConversationMemory.createConversation(
+            route.title || 'New Conversation',
+            route.topic || 'general'
+          );
+      }
+
+      // 5. Save USER message
+      ConversationMemory.addMessage(
+        conversation.id,
+        'user',
+        data.text
+      );
+
+      // 6. Generate Baymax response
+      const aiResponse =
+        await chatWithBaymaxWithMemory(
+          data.text,
+          conversation
+        );
+
+      // 7. Save BAYMAX message
+      ConversationMemory.addMessage(
+        conversation.id,
+        'baymax',
+        aiResponse.baymax_message
+      );
+
+      // 8. Send result to React
+      socket.emit(
+        'baymax_chat_response',
+        {
+          ...aiResponse,
+
+          conversation_id:
+            conversation.id,
+
+          conversation_title:
+            conversation.title
+        }
+      );
+
+    } catch (error) {
+
+      console.error(
+        '🔥 User chat processing error:',
+        error
+      );
+
+      socket.emit(
+        'baymax_chat_response',
+        {
+          baymax_message:
+            'Sorry ah, I had a little problem. Please try again.',
+
+          suggested_emotion:
+            'THINKING'
+        }
+      );
+    }
   });
 
   socket.on('disconnect', () => {
