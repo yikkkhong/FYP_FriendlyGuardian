@@ -1,5 +1,17 @@
 [
   {
+    "id": "INC-1787542429792-dkxky4",
+    "saved_at": "2026-08-24T03:33:49.792Z",
+    "text": "transfer to this account 123123 RM9999",
+    "sender": "6505551212",
+    "detected_account": "123123",
+    "reason": "Unsolicited request to transfer money to an unknown bank account number.",
+    "baymax_message": "Please don't transfer any money to this account ah, it looks very dangerous and might be a scam!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "11:33:49 am",
+    "is_scam": true
+  },
+  {
     "id": "INC-1787463088381-8bshn8",
     "saved_at": "2026-08-23T05:31:28.381Z",
     "text": "urgent. transfer RM10000 to 123123222",

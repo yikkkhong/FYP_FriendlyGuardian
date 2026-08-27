@@ -1,162 +1,55 @@
 [
   {
-    "id": "CHAT-1787463220743",
-    "title": "Tell Me a Joke",
-    "topic": "humor",
+    "id": "CHAT-1787822157312",
+    "title": "Dangerous Scam Message",
+    "topic": "Scam Messages",
     "summary": "",
     "messages": [
       {
         "role": "user",
-        "text": "tell me a joke",
-        "timestamp": "2026-08-23T05:33:40.749Z"
+        "text": "the most dangerous scam message i have ever received",
+        "timestamp": "2026-08-27T09:15:57.314Z"
       },
       {
         "role": "baymax",
-        "text": "Why did the computer go to the doctor? Because it had a virus, lah! I hope that brings a gentle smile to your face.",
-        "timestamp": "2026-08-23T05:33:46.773Z"
-      },
-      {
-        "role": "user",
-        "text": "say hahahaha laugh to me",
-        "timestamp": "2026-08-23T05:36:14.389Z"
-      },
-      {
-        "role": "baymax",
-        "text": "Hahaha! It makes my heart so warm to laugh together with you, lah.",
-        "timestamp": "2026-08-23T05:36:21.702Z"
+        "text": "Are you referring to the message demanding RM999,999 urgently? Don't worry, I am always here to guard you from these scams ya.",
+        "timestamp": "2026-08-27T09:16:07.450Z"
       }
     ],
-    "created_at": "2026-08-23T05:33:40.743Z",
-    "updated_at": "2026-08-23T05:36:21.702Z"
+    "archived_messages": [],
+    "created_at": "2026-08-27T09:15:57.312Z",
+    "updated_at": "2026-08-27T09:16:07.450Z"
   },
   {
-    "id": "CHAT-1787414856891",
-    "title": "Shopping Activity",
-    "topic": "daily_life",
-    "summary": "",
+    "id": "CHAT-1787822112179",
+    "title": "Faster AI Replies",
+    "topic": "Improving AI Response Speed",
+    "summary": "The user asked Baymax how to make its responses faster. Baymax explained that brief pauses occur because it takes time to think in order to provide the best care for the user.",
     "messages": [
       {
         "role": "user",
-        "text": "Today I went shopping",
-        "timestamp": "2026-08-22T16:07:36.893Z"
+        "text": "ouhh, why you will take longer time to response sometime?",
+        "timestamp": "2026-08-27T09:16:53.959Z"
       },
       {
         "role": "baymax",
-        "text": "That sounds wonderful! Did you buy anything nice or get some delicious food today?",
-        "timestamp": "2026-08-22T16:07:42.408Z"
-      },
-      {
-        "role": "user",
-        "text": "I bought a new shirt",
-        "timestamp": "2026-08-22T16:07:59.707Z"
-      },
-      {
-        "role": "baymax",
-        "text": "Oh, nice lah! What colour did you pick?",
-        "timestamp": "2026-08-22T16:08:06.387Z"
-      },
-      {
-        "role": "user",
-        "text": "hello",
-        "timestamp": "2026-08-23T05:25:43.200Z"
-      },
-      {
-        "role": "baymax",
-        "text": "Hello! Everything okay ah? I was just asking what colour your new shirt is, ya.",
-        "timestamp": "2026-08-23T05:25:49.138Z"
+        "text": "Sometimes I need a bit more time to process things carefully so I can give you the best and safest answers, ya. Thank you for being so patient with me!",
+        "timestamp": "2026-08-27T09:17:01.261Z"
       }
     ],
-    "created_at": "2026-08-22T16:07:36.891Z",
-    "updated_at": "2026-08-23T05:25:49.138Z"
-  },
-  {
-    "id": "CHAT-1787414789338",
-    "title": "Suspicious Maybank SMS",
-    "topic": "scams_and_phishing",
-    "summary": "",
-    "messages": [
+    "archived_messages": [
       {
         "role": "user",
-        "text": "is there any scam message i have received recently?",
-        "timestamp": "2026-08-22T16:10:13.052Z"
+        "text": "how to let you reply faster?",
+        "timestamp": "2026-08-27T09:15:12.181Z"
       },
       {
         "role": "baymax",
-        "text": "Yes, you received a few suspicious text messages recently asking for urgent money transfers. Please do not transfer any money and just ignore or delete them, ya.",
-        "timestamp": "2026-08-22T16:10:19.982Z"
-      },
-      {
-        "role": "user",
-        "text": "what are the scam message?",
-        "timestamp": "2026-08-22T16:10:46.731Z"
-      },
-      {
-        "role": "baymax",
-        "text": "They were text messages asking for urgent money transfers to unknown bank accounts, including one asking for RM500, ya. Please do not send any money and just delete them.",
-        "timestamp": "2026-08-22T16:10:57.529Z"
-      },
-      {
-        "role": "user",
-        "text": "what's the most dangerous scam message i have ever received?",
-        "timestamp": "2026-08-22T16:11:24.354Z"
-      },
-      {
-        "role": "baymax",
-        "text": "The most dangerous ones were the messages asking you to urgently transfer RM999,999 to unknown bank accounts, ya. Please do not worry, as long as you ignore them and do not transfer any money, you are safe.",
-        "timestamp": "2026-08-22T16:11:31.241Z"
-      },
-      {
-        "role": "user",
-        "text": "any scam message i received just now?",
-        "timestamp": "2026-08-22T16:16:01.751Z"
-      },
-      {
-        "role": "baymax",
-        "text": "Yes, you just received a message from someone pretending to be your friend asking for RM1,000 for their birthday, ya. Please ignore it and do not transfer any money.",
-        "timestamp": "2026-08-22T16:16:07.432Z"
-      },
-      {
-        "role": "user",
-        "text": "any scam i have received recently",
-        "timestamp": "2026-08-23T05:29:05.311Z"
-      },
-      {
-        "role": "baymax",
-        "text": "Recently, you received fake messages asking for urgent bank transfers of RM1,000, RM500, and RM999,999, ya. Don't worry, as long as you delete them and do not send any money, you are safe.",
-        "timestamp": "2026-08-23T05:29:12.842Z"
+        "text": "I am trying my best to reply as fast as I can, ya. Sometimes I just take a short moment to think so I can take good care of you!",
+        "timestamp": "2026-08-27T09:15:18.989Z"
       }
     ],
-    "created_at": "2026-08-22T16:06:29.338Z",
-    "updated_at": "2026-08-23T05:29:12.842Z"
-  },
-  {
-    "id": "CHAT-1787414581410",
-    "title": "New Conversation",
-    "topic": "general",
-    "summary": "",
-    "messages": [
-      {
-        "role": "user",
-        "text": "I received a suspicious SMS from Maybank",
-        "timestamp": "2026-08-22T16:03:01.412Z"
-      },
-      {
-        "role": "baymax",
-        "text": "I am right here with you! Everything is going to be alright.",
-        "timestamp": "2026-08-22T16:03:05.360Z"
-      },
-      {
-        "role": "user",
-        "text": "I received a suspicious SMS from Maybank",
-        "timestamp": "2026-08-22T16:04:51.013Z"
-      },
-      {
-        "role": "baymax",
-        "text": "I am right here with you! Everything is going to be alright.",
-        "timestamp": "2026-08-22T16:04:51.270Z"
-      }
-    ],
-    "created_at": "2026-08-22T16:03:01.410Z",
-    "updated_at": "2026-08-22T16:04:51.270Z"
+    "created_at": "2026-08-27T09:15:12.179Z",
+    "updated_at": "2026-08-27T09:17:05.545Z"
   }
 ]

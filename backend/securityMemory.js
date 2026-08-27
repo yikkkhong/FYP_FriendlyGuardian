@@ -1,18 +1,16 @@
-const fs = require('fs');
-const path = require('path');
+// STM = 15 minutes
 
-const LTM_FILE_PATH = path.join(__dirname, 'memory_ltm.json');
+const fs = require("fs");
+const path = require("path");
+
+const LTM_FILE_PATH = path.join(__dirname, "security_memory.json");
 
 // ===============================
 // Long-Term Memory Storage
 // ===============================
 
 if (!fs.existsSync(LTM_FILE_PATH)) {
-  fs.writeFileSync(
-    LTM_FILE_PATH,
-    JSON.stringify([], null, 2),
-    'utf-8'
-  );
+  fs.writeFileSync(LTM_FILE_PATH, JSON.stringify([], null, 2), "utf-8");
 }
 
 // ===============================
@@ -45,8 +43,7 @@ class ShortTermMemory {
     const now = Date.now();
 
     this.recentAlerts = this.recentAlerts.filter(
-      (alert) =>
-        now - alert.memory_timestamp <= this.windowMs
+      (alert) => now - alert.memory_timestamp <= this.windowMs,
     );
   }
 
@@ -55,7 +52,7 @@ class ShortTermMemory {
     this.cleanupExpiredAlerts();
 
     if (this.recentAlerts.length === 0) {
-      return 'No recent SMS or security activity.';
+      return "No recent SMS or security activity.";
     }
 
     return this.recentAlerts
@@ -66,18 +63,16 @@ Time: ${a.timestamp}
 Sender: ${a.sender}
 Account: ${a.detected_account}
 Reason: ${a.reason}
-Message: ${a.text}`
+Message: ${a.text}`,
       )
-      .join('\n\n');
+      .join("\n\n");
   }
 
   getRecentScamAlerts() {
-  this.cleanupExpiredAlerts();
+    this.cleanupExpiredAlerts();
 
-  return this.recentAlerts.filter(
-    (alert) => alert.is_scam === true
-  );
-}
+    return this.recentAlerts.filter((alert) => alert.is_scam === true);
+  }
 
   // Add conversation message
   addDialog(role, text) {
@@ -95,15 +90,12 @@ Message: ${a.text}`
   // Get recent conversation context
   getDialogContext() {
     if (this.dialogContext.length === 0) {
-      return 'No previous conversation.';
+      return "No previous conversation.";
     }
 
     return this.dialogContext
-      .map(
-        (message) =>
-          `${message.role}: ${message.text}`
-      )
-      .join('\n');
+      .map((message) => `${message.role}: ${message.text}`)
+      .join("\n");
   }
 }
 
@@ -112,62 +104,45 @@ Message: ${a.text}`
 // ===============================
 
 class LongTermMemory {
-
   static saveIncident(incident) {
     try {
-      const data = JSON.parse(
-        fs.readFileSync(LTM_FILE_PATH, 'utf-8') || '[]'
-      );
+      const data = JSON.parse(fs.readFileSync(LTM_FILE_PATH, "utf-8") || "[]");
 
       const newRecord = {
-        id: `INC-${Date.now()}-${Math.random()
-          .toString(36)
-          .slice(2, 8)}`,
+        id: `INC-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
         saved_at: new Date().toISOString(),
         ...incident,
       };
 
       data.unshift(newRecord);
 
-      fs.writeFileSync(
-        LTM_FILE_PATH,
-        JSON.stringify(data, null, 2),
-        'utf-8'
-      );
+      fs.writeFileSync(LTM_FILE_PATH, JSON.stringify(data, null, 2), "utf-8");
 
-      console.log(
-        `💾 [LTM] Incident archived: ${newRecord.id}`
-      );
+      console.log(`💾 [LTM] Incident archived: ${newRecord.id}`);
 
       return newRecord;
-
     } catch (err) {
-      console.error('🔥 Error saving to LTM:', err);
+      console.error("🔥 Error saving to LTM:", err);
       return null;
     }
   }
 
   static getAllIncidents() {
     try {
-      return JSON.parse(
-        fs.readFileSync(LTM_FILE_PATH, 'utf-8') || '[]'
-      );
+      return JSON.parse(fs.readFileSync(LTM_FILE_PATH, "utf-8") || "[]");
     } catch (err) {
-      console.error('🔥 Error reading LTM:', err);
+      console.error("🔥 Error reading LTM:", err);
       return [];
     }
   }
 
-static getRecentScamHistory(limit = 10) {
-  const all = this.getAllIncidents();
+  static getRecentScamHistory(limit = 10) {
+    const all = this.getAllIncidents();
 
-  return all
-    .sort(
-      (a, b) =>
-        new Date(b.saved_at) - new Date(a.saved_at)
-    )
-    .slice(0, limit);
-}
+    return all
+      .sort((a, b) => new Date(b.saved_at) - new Date(a.saved_at))
+      .slice(0, limit);
+  }
 
   static searchIncidents(keyword) {
     const all = this.getAllIncidents();
@@ -178,24 +153,13 @@ static getRecentScamHistory(limit = 10) {
 
     const lower = keyword.toLowerCase();
 
-    return all.filter((item) =>
-      (item.text &&
-        item.text.toLowerCase().includes(lower)) ||
-
-      (item.detected_account &&
-        item.detected_account
-          .toLowerCase()
-          .includes(lower)) ||
-
-      (item.sender &&
-        item.sender
-          .toLowerCase()
-          .includes(lower)) ||
-
-      (item.reason &&
-        item.reason
-          .toLowerCase()
-          .includes(lower))
+    return all.filter(
+      (item) =>
+        (item.text && item.text.toLowerCase().includes(lower)) ||
+        (item.detected_account &&
+          item.detected_account.toLowerCase().includes(lower)) ||
+        (item.sender && item.sender.toLowerCase().includes(lower)) ||
+        (item.reason && item.reason.toLowerCase().includes(lower)),
     );
   }
 }
@@ -206,7 +170,7 @@ static getRecentScamHistory(limit = 10) {
 
 const stmInstance = new ShortTermMemory(
   10, // maximum 10 conversation messages
-  15  // 15-minute SMS memory window
+  15, // 15-minute SMS memory window
 );
 
 module.exports = {
