@@ -21,8 +21,27 @@ const io = new Server(server, {
 const apiKey = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey });
 
+//check timing
+function createTimer(label) {
+  const start = performance.now();
+
+  return {
+    end(extra = "") {
+      const elapsed = performance.now() - start;
+      console.log(
+        `⏱️ [${label}] ${elapsed.toFixed(0)} ms${extra ? ` - ${extra}` : ""}`,
+      );
+      return elapsed;
+    },
+  };
+}
+
 async function routeConversation(userText) {
   try {
+    //check timing
+    const timer = createTimer("Conversation Router");
+    //check timing
+
     const activeConversation = ConversationMemory.getActiveConversation();
 
     const allConversations = ConversationMemory.getAllConversations();
@@ -85,6 +104,9 @@ Use context to understand pronouns such as:
 
 Return JSON only.
 `;
+    //check timing
+    const geminiTimer = createTimer("Gemini #1 - Conversation Router");
+    //check timing
 
     const response = await ai.models.generateContent({
       model: "gemini-3.6-flash",
@@ -114,6 +136,9 @@ Return JSON only.
         },
       },
     });
+    //check timing
+    geminiTimer.end();
+    //check timing
 
     const result = JSON.parse(response.text);
 
@@ -128,6 +153,10 @@ Return JSON only.
         reason: "Invalid router response.",
       };
     }
+
+    //check timing
+    timer.end();
+    //check timing
 
     return result;
   } catch (error) {
@@ -193,6 +222,10 @@ Message: ${incident.text}`,
 }
 
 async function classifyMemoryIntent(userText) {
+  //check timing
+  const timer = createTimer("Memory Intent");
+  //check timing
+
   try {
     const prompt = `
       Classify what memory is needed for this user's request.
@@ -218,6 +251,10 @@ async function classifyMemoryIntent(userText) {
       - The request is not related to scam history.
     `;
 
+    //check timing
+    const geminiTimer = createTimer("Gemini #2 - Memory Intent");
+    //check timing
+
     const response = await ai.models.generateContent({
       model: "gemini-3.6-flash",
       contents: prompt,
@@ -226,7 +263,19 @@ async function classifyMemoryIntent(userText) {
       },
     });
 
+    //check timing
+    geminiTimer.end();
+    //check timing
+
     const intent = response.text.trim().toUpperCase();
+
+    //check timing
+    timer.end(`Intent: ${intent}`);
+
+    if (["CURRENT_SCAM", "SCAM_HISTORY", "BOTH", "GENERAL"].includes(intent)) {
+      return intent;
+    }
+    //check timing
 
     if (["CURRENT_SCAM", "SCAM_HISTORY", "BOTH", "GENERAL"].includes(intent)) {
       return intent;
@@ -307,11 +356,29 @@ async function analyzeSmsWithGemini(messageText, sender) {
 }
 
 async function chatWithBaymaxWithMemory(userText, conversation) {
+  //check timing
+  const timer = createTimer("Baymax Chat with Memory");
+  //check timing
+
   try {
+    //check timing
+    const conversationMemoryTimer = createTimer(
+      "Conversation Memory Retrieval",
+    );
+    //check timing
+
     // 1. Get Conversation Memory
     const conversationContext = ConversationMemory.getConversationContext(
       conversation.id,
     );
+
+    //check timing
+    conversationMemoryTimer.end();
+    //check timing
+
+    //check timing
+    const securityMemoryTimer = createTimer("Security Memory Retrieval");
+    //check timing
 
     // 2. Classify Security Memory Intent
     const memoryIntent = await classifyMemoryIntent(userText);
@@ -340,6 +407,9 @@ PREVIOUS SCAM INCIDENTS:
 ${formatScamHistory(historicalScams)}
 `;
     }
+    //check timing
+    securityMemoryTimer.end(`Intent: ${memoryIntent}`);
+    //check timing
 
     // 4. Build Baymax Prompt
     const prompt = `
@@ -397,6 +467,10 @@ RULES
    HAPPY, ALERT, THINKING, or NEUTRAL.
 `;
 
+    //check timing
+    const geminiTimer = createTimer("Gemini #3 - Baymax Response");
+    //check timing
+
     // 5. Ask Gemini
     const response = await ai.models.generateContent({
       model: "gemini-3.6-flash",
@@ -421,6 +495,10 @@ RULES
         },
       },
     });
+
+    //check timing
+    geminiTimer.end();
+    //check timing
 
     return JSON.parse(response.text);
   } catch (error) {
@@ -476,7 +554,11 @@ io.on("connection", (socket) => {
   console.log("⚡ [Socket.IO] React Frontend Connected:", socket.id);
 
   socket.on("user_chat", async (data) => {
-    console.log("💬 [User Chat]:", data.text);
+    console.log("\n💬 [User Chat]:", data.text);
+
+    //check timing
+    const totalTimer = createTimer("TOTAL USER CHAT");
+    //check timing
 
     try {
       // 1. Decide which conversation to use
@@ -567,6 +649,10 @@ io.on("connection", (socket) => {
 
         conversation_title: conversation.title,
       });
+
+      //check timing
+      totalTimer.end();
+      //check timing
     } catch (error) {
       console.error("🔥 User chat processing error:", error);
 
