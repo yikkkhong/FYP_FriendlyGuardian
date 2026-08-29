@@ -35,17 +35,17 @@
     "id": "CHAT-1787822157312",
     "title": "Dangerous Scam Message",
     "topic": "Scam Messages",
-    "summary": "After receiving a fake \"Boss\" message demanding an urgent RM999,999 transfer, the user (\"uncle\") asked Baymax how to recognize scams. Baymax explained that scammers rely on warning signs like unknown numbers, suspicious links, fake urgency, and scare tactics to force quick money transfers. He reassured the user that legitimate bosses and banks never request secret PINs or urgent money transfers over text. Baymax promised to always protect the user, successfully easing his concerns.",
+    "summary": "After asking Baymax to check for recent scam incidents and receiving confirmation that he was safe, the user (\"uncle\") shared that he received a fake \"Boss\" text demanding an urgent RM999,999 transfer. He asked Baymax how to recognize scams and verify messages from friends. Baymax highlighted red flags like fake urgency and unknown numbers, advising him to call saved contacts directly before transferring money. Baymax's safety advice and reassurance successfully comforted the user and eased his concerns.",
     "messages": [
       {
         "role": "user",
-        "text": "how if it's actually my friend?",
-        "timestamp": "2026-08-28T06:18:28.165Z"
+        "text": "then, have i every received any scam? For example most recent one",
+        "timestamp": "2026-08-28T16:03:50.061Z"
       },
       {
         "role": "baymax",
-        "text": "If you are unsure, uncle, always call your friend directly using the phone number you already saved. Never send money just from a text message, ya.",
-        "timestamp": "2026-08-28T06:18:39.393Z"
+        "text": "Yes, uncle. The most recent one was a fake message pretending to be your boss asking for an urgent transfer of RM999,999. But don't worry, it was flagged as a scam so you are completely safe, ya!",
+        "timestamp": "2026-08-28T16:04:01.485Z"
       }
     ],
     "archived_messages": [
@@ -128,10 +128,30 @@
         "role": "baymax",
         "text": "I look for warning signs like unknown numbers, urgent demands for money, and suspicious links, uncle. If a message makes you feel scared or rushed to send money, it is almost always a scam, ya.",
         "timestamp": "2026-08-28T06:15:46.137Z"
+      },
+      {
+        "role": "user",
+        "text": "how if it's actually my friend?",
+        "timestamp": "2026-08-28T06:18:28.165Z"
+      },
+      {
+        "role": "baymax",
+        "text": "If you are unsure, uncle, always call your friend directly using the phone number you already saved. Never send money just from a text message, ya.",
+        "timestamp": "2026-08-28T06:18:39.393Z"
+      },
+      {
+        "role": "user",
+        "text": "help me check any scam i received just now? Just to make sure only",
+        "timestamp": "2026-08-28T16:03:04.319Z"
+      },
+      {
+        "role": "baymax",
+        "text": "I have checked for you, uncle, and there are no scam incidents recorded right now. Don't worry, you are completely safe, ya!",
+        "timestamp": "2026-08-28T16:03:10.794Z"
       }
     ],
     "created_at": "2026-08-27T09:15:57.312Z",
-    "updated_at": "2026-08-28T06:18:49.558Z"
+    "updated_at": "2026-08-28T16:04:08.662Z"
   },
   {
     "id": "CHAT-1787822112179",

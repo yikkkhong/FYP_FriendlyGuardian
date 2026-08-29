@@ -197,6 +197,53 @@ const RISK_KEYWORDS = [
   "suspended",
 ];
 
+// const MEMORY_CURRENT_KEYWORDS = [
+//   "this scam",
+//   "a scam",
+//   "this message",
+//   "this sms",
+//   "this text",
+//   "this one",
+//   "this suspicious message",
+//   "this suspicious sms",
+//   "the scam",
+//   "the message",
+//   "the sms",
+//   "the text",
+//   "why is it a scam",
+//   "why is this a scam",
+//   "how do you know it's a scam",
+//   "how do you know this is a scam",
+// ];
+
+// const MEMORY_HISTORY_KEYWORDS = [
+//   "recently",
+//   "recent",
+//   "before",
+//   "previously",
+//   "previous",
+//   "last scam",
+//   "old scam",
+//   "past scam",
+//   "scams i received",
+//   "scams I received",
+//   "scam history",
+//   "history of scams",
+//   "what scams",
+//   "which scams",
+//   "ever received",
+//   "have i received",
+// ];
+
+// const MEMORY_BOTH_KEYWORDS = [
+//   "compare",
+//   "compared",
+//   "similar to previous",
+//   "same as previous",
+//   "like the previous",
+//   "like my previous",
+// ];
+
 function checkRiskKeywords(text) {
   if (!text) return false;
   const lower = text.toLowerCase();
