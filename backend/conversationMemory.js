@@ -1,4 +1,4 @@
-// current maximum messages = 2 (to test)
+// current maximum messages = 10
 
 const fs = require("fs");
 const path = require("path");
@@ -15,7 +15,7 @@ if (!fs.existsSync(CONVERSATION_FILE_PATH)) {
 }
 
 class ConversationMemory {
-  constructor(maxRecentMessages = 2) {
+  constructor(maxRecentMessages = 10) {
     this.maxRecentMessages = maxRecentMessages;
 
     const conversations = this.readConversations();
@@ -238,6 +238,6 @@ ${messages}
   }
 }
 
-const conversationMemory = new ConversationMemory(2);
+const conversationMemory = new ConversationMemory(10);
 
 module.exports = conversationMemory;
