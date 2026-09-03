@@ -17,7 +17,7 @@ const {
 const {
   createTimer,
   extractBankAccountRegex,
-  //routeConversation_Gemini,
+  routeConversation_Gemini,
   classifyMemoryIntent_Gemini,
   analyzeSms_Gemini,
   chatWithAI,
@@ -58,6 +58,9 @@ io.on("connection", (socket) => {
         activeConversation,
         allConversations,
       );
+
+      //const route = await routeConversation_Gemini(data.text);
+
       console.log("🧭 [Conversation Router]:", route);
 
       let conversation;

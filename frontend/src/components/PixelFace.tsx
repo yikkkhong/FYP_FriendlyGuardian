@@ -7,21 +7,43 @@ interface PixelFaceProps {
   isSpeaking?: boolean;
 }
 
-const COLOR_THEMES: Record<
+const LIGHT_PALETTE: Record<
   EmotionState,
-  { active: string; glow: string; bg: string }
+  {
+    active: string;
+    glow: string;
+    recessedDot: string;
+    bezelBorder: string;
+    chassisTint: string;
+  }
 > = {
   NEUTRAL: {
-    active: "#60A5FA",
-    glow: "rgba(96, 165, 250, 0.45)",
-    bg: "#091326",
+    active: "#2563EB",
+    glow: "rgba(37, 99, 235, 0.28)",
+    recessedDot: "rgba(37, 99, 235, 0.07)",
+    bezelBorder: "#DCE3F1",
+    chassisTint: "#F4F7FC",
   },
-  HAPPY: { active: "#4ADE80", glow: "rgba(74, 222, 128, 0.55)", bg: "#042211" },
-  ALERT: { active: "#F87171", glow: "rgba(248, 113, 113, 0.7)", bg: "#380707" },
+  HAPPY: {
+    active: "#059669",
+    glow: "rgba(5, 150, 105, 0.26)",
+    recessedDot: "rgba(5, 150, 105, 0.08)",
+    bezelBorder: "#DCFCE7",
+    chassisTint: "#F2FBF6",
+  },
+  ALERT: {
+    active: "#DC2626",
+    glow: "rgba(220, 38, 38, 0.32)",
+    recessedDot: "rgba(220, 38, 38, 0.08)",
+    bezelBorder: "#FEE2E2",
+    chassisTint: "#FFF5F5",
+  },
   THINKING: {
-    active: "#FBBF24",
-    glow: "rgba(251, 191, 36, 0.55)",
-    bg: "#1E1738",
+    active: "#D97706",
+    glow: "rgba(217, 119, 6, 0.28)",
+    recessedDot: "rgba(217, 119, 6, 0.08)",
+    bezelBorder: "#FEF3C7",
+    chassisTint: "#FFFDF7",
   },
 };
 
@@ -32,43 +54,30 @@ export const PixelFace: React.FC<PixelFaceProps> = ({
   const [tick, setTick] = useState<number>(0);
   const [isBlinking, setIsBlinking] = useState<boolean>(false);
 
-  // refreshes one frame every 140ms
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTick((prev) => (prev + 1) % 60);
-    }, 140);
+    const timer = setInterval(() => setTick((prev) => (prev + 1) % 60), 130);
     return () => clearInterval(timer);
   }, []);
 
-  // blink naturally every 3.5–5 seconds (alert and thinking no blink)
   useEffect(() => {
     if (emotion === "ALERT" || emotion === "THINKING") return;
-
     const blinkInterval = setInterval(() => {
       setIsBlinking(true);
-      setTimeout(() => setIsBlinking(false), 160);
-    }, 3800);
-
+      setTimeout(() => setIsBlinking(false), 170);
+    }, 4000);
     return () => clearInterval(blinkInterval);
   }, [emotion]);
 
-  // 16x16 matrix frames
   const generateFrame = (): number[][] => {
     const grid: number[][] = Array(16)
       .fill(0)
       .map(() => Array(16).fill(0));
 
-    // Eye generation logic
+    // eye logic
     if (isBlinking) {
-      // if blinking, horizontal lines show as closed eyes
-      [3, 4, 5].forEach((c) => {
-        grid[4][c] = 1;
-      });
-      [10, 11, 12].forEach((c) => {
-        grid[4][c] = 1;
-      });
+      [3, 4, 5].forEach((c) => (grid[4][c] = 1));
+      [10, 11, 12].forEach((c) => (grid[4][c] = 1));
     } else if (emotion === "HAPPY") {
-      // happpy ^ ^
       grid[2][3] = 1;
       grid[2][4] = 1;
       grid[2][11] = 1;
@@ -98,24 +107,19 @@ export const PixelFace: React.FC<PixelFaceProps> = ({
       grid[3][11 + (scanCol > 2 ? 1 : 0)] = 1;
       grid[3][12 + (scanCol > 2 ? 1 : 0)] = 1;
     } else {
-      // neutral
       for (let r = 2; r <= 4; r++) {
         for (let c = 3; c <= 5; c++) grid[r][c] = 1;
         for (let c = 10; c <= 12; c++) grid[r][c] = 1;
       }
     }
 
-    // mouth generation logic
+    // mouth
     if (isSpeaking) {
-      // speaking, 4-frame loop
       const speakFrame = tick % 4;
-
       if (speakFrame === 0) {
-        // small open mouth
         for (let c = 5; c <= 10; c++) grid[10][c] = 1;
         for (let c = 6; c <= 9; c++) grid[11][c] = 1;
       } else if (speakFrame === 1) {
-        // wide open mouth
         grid[9][4] = 1;
         grid[9][11] = 1;
         for (let c = 5; c <= 10; c++) {
@@ -125,7 +129,6 @@ export const PixelFace: React.FC<PixelFaceProps> = ({
         grid[10][3] = 1;
         grid[10][12] = 1;
       } else if (speakFrame === 2) {
-        // zig-zag mouth
         grid[10][3] = 1;
         grid[9][5] = 1;
         grid[11][7] = 1;
@@ -140,7 +143,6 @@ export const PixelFace: React.FC<PixelFaceProps> = ({
         for (let c = 4; c <= 11; c++) grid[10][c] = 1;
       }
     } else {
-      // emotion-based mouth
       if (emotion === "HAPPY") {
         grid[9][2] = 1;
         grid[9][13] = 1;
@@ -150,16 +152,13 @@ export const PixelFace: React.FC<PixelFaceProps> = ({
         grid[11][11] = 1;
         for (let c = 5; c <= 10; c++) grid[12][c] = 1;
       } else if (emotion === "ALERT") {
-        for (let c = 4; c <= 11; c++) {
-          grid[c % 2 === 0 ? 11 : 12][c] = 1;
-        }
+        for (let c = 4; c <= 11; c++) grid[c % 2 === 0 ? 11 : 12][c] = 1;
       } else if (emotion === "THINKING") {
         const wavePos = tick % 8;
         for (let c = 4; c <= 11; c++) {
           grid[c === 4 + wavePos ? 9 : 11][c] = 1;
         }
       } else {
-        // neutral
         for (let c = 4; c <= 11; c++) grid[11][c] = 1;
       }
     }
@@ -168,40 +167,40 @@ export const PixelFace: React.FC<PixelFaceProps> = ({
   };
 
   const matrix = generateFrame();
-  const theme = COLOR_THEMES[emotion] || COLOR_THEMES.NEUTRAL;
+  const theme = LIGHT_PALETTE[emotion] || LIGHT_PALETTE.NEUTRAL;
 
   return (
     <div
+      className="pixel-chassis"
       style={{
-        width: "320px",
-        height: "320px",
-        backgroundColor: theme.bg,
-        borderRadius: "36px",
-        padding: "24px",
-        display: "grid",
-        gridTemplateColumns: "repeat(16, 1fr)",
-        gridTemplateRows: "repeat(16, 1fr)",
-        gap: "4px",
-        boxShadow: `0 0 50px ${theme.glow}`,
-        border: `3px solid ${theme.active}`,
-        transition:
-          "border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease",
-        boxSizing: "border-box",
+        backgroundColor: theme.chassisTint,
+        borderColor: theme.bezelBorder,
+        boxShadow: `0 24px 60px -12px rgba(0,0,0,0.06), 0 0 45px ${theme.glow}, inset 0 2px 4px #FFFFFF`,
       }}
     >
-      {matrix.flatMap((row, rowIndex) =>
-        row.map((pixel, colIndex) => (
-          <div
-            key={`${rowIndex}-${colIndex}`}
-            style={{
-              backgroundColor: pixel === 1 ? theme.active : "transparent",
-              borderRadius: "2px",
-              boxShadow: pixel === 1 ? `0 0 8px ${theme.active}` : "none",
-              transition: "background-color 0.08s ease",
-            }}
-          />
-        )),
-      )}
+      <div className="chassis-hardware-badge">
+        <span className="dot-screws"></span>
+        <span className="badge-text">GUARDIAN-V2 // EMOTION MATRIX</span>
+        <span className="dot-screws"></span>
+      </div>
+
+      <div className="matrix-viewport">
+        {matrix.flatMap((row, r) =>
+          row.map((active, c) => (
+            <div
+              key={`${r}-${c}`}
+              className="pixel-cell"
+              style={{
+                backgroundColor: active ? theme.active : theme.recessedDot,
+                boxShadow: active
+                  ? `0 0 10px ${theme.glow}, inset 0 1px 2px rgba(255,255,255,0.4)`
+                  : "inset 0 1px 1.5px rgba(0, 0, 0, 0.05)",
+                transform: active ? "scale(0.96)" : "scale(0.78)",
+              }}
+            />
+          )),
+        )}
+      </div>
     </div>
   );
 };

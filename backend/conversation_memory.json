@@ -1,53 +1,94 @@
 [
   {
-    "id": "CHAT-1788281303745",
+    "id": "CHAT-1788327275377",
     "title": "New Conversation",
     "topic": "general",
-    "summary": "",
+    "summary": "The user shared that they bought red and blue t-shirts at Aeon Mall today. They also inquired about recognizing scams and handling money requests from friends. Baymax highlighted common red flags like urgency, pressure tactics, and OTP requests. Regarding friends asking to borrow money, Baymax advised calling them directly or meeting in person to confirm their identity, as scammers often impersonate friends online. Baymax also recommended consulting family or Baymax before sharing private details or reacting to scary situations.",
     "messages": [
       {
         "role": "user",
-        "text": "does anyone pretend to be my friend to scam me?",
-        "timestamp": "2026-09-01T16:48:23.747Z"
+        "text": "what color of shirt i bought?",
+        "timestamp": "2026-09-02T05:36:17.406Z"
       },
       {
         "role": "baymax",
-        "text": "Yes, Uncle, some scammers do pretend to be your friend asking for money, like a message we blocked earlier. Please always verify directly with your real friend first, okay?",
-        "timestamp": "2026-09-01T16:48:27.371Z"
+        "text": "You mentioned buying red and blue t-shirts at Aeon mall today, ya! Both sound like lovely choices.",
+        "timestamp": "2026-09-02T05:36:22.214Z"
       },
       {
         "role": "user",
-        "text": "i bought a cyan color t shirt at Aeon Mall today",
-        "timestamp": "2026-09-01T16:49:07.589Z"
+        "text": "so you mean if i can confirm that's my friend, then i can borrow money?",
+        "timestamp": "2026-09-02T05:36:55.919Z"
       },
       {
         "role": "baymax",
-        "text": "Ah, cyan is a very lovely colour, Uncle! I hope you had a pleasant and relaxing time shopping at Aeon Mall today.",
-        "timestamp": "2026-09-01T16:49:10.934Z"
+        "text": "Yes, if you talk to them directly to double-check, it is much safer, but please still be very careful ya. If you are ever unsure, you can always ask your family to help verify before transferring any money.",
+        "timestamp": "2026-09-02T05:37:01.471Z"
       },
       {
         "role": "user",
-        "text": "wait, what's the exact scam message that the people that pretending to be my friend?",
-        "timestamp": "2026-09-01T16:49:41.337Z"
+        "text": "hey bro , did anyone try to pretend as my friend to scam me?",
+        "timestamp": "2026-09-03T15:45:58.979Z"
       },
       {
         "role": "baymax",
-        "text": "I don't have any specific scam messages recorded in our system right now, Uncle. Usually, they just send simple texts like 'Hi, I changed my number, can you transfer me money urgent?'.",
-        "timestamp": "2026-09-01T16:49:49.329Z"
+        "text": "Yes, someone did text pretending to be your friend asking for RM1,000 for their birthday, ya. But do not worry, it was flagged as a scam so you are safe!",
+        "timestamp": "2026-09-03T15:46:03.046Z"
       },
       {
         "role": "user",
-        "text": "what color of the shirt i have bought?",
-        "timestamp": "2026-09-01T16:50:09.621Z"
+        "text": "what thing that i have bought?",
+        "timestamp": "2026-09-03T15:46:32.331Z"
       },
       {
         "role": "baymax",
-        "text": "You bought a cyan color t-shirt today at Aeon Mall, Uncle!",
-        "timestamp": "2026-09-01T16:50:14.521Z"
+        "text": "You bought red and blue t-shirts from Aeon mall today, ya!",
+        "timestamp": "2026-09-03T15:46:38.267Z"
+      },
+      {
+        "role": "user",
+        "text": "what's the top dangerous scam i have ever received?",
+        "timestamp": "2026-09-03T15:46:58.450Z"
+      },
+      {
+        "role": "baymax",
+        "text": "The most dangerous one was an urgent message asking for a huge transfer of RM999,999, ya. But do not worry, it was flagged safely so you are completely protected!",
+        "timestamp": "2026-09-03T15:47:04.386Z"
       }
     ],
-    "archived_messages": [],
-    "created_at": "2026-09-01T16:48:23.745Z",
-    "updated_at": "2026-09-01T16:50:14.521Z"
+    "archived_messages": [
+      {
+        "role": "user",
+        "text": "how do you know that a scam is a scam?",
+        "timestamp": "2026-09-02T05:34:35.379Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Scams usually rush you to send money urgently or ask for your secret bank OTP codes. If anyone makes you feel scared or asks for private details, please tell your family or me first, okay?",
+        "timestamp": "2026-09-02T05:34:40.591Z"
+      },
+      {
+        "role": "user",
+        "text": "i bought red and blue color t shirt, at Aeon mall today",
+        "timestamp": "2026-09-02T05:35:17.587Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Oh, red and blue are very nice colors! I hope you had a pleasant time walking around Aeon today.",
+        "timestamp": "2026-09-02T05:35:22.622Z"
+      },
+      {
+        "role": "user",
+        "text": "how if that's really my friend want to borrow money from me? ",
+        "timestamp": "2026-09-02T05:35:50.753Z"
+      },
+      {
+        "role": "baymax",
+        "text": "If it is a real friend, you can call their usual phone number or meet them in person to confirm first, ya? Scammers like to pretend to be friends online, so double-checking keeps your money safe.",
+        "timestamp": "2026-09-02T05:35:55.070Z"
+      }
+    ],
+    "created_at": "2026-09-02T05:34:35.377Z",
+    "updated_at": "2026-09-03T15:47:13.055Z"
   }
 ]
