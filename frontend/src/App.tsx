@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { io, Socket } from "socket.io-client";
-import { PixelFace, EmotionState } from "./components/PixelFace";
+import { EmotionState } from "./components/PixelFace";
 import "./App.css";
+import CompanionView from "./views/CompanionView";
+import ManualView from "./views/ManualView";
 
 interface ScamAlertData {
   text: string;
@@ -25,7 +27,7 @@ const App: React.FC = () => {
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [blockedCount, setBlockedCount] = useState<number>(12);
 
-  const [chatInput, setChatInput] = useState<string>("");
+  //const [chatInput, setChatInput] = useState<string>("");
   const [baymaxResponse, setBaymaxResponse] = useState<string>(
     "Hello! I am Baymax, your guardian companion. You are completely safe with me.",
   );
@@ -78,9 +80,10 @@ const App: React.FC = () => {
     }
   };
 
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!chatInput.trim() || isWaitingAi) return;
+  const handleSendMessage = (text: string) => {
+    // moved to CompanionView handleSubmit
+    // e.preventDefault();
+    // if (!chatInput.trim() || isWaitingAi) return;
 
     setIsWaitingAi(true);
     setAiEmotion("THINKING");
@@ -88,7 +91,7 @@ const App: React.FC = () => {
     setBaymaxResponse(pendingText);
 
     if (socket && socket.connected) {
-      socket.emit("user_chat", { text: chatInput });
+      socket.emit("user_chat", { text });
     } else {
       // fallback
       setTimeout(() => {
@@ -99,7 +102,7 @@ const App: React.FC = () => {
         speakText(reply);
       }, 1200);
     }
-    setChatInput("");
+    //setChatInput("");
   };
 
   const handleBlock = () => {
@@ -148,87 +151,15 @@ const App: React.FC = () => {
       {/* main part */}
       <main className="stage-viewport">
         {appMode === "ELDERLY" ? (
-          <div
-            className={`experience-theatre ${isSpeaking ? "layout-split" : "layout-centered"}`}
-          >
-            {/*pixel face with css transition */}
-            <section className="actor-face-zone">
-              <PixelFace emotion={aiEmotion} isSpeaking={isSpeaking} />
-            </section>
-
-            {/* right side show subtitle */}
-            <section className="actor-dialogue-zone">
-              <div className="speech-caption-card">
-                <div className="speech-badge-row">
-                  <span className="dialogue-tag">
-                    {isWaitingAi
-                      ? "ANALYZING INTENT"
-                      : isSpeaking
-                        ? "LIVE VOICE"
-                        : "SYSTEM READY"}
-                  </span>
-                  {isSpeaking && (
-                    <div className="voice-waves">
-                      <span />
-                      <span />
-                      <span />
-                      <span />
-                    </div>
-                  )}
-                </div>
-
-                <p className="caption-body-text">“{baymaxResponse}”</p>
-              </div>
-
-              {/* input field */}
-              <form
-                onSubmit={handleSendMessage}
-                className="bottom-query-capsule"
-              >
-                <input
-                  type="text"
-                  placeholder="Ask Baymax anything..."
-                  value={chatInput}
-                  onChange={(e) => setChatInput(e.target.value)}
-                  className="query-input"
-                  disabled={isWaitingAi}
-                />
-                <button
-                  type="submit"
-                  className="query-submit-action"
-                  disabled={isWaitingAi}
-                >
-                  {isWaitingAi ? "..." : "Speak"}
-                </button>
-              </form>
-            </section>
-          </div>
+          <CompanionView
+            aiEmotion={aiEmotion}
+            isSpeaking={isSpeaking}
+            baymaxResponse={baymaxResponse}
+            isWaitingAi={isWaitingAi}
+            onSendMessage={handleSendMessage}
+          />
         ) : (
-          /* SME mode */
-          <div className="sme-tactile-dashboard">
-            <div className="sme-lead-card">
-              <div className="card-kicker">SEC-OPS // MONITORING</div>
-              <h2>Enterprise Transaction & Mule Anomaly Grid</h2>
-              <p>
-                Continuous heuristic analysis of inbound telemetric SMS data.
-              </p>
-            </div>
-
-            <div className="metric-tiles-row">
-              <div className="metric-tile">
-                <span className="tile-sub">TELEMETRY INGESTED</span>
-                <span className="tile-num accent-blue">1,248</span>
-              </div>
-              <div className="metric-tile">
-                <span className="tile-sub">THREATS INTERCEPTED</span>
-                <span className="tile-num accent-red">{blockedCount}</span>
-              </div>
-              <div className="metric-tile">
-                <span className="tile-sub">MULE ENTITIES FLAGGED</span>
-                <span className="tile-num accent-green">8</span>
-              </div>
-            </div>
-          </div>
+          <ManualView blockedCount={blockedCount} />
         )}
       </main>
 

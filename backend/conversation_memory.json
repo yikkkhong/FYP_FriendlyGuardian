@@ -3,28 +3,8 @@
     "id": "CHAT-1788327275377",
     "title": "New Conversation",
     "topic": "general",
-    "summary": "The user shared that they bought red and blue t-shirts at Aeon Mall today. They also inquired about recognizing scams and handling money requests from friends. Baymax highlighted common red flags like urgency, pressure tactics, and OTP requests. Regarding friends asking to borrow money, Baymax advised calling them directly or meeting in person to confirm their identity, as scammers often impersonate friends online. Baymax also recommended consulting family or Baymax before sharing private details or reacting to scary situations.",
+    "summary": "The user asked Baymax to recall buying red and blue t-shirts from Aeon Mall today. They discussed identifying scams and handling financial requests from friends. Baymax highlighted red flags like urgency, pressure, and OTP requests, advising direct verification via phone or in person. Clarifying the user's inquiry about lending money, Baymax noted that direct verification makes transfers safer, though strict caution is still required. Baymax emphasized consulting family or Baymax before sharing private details or transferring any money.",
     "messages": [
-      {
-        "role": "user",
-        "text": "what color of shirt i bought?",
-        "timestamp": "2026-09-02T05:36:17.406Z"
-      },
-      {
-        "role": "baymax",
-        "text": "You mentioned buying red and blue t-shirts at Aeon mall today, ya! Both sound like lovely choices.",
-        "timestamp": "2026-09-02T05:36:22.214Z"
-      },
-      {
-        "role": "user",
-        "text": "so you mean if i can confirm that's my friend, then i can borrow money?",
-        "timestamp": "2026-09-02T05:36:55.919Z"
-      },
-      {
-        "role": "baymax",
-        "text": "Yes, if you talk to them directly to double-check, it is much safer, but please still be very careful ya. If you are ever unsure, you can always ask your family to help verify before transferring any money.",
-        "timestamp": "2026-09-02T05:37:01.471Z"
-      },
       {
         "role": "user",
         "text": "hey bro , did anyone try to pretend as my friend to scam me?",
@@ -54,6 +34,26 @@
         "role": "baymax",
         "text": "The most dangerous one was an urgent message asking for a huge transfer of RM999,999, ya. But do not worry, it was flagged safely so you are completely protected!",
         "timestamp": "2026-09-03T15:47:04.386Z"
+      },
+      {
+        "role": "user",
+        "text": "hey bro, can you analyse is the link is scam?",
+        "timestamp": "2026-09-04T07:12:20.979Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Sure, please paste or share the link with me here, ya! I will check it safely for you.",
+        "timestamp": "2026-09-04T07:12:25.247Z"
+      },
+      {
+        "role": "user",
+        "text": "where did i bought my shirt?",
+        "timestamp": "2026-09-05T03:55:33.409Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You bought your red and blue t-shirts from Aeon Mall today, ya!",
+        "timestamp": "2026-09-05T03:55:36.640Z"
       }
     ],
     "archived_messages": [
@@ -86,9 +86,29 @@
         "role": "baymax",
         "text": "If it is a real friend, you can call their usual phone number or meet them in person to confirm first, ya? Scammers like to pretend to be friends online, so double-checking keeps your money safe.",
         "timestamp": "2026-09-02T05:35:55.070Z"
+      },
+      {
+        "role": "user",
+        "text": "what color of shirt i bought?",
+        "timestamp": "2026-09-02T05:36:17.406Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You mentioned buying red and blue t-shirts at Aeon mall today, ya! Both sound like lovely choices.",
+        "timestamp": "2026-09-02T05:36:22.214Z"
+      },
+      {
+        "role": "user",
+        "text": "so you mean if i can confirm that's my friend, then i can borrow money?",
+        "timestamp": "2026-09-02T05:36:55.919Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Yes, if you talk to them directly to double-check, it is much safer, but please still be very careful ya. If you are ever unsure, you can always ask your family to help verify before transferring any money.",
+        "timestamp": "2026-09-02T05:37:01.471Z"
       }
     ],
     "created_at": "2026-09-02T05:34:35.377Z",
-    "updated_at": "2026-09-03T15:47:13.055Z"
+    "updated_at": "2026-09-05T03:55:41.829Z"
   }
 ]
