@@ -1,11 +1,11 @@
 const { GoogleGenAI, Type } = require("@google/genai");
-const { STM, LTM } = require("./securityMemory.js");
-const ConversationMemory = require("./conversationMemory");
+const { STM, LTM } = require("../../securityMemory.js");
+const ConversationMemory = require("../../conversationMemory.js");
 
 const apiKey = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey });
 
-const { initLocalAI, classifyMemoryIntent_Local } = require("./localAI");
+const { initLocalAI, classifyMemoryIntent_Local } = require("./localAI.js");
 
 //check timing create timer
 function createTimer(label) {

@@ -12,7 +12,7 @@ const {
   initLocalAI,
   classifyMemoryIntent_Local,
   routeConversation_Local,
-} = require("./localAI");
+} = require("./AI/CompanionMode/localAI");
 
 const {
   createTimer,
@@ -22,7 +22,12 @@ const {
   analyzeSms_Gemini,
   chatWithAI,
   summarizeConversationHistory,
-} = require("./geminiAI");
+} = require("./AI/CompanionMode/geminiAI");
+
+const {
+  chatWithManualAI,
+  clearManualHistory,
+} = require("./AI/ManualMode/manualAI");
 
 const app = express();
 app.use(cors());
@@ -162,6 +167,33 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("❌ [Socket.IO] Frontend Disconnected");
+  });
+
+  // ==========================================
+  //  Manual Mode
+  // ==========================================
+  socket.on("manual_chat", async (data) => {
+    console.log("\n🔍 [Manual Mode Chat]:", data.text);
+
+    try {
+      // Call the manual AI chat function
+      const result = await chatWithManualAI(data.text);
+
+      socket.emit("manual_chat_response", {
+        message: result.message,
+        timestamp: new Date().toLocaleTimeString(),
+      });
+    } catch (err) {
+      console.error("🔥 Manual chat error:", err);
+      socket.emit("manual_chat_response", {
+        message: "Failed to process message in manual mode.",
+      });
+    }
+  });
+
+  socket.on("manual_clear_history", () => {
+    clearManualHistory();
+    console.log("🧹 Manual Mode history cleared.");
   });
 });
 

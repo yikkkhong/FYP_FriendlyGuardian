@@ -1,6 +1,6 @@
 const { pipeline, cos_sim } = require("@xenova/transformers");
-const { STM, LTM } = require("./securityMemory.js");
-const ConversationMemory = require("./conversationMemory");
+const { STM, LTM } = require("../../securityMemory.js");
+const ConversationMemory = require("../../conversationMemory.js");
 
 let extractor = null;
 let cachedIntentVectors = null;

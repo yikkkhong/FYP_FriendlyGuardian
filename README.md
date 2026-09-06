@@ -16,6 +16,16 @@ An AI-powered anti-scam assistant that helps users assess suspicious messages an
 - Ask for recent suspicious notifications or scam messages.
 - Planned: monitor notifications and display an alert when a possible scam is detected.
 
+## System Structure
+
+### Frontend
+
+- React (Vite) + TypeScript
+
+### Backend
+
+- Node.js
+
 ## Project Status
 
 This project is currently in development. Some features are experimental or not yet implemented.

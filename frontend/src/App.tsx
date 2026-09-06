@@ -33,6 +33,16 @@ const App: React.FC = () => {
   );
   const [isWaitingAi, setIsWaitingAi] = useState<boolean>(false);
 
+  // Manual Mode
+  interface ManualMessage {
+    sender: "user" | "ai";
+    text: string;
+    time: string;
+  }
+
+  const [manualMessages, setManualMessages] = useState<ManualMessage[]>([]);
+  const [isManualLoading, setIsManualLoading] = useState<boolean>(false);
+
   useEffect(() => {
     socket = io("http://localhost:5000");
 
@@ -57,6 +67,22 @@ const App: React.FC = () => {
         setAiEmotion(data.suggested_emotion || "HAPPY");
         speakText(data.baymax_message);
         setIsWaitingAi(false);
+      },
+    );
+
+    //manual mode
+    socket.on(
+      "manual_chat_response",
+      (data: { message: string; timestamp?: string }) => {
+        setManualMessages((prev) => [
+          ...prev,
+          {
+            sender: "ai",
+            text: data.message,
+            time: data.timestamp || new Date().toLocaleTimeString(),
+          },
+        ]);
+        setIsManualLoading(false);
       },
     );
 
@@ -114,6 +140,28 @@ const App: React.FC = () => {
     speakText(msg);
   };
 
+  const handleSendManualMessage = (text: string) => {
+    setIsManualLoading(true);
+    setManualMessages((prev) => [
+      ...prev,
+      { sender: "user", text, time: new Date().toLocaleTimeString() },
+    ]);
+
+    if (socket && socket.connected) {
+      socket.emit("manual_chat", { text });
+    } else {
+      setIsManualLoading(false);
+      setManualMessages((prev) => [
+        ...prev,
+        {
+          sender: "ai",
+          text: "Server is offline, please check your connection.",
+          time: new Date().toLocaleTimeString(),
+        },
+      ]);
+    }
+  };
+
   return (
     <div className="canvas-root">
       {/* top nav bar */}
@@ -159,7 +207,12 @@ const App: React.FC = () => {
             onSendMessage={handleSendMessage}
           />
         ) : (
-          <ManualView blockedCount={blockedCount} />
+          <ManualView
+            blockedCount={blockedCount}
+            messages={manualMessages}
+            isLoading={isManualLoading}
+            onSendMessage={handleSendManualMessage}
+          />
         )}
       </main>
 
