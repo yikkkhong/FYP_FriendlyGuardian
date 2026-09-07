@@ -11,6 +11,7 @@ interface ManualViewProps {
   messages: ManualMessage[];
   isLoading: boolean;
   onSendMessage: (message: string) => void;
+  onUploadImage: (file: File) => void;
 }
 
 export const ManualView: React.FC<ManualViewProps> = ({
@@ -18,6 +19,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
   messages,
   isLoading,
   onSendMessage,
+  onUploadImage,
 }) => {
   const [queryInput, setQueryInput] = useState<string>("");
   const chatEndRef = useRef<HTMLDivElement | null>(null);
@@ -32,6 +34,17 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
     onSendMessage(queryInput);
     setQueryInput("");
+  };
+
+  // new image upload
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || isLoading) return;
+
+    onUploadImage(file);
+
+    // reset input，next time can choose same file
+    if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
   const parseReport = (rawText: string) => {
@@ -56,6 +69,42 @@ export const ManualView: React.FC<ManualViewProps> = ({
       recommendations: parseBullets(recMatch?.[1]),
     };
   };
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // old image upload
+  // const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (!file || isLoading) return;
+
+  //   const formData = new FormData();
+  //   formData.append("image", file);
+
+  //   // 1. let user know image uploaded
+  //   onSendMessage(`[Uploaded Image: ${file.name}] Analyzing OCR...`);
+
+  //   try {
+  //     // 2. request backend endpoint
+  //     const res = await fetch("http://localhost:5000/api/manual-scan-image", {
+  //       method: "POST",
+  //       body: formData,
+  //     });
+  //     const data = await res.json();
+
+  //     // 3. display raw text via ocr
+  //     if (data.analysis) {
+  //       // trigger interface receives the AI response
+  //       window.dispatchEvent(
+  //         new CustomEvent("manual_image_analyzed", { detail: data }),
+  //       );
+  //     }
+  //   } catch (err) {
+  //     console.error("Image upload failed:", err);
+  //   } finally {
+  //     // Reset the input, so can select same image again
+  //     if (fileInputRef.current) fileInputRef.current.value = "";
+  //   }
+  // };
 
   return (
     /* SME mode (Manual mode) */
@@ -168,6 +217,25 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
       {/*Input field for manual mode*/}
       <form onSubmit={handleSubmit} className="bottom-query-capsule">
+        {/* input image */}
+        <input
+          type="file"
+          ref={fileInputRef}
+          style={{ display: "none" }}
+          accept="image/*"
+          onChange={handleImageUpload}
+        />
+        <button
+          type="button"
+          className="query-upload-btn"
+          onClick={() => fileInputRef.current?.click()}
+          disabled={isLoading}
+          title="Upload suspicious screenshot"
+        >
+          📷
+        </button>
+
+        {/* input text */}
         <input
           type="text"
           placeholder="Enter manual query or paste suspicious message..."

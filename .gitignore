@@ -24,3 +24,8 @@ local.properties
 # Keystore (don't upload)
 *.jks
 *.keystore
+
+# python venv
+venv/
+.venv/
+env/

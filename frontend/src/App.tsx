@@ -162,6 +162,56 @@ const App: React.FC = () => {
     }
   };
 
+  const handleUploadImage = async (file: File) => {
+    setIsManualLoading(true);
+
+    // 1. Locally, display only the message, no send it to the AI ​​via socket.emit
+    setManualMessages((prev) => [
+      ...prev,
+      {
+        sender: "user",
+        text: `📷 [Uploaded Screenshot: ${file.name}]`,
+        time: new Date().toLocaleTimeString(),
+      },
+    ]);
+
+    const formData = new FormData();
+    formData.append("image", file);
+
+    try {
+      // 2. use backend ocr + gemini port
+      const res = await fetch("http://localhost:5000/api/manual-scan-image", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+
+      if (data.analysis) {
+        // 3. Render real OCR onto interface
+        setManualMessages((prev) => [
+          ...prev,
+          {
+            sender: "ai",
+            text: data.analysis,
+            time: data.timestamp || new Date().toLocaleTimeString(),
+          },
+        ]);
+      }
+    } catch (err) {
+      console.error("Image upload failed:", err);
+      setManualMessages((prev) => [
+        ...prev,
+        {
+          sender: "ai",
+          text: "Failed to upload or inspect image. Please try again.",
+          time: new Date().toLocaleTimeString(),
+        },
+      ]);
+    } finally {
+      setIsManualLoading(false);
+    }
+  };
+
   return (
     <div className="canvas-root">
       {/* top nav bar */}
@@ -212,6 +262,7 @@ const App: React.FC = () => {
             messages={manualMessages}
             isLoading={isManualLoading}
             onSendMessage={handleSendManualMessage}
+            onUploadImage={handleUploadImage}
           />
         )}
       </main>

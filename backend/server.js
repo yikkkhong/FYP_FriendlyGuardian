@@ -8,6 +8,19 @@ require("dotenv").config();
 const { STM, LTM } = require("./securityMemory.js");
 const ConversationMemory = require("./conversationMemory");
 
+// OCR service (python)
+const multer = require("multer");
+const { execFile } = require("child_process");
+const path = require("path");
+const fs = require("fs");
+
+// Ensure the temporary upload directory exists
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+const upload = multer({ dest: uploadDir });
+
 const {
   initLocalAI,
   classifyMemoryIntent_Local,
@@ -252,6 +265,66 @@ app.post("/api/sms-webhook", async (req, res) => {
   //}
 
   res.status(200).json({ status: "success", analysis: aiResult });
+});
+
+// Manual mode upload image OCR + Gemini analyse
+app.post("/api/manual-scan-image", upload.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: "No image file provided." });
+  }
+
+  const imagePath = req.file.path;
+  const pythonScript = path.join(__dirname, "python/ocr_service.py");
+
+  // Get venv path
+  const isWindows = process.platform === "win32";
+  const pythonExecutable = isWindows
+    ? path.join(__dirname, "python/venv/Scripts/python.exe") // Windows venv
+    : path.join(__dirname, "python/venv/bin/python"); // Mac / Linux venv
+
+  // 1. Get Python - execute PP-OCR
+  execFile(
+    pythonExecutable,
+    [pythonScript, imagePath],
+    { encoding: "utf8" },
+    async (error, stdout) => {
+      // prevent accumulation
+      fs.unlink(imagePath, () => {});
+
+      if (error) {
+        console.error("🔥 OCR Execution Error:", error);
+        return res.status(500).json({ error: "Failed to process image OCR." });
+      }
+
+      try {
+        // 2. Get Python {"text": "..."}
+        const ocrResult = JSON.parse(stdout.trim());
+        const extractedText = ocrResult.text;
+
+        if (!extractedText) {
+          return res.json({
+            extractedText: "",
+            message: "No readable text detected in this image.",
+          });
+        }
+
+        console.log("📷 [OCR Detected Text]:", extractedText);
+
+        // 3. send detected text to gemini (use manualAI)
+        const aiAnalysis = await chatWithManualAI(extractedText);
+
+        // 4. return OCR text Gemini analysed result
+        res.json({
+          extractedText: extractedText,
+          analysis: aiAnalysis.message,
+          timestamp: new Date().toLocaleTimeString(),
+        });
+      } catch (parseErr) {
+        console.error("🔥 JSON Parse / Gemini Error:", parseErr);
+        res.status(500).json({ error: "Failed to analyze extracted text." });
+      }
+    },
+  );
 });
 
 app.get("/api/history", (req, res) => {

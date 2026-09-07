@@ -25,6 +25,7 @@ An AI-powered anti-scam assistant that helps users assess suspicious messages an
 ### Backend
 
 - Node.js
+- Python
 
 ## Project Status
 
@@ -36,3 +37,10 @@ This project is currently in development. Some features are experimental or not 
 - Add stronger privacy and misuse protection.
 - Complete notification monitoring and alert functionality.
 - Test the assistant with more real-world scam examples.
+
+to install python dependency
+
+```bash
+python -m pip install --upgrade pip
+pip install paddlepaddle==2.6.2 paddleocr==2.8.1
+```
