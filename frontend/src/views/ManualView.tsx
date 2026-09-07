@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 interface ManualMessage {
   sender: "user" | "ai";
@@ -20,6 +20,11 @@ export const ManualView: React.FC<ManualViewProps> = ({
   onSendMessage,
 }) => {
   const [queryInput, setQueryInput] = useState<string>("");
+  const chatEndRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isLoading]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +32,29 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
     onSendMessage(queryInput);
     setQueryInput("");
+  };
+
+  const parseReport = (rawText: string) => {
+    const riskMatch = rawText.match(/RISK LEVEL:\s*([A-Z]+)/i);
+    if (!riskMatch) return null;
+
+    const risk = riskMatch[1].toUpperCase();
+    const whyMatch = rawText.match(/WHY:\s*([\s\S]*?)(?=RECOMMENDATION:|$)/i);
+    const recMatch = rawText.match(/RECOMMENDATION:\s*([\s\S]*?)$/i);
+
+    const parseBullets = (str: string | undefined) =>
+      str
+        ? str
+            .split("\n")
+            .map((l) => l.replace(/^[-*•]\s*/, "").trim())
+            .filter(Boolean)
+        : [];
+
+    return {
+      risk,
+      why: parseBullets(whyMatch?.[1]),
+      recommendations: parseBullets(recMatch?.[1]),
+    };
   };
 
   return (
@@ -54,53 +82,88 @@ export const ManualView: React.FC<ManualViewProps> = ({
       </div> */}
 
       {/* Message display area (temporary) */}
-      <div
-        style={{
-          flex: 1,
-          overflowY: "auto",
-          margin: "16px 0",
-          maxHeight: "380px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-        }}
-      >
-        {messages.length === 0 && (
-          <p style={{ color: "#888", textAlign: "center", margin: "auto" }}>
-            Enter a suspicious message or bank detail below to analyze...
-          </p>
-        )}
-        {messages.map((m, idx) => (
-          <div
-            key={idx}
-            style={{
-              alignSelf: m.sender === "user" ? "flex-end" : "flex-start",
-              background: m.sender === "user" ? "#2563eb" : "#1e293b",
-              color: "#fff",
-              padding: "10px 14px",
-              borderRadius: "8px",
-              maxWidth: "80%",
-              whiteSpace: "pre-wrap",
-            }}
-          >
-            <div>{m.text}</div>
-            <div
-              style={{
-                fontSize: "10px",
-                opacity: 0.6,
-                marginTop: "4px",
-                textAlign: "right",
-              }}
-            >
-              {m.time}
+      <div className="manual-stream-card">
+        <div className="manual-stream-viewport">
+          {messages.length === 0 && (
+            <div className="manual-empty-state">
+              <div className="empty-icon-capsule">🛡️</div>
+              <p>
+                Inspector standing by. Paste a message or bank account below to
+                begin.
+              </p>
             </div>
-          </div>
-        ))}
-        {isLoading && (
-          <p style={{ color: "#38bdf8", fontSize: "12px" }}>
-            Gemini analyzing...
-          </p>
-        )}
+          )}
+
+          {messages.map((m, idx) => {
+            const isUser = m.sender === "user";
+            const report = !isUser ? parseReport(m.text) : null;
+
+            return (
+              <div
+                key={idx}
+                className={`manual-msg-row ${isUser ? "user" : "ai"}`}
+              >
+                <div className="manual-msg-meta">
+                  <span className="meta-label">
+                    {isUser ? "OPERATOR QUERY" : "THREAT ANALYSIS"}
+                  </span>
+                  <span className="meta-time">{m.time}</span>
+                </div>
+
+                {isUser ? (
+                  <div className="user-query-bubble">{m.text}</div>
+                ) : report ? (
+                  <div className="threat-report-card">
+                    <div className="report-header-row">
+                      <span className="report-header-title">
+                        SECURITY INTELLIGENCE
+                      </span>
+                      <span
+                        className={`risk-level-badge ${report.risk.toLowerCase()}`}
+                      >
+                        RISK // {report.risk}
+                      </span>
+                    </div>
+
+                    {report.why.length > 0 && (
+                      <div className="report-section">
+                        <span className="section-label">
+                          DETECTED ANOMALIES
+                        </span>
+                        <ul className="report-list alert-list">
+                          {report.why.map((point, i) => (
+                            <li key={i}>{point}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {report.recommendations.length > 0 && (
+                      <div className="report-section">
+                        <span className="section-label">
+                          RECOMMENDED COUNTERMEASURES
+                        </span>
+                        <ul className="report-list">
+                          {report.recommendations.map((point, i) => (
+                            <li key={i}>{point}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="plain-ai-bubble">{m.text}</div>
+                )}
+              </div>
+            );
+          })}
+          {isLoading && (
+            <p style={{ color: "#38bdf8", fontSize: "12px" }}>
+              Gemini analyzing...
+            </p>
+          )}
+          <div ref={chatEndRef} />
+        </div>
       </div>
 
       {/*Input field for manual mode*/}

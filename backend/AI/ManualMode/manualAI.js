@@ -6,8 +6,25 @@ const ai = new GoogleGenAI({ apiKey });
 // for manual mode ---
 const manualSessionHistory = [];
 
+//check timing create timer
+function createTimer(label) {
+  const start = performance.now();
+
+  return {
+    end(extra = "") {
+      const elapsed = performance.now() - start;
+      console.log(
+        `⏱️ [${label}] ${elapsed.toFixed(0)} ms${extra ? ` - ${extra}` : ""}`,
+      );
+      return elapsed;
+    },
+  };
+}
+
 async function chatWithManualAI(userText) {
   try {
+    const timer = createTimer("Manual AI Response Time");
+
     const historyText = manualSessionHistory
       .slice(-6)
       .map(
@@ -17,8 +34,8 @@ async function chatWithManualAI(userText) {
       .join("\n");
 
     const prompt = `
-You are an expert Anti-Scam Security Assistant.
-The user is manually submitting suspicious messages, bank details, links, or asking scam-related questions.
+You are an expert Anti-Scam Intelligence Analyst.
+The user is submitting suspicious messages, SMS, banking accounts, URLs, or asking scam-related questions.
 
 ========================================
 RECENT CONVERSATION
@@ -26,19 +43,28 @@ RECENT CONVERSATION
 ${historyText || "No previous history."}
 
 ========================================
-CURRENT USER MESSAGE / SUSPICIOUS TEXT
+USER INPUT
 ========================================
 "${userText}"
 
 ========================================
-INSTRUCTIONS
+OUTPUT FORMAT RULES
 ========================================
-1. Analyze if the text or inquiry involves a potential scam (e.g., mule account, fake SMS, OTP theft, impersonation).
-2. Clearly state whether it looks SUSPICIOUS, HIGH RISK, or SAFE.
-3. Highlight specific red flags (e.g., urgency, unofficial links, asking for TAC/money).
-4. Give clear, bullet-point advice on what the user should do next (e.g., do not click, block number, call official bank hotline).
-5. If the user is just saying hello or asking follow-up questions, reply naturally in a professional, protective tone.
-6. Keep the response concise, clear, and direct.
+1. If the input is a pure greeting (e.g., "hi", "hello"), reply in 1 brief, professional sentence.
+2. For any inquiry, suspicious message, or account check, you MUST strictly use this exact format:
+
+RISK LEVEL: [HIGH / MEDIUM / LOW / SAFE]
+
+WHY:
+- [Direct reason 1]
+- [Direct reason 2]
+
+RECOMMENDATION:
+- [Immediate actionable advice 1]
+- [Immediate actionable advice 2]
+
+3. Do NOT add generic introductory fillers (no "Here is the analysis", no "Based on...").
+4. Keep each bullet point under 15 words. Be extremely sharp and concise.
 `;
 
     const response = await ai.models.generateContent({
@@ -50,6 +76,8 @@ INSTRUCTIONS
 
     manualSessionHistory.push({ role: "user", text: userText });
     manualSessionHistory.push({ role: "assistant", text: reply });
+
+    timer.end();
 
     return { message: reply };
   } catch (error) {

@@ -217,55 +217,57 @@ const App: React.FC = () => {
       </main>
 
       {/* bottom panel, emotion tester */}
-      <footer className="footer-utility-bar">
-        <div className="emotion-tuner">
-          <span className="tuner-title">STATE TUNER:</span>
-          <button
-            onClick={() => {
-              setAiEmotion("HAPPY");
-              const m = "I am at your service and feeling bright!";
-              setBaymaxResponse(m);
-              speakText(m);
-            }}
-            className={`tune-chip ${aiEmotion === "HAPPY" ? "chip-active" : ""}`}
-          >
-            Happy
-          </button>
-          <button
-            onClick={() => {
-              setAiEmotion("NEUTRAL");
-              const m = "Calm and standing by.";
-              setBaymaxResponse(m);
-              speakText(m);
-            }}
-            className={`tune-chip ${aiEmotion === "NEUTRAL" ? "chip-active" : ""}`}
-          >
-            Neutral
-          </button>
-          <button
-            onClick={() => {
-              setAiEmotion("THINKING");
-              const m = "Processing your request...";
-              setBaymaxResponse(m);
-              speakText(m);
-            }}
-            className={`tune-chip ${aiEmotion === "THINKING" ? "chip-active" : ""}`}
-          >
-            Thinking
-          </button>
-          <button
-            onClick={() => {
-              setAiEmotion("ALERT");
-              const m = "Attention! Security discrepancy located!";
-              setBaymaxResponse(m);
-              speakText(m);
-            }}
-            className={`tune-chip alert-chip ${aiEmotion === "ALERT" ? "chip-active" : ""}`}
-          >
-            Alert
-          </button>
-        </div>
-      </footer>
+      {appMode === "ELDERLY" && (
+        <footer className="footer-utility-bar">
+          <div className="emotion-tuner">
+            <span className="tuner-title">STATE TUNER:</span>
+            <button
+              onClick={() => {
+                setAiEmotion("HAPPY");
+                const m = "I am at your service and feeling bright!";
+                setBaymaxResponse(m);
+                speakText(m);
+              }}
+              className={`tune-chip ${aiEmotion === "HAPPY" ? "chip-active" : ""}`}
+            >
+              Happy
+            </button>
+            <button
+              onClick={() => {
+                setAiEmotion("NEUTRAL");
+                const m = "Calm and standing by.";
+                setBaymaxResponse(m);
+                speakText(m);
+              }}
+              className={`tune-chip ${aiEmotion === "NEUTRAL" ? "chip-active" : ""}`}
+            >
+              Neutral
+            </button>
+            <button
+              onClick={() => {
+                setAiEmotion("THINKING");
+                const m = "Processing your request...";
+                setBaymaxResponse(m);
+                speakText(m);
+              }}
+              className={`tune-chip ${aiEmotion === "THINKING" ? "chip-active" : ""}`}
+            >
+              Thinking
+            </button>
+            <button
+              onClick={() => {
+                setAiEmotion("ALERT");
+                const m = "Attention! Security discrepancy located!";
+                setBaymaxResponse(m);
+                speakText(m);
+              }}
+              className={`tune-chip alert-chip ${aiEmotion === "ALERT" ? "chip-active" : ""}`}
+            >
+              Alert
+            </button>
+          </div>
+        </footer>
+      )}
 
       {/* alert pop up */}
       {showAlert && alertData && (
