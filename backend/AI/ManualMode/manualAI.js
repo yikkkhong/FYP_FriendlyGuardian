@@ -70,9 +70,21 @@ RECOMMENDATION:
     const response = await ai.models.generateContent({
       model: "gemini-3.6-flash",
       contents: prompt,
+      config: {
+        // maxOutputTokens: 1000,
+        temperature: 0.2,
+        // thinkingConfig: {
+        //   thinkingBudget: 0,
+        // },
+      },
     });
 
     const reply = response.text.trim();
+
+    // const finishReason = response.candidates?.[0]?.finishReason;
+    // if (finishReason === "MAX_TOKENS") {
+    //   console.warn("⚠️ Output reached max token limit and was truncated.");
+    // }
 
     manualSessionHistory.push({ role: "user", text: userText });
     manualSessionHistory.push({ role: "assistant", text: reply });

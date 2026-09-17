@@ -390,7 +390,7 @@ body {
  * ----------------------------------------------------------- */
 .footer-utility-bar {
   position: absolute;
-  bottom: 18px;
+  bottom: 608px; /* 18 */
   left: 0;
   width: 100%;
   display: flex;

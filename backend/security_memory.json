@@ -1,5 +1,17 @@
 [
   {
+    "id": "INC-1788934987788-embof1",
+    "saved_at": "2026-09-09T06:23:07.788Z",
+    "text": "congrats! you have won a car, please transfer RM100 to this account 12345678 to get your car!",
+    "sender": "101022345",
+    "detected_account": "12345678",
+    "reason": "The SMS claims you won a car but asks for an upfront payment of RM100, which is a classic scam tactic.",
+    "baymax_message": "Hello, this is a scam message, so please don't transfer any money ah!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "2:23:07 pm",
+    "is_scam": true
+  },
+  {
     "id": "INC-1788451101083-ags3cu",
     "saved_at": "2026-09-03T15:58:21.083Z",
     "text": "Your account is hacked! You have lost RM1! transfer money to this account 123222",

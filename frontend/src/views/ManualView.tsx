@@ -111,8 +111,8 @@ export const ManualView: React.FC<ManualViewProps> = ({
     <div className="sme-tactile-dashboard">
       <div className="sme-lead-card">
         <div className="card-kicker">SEC-OPS // MONITORING</div>
-        <h2>Enterprise Transaction & Mule Anomaly Grid</h2>
-        <p>Continuous heuristic analysis of inbound telemetric SMS data.</p>
+        <h2>Enterprise Friendly Guardian</h2>
+        <p>Protect your company from fraud</p>
       </div>
 
       {/* <div className="metric-tiles-row">

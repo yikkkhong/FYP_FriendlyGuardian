@@ -3,18 +3,8 @@
     "id": "CHAT-1788327275377",
     "title": "New Conversation",
     "topic": "general",
-    "summary": "The user, Baymax's developer, casually greeted Baymax (\"bro\"). Previously, the user bought red and blue t-shirts at Aeon Mall. Baymax reviewed its scam history, having safely flagged 10 scam messages, including fake account hack alerts, urgent money transfers (like RM999,999), and friend impersonations (like RM1,000). After Baymax highlighted scam red flags such as urgency, pressure, and OTP requests, the user requested that Baymax safely analyze a link for potential scams.",
+    "summary": "The user, Baymax's developer, casually greeted Baymax. Previously, the user bought red and blue t-shirts at Aeon Mall. Discussing scam history, Baymax reviewed 10 safely flagged scams and, upon request, cited an example message claiming an account hack that urgently demanded an RM10,000 transfer. Other past scams included fake transfers (RM999,999) and friend impersonations (RM1,000). Baymax explained red flags like urgency, pressure, and OTP requests, after which the user requested Baymax to safely analyze a link for potential scams.",
     "messages": [
-      {
-        "role": "user",
-        "text": "give me an example of the scam that i received before",
-        "timestamp": "2026-09-05T16:54:07.743Z"
-      },
-      {
-        "role": "baymax",
-        "text": "For example, you received a fake message claiming your account was hacked and urgently demanding you transfer RM10,000, ya.",
-        "timestamp": "2026-09-05T16:54:12.275Z"
-      },
       {
         "role": "user",
         "text": "another example",
@@ -54,6 +44,16 @@
         "role": "baymax",
         "text": "That is not a scam, but someone might just be upset or mean to you, ya. Don't worry, I am always here to support you!",
         "timestamp": "2026-09-06T05:56:20.318Z"
+      },
+      {
+        "role": "user",
+        "text": "hi",
+        "timestamp": "2026-09-09T06:11:30.384Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Hello again! How are you feeling right now, ya? I am always here with you.",
+        "timestamp": "2026-09-09T06:11:34.864Z"
       }
     ],
     "archived_messages": [
@@ -186,9 +186,19 @@
         "role": "baymax",
         "text": "Hello there! How can I help you today, ya?",
         "timestamp": "2026-09-05T15:24:25.411Z"
+      },
+      {
+        "role": "user",
+        "text": "give me an example of the scam that i received before",
+        "timestamp": "2026-09-05T16:54:07.743Z"
+      },
+      {
+        "role": "baymax",
+        "text": "For example, you received a fake message claiming your account was hacked and urgently demanding you transfer RM10,000, ya.",
+        "timestamp": "2026-09-05T16:54:12.275Z"
       }
     ],
     "created_at": "2026-09-02T05:34:35.377Z",
-    "updated_at": "2026-09-06T05:56:26.077Z"
+    "updated_at": "2026-09-09T06:11:41.741Z"
   }
 ]
