@@ -26,9 +26,12 @@ export const CompanionView: React.FC<CompanionViewProps> = ({
     setChatInput("");
   };
 
+  const shouldExpand = isSpeaking || isWaitingAi || Boolean(baymaxResponse);
+
   return (
     <div
-      className={`experience-theatre ${isSpeaking ? "layout-split" : "layout-centered"}`}
+      // change the shouldExpand to isSpeaking if want previous output
+      className={`experience-theatre ${shouldExpand ? "layout-split" : "layout-centered"}`}
     >
       {/*pixel face with css transition */}
       <section className="actor-face-zone">

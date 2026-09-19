@@ -3,57 +3,57 @@
     "id": "CHAT-1788327275377",
     "title": "New Conversation",
     "topic": "general",
-    "summary": "The user, Baymax's developer, casually greeted Baymax. Previously, the user bought red and blue t-shirts at Aeon Mall. Discussing scam history, Baymax reviewed 10 safely flagged scams and, upon request, cited an example message claiming an account hack that urgently demanded an RM10,000 transfer. Other past scams included fake transfers (RM999,999) and friend impersonations (RM1,000). Baymax explained red flags like urgency, pressure, and OTP requests, after which the user requested Baymax to safely analyze a link for potential scams.",
+    "summary": "The user, Baymax's developer, reconnected with Baymax after buying t-shirts at Aeon Mall. Baymax warmly checked on the user's emotional state and offered ongoing support. They discussed scam history, with Baymax highlighting 10 flagged scams and red flags like urgent pressure and OTP requests. The user asked Baymax to analyze a suspicious link and questioned if an \"I hate you\" message was a scam. Baymax clarified that such messages stem from personal unkindness rather than fraud, offering comforting reassurance to the user.",
     "messages": [
       {
         "role": "user",
-        "text": "another example",
-        "timestamp": "2026-09-05T16:54:22.963Z"
+        "text": "hi bro, do i got any friend that's not want to scam me?",
+        "timestamp": "2026-09-19T08:48:06.517Z"
       },
       {
         "role": "baymax",
-        "text": "Another example was a fake friend message asking you urgently to transfer RM1,000, ya. Please always double-check with your real friends first!",
-        "timestamp": "2026-09-05T16:54:27.420Z"
+        "text": "Of course you do, ya! Your real friends care about you, and it is only scammers who pretend to be your friends to take money.",
+        "timestamp": "2026-09-19T08:48:12.473Z"
       },
       {
         "role": "user",
-        "text": "another",
-        "timestamp": "2026-09-05T17:07:35.300Z"
+        "text": "hi, is there anything i can talk to you?",
+        "timestamp": "2026-09-19T08:48:33.657Z"
       },
       {
         "role": "baymax",
-        "text": "You also received a very urgent request asking for RM999,999 before, ya. Please always be careful when anyone asks for money urgently!",
-        "timestamp": "2026-09-05T17:07:39.342Z"
+        "text": "You can talk to me about anything, ya! Tell me about your day, how you are feeling, or anything on your mind.",
+        "timestamp": "2026-09-19T08:48:37.912Z"
       },
       {
         "role": "user",
-        "text": "hi bro",
-        "timestamp": "2026-09-06T05:55:51.893Z"
+        "text": "where did i bought my shirt?",
+        "timestamp": "2026-09-19T09:18:19.865Z"
       },
       {
         "role": "baymax",
-        "text": "Hello again! Is there anything else I can help you with today, ya?",
-        "timestamp": "2026-09-06T05:55:55.379Z"
+        "text": "You mentioned earlier that you bought your red and blue t-shirts at Aeon Mall, ya!",
+        "timestamp": "2026-09-19T09:18:23.168Z"
       },
       {
         "role": "user",
-        "text": "how if someone say i hat you, is that a scam",
-        "timestamp": "2026-09-06T05:56:15.249Z"
+        "text": "hi bro what did i bought?",
+        "timestamp": "2026-09-19T09:43:49.186Z"
       },
       {
         "role": "baymax",
-        "text": "That is not a scam, but someone might just be upset or mean to you, ya. Don't worry, I am always here to support you!",
-        "timestamp": "2026-09-06T05:56:20.318Z"
+        "text": "You mentioned buying red and blue t-shirts from Aeon Mall earlier, ya! They sound like very nice shirts.",
+        "timestamp": "2026-09-19T09:43:53.679Z"
       },
       {
         "role": "user",
-        "text": "hi",
-        "timestamp": "2026-09-09T06:11:30.384Z"
+        "text": "is there anything i need to assist you to prevent the scam?",
+        "timestamp": "2026-09-19T09:58:33.976Z"
       },
       {
         "role": "baymax",
-        "text": "Hello again! How are you feeling right now, ya? I am always here with you.",
-        "timestamp": "2026-09-09T06:11:34.864Z"
+        "text": "That is so sweet of you to ask, ya! Just remember never to share your OTP or transfer money to strangers, and tell me whenever you get a suspicious message.",
+        "timestamp": "2026-09-19T09:58:38.224Z"
       }
     ],
     "archived_messages": [
@@ -196,9 +196,59 @@
         "role": "baymax",
         "text": "For example, you received a fake message claiming your account was hacked and urgently demanding you transfer RM10,000, ya.",
         "timestamp": "2026-09-05T16:54:12.275Z"
+      },
+      {
+        "role": "user",
+        "text": "another example",
+        "timestamp": "2026-09-05T16:54:22.963Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Another example was a fake friend message asking you urgently to transfer RM1,000, ya. Please always double-check with your real friends first!",
+        "timestamp": "2026-09-05T16:54:27.420Z"
+      },
+      {
+        "role": "user",
+        "text": "another",
+        "timestamp": "2026-09-05T17:07:35.300Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You also received a very urgent request asking for RM999,999 before, ya. Please always be careful when anyone asks for money urgently!",
+        "timestamp": "2026-09-05T17:07:39.342Z"
+      },
+      {
+        "role": "user",
+        "text": "hi bro",
+        "timestamp": "2026-09-06T05:55:51.893Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Hello again! Is there anything else I can help you with today, ya?",
+        "timestamp": "2026-09-06T05:55:55.379Z"
+      },
+      {
+        "role": "user",
+        "text": "how if someone say i hat you, is that a scam",
+        "timestamp": "2026-09-06T05:56:15.249Z"
+      },
+      {
+        "role": "baymax",
+        "text": "That is not a scam, but someone might just be upset or mean to you, ya. Don't worry, I am always here to support you!",
+        "timestamp": "2026-09-06T05:56:20.318Z"
+      },
+      {
+        "role": "user",
+        "text": "hi",
+        "timestamp": "2026-09-09T06:11:30.384Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Hello again! How are you feeling right now, ya? I am always here with you.",
+        "timestamp": "2026-09-09T06:11:34.864Z"
       }
     ],
     "created_at": "2026-09-02T05:34:35.377Z",
-    "updated_at": "2026-09-09T06:11:41.741Z"
+    "updated_at": "2026-09-19T09:58:43.943Z"
   }
 ]

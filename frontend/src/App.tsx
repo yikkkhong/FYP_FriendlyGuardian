@@ -17,6 +17,10 @@ interface ScamAlertData {
 
 let socket: Socket;
 
+//Define a global persistent reference at the top of App.tsx (outside the component)
+// to prevent it from being garbage-collected by Chrome V8
+let globalUtterance: SpeechSynthesisUtterance | null = null;
+
 const App: React.FC = () => {
   const [appMode, setAppMode] = useState<"ELDERLY" | "SME">("ELDERLY");
   const [aiEmotion, setAiEmotion] = useState<EmotionState>("HAPPY");
@@ -92,17 +96,48 @@ const App: React.FC = () => {
   }, []);
 
   const speakText = (text: string) => {
-    if ("speechSynthesis" in window) {
+    if (!("speechSynthesis" in window)) {
+      console.warn("⚠️ Current browser does not support SpeechSynthesis");
+      return;
+    }
+
+    try {
       window.speechSynthesis.cancel();
+
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      }
+
       const utterance = new SpeechSynthesisUtterance(text);
+      globalUtterance = utterance;
+
       utterance.pitch = 1.0;
       utterance.rate = 0.95;
+      utterance.lang = "en-US";
 
-      utterance.onstart = () => setIsSpeaking(true);
-      utterance.onend = () => setIsSpeaking(false);
-      utterance.onerror = () => setIsSpeaking(false);
+      utterance.onstart = () => {
+        console.log("🔊 Baymax starts speaking...");
+        setIsSpeaking(true);
+      };
+      utterance.onend = () => {
+        console.log("🔊 Baymax finished speaking...");
+        setIsSpeaking(false);
+        globalUtterance = null;
+      };
+      utterance.onerror = (e) => {
+        console.error("❌ SpeechSynthesis Error:", e);
+        setIsSpeaking(false);
+        globalUtterance = null;
+      };
 
       window.speechSynthesis.speak(utterance);
+
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+      }
+    } catch (err) {
+      console.error("🔥 speakText Exception:", err);
+      setIsSpeaking(false);
     }
   };
 

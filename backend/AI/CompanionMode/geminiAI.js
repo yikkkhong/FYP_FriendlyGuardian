@@ -1,6 +1,6 @@
 const { GoogleGenAI, Type } = require("@google/genai");
-const { STM, LTM } = require("../../securityMemory.js");
-const ConversationMemory = require("../../conversationMemory.js");
+const { STM, LTM } = require("../../memory/securityMemory.js");
+const ConversationMemory = require("../../memory/conversationMemory.js");
 
 const apiKey = process.env.GEMINI_API_KEY;
 const ai = new GoogleGenAI({ apiKey });

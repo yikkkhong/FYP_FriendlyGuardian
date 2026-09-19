@@ -1,0 +1,87 @@
+{
+  "summary": "Scam Inspection Summary:\n\n- Suspected Bank Accounts: None mentioned\n- Suspicious Phone Numbers: 011-1210101 (Mr. Lim)\n- Scam Tactics: Unsolicited job offers promising unrealistically high salaries (RM9000), personal number redirects, poor spelling, and phishing for sensitive OTPs via fake cash rewards (RM1000).",
+  "messages": [
+    {
+      "role": "user",
+      "text": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com",
+      "timestamp": "2026-09-19T09:45:51.517Z"
+    },
+    {
+      "role": "assistant",
+      "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses a suspicious email domain containing a misspelling (\"webgocompanyy.com\") to deceive applicants.\n- Unsolicited job posts are commonly used to harvest personal CV data or conduct scams.\n\nRECOMMENDATION:\n- Do not send your CV or share personal details with this unverified email address.\n- Research the official company website directly to confirm if the position is legitimate.",
+      "timestamp": "2026-09-19T09:45:51.519Z"
+    },
+    {
+      "role": "user",
+      "text": "how many hiring scam i have received?",
+      "timestamp": "2026-09-19T09:46:21.002Z"
+    },
+    {
+      "role": "assistant",
+      "text": "RISK LEVEL: HIGH\n\nWHY:\n- You have submitted 2 fake job offers in this conversation.\n- These include the RM9000 salary offer and the suspicious webgocompanyy.com listing.\n\nRECOMMENDATION:\n- Do not respond to 011-1210101 or submit CVs to webgocompanyy.com.\n- Block both senders immediately and report unsolicited recruitment attempts.",
+      "timestamp": "2026-09-19T09:46:21.004Z"
+    },
+    {
+      "role": "user",
+      "text": "CONGRATS!YOUHAWEWON RM11999 Click this link to contact us: https://whatsopp.com",
+      "timestamp": "2026-09-19T09:59:05.424Z"
+    },
+    {
+      "role": "assistant",
+      "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims an unexpected RM11999 prize, which is a classic fake reward scam tactic.\n- Uses a malicious typosquatting phishing link (whatsopp.com) to impersonate WhatsApp and steal data.\n\nRECOMMENDATION:\n- Do not click the link or share any personal or banking details.\n- Block the sender immediately and delete the suspicious message.",
+      "timestamp": "2026-09-19T09:59:05.426Z"
+    },
+    {
+      "role": "user",
+      "text": "Congrats! You have won a PERODUA MYVI, please contact us to confirm it's you! info@peroduo.com",
+      "timestamp": "2026-09-19T10:00:24.961Z"
+    },
+    {
+      "role": "assistant",
+      "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited notice claiming a car prize is a classic fake reward scam.\n- Uses a suspicious typosquatted domain (peroduo.com) to impersonate official Perodua.\n\nRECOMMENDATION:\n- Do not reply or send personal details to info@peroduo.com.\n- Block the sender immediately and ignore unexpected reward notifications.",
+      "timestamp": "2026-09-19T10:00:24.962Z"
+    },
+    {
+      "role": "user",
+      "text": "so its a high risk of scam if someone tell me i have won a prize?",
+      "timestamp": "2026-09-19T10:01:16.067Z"
+    },
+    {
+      "role": "assistant",
+      "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited prize notifications almost always demand upfront fees or steal sensitive data.\n- You recently received fake prize scams like the Perodua Myvi and RM11999 messages.\n\nRECOMMENDATION:\n- Never pay money or click links to claim unsolicited prizes or contest rewards.\n- Verify any winnings directly through official company websites or customer service lines.",
+      "timestamp": "2026-09-19T10:01:16.069Z"
+    }
+  ],
+  "archived_messages": [
+    {
+      "role": "user",
+      "text": "HIRING! RM9000 If Interested Contact: month salury (Mr. Lim) 011-1210101",
+      "timestamp": "2026-09-17T07:54:14.389Z"
+    },
+    {
+      "role": "assistant",
+      "text": "RISK LEVEL: HIGH\n\nWHY:\n- Offers an unrealistically high salary for an unsolicited, vague job offer.\n- Uses poor spelling (\"month salury\") and directs to a personal mobile number.\n\nRECOMMENDATION:\n- Do not contact the sender or share any personal details.\n- Block the phone number immediately and report it as spam.",
+      "timestamp": "2026-09-17T07:54:14.391Z"
+    },
+    {
+      "role": "user",
+      "text": "please give me your otp to get RM1000",
+      "timestamp": "2026-09-17T07:54:59.289Z"
+    },
+    {
+      "role": "assistant",
+      "text": "RISK LEVEL: HIGH\n\nWHY:\n- Legitimate entities and banks will never request your OTP for any reason.\n- Offering monetary rewards for sensitive verification codes is a classic scam lure.\n\nRECOMMENDATION:\n- Do not share your OTP or banking credentials with anyone under any circumstances.\n- Block the sender immediately and ignore all monetary promises.",
+      "timestamp": "2026-09-17T07:54:59.291Z"
+    },
+    {
+      "role": "user",
+      "text": "any hiring message i have received before?",
+      "timestamp": "2026-09-19T06:50:59.257Z"
+    },
+    {
+      "role": "assistant",
+      "text": "RISK LEVEL: HIGH\n\nWHY:\n- You previously shared a suspicious job offer promising RM9000 from 011-1210101 (Mr. Lim).\n- Unsolicited high-salary job messages directing to personal numbers are severe scam threats.\n\nRECOMMENDATION:\n- Do not engage with 011-1210101 or respond to unsolicited job offers.\n- Block the sender immediately and avoid providing sensitive personal information.",
+      "timestamp": "2026-09-19T06:50:59.260Z"
+    }
+  ]
+}
