@@ -29,3 +29,6 @@ local.properties
 venv/
 .venv/
 env/
+
+# cursor skill
+.cursor/

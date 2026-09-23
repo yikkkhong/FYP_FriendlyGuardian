@@ -55,19 +55,20 @@ function createTimer(label) {
   };
 }
 
-async function chatWithManualAI(userText) {
+async function chatWithManualAI(userText, conversationId = null) {
   try {
     const timer = createTimer("Manual AI Response Time");
 
-    // const historyText = manualSessionHistory
-    //   .slice(-6)
-    //   .map(
-    //     (item) =>
-    //       `${item.role === "user" ? "User" : "Assistant"}: ${item.text}`,
-    //   )
-    //   .join("\n");
+    const activeId =
+      conversationId ||
+      chatMemory.getActiveConversationId() ||
+      chatMemory.createConversation("New check").id;
 
-    const historyText = chatMemory.getChatContext();
+    if (conversationId) {
+      chatMemory.switchConversation(conversationId);
+    }
+
+    const historyText = chatMemory.getChatContext(activeId);
     const securityContext = formatSecurityContext();
 
     //     const prompt = `
@@ -166,19 +167,19 @@ RECOMMENDATION:
     // manualSessionHistory.push({ role: "user", text: userText });
     // manualSessionHistory.push({ role: "assistant", text: reply });
 
-    // write data into chat_memory.json
-    chatMemory.addMessage("user", userText);
-    chatMemory.addMessage("assistant", reply);
+    // write data into chat_memory.json (per conversation)
+    chatMemory.addMessage("user", userText, activeId);
+    chatMemory.addMessage("assistant", reply, activeId);
 
     // check if reach maximum
-    const allMessages = chatMemory.getMessages();
+    const allMessages = chatMemory.getMessages(activeId);
     if (allMessages.length > chatMemory.maxRecentMessages) {
       const overflowCount = allMessages.length - chatMemory.maxRecentMessages;
       const oldMessages = allMessages.slice(0, overflowCount);
 
-      summarizeChatHistory(chatMemory.getSummary(), oldMessages)
+      summarizeChatHistory(chatMemory.getSummary(activeId), oldMessages)
         .then((newSummary) => {
-          chatMemory.archiveOldMessages(newSummary, overflowCount);
+          chatMemory.archiveOldMessages(newSummary, overflowCount, activeId);
           console.log(
             `📦 [chatMemory] Archived ${overflowCount} messages into summary.`,
           );
@@ -188,7 +189,13 @@ RECOMMENDATION:
 
     timer.end();
 
-    return { message: reply };
+    const conversation = chatMemory.getConversation(activeId);
+
+    return {
+      message: reply,
+      conversationId: activeId,
+      title: conversation?.title || "New check",
+    };
   } catch (error) {
     console.error("⚠️ Manual AI Error:", error);
     return {
@@ -220,8 +227,8 @@ ${text}
   return res.text.trim();
 }
 
-function clearManualHistory() {
-  chatMemory.clear();
+function clearManualHistory(conversationId = null) {
+  chatMemory.clear(conversationId);
 }
 
 // function clearManualHistory() {

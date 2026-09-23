@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { io, Socket } from "socket.io-client";
 import { EmotionState } from "./components/PixelFace";
 import "./App.css";
 import CompanionView from "./views/CompanionView";
-import ManualView from "./views/ManualView";
+import ManualView, {
+  ManualConversationSummary,
+  ManualMessage,
+} from "./views/ManualView";
 
 interface ScamAlertData {
   text: string;
@@ -22,7 +25,7 @@ let socket: Socket;
 let globalUtterance: SpeechSynthesisUtterance | null = null;
 
 const App: React.FC = () => {
-  const [appMode, setAppMode] = useState<"ELDERLY" | "SME">("ELDERLY");
+  const [appMode, setAppMode] = useState<"ELDERLY" | "SME">("SME");
   const [aiEmotion, setAiEmotion] = useState<EmotionState>("HAPPY");
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
@@ -38,19 +41,27 @@ const App: React.FC = () => {
   const [isWaitingAi, setIsWaitingAi] = useState<boolean>(false);
 
   // Manual Mode
-  interface ManualMessage {
-    sender: "user" | "ai";
-    text: string;
-    time: string;
-  }
-
   const [manualMessages, setManualMessages] = useState<ManualMessage[]>([]);
   const [isManualLoading, setIsManualLoading] = useState<boolean>(false);
+  const [manualConversations, setManualConversations] = useState<
+    ManualConversationSummary[]
+  >([]);
+  const [activeManualConversationId, setActiveManualConversationId] = useState<
+    string | null
+  >(null);
+  const activeManualConversationIdRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    activeManualConversationIdRef.current = activeManualConversationId;
+  }, [activeManualConversationId]);
 
   useEffect(() => {
     socket = io("http://localhost:5000");
 
-    socket.on("connect", () => setIsConnected(true));
+    socket.on("connect", () => {
+      setIsConnected(true);
+      socket.emit("manual_list_conversations");
+    });
     socket.on("disconnect", () => setIsConnected(false));
 
     socket.on("scam_alert", (data: ScamAlertData) => {
@@ -76,8 +87,68 @@ const App: React.FC = () => {
 
     //manual mode
     socket.on(
+      "manual_conversations",
+      (data: {
+        conversations: ManualConversationSummary[];
+        activeConversationId: string | null;
+        messages: ManualMessage[];
+      }) => {
+        setManualConversations(data.conversations || []);
+        setActiveManualConversationId(data.activeConversationId);
+        setManualMessages(data.messages || []);
+      },
+    );
+
+    socket.on(
+      "manual_conversation_created",
+      (data: {
+        conversations: ManualConversationSummary[];
+        activeConversationId: string;
+        messages: ManualMessage[];
+      }) => {
+        setManualConversations(data.conversations || []);
+        setActiveManualConversationId(data.activeConversationId);
+        setManualMessages(data.messages || []);
+        setIsManualLoading(false);
+      },
+    );
+
+    socket.on(
+      "manual_conversation_switched",
+      (data: {
+        conversations: ManualConversationSummary[];
+        activeConversationId: string;
+        messages: ManualMessage[];
+      }) => {
+        setManualConversations(data.conversations || []);
+        setActiveManualConversationId(data.activeConversationId);
+        setManualMessages(data.messages || []);
+        setIsManualLoading(false);
+      },
+    );
+
+    socket.on(
       "manual_chat_response",
-      (data: { message: string; timestamp?: string }) => {
+      (data: {
+        message: string;
+        timestamp?: string;
+        conversationId?: string | null;
+        title?: string;
+        conversations?: ManualConversationSummary[];
+      }) => {
+        const currentId = activeManualConversationIdRef.current;
+        if (
+          data.conversationId &&
+          currentId &&
+          data.conversationId !== currentId
+        ) {
+          if (data.conversations) {
+            setManualConversations(data.conversations);
+          }
+          setIsManualLoading(false);
+          return;
+        }
+
         setManualMessages((prev) => [
           ...prev,
           {
@@ -86,6 +157,12 @@ const App: React.FC = () => {
             time: data.timestamp || new Date().toLocaleTimeString(),
           },
         ]);
+        if (data.conversations) {
+          setManualConversations(data.conversations);
+        }
+        if (data.conversationId) {
+          setActiveManualConversationId(data.conversationId);
+        }
         setIsManualLoading(false);
       },
     );
@@ -175,7 +252,25 @@ const App: React.FC = () => {
     speakText(msg);
   };
 
+  const handleNewManualConversation = () => {
+    if (!socket || !socket.connected) return;
+    setIsManualLoading(false);
+    socket.emit("manual_new_conversation");
+  };
+
+  const handleSelectManualConversation = (conversationId: string) => {
+    if (
+      !socket ||
+      !socket.connected ||
+      conversationId === activeManualConversationId
+    )
+      return;
+    socket.emit("manual_switch_conversation", { conversationId });
+  };
+
   const handleSendManualMessage = (text: string) => {
+    const conversationId = activeManualConversationId;
+
     setIsManualLoading(true);
     setManualMessages((prev) => [
       ...prev,
@@ -183,7 +278,10 @@ const App: React.FC = () => {
     ]);
 
     if (socket && socket.connected) {
-      socket.emit("manual_chat", { text });
+      socket.emit("manual_chat", {
+        text,
+        conversationId: conversationId || undefined,
+      });
     } else {
       setIsManualLoading(false);
       setManualMessages((prev) => [
@@ -200,18 +298,23 @@ const App: React.FC = () => {
   const handleUploadImage = async (file: File) => {
     setIsManualLoading(true);
 
+    const conversationId = activeManualConversationId;
+
     // 1. Locally, display only the message, no send it to the AI ​​via socket.emit
     setManualMessages((prev) => [
       ...prev,
       {
         sender: "user",
-        text: `📷 [Uploaded Screenshot: ${file.name}]`,
+        text: `[Uploaded Screenshot: ${file.name}]`,
         time: new Date().toLocaleTimeString(),
       },
     ]);
 
     const formData = new FormData();
     formData.append("image", file);
+    if (conversationId) {
+      formData.append("conversationId", conversationId);
+    }
 
     try {
       // 2. use backend ocr + gemini port
@@ -220,6 +323,13 @@ const App: React.FC = () => {
         body: formData,
       });
       const data = await res.json();
+
+      if (data.conversations) {
+        setManualConversations(data.conversations);
+      }
+      if (data.conversationId) {
+        setActiveManualConversationId(data.conversationId);
+      }
 
       if (data.analysis) {
         // 3. Render real OCR onto interface
@@ -264,6 +374,7 @@ const App: React.FC = () => {
             </div>
           </div>
 
+          {/* top navigation bar to switch mode */}
           <nav className="mode-segmented-pill">
             <button
               onClick={() => setAppMode("ELDERLY")}
@@ -272,11 +383,16 @@ const App: React.FC = () => {
               Companion
             </button>
             <button
-              onClick={() => setAppMode("SME")}
+              onClick={() => {
+                setAppMode("SME");
+                if (socket && socket.connected) {
+                  socket.emit("manual_list_conversations");
+                }
+              }}
               className={`segment-btn ${appMode === "SME" ? "selected" : ""}`}
             >
               Manual
-            </button>
+            </button>{" "}
           </nav>
         </div>
       </header>
@@ -296,8 +412,12 @@ const App: React.FC = () => {
             blockedCount={blockedCount}
             messages={manualMessages}
             isLoading={isManualLoading}
+            conversations={manualConversations}
+            activeConversationId={activeManualConversationId}
             onSendMessage={handleSendManualMessage}
             onUploadImage={handleUploadImage}
+            onNewConversation={handleNewManualConversation}
+            onSelectConversation={handleSelectManualConversation}
           />
         )}
       </main>
