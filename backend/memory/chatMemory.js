@@ -2,6 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const CHAT_FILE_PATH = path.join(__dirname, "chat_memory.json");
+const MANUAL_UPLOAD_ROOT = path.join(__dirname, "..", "uploads", "manual");
 
 function createEmptyStore() {
   return { activeConversationId: null, conversations: [] };
@@ -21,7 +22,6 @@ function createConversationObject(title = "New check") {
 }
 
 function migrateLegacy(data) {
-  // Old single-session shape: { summary, messages, archived_messages }
   if (data && Array.isArray(data.conversations)) {
     return data;
   }
@@ -43,6 +43,16 @@ function migrateLegacy(data) {
   return store;
 }
 
+function removeDirSafe(dirPath) {
+  try {
+    if (fs.existsSync(dirPath)) {
+      fs.rmSync(dirPath, { recursive: true, force: true });
+    }
+  } catch (err) {
+    console.error("⚠️ Error removing manual upload dir:", err);
+  }
+}
+
 if (!fs.existsSync(CHAT_FILE_PATH)) {
   fs.writeFileSync(
     CHAT_FILE_PATH,
@@ -51,11 +61,19 @@ if (!fs.existsSync(CHAT_FILE_PATH)) {
   );
 }
 
+if (!fs.existsSync(MANUAL_UPLOAD_ROOT)) {
+  fs.mkdirSync(MANUAL_UPLOAD_ROOT, { recursive: true });
+}
+
 class ChatMemory {
   constructor(maxRecentMessages = 10) {
     this.maxRecentMessages = maxRecentMessages;
     const store = this.readStore();
     this.activeConversationId = store.activeConversationId || null;
+  }
+
+  getManualUploadRoot() {
+    return MANUAL_UPLOAD_ROOT;
   }
 
   readStore() {
@@ -101,6 +119,12 @@ class ChatMemory {
     store.conversations.unshift(conversation);
     this.activeConversationId = conversation.id;
     this.writeStore(store);
+
+    const uploadDir = path.join(MANUAL_UPLOAD_ROOT, conversation.id);
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
     console.log(`💬 [Manual] Created: ${conversation.id} - ${title}`);
     return conversation;
   }
@@ -126,6 +150,11 @@ class ChatMemory {
       (m) => m.role === "user",
     );
     if (!firstUser) return "";
+    if (firstUser.imageUrl) {
+      return firstUser.imageName
+        ? `Image: ${firstUser.imageName}`
+        : "Uploaded image";
+    }
     const text = String(firstUser.text || "").replace(/\s+/g, " ").trim();
     return text.length > 72 ? `${text.slice(0, 72)}…` : text;
   }
@@ -149,16 +178,30 @@ class ChatMemory {
     return conversation;
   }
 
+  renameConversation(conversationId, title) {
+    const cleaned = String(title || "").replace(/\s+/g, " ").trim();
+    if (!cleaned) return null;
+
+    const store = this.readStore();
+    const index = store.conversations.findIndex((c) => c.id === conversationId);
+    if (index === -1) return null;
+
+    store.conversations[index].title = cleaned.slice(0, 80);
+    store.conversations[index].updated_at = new Date().toISOString();
+    this.writeStore(store);
+    return store.conversations[index];
+  }
+
   titleFromText(text) {
     const cleaned = String(text || "")
-      .replace(/^📷\s*\[Uploaded Screenshot:[^\]]*\]\s*/i, "")
+      .replace(/^\[Uploaded Screenshot:[^\]]*\]\s*/i, "")
       .replace(/\s+/g, " ")
       .trim();
     if (!cleaned) return "New check";
     return cleaned.length > 48 ? `${cleaned.slice(0, 48)}…` : cleaned;
   }
 
-  maybeSetTitle(conversationId, userText) {
+  maybeSetTitle(conversationId, userText, extras = {}) {
     const store = this.readStore();
     const index = store.conversations.findIndex((c) => c.id === conversationId);
     if (index === -1) return;
@@ -167,21 +210,33 @@ class ChatMemory {
     const userMessages = (conversation.messages || []).filter(
       (m) => m.role === "user",
     );
-    // Title from first real user message
+
     if (
       userMessages.length <= 1 &&
       (!conversation.title ||
         conversation.title === "New check" ||
         conversation.title === "New Conversation")
     ) {
-      conversation.title = this.titleFromText(userText);
+      if (extras.imageName) {
+        conversation.title = this.titleFromText(
+          extras.imageName.replace(/\.[^.]+$/, ""),
+        );
+      } else {
+        conversation.title = this.titleFromText(userText);
+      }
       conversation.updated_at = new Date().toISOString();
       store.conversations[index] = conversation;
       this.writeStore(store);
     }
   }
 
-  addMessage(role, text, conversationId = null) {
+  /**
+   * @param {string} role
+   * @param {string} text
+   * @param {string|null} conversationId
+   * @param {{ imageUrl?: string, imageName?: string, messageType?: string, ocrText?: string }} extras
+   */
+  addMessage(role, text, conversationId = null, extras = {}) {
     let id = conversationId || this.getActiveConversationId();
 
     if (!id) {
@@ -193,19 +248,25 @@ class ChatMemory {
 
     if (index === -1) {
       id = this.createConversation().id;
-      return this.addMessage(role, text, id);
+      return this.addMessage(role, text, id, extras);
     }
 
     const conversation = store.conversations[index];
-    conversation.messages.push({
+    const message = {
       role,
-      text,
+      text: text || "",
       timestamp: new Date().toISOString(),
-    });
+    };
+
+    if (extras.imageUrl) message.imageUrl = extras.imageUrl;
+    if (extras.imageName) message.imageName = extras.imageName;
+    if (extras.messageType) message.messageType = extras.messageType;
+    if (extras.ocrText) message.ocrText = extras.ocrText;
+
+    conversation.messages.push(message);
     conversation.updated_at = new Date().toISOString();
     store.conversations[index] = conversation;
 
-    // Keep most recently updated conversations near the top
     store.conversations.sort(
       (a, b) => new Date(b.updated_at) - new Date(a.updated_at),
     );
@@ -213,7 +274,7 @@ class ChatMemory {
     this.writeStore(store);
 
     if (role === "user") {
-      this.maybeSetTitle(id, text);
+      this.maybeSetTitle(id, text, extras);
     }
 
     return conversation;
@@ -234,10 +295,17 @@ class ChatMemory {
     const messagesPart =
       conversation.messages.length > 0
         ? conversation.messages
-            .map(
-              (m) =>
-                `${m.role === "user" ? "User" : "Assistant"}: ${m.text}`,
-            )
+            .map((m) => {
+              const label = m.role === "user" ? "User" : "Assistant";
+              const body =
+                m.ocrText ||
+                m.text ||
+                (m.imageUrl ? "[User uploaded an image for analysis]" : "");
+              const typeHint = m.messageType
+                ? ` [${m.messageType}]`
+                : "";
+              return `${label}${typeHint}: ${body}`;
+            })
             .join("\n")
         : "No previous messages.";
 
@@ -279,6 +347,10 @@ class ChatMemory {
 
   clear(conversationId = null) {
     if (!conversationId) {
+      const store = this.readStore();
+      for (const c of store.conversations || []) {
+        removeDirSafe(path.join(MANUAL_UPLOAD_ROOT, c.id));
+      }
       this.activeConversationId = null;
       this.writeStore(createEmptyStore());
       return;
@@ -289,20 +361,23 @@ class ChatMemory {
       (c) => c.id !== conversationId,
     );
     if (this.activeConversationId === conversationId) {
-      this.activeConversationId =
-        store.conversations[0]?.id || null;
+      this.activeConversationId = store.conversations[0]?.id || null;
     }
     this.writeStore(store);
+    removeDirSafe(path.join(MANUAL_UPLOAD_ROOT, conversationId));
   }
 
   toClientMessages(conversationId = null) {
     const messages = this.getMessages(conversationId);
     return messages.map((m) => ({
       sender: m.role === "user" ? "user" : "ai",
-      text: m.text,
+      text: m.text || "",
       time: m.timestamp
         ? new Date(m.timestamp).toLocaleTimeString()
         : new Date().toLocaleTimeString(),
+      imageUrl: m.imageUrl || undefined,
+      imageName: m.imageName || undefined,
+      messageType: m.messageType || undefined,
     }));
   }
 }

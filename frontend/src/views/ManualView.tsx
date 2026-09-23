@@ -1,9 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
 
+export type ManualMessageType = "analysis" | "follow_up" | "general";
+
 export interface ManualMessage {
   sender: "user" | "ai";
   text: string;
   time: string;
+  imageUrl?: string;
+  imageName?: string;
+  messageType?: ManualMessageType;
 }
 
 export interface ManualConversationSummary {
@@ -25,9 +30,13 @@ interface ManualViewProps {
   onUploadImage: (file: File) => void;
   onNewConversation: () => void;
   onSelectConversation: (conversationId: string) => void;
+  onRenameConversation: (conversationId: string, title: string) => void;
+  onDeleteConversation: (conversationId: string) => void;
 }
 
 type RiskKey = "HIGH" | "MEDIUM" | "LOW" | "SAFE";
+
+const API_ORIGIN = "http://localhost:5000";
 
 const RISK_COPY: Record<
   RiskKey,
@@ -54,6 +63,14 @@ const RISK_COPY: Record<
     guidance: "You can proceed, but keep normal security habits.",
   },
 };
+
+function resolveImageUrl(url?: string) {
+  if (!url) return undefined;
+  if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("blob:")) {
+    return url;
+  }
+  return `${API_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
+}
 
 function RiskIcon({ risk }: { risk: RiskKey }) {
   if (risk === "HIGH") {
@@ -100,10 +117,7 @@ function CameraIcon() {
 function PlusIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
-      <path
-        fill="currentColor"
-        d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z"
-      />
+      <path fill="currentColor" d="M11 5h2v6h6v2h-6v6h-2v-6H5v-2h6V5z" />
     </svg>
   );
 }
@@ -114,6 +128,17 @@ function MenuIcon() {
       <path
         fill="currentColor"
         d="M4 7h16v2H4V7zm0 4h16v2H4v-2zm0 4h16v2H4v-2z"
+      />
+    </svg>
+  );
+}
+
+function MoreIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+      <path
+        fill="currentColor"
+        d="M12 8a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4zm0 6a2 2 0 110-4 2 2 0 010 4z"
       />
     </svg>
   );
@@ -137,6 +162,29 @@ function GuardianMark() {
   );
 }
 
+function parseReport(rawText: string) {
+  const riskMatch = rawText.match(/RISK LEVEL:\s*([A-Z]+)/i);
+  if (!riskMatch) return null;
+
+  const risk = riskMatch[1].toUpperCase() as RiskKey;
+  const whyMatch = rawText.match(/WHY:\s*([\s\S]*?)(?=RECOMMENDATION:|$)/i);
+  const recMatch = rawText.match(/RECOMMENDATION:\s*([\s\S]*?)$/i);
+
+  const parseBullets = (str: string | undefined) =>
+    str
+      ? str
+          .split("\n")
+          .map((l) => l.replace(/^[-*•]\s*/, "").trim())
+          .filter(Boolean)
+      : [];
+
+  return {
+    risk,
+    why: parseBullets(whyMatch?.[1]),
+    recommendations: parseBullets(recMatch?.[1]),
+  };
+}
+
 export const ManualView: React.FC<ManualViewProps> = ({
   messages,
   isLoading,
@@ -146,15 +194,37 @@ export const ManualView: React.FC<ManualViewProps> = ({
   onUploadImage,
   onNewConversation,
   onSelectConversation,
+  onRenameConversation,
+  onDeleteConversation,
 }) => {
-  const [queryInput, setQueryInput] = useState<string>("");
+  const [queryInput, setQueryInput] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [menuOpenId, setMenuOpenId] = useState<string | null>(null);
+  const [renamingId, setRenamingId] = useState<string | null>(null);
+  const [renameValue, setRenameValue] = useState("");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const chatEndRef = useRef<HTMLDivElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const renameInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
+
+  useEffect(() => {
+    if (renamingId && renameInputRef.current) {
+      renameInputRef.current.focus();
+      renameInputRef.current.select();
+    }
+  }, [renamingId]);
+
+  useEffect(() => {
+    const close = () => setMenuOpenId(null);
+    if (menuOpenId) {
+      window.addEventListener("click", close);
+      return () => window.removeEventListener("click", close);
+    }
+  }, [menuOpenId]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -170,37 +240,47 @@ export const ManualView: React.FC<ManualViewProps> = ({
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  const parseReport = (rawText: string) => {
-    const riskMatch = rawText.match(/RISK LEVEL:\s*([A-Z]+)/i);
-    if (!riskMatch) return null;
-
-    const risk = riskMatch[1].toUpperCase() as RiskKey;
-    const whyMatch = rawText.match(/WHY:\s*([\s\S]*?)(?=RECOMMENDATION:|$)/i);
-    const recMatch = rawText.match(/RECOMMENDATION:\s*([\s\S]*?)$/i);
-
-    const parseBullets = (str: string | undefined) =>
-      str
-        ? str
-            .split("\n")
-            .map((l) => l.replace(/^[-*•]\s*/, "").trim())
-            .filter(Boolean)
-        : [];
-
-    return {
-      risk,
-      why: parseBullets(whyMatch?.[1]),
-      recommendations: parseBullets(recMatch?.[1]),
-    };
-  };
-
-  const activeTitle =
-    conversations.find((c) => c.id === activeConversationId)?.title ||
-    "New check";
+  const activeConversation = conversations.find(
+    (c) => c.id === activeConversationId,
+  );
+  const activeTitle = activeConversation?.title || "New check";
+  const hasMessages = messages.length > 0;
 
   const selectConversation = (id: string) => {
     if (id === activeConversationId || isLoading) return;
     onSelectConversation(id);
     setSidebarOpen(false);
+    setMenuOpenId(null);
+  };
+
+  const beginRename = (conversation: ManualConversationSummary) => {
+    setRenamingId(conversation.id);
+    setRenameValue(conversation.title || "New check");
+    setMenuOpenId(null);
+  };
+
+  const commitRename = () => {
+    if (!renamingId) return;
+    const next = renameValue.trim();
+    if (next) {
+      onRenameConversation(renamingId, next);
+    }
+    setRenamingId(null);
+  };
+
+  const requestDelete = (conversation: ManualConversationSummary) => {
+    setMenuOpenId(null);
+    if ((conversation.message_count || 0) > 0) {
+      setConfirmDeleteId(conversation.id);
+    } else {
+      onDeleteConversation(conversation.id);
+    }
+  };
+
+  const confirmDelete = () => {
+    if (!confirmDeleteId) return;
+    onDeleteConversation(confirmDeleteId);
+    setConfirmDeleteId(null);
   };
 
   return (
@@ -210,7 +290,6 @@ export const ManualView: React.FC<ManualViewProps> = ({
         aria-label="Conversation history"
       >
         <div className="manual-sidebar-head">
-          <p className="manual-sidebar-label">Checks</p>
           <button
             type="button"
             className="manual-new-chat-btn"
@@ -221,7 +300,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
             disabled={isLoading}
           >
             <PlusIcon />
-            New conversation
+            New check
           </button>
         </div>
 
@@ -233,28 +312,86 @@ export const ManualView: React.FC<ManualViewProps> = ({
           ) : (
             conversations.map((conversation) => {
               const isActive = conversation.id === activeConversationId;
+              const isRenaming = renamingId === conversation.id;
+
               return (
-                <button
+                <div
                   key={conversation.id}
-                  type="button"
-                  className={`manual-conversation-item ${isActive ? "is-active" : ""}`}
-                  onClick={() => selectConversation(conversation.id)}
-                  disabled={isLoading}
-                  aria-current={isActive ? "page" : undefined}
+                  className={`manual-conversation-row ${isActive ? "is-active" : ""}`}
                 >
-                  <span className="manual-conversation-title">
-                    {conversation.title || "New check"}
-                  </span>
-                  {conversation.preview ? (
-                    <span className="manual-conversation-preview">
-                      {conversation.preview}
-                    </span>
+                  {isRenaming ? (
+                    <input
+                      ref={renameInputRef}
+                      className="manual-rename-input"
+                      value={renameValue}
+                      onChange={(e) => setRenameValue(e.target.value)}
+                      onBlur={commitRename}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                          e.preventDefault();
+                          commitRename();
+                        }
+                        if (e.key === "Escape") {
+                          setRenamingId(null);
+                        }
+                      }}
+                      aria-label="Rename conversation"
+                    />
                   ) : (
-                    <span className="manual-conversation-preview">
-                      Empty conversation
-                    </span>
+                    <button
+                      type="button"
+                      className="manual-conversation-item"
+                      onClick={() => selectConversation(conversation.id)}
+                      disabled={isLoading}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      <span className="manual-conversation-title">
+                        {conversation.title || "New check"}
+                      </span>
+                    </button>
                   )}
-                </button>
+
+                  <div className="manual-conversation-actions">
+                    <button
+                      type="button"
+                      className="manual-icon-btn"
+                      aria-label="Conversation options"
+                      aria-expanded={menuOpenId === conversation.id}
+                      disabled={isLoading || isRenaming}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setMenuOpenId((prev) =>
+                          prev === conversation.id ? null : conversation.id,
+                        );
+                      }}
+                    >
+                      <MoreIcon />
+                    </button>
+                    {menuOpenId === conversation.id && (
+                      <div
+                        className="manual-overflow-menu"
+                        role="menu"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <button
+                          type="button"
+                          role="menuitem"
+                          onClick={() => beginRename(conversation)}
+                        >
+                          Rename
+                        </button>
+                        <button
+                          type="button"
+                          role="menuitem"
+                          className="danger"
+                          onClick={() => requestDelete(conversation)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
               );
             })
           )}
@@ -280,118 +417,212 @@ export const ManualView: React.FC<ManualViewProps> = ({
           >
             <MenuIcon />
           </button>
-          <div className="manual-main-heading">
-            <p className="manual-eyebrow">Manual Mode · SME</p>
-            <h1>{activeTitle}</h1>
-            <p className="manual-subcopy">
-              Paste a message, link, or account number. Your guardian will tell
-              you if it is safe, suspicious, or dangerous — and what to do next.
-            </p>
+
+          <div className="manual-title-row">
+            {renamingId === activeConversationId ? (
+              <input
+                ref={renameInputRef}
+                className="manual-title-rename"
+                value={renameValue}
+                onChange={(e) => setRenameValue(e.target.value)}
+                onBlur={commitRename}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    commitRename();
+                  }
+                  if (e.key === "Escape") setRenamingId(null);
+                }}
+                aria-label="Rename conversation"
+              />
+            ) : (
+              <h1>{activeTitle}</h1>
+            )}
+
+            {activeConversationId && (
+              <div className="manual-title-actions">
+                <button
+                  type="button"
+                  className="manual-icon-btn"
+                  aria-label="Conversation options"
+                  disabled={isLoading}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setMenuOpenId((prev) =>
+                      prev === `title-${activeConversationId}`
+                        ? null
+                        : `title-${activeConversationId}`,
+                    );
+                  }}
+                >
+                  <MoreIcon />
+                </button>
+                {menuOpenId === `title-${activeConversationId}` &&
+                  activeConversation && (
+                    <div
+                      className="manual-overflow-menu align-right"
+                      role="menu"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <button
+                        type="button"
+                        role="menuitem"
+                        onClick={() => beginRename(activeConversation)}
+                      >
+                        Rename
+                      </button>
+                      <button
+                        type="button"
+                        role="menuitem"
+                        className="danger"
+                        onClick={() => requestDelete(activeConversation)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  )}
+              </div>
+            )}
           </div>
+
+          {!hasMessages && (
+            <p className="manual-subcopy">
+              Paste a message, link, or account number — or upload a screenshot.
+              Your guardian will tell you if it looks safe, suspicious, or
+              dangerous.
+            </p>
+          )}
         </header>
 
-        <div className="manual-stream-card">
-          <div
-            className="manual-stream-viewport"
-            role="log"
-            aria-live="polite"
-            aria-relevant="additions"
-          >
-            {messages.length === 0 && !isLoading && (
-              <div className="manual-empty-state">
-                <GuardianMark />
-                <h2>Ready when you are</h2>
-                <p>
-                  Paste a suspicious SMS, email, bank account, or upload a
-                  screenshot. Each conversation stays separate so past checks
-                  are easy to revisit.
-                </p>
-              </div>
-            )}
+        <div
+          className="manual-stream-viewport"
+          role="log"
+          aria-live="polite"
+          aria-relevant="additions"
+        >
+          {messages.length === 0 && !isLoading && (
+            <div className="manual-empty-state">
+              <GuardianMark />
+              <h2>Ready when you are</h2>
+              <p>
+                Paste a suspicious SMS, email, or bank account — or upload a
+                screenshot. Each check stays in its own conversation.
+              </p>
+            </div>
+          )}
 
-            {messages.map((m, idx) => {
-              const isUser = m.sender === "user";
-              const report = !isUser ? parseReport(m.text) : null;
-              const riskMeta =
-                report && RISK_COPY[report.risk]
-                  ? RISK_COPY[report.risk]
-                  : null;
+          {messages.map((m, idx) => {
+            const isUser = m.sender === "user";
+            const report = !isUser ? parseReport(m.text) : null;
+            // Structured type from backend; legacy messages without type still
+            // show a risk card when the RISK LEVEL template is present.
+            const isAnalysisMessage =
+              m.messageType === "analysis" ||
+              (m.messageType == null && !!report);
+            const showRiskCard =
+              !isUser &&
+              isAnalysisMessage &&
+              report &&
+              RISK_COPY[report.risk];
+            const riskMeta = showRiskCard ? RISK_COPY[report!.risk] : null;
+            const imageSrc = resolveImageUrl(m.imageUrl);
 
-              return (
-                <div
-                  key={`${m.time}-${idx}`}
-                  className={`manual-msg-row ${isUser ? "user" : "ai"}`}
-                >
-                  <div className="manual-msg-meta">
-                    <span className="meta-label">
-                      {isUser ? "You" : "Guardian"}
-                    </span>
-                    <span className="meta-time">{m.time}</span>
-                  </div>
-
-                  {isUser ? (
-                    <div className="user-query-bubble">{m.text}</div>
-                  ) : report && riskMeta ? (
-                    <article
-                      className={`threat-report-card risk-${report.risk.toLowerCase()}`}
-                      aria-label={`Risk result: ${riskMeta.label}`}
-                    >
-                      <div className="report-verdict">
-                        <div
-                          className={`risk-level-badge ${report.risk.toLowerCase()}`}
-                        >
-                          <RiskIcon risk={report.risk} />
-                          <span>{riskMeta.label}</span>
-                        </div>
-                        <div className="report-verdict-copy">
-                          <h3>{riskMeta.headline}</h3>
-                          <p>{riskMeta.guidance}</p>
-                        </div>
-                      </div>
-
-                      {report.why.length > 0 && (
-                        <div className="report-section">
-                          <span className="section-label">Why</span>
-                          <ul className="report-list alert-list">
-                            {report.why.map((point, i) => (
-                              <li key={i}>{point}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      {report.recommendations.length > 0 && (
-                        <div className="report-section report-section-action">
-                          <span className="section-label">What to do next</span>
-                          <ul className="report-list action-list">
-                            {report.recommendations.map((point, i) => (
-                              <li key={i}>{point}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </article>
-                  ) : (
-                    <div className="plain-ai-bubble">{m.text}</div>
-                  )}
+            return (
+              <div
+                key={`${m.time}-${idx}-${m.imageUrl || m.text.slice(0, 12)}`}
+                className={`manual-msg-row ${isUser ? "user" : "ai"}`}
+              >
+                <div className="manual-msg-meta">
+                  <span className="meta-label">
+                    {isUser ? "You" : "Guardian"}
+                  </span>
+                  <span className="meta-time">{m.time}</span>
                 </div>
-              );
-            })}
 
-            {isLoading && (
-              <div className="manual-loading-row" role="status">
-                <span className="manual-loading-dots" aria-hidden="true">
-                  <span />
-                  <span />
-                  <span />
-                </span>
-                <span className="manual-loading-text">
-                  Checking this message…
-                </span>
+                {isUser ? (
+                  <div className="user-query-bubble">
+                    {imageSrc && (
+                      <a
+                        href={imageSrc}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="manual-image-preview-link"
+                      >
+                        <img
+                          src={imageSrc}
+                          alt={m.imageName || "Uploaded screenshot"}
+                          className="manual-image-preview"
+                        />
+                      </a>
+                    )}
+                    {m.text &&
+                      !m.text.startsWith("[Uploaded Screenshot:") &&
+                      m.text}
+                    {m.text?.startsWith("[Uploaded Screenshot:") &&
+                      !imageSrc &&
+                      m.text}
+                    {imageSrc && m.imageName && (
+                      <span className="manual-image-caption">{m.imageName}</span>
+                    )}
+                  </div>
+                ) : showRiskCard && riskMeta ? (
+                  <article
+                    className={`threat-report-card risk-${report!.risk.toLowerCase()}`}
+                    aria-label={`Risk result: ${riskMeta.label}`}
+                  >
+                    <div className="report-verdict">
+                      <div
+                        className={`risk-level-badge ${report!.risk.toLowerCase()}`}
+                      >
+                        <RiskIcon risk={report!.risk} />
+                        <span>{riskMeta.label}</span>
+                      </div>
+                      <div className="report-verdict-copy">
+                        <h3>{riskMeta.headline}</h3>
+                        <p>{riskMeta.guidance}</p>
+                      </div>
+                    </div>
+
+                    {report!.why.length > 0 && (
+                      <div className="report-section">
+                        <span className="section-label">Why</span>
+                        <ul className="report-list alert-list">
+                          {report!.why.map((point, i) => (
+                            <li key={i}>{point}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+
+                    {report!.recommendations.length > 0 && (
+                      <div className="report-section report-section-action">
+                        <span className="section-label">What to do next</span>
+                        <ul className="report-list action-list">
+                          {report!.recommendations.map((point, i) => (
+                            <li key={i}>{point}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </article>
+                ) : (
+                  <div className="plain-ai-bubble">{m.text}</div>
+                )}
               </div>
-            )}
-            <div ref={chatEndRef} />
-          </div>
+            );
+          })}
+
+          {isLoading && (
+            <div className="manual-loading-row" role="status">
+              <span className="manual-loading-dots" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+              <span className="manual-loading-text">Checking…</span>
+            </div>
+          )}
+          <div ref={chatEndRef} />
         </div>
 
         <form onSubmit={handleSubmit} className="manual-composer">
@@ -419,7 +650,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
           <input
             id="manual-query-input"
             type="text"
-            placeholder="Paste a suspicious message, link, or account number…"
+            placeholder="Paste a message, ask a follow-up, or describe what you received…"
             className="query-input"
             value={queryInput}
             onChange={(e) => setQueryInput(e.target.value)}
@@ -431,10 +662,43 @@ export const ManualView: React.FC<ManualViewProps> = ({
             className="query-submit-action"
             disabled={isLoading || !queryInput.trim()}
           >
-            {isLoading ? "Checking…" : "Check"}
+            {isLoading ? "…" : "Send"}
           </button>
         </form>
       </section>
+
+      {confirmDeleteId && (
+        <div className="manual-confirm-backdrop" role="presentation">
+          <div
+            className="manual-confirm-dialog"
+            role="alertdialog"
+            aria-labelledby="manual-delete-title"
+            aria-describedby="manual-delete-desc"
+          >
+            <h2 id="manual-delete-title">Delete this check?</h2>
+            <p id="manual-delete-desc">
+              This removes the conversation and any uploaded images. This cannot
+              be undone.
+            </p>
+            <div className="manual-confirm-actions">
+              <button
+                type="button"
+                className="manual-confirm-cancel"
+                onClick={() => setConfirmDeleteId(null)}
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                className="manual-confirm-delete"
+                onClick={confirmDelete}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

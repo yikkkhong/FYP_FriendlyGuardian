@@ -41,10 +41,17 @@ const io = new Server(server, {
 
 // Ensure the temporary upload directory exists
 const uploadDir = path.join(__dirname, "uploads");
+const manualUploadDir = path.join(uploadDir, "manual");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
+if (!fs.existsSync(manualUploadDir)) {
+  fs.mkdirSync(manualUploadDir, { recursive: true });
+}
 const upload = multer({ dest: uploadDir });
+
+// Serve persisted Manual Mode images
+app.use("/uploads", express.static(uploadDir));
 
 const isWindows = process.platform === "win32";
 const pythonExecutable = isWindows

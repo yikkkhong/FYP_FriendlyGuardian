@@ -6,6 +6,7 @@ import CompanionView from "./views/CompanionView";
 import ManualView, {
   ManualConversationSummary,
   ManualMessage,
+  ManualMessageType,
 } from "./views/ManualView";
 
 interface ScamAlertData {
@@ -131,6 +132,7 @@ const App: React.FC = () => {
       "manual_chat_response",
       (data: {
         message: string;
+        messageType?: ManualMessageType;
         timestamp?: string;
         conversationId?: string | null;
         title?: string;
@@ -154,6 +156,7 @@ const App: React.FC = () => {
           {
             sender: "ai",
             text: data.message,
+            messageType: data.messageType,
             time: data.timestamp || new Date().toLocaleTimeString(),
           },
         ]);
@@ -163,6 +166,33 @@ const App: React.FC = () => {
         if (data.conversationId) {
           setActiveManualConversationId(data.conversationId);
         }
+        setIsManualLoading(false);
+      },
+    );
+
+    socket.on(
+      "manual_conversation_renamed",
+      (data: {
+        conversations: ManualConversationSummary[];
+        activeConversationId: string | null;
+      }) => {
+        setManualConversations(data.conversations || []);
+        if (data.activeConversationId !== undefined) {
+          setActiveManualConversationId(data.activeConversationId);
+        }
+      },
+    );
+
+    socket.on(
+      "manual_conversation_deleted",
+      (data: {
+        conversations: ManualConversationSummary[];
+        activeConversationId: string | null;
+        messages: ManualMessage[];
+      }) => {
+        setManualConversations(data.conversations || []);
+        setActiveManualConversationId(data.activeConversationId);
+        setManualMessages(data.messages || []);
         setIsManualLoading(false);
       },
     );
@@ -268,6 +298,19 @@ const App: React.FC = () => {
     socket.emit("manual_switch_conversation", { conversationId });
   };
 
+  const handleRenameManualConversation = (
+    conversationId: string,
+    title: string,
+  ) => {
+    if (!socket || !socket.connected) return;
+    socket.emit("manual_rename_conversation", { conversationId, title });
+  };
+
+  const handleDeleteManualConversation = (conversationId: string) => {
+    if (!socket || !socket.connected) return;
+    socket.emit("manual_delete_conversation", { conversationId });
+  };
+
   const handleSendManualMessage = (text: string) => {
     const conversationId = activeManualConversationId;
 
@@ -289,6 +332,7 @@ const App: React.FC = () => {
         {
           sender: "ai",
           text: "Server is offline, please check your connection.",
+          messageType: "general",
           time: new Date().toLocaleTimeString(),
         },
       ]);
@@ -299,13 +343,15 @@ const App: React.FC = () => {
     setIsManualLoading(true);
 
     const conversationId = activeManualConversationId;
+    const localPreview = URL.createObjectURL(file);
 
-    // 1. Locally, display only the message, no send it to the AI ​​via socket.emit
     setManualMessages((prev) => [
       ...prev,
       {
         sender: "user",
-        text: `[Uploaded Screenshot: ${file.name}]`,
+        text: "",
+        imageUrl: localPreview,
+        imageName: file.name,
         time: new Date().toLocaleTimeString(),
       },
     ]);
@@ -317,7 +363,6 @@ const App: React.FC = () => {
     }
 
     try {
-      // 2. use backend ocr + gemini port
       const res = await fetch("http://localhost:5000/api/manual-scan-image", {
         method: "POST",
         body: formData,
@@ -331,34 +376,62 @@ const App: React.FC = () => {
         setActiveManualConversationId(data.conversationId);
       }
 
-      if (data.analysis) {
-        // 3. Render real OCR onto interface
-        setManualMessages((prev) => [
-          ...prev,
-          {
+      // Prefer server-synced message list (includes persistent image URL)
+      if (Array.isArray(data.messages) && data.messages.length > 0) {
+        setManualMessages(data.messages);
+      } else if (data.analysis) {
+        setManualMessages((prev) => {
+          const next = [...prev];
+          const lastUserIdx = [...next]
+            .reverse()
+            .findIndex((m) => m.sender === "user" && m.imageUrl === localPreview);
+          if (lastUserIdx !== -1) {
+            const idx = next.length - 1 - lastUserIdx;
+            next[idx] = {
+              ...next[idx],
+              imageUrl: data.imageUrl || next[idx].imageUrl,
+              imageName: data.imageName || next[idx].imageName,
+            };
+          }
+          next.push({
             sender: "ai",
             text: data.analysis,
+            messageType: data.messageType || "analysis",
             time: data.timestamp || new Date().toLocaleTimeString(),
-          },
-        ]);
+          });
+          return next;
+        });
       }
     } catch (err) {
       console.error("Image upload failed:", err);
-      setManualMessages((prev) => [
-        ...prev,
-        {
+      setManualMessages((prev) => {
+        const next = [...prev];
+        for (let i = next.length - 1; i >= 0; i -= 1) {
+          if (next[i].imageUrl === localPreview) {
+            next[i] = {
+              ...next[i],
+              imageUrl: undefined,
+              text: `[Upload failed: ${file.name}]`,
+            };
+            break;
+          }
+        }
+        next.push({
           sender: "ai",
           text: "Failed to upload or inspect image. Please try again.",
+          messageType: "general",
           time: new Date().toLocaleTimeString(),
-        },
-      ]);
+        });
+        return next;
+      });
     } finally {
+      URL.revokeObjectURL(localPreview);
       setIsManualLoading(false);
     }
   };
 
   return (
-    <div className="canvas-root">
+    <div className="canvas-root" data-mode={appMode}>
       {/* top nav bar */}
       <header className="control-bar-wrapper">
         <div className="control-bar">
@@ -392,7 +465,7 @@ const App: React.FC = () => {
               className={`segment-btn ${appMode === "SME" ? "selected" : ""}`}
             >
               Manual
-            </button>{" "}
+            </button>
           </nav>
         </div>
       </header>
@@ -418,6 +491,8 @@ const App: React.FC = () => {
             onUploadImage={handleUploadImage}
             onNewConversation={handleNewManualConversation}
             onSelectConversation={handleSelectManualConversation}
+            onRenameConversation={handleRenameManualConversation}
+            onDeleteConversation={handleDeleteManualConversation}
           />
         )}
       </main>

@@ -1,6 +1,66 @@
 {
-  "activeConversationId": "MANUAL-1790130724064",
+  "activeConversationId": "MANUAL-1790134779576",
   "conversations": [
+    {
+      "id": "MANUAL-1790134779576",
+      "title": "Congratulations! You have won RM10,000. Click th…",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Congratulations! You have won RM10,000. Click this link https:you-have-won.com",
+          "timestamp": "2026-09-23T03:41:13.229Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited notification claiming a large cash prize is a classic lottery scam tactic.\n- Contains a suspicious phishing link designed to steal personal or financial details.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal or banking details.\n- Block the sender immediately and delete the suspicious message from your device.",
+          "timestamp": "2026-09-23T03:41:13.235Z"
+        },
+        {
+          "role": "user",
+          "text": "can you tell me any reason it is dangerous?",
+          "timestamp": "2026-09-23T03:41:38.560Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phishing links can secretly install harmful malware or spyware on your mobile device.\n- Fake websites trick you into entering personal banking details and passwords to steal money.\n\nRECOMMENDATION:\n- Never open unknown links or submit private information on untrusted websites.\n- Block the sender immediately and delete the message from your device.",
+          "timestamp": "2026-09-23T03:41:38.562Z"
+        },
+        {
+          "role": "user",
+          "text": "Can you check if this message is a scam?  \"Your Maybank account",
+          "timestamp": "2026-09-23T03:42:16.245Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unexpected messages mentioning bank accounts are common bank impersonation phishing tactics.\n- Scammers use fake bank alerts to trick you into revealing login credentials.\n\nRECOMMENDATION:\n- Never click links or provide banking details in response to unsolicited SMS.\n- Contact Maybank directly using the official helpline number on your card.",
+          "timestamp": "2026-09-23T03:42:16.248Z"
+        },
+        {
+          "role": "user",
+          "text": "+44742194 Text Message Today15:46 HSBC:Wehavenoticed unusual activity within your HSBC account. To prevent access being blocked, please visit thttps://hsbc.co.uk- account.help",
+          "timestamp": "2026-09-23T03:42:59.857Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Fake bank alert creates panic about account access being blocked.\n- Contains a malicious phishing URL spoofing the official HSBC domain.\n\nRECOMMENDATION:\n- Do not click the link or disclose your banking details.\n- Contact HSBC directly via their official app or verified hotline.",
+          "timestamp": "2026-09-23T03:42:59.859Z"
+        },
+        {
+          "role": "user",
+          "text": "HIRING! RM9000 If Interested Contact: month salury (Mr. Lim) 011-1210101",
+          "timestamp": "2026-09-23T03:58:55.482Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer promising unrealistically high salary is a common job scam.\n- Poor spelling and personal mobile numbers indicate an unverified fake recruiter.\n\nRECOMMENDATION:\n- Do not contact the phone number or share any personal information.\n- Block the sender immediately and delete the suspicious message from your device.",
+          "timestamp": "2026-09-23T03:58:55.484Z"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-09-23T03:39:39.576Z",
+      "updated_at": "2026-09-23T03:58:55.484Z"
+    },
     {
       "id": "MANUAL-1790130724064",
       "title": "+44742194 Text Message Today15:46 HSBC:Wehavenot…",
