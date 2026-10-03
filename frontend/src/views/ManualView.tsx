@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import ThreatReportCard, { parseReport } from "../components/ThreatReportCard";
+import VoiceInputButton from "../components/VoiceInputButton";
 
 export type ManualMessageType = "analysis" | "follow_up" | "general";
 
@@ -163,6 +164,10 @@ export const ManualView: React.FC<ManualViewProps> = ({
     if (!file || isLoading) return;
     onUploadImage(file);
     if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleVoiceResult = (text: string) => {
+    setQueryInput((prev) => (prev ? prev + " " : "") + text);
   };
 
   const activeConversation = conversations.find(
@@ -536,6 +541,8 @@ export const ManualView: React.FC<ManualViewProps> = ({
           >
             <CameraIcon />
           </button>
+
+          <VoiceInputButton onResult={handleVoiceResult} lang="zh-CN" />
 
           <label htmlFor="manual-query-input" className="sr-only">
             Message or account to check
