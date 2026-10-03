@@ -3,28 +3,8 @@
     "id": "CHAT-1788327275377",
     "title": "New Conversation",
     "topic": "general",
-    "summary": "The user, Baymax's developer, reconnected with Baymax after buying t-shirts at Aeon Mall. Baymax warmly checked on the user's emotional state and offered ongoing support. They discussed scam history, with Baymax highlighting 10 flagged scams and red flags like urgent pressure and OTP requests. The user asked Baymax to analyze a suspicious link and questioned if an \"I hate you\" message was a scam. Baymax clarified that such messages stem from personal unkindness rather than fraud, offering comforting reassurance to the user.",
+    "summary": "The user, Baymax's developer, reconnected with Baymax after buying t-shirts at Aeon Mall, asking what topics they could discuss. Baymax warmly encouraged sharing anything about their day or feelings. The user then raised concerns about scams and real friends, analyzing a suspicious link and an \"I hate you\" message. Baymax provided emotional support and scam protection, highlighting that real friends care while scammers use urgency and OTP requests (noting 10 past scams). Baymax clarified that unkind messages stem from personal issues, offering continuous comfort.",
     "messages": [
-      {
-        "role": "user",
-        "text": "hi bro, do i got any friend that's not want to scam me?",
-        "timestamp": "2026-09-19T08:48:06.517Z"
-      },
-      {
-        "role": "baymax",
-        "text": "Of course you do, ya! Your real friends care about you, and it is only scammers who pretend to be your friends to take money.",
-        "timestamp": "2026-09-19T08:48:12.473Z"
-      },
-      {
-        "role": "user",
-        "text": "hi, is there anything i can talk to you?",
-        "timestamp": "2026-09-19T08:48:33.657Z"
-      },
-      {
-        "role": "baymax",
-        "text": "You can talk to me about anything, ya! Tell me about your day, how you are feeling, or anything on your mind.",
-        "timestamp": "2026-09-19T08:48:37.912Z"
-      },
       {
         "role": "user",
         "text": "where did i bought my shirt?",
@@ -54,6 +34,26 @@
         "role": "baymax",
         "text": "That is so sweet of you to ask, ya! Just remember never to share your OTP or transfer money to strangers, and tell me whenever you get a suspicious message.",
         "timestamp": "2026-09-19T09:58:38.224Z"
+      },
+      {
+        "role": "user",
+        "text": "bro how are you",
+        "timestamp": "2026-09-28T15:32:07.450Z"
+      },
+      {
+        "role": "baymax",
+        "text": "I am doing very well, thank you for asking, ya! I am always ready to take care of your health and keep you safe.",
+        "timestamp": "2026-09-28T15:32:11.040Z"
+      },
+      {
+        "role": "user",
+        "text": "Do you know who is ChatGPT",
+        "timestamp": "2026-09-28T16:24:38.433Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Yes, ChatGPT is another AI program that talks to people, ya! But I am your Baymax, always here to care for you and keep you safe.",
+        "timestamp": "2026-09-28T16:24:43.078Z"
       }
     ],
     "archived_messages": [
@@ -246,9 +246,29 @@
         "role": "baymax",
         "text": "Hello again! How are you feeling right now, ya? I am always here with you.",
         "timestamp": "2026-09-09T06:11:34.864Z"
+      },
+      {
+        "role": "user",
+        "text": "hi bro, do i got any friend that's not want to scam me?",
+        "timestamp": "2026-09-19T08:48:06.517Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Of course you do, ya! Your real friends care about you, and it is only scammers who pretend to be your friends to take money.",
+        "timestamp": "2026-09-19T08:48:12.473Z"
+      },
+      {
+        "role": "user",
+        "text": "hi, is there anything i can talk to you?",
+        "timestamp": "2026-09-19T08:48:33.657Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You can talk to me about anything, ya! Tell me about your day, how you are feeling, or anything on your mind.",
+        "timestamp": "2026-09-19T08:48:37.912Z"
       }
     ],
     "created_at": "2026-09-02T05:34:35.377Z",
-    "updated_at": "2026-09-19T09:58:43.943Z"
+    "updated_at": "2026-09-28T16:24:49.633Z"
   }
 ]
