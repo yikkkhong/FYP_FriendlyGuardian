@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import ThreatReportCard, { parseReport } from "../components/ThreatReportCard";
 import VoiceInputButton from "../components/VoiceInputButton";
+import useTextToSpeech from "../hooks/useTextToSpeech";
+import FormattedMessage, { AiResponseCard } from "../components/AiResponseCard";
 
 export type ManualMessageType = "analysis" | "follow_up" | "general";
 
@@ -35,8 +37,6 @@ interface ManualViewProps {
   onRenameConversation: (conversationId: string, title: string) => void;
   onDeleteConversation: (conversationId: string) => void;
 }
-
-// type RiskKey = "HIGH" | "MEDIUM" | "LOW" | "SAFE";
 
 const API_ORIGIN = "http://localhost:5000";
 
@@ -133,6 +133,39 @@ export const ManualView: React.FC<ManualViewProps> = ({
   const fileInputRef = useRef<HTMLInputElement>(null);
   const renameInputRef = useRef<HTMLInputElement>(null);
 
+  // use text to speech hook
+  const { speak, stop } = useTextToSpeech();
+  const isVoiceInputRef = useRef(false);
+  const shouldSpeakNextAIReplyRef = useRef(false);
+  const prevMessagesCountRef = useRef(messages.length);
+
+  // Listen for new messages: If the current turn involves a voice conversation, the AI ​​automatically reads the response aloud.
+  useEffect(() => {
+    if (messages.length > prevMessagesCountRef.current) {
+      const latestMsg = messages[messages.length - 1];
+
+      // Must be a new AI message, and the current conversation was triggered by voice
+      if (
+        latestMsg &&
+        latestMsg.sender === "ai" &&
+        shouldSpeakNextAIReplyRef.current
+      ) {
+        shouldSpeakNextAIReplyRef.current = false; // Reset the flag to avoid reading the next AI message aloud by default
+
+        // Determine the language of the message based on whether it contains Chinese characters
+        const isChinese = /[\u4e00-\u9fa5]/.test(latestMsg.text);
+        speak(latestMsg.text, isChinese ? "zh-CN" : "en-US");
+      }
+    }
+    prevMessagesCountRef.current = messages.length;
+  }, [messages, speak]);
+
+  // When the user switches conversations or exits, immediately stop the current speech
+  useEffect(() => {
+    stop();
+    shouldSpeakNextAIReplyRef.current = false;
+  }, [activeConversationId, stop]);
+
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
@@ -155,6 +188,14 @@ export const ManualView: React.FC<ManualViewProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!queryInput.trim() || isLoading) return;
+
+    if (isVoiceInputRef.current) {
+      shouldSpeakNextAIReplyRef.current = true;
+      isVoiceInputRef.current = false;
+    } else {
+      shouldSpeakNextAIReplyRef.current = false;
+    }
+
     onSendMessage(queryInput);
     setQueryInput("");
   };
@@ -167,6 +208,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
   };
 
   const handleVoiceResult = (text: string) => {
+    isVoiceInputRef.current = true;
     setQueryInput((prev) => (prev ? prev + " " : "") + text);
   };
 
@@ -504,7 +546,8 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 ) : showRiskCard && report ? (
                   <ThreatReportCard report={report!} />
                 ) : (
-                  <div className="plain-ai-bubble">{m.text}</div>
+                  // <div className="plain-ai-bubble">{m.text}</div>
+                  <AiResponseCard content={m.text} />
                 )}
               </div>
             );
@@ -542,7 +585,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
             <CameraIcon />
           </button>
 
-          <VoiceInputButton onResult={handleVoiceResult} lang="zh-CN" />
+          <VoiceInputButton onResult={handleVoiceResult} lang="en-US" />
 
           <label htmlFor="manual-query-input" className="sr-only">
             Message or account to check
@@ -553,7 +596,10 @@ export const ManualView: React.FC<ManualViewProps> = ({
             placeholder="Paste a message, ask a follow-up, or describe what you received…"
             className="query-input"
             value={queryInput}
-            onChange={(e) => setQueryInput(e.target.value)}
+            onChange={(e) => {
+              setQueryInput(e.target.value);
+              isVoiceInputRef.current = false;
+            }}
             disabled={isLoading}
             autoComplete="off"
           />

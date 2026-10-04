@@ -71,9 +71,7 @@ function classifyAndCleanReply(rawReply, options = {}) {
   }
 
   if (!messageType) {
-    messageType = /RISK\s*LEVEL:\s*[A-Z]+/i.test(text)
-      ? "analysis"
-      : "general";
+    messageType = /RISK\s*LEVEL:\s*[A-Z]+/i.test(text) ? "analysis" : "general";
   }
 
   // Follow-ups / general should not carry a risk card template in the UI.
@@ -179,6 +177,7 @@ RECOMMENDATION:
 
 If MESSAGE_TYPE is follow_up or general:
 - Write a clear, friendly, professional plain-text answer only.
+- Reply like a direct security consultant: limit answers to 2-3 short sentences or points (max 60 words). Avoid lengthy essays
 - Do NOT include RISK LEVEL, WHY, or RECOMMENDATION headers.
 - Keep it concise and helpful.
 
@@ -204,7 +203,12 @@ Other rules:
 
     // Persist user message unless caller already stored it (e.g. image upload)
     if (!options.skipUserPersist) {
-      chatMemory.addMessage("user", userText, activeId, options.userExtras || {});
+      chatMemory.addMessage(
+        "user",
+        userText,
+        activeId,
+        options.userExtras || {},
+      );
     }
 
     chatMemory.addMessage("assistant", reply, activeId, { messageType });

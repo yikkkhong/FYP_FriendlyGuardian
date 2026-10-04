@@ -38,12 +38,27 @@ interface VoiceInputButtonProps {
   onResult: (text: string) => void;
   onInterim?: (text: string) => void; //  optional：Temporary text displayed while speaking
   lang?: string; // "zh-CN" | "en-US" | "ms-MY"
+  disabled?: boolean;
+}
+
+function MicIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
+      <path
+        fill="currentColor"
+        d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 
+      1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 
+      3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
+      />
+    </svg>
+  );
 }
 
 export default function VoiceInputButton({
   onResult,
   onInterim,
-  lang = "zh-CN",
+  lang = "en-US",
+  disabled = false,
 }: VoiceInputButtonProps) {
   const [listening, setListening] = useState(false);
   const recognitionRef = useRef<ISpeechRecognition | null>(null);
@@ -103,19 +118,24 @@ export default function VoiceInputButton({
       type="button"
       onClick={toggle}
       title={listening ? "Stop" : "Voice Input"}
-      style={{
-        width: 44,
-        height: 44,
-        borderRadius: "50%",
-        border: "none",
-        cursor: "pointer",
-        fontSize: 20,
-        flexShrink: 0,
-        backgroundColor: listening ? "#e53935" : "#f0f0f0",
-        color: listening ? "#fff" : "#333",
-      }}
+      // style={{
+      //   width: 44,
+      //   height: 44,
+      //   borderRadius: "50%",
+      //   border: "none",
+      //   cursor: "pointer",
+      //   fontSize: 20,
+      //   flexShrink: 0,
+      //   backgroundColor: listening ? "#e53935" : "#f0f0f0",
+      //   color: listening ? "#fff" : "#333",
+      // }}
+
+      disabled={disabled}
+      className={`query-upload-btn query-voice-btn ${listening ? "is-listening" : ""}`}
+      aria-label={listening ? "Stop" : "Start"}
     >
-      {listening ? "⏹" : "🎤"}
+      <MicIcon />
+      {/* {listening ? "⏹" : "🎤"} */}
     </button>
   );
 }

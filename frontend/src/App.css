@@ -812,6 +812,7 @@ body {
   background: var(--manual-cta);
 }
 
+/* Normal Asking Question Bubble  */
 .plain-ai-bubble {
   background: transparent;
   border: none;
@@ -823,6 +824,181 @@ body {
   max-width: 42rem;
   white-space: pre-wrap;
 }
+
+/* -------------------------------------------------------------
+ * AI bubble follow up
+ * ----------------------------------------------------------- */
+/* .plain-ai-bubble {
+  background: #ffffff;
+  border: 1px solid var(--manual-border);
+  color: var(--manual-text);
+  padding: 16px 20px;
+  border-radius: 4px 18px 18px 18px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  max-width: min(100%, 640px);
+  white-space: pre-wrap;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.plain-ai-bubble p {
+  margin-bottom: 12px;
+}
+.plain-ai-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.plain-ai-bubble code {
+  background: #f1f5f9;
+  color: #0f766e;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 13.5px;
+  font-weight: 600;
+} */
+
+/* =============================================================
+ * AI insight card (AI response bubble when follow up)
+ * =========================================================== */
+.ai-insight-card {
+  background: #ffffff;
+  border: 1px solid var(--manual-border);
+  border-left: 4px solid var(--manual-cta);
+  border-radius: 14px;
+  padding: 18px 20px 16px;
+  width: 100%;
+  max-width: 780px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 2px 10px rgba(15, 118, 110, 0.04);
+}
+
+/* card header */
+.insight-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.insight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: var(--manual-cta);
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.insight-headline {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--manual-text);
+  margin: 0;
+}
+
+.insight-intro {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--manual-muted);
+  margin: 0;
+}
+
+/* card content */
+.insight-content-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.insight-section-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--manual-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.insight-point-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.insight-point-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+
+.point-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--manual-cta);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.point-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.point-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.point-desc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: #334155;
+  margin: 0;
+}
+
+/* card bottom */
+.insight-takeaway-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.takeaway-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #166534;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.takeaway-text {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: #14532d;
+  margin: 0;
+}
+
+/* ----------------------- */
 
 .manual-loading-row {
   align-self: flex-start;
@@ -954,6 +1130,7 @@ body {
   transition:
     color 0.2s ease,
     background-color 0.2s ease;
+  outline: none;
 }
 
 .manual-workspace .query-upload-btn:hover:not(:disabled) {
@@ -964,6 +1141,25 @@ body {
 .manual-workspace .query-upload-btn:disabled {
   cursor: not-allowed;
   opacity: 0.35;
+}
+
+/* when using voice input, red color bg, soft animation */
+.manual-workspace .query-voice-btn.is-listening {
+  color: var(--manual-danger);
+  background-color: var(--manual-danger-bg);
+  animation: pulse-voice 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-voice {
+  0%,
+  100% {
+    transform: scale(1);
+    background-color: var(--manual-danger-bg);
+  }
+  50% {
+    transform: scale(1.08);
+    background-color: #fee2e2;
+  }
 }
 
 .sr-only {
