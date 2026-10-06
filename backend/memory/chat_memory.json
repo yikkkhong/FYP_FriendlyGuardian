@@ -1,6 +1,131 @@
 {
-  "activeConversationId": "MANUAL-1790612733532",
+  "activeConversationId": "MANUAL-1791213748923",
   "conversations": [
+    {
+      "id": "MANUAL-1791213748923",
+      "title": "please send me otp to get a car",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "please send me otp to get a car",
+          "timestamp": "2026-10-05T15:22:47.185Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Never share an OTP; real prize offers do not ask for security codes.\n- Matches known scam patterns using fake car prizes to steal account access.\n\nRECOMMENDATION:\n- Do not share any OTP or personal details with the requester.\n- Block the sender immediately and monitor your accounts for unauthorized activity.",
+          "timestamp": "2026-10-05T15:22:47.188Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "what is otp?",
+          "timestamp": "2026-10-05T15:23:15.666Z"
+        },
+        {
+          "role": "assistant",
+          "text": "An OTP (One-Time Password) is a temporary security code sent to your phone or email to verify your identity. Banks and services use it to confirm it is really you making a transaction or logging in. Never share an OTP with anyone, as scammers use them to steal account access.",
+          "timestamp": "2026-10-05T15:23:15.668Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "so it is password to use one time only ?",
+          "timestamp": "2026-10-05T15:30:56.858Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, exactly! An OTP works only once and expires after a short time (usually a few minutes). Because it is used to approve single transactions or logins, sharing it gives scammers direct control over your account.",
+          "timestamp": "2026-10-05T15:30:56.863Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testChatScreenshot.png]",
+          "timestamp": "2026-10-05T15:41:13.463Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791213748923/1791214873451-testChatScreenshot.png",
+          "imageName": "testChatScreenshot.png",
+          "ocrText": "VodafoneCZWi-Fi 13:15 +234 7755 online ? Today MayI sharethejobinformation withyou? 13:14 Yes 13:14√// Great.We areBig Mover CompanyLLlc.Yourroleisto rightGooglereviewsforus.Each reviewpays $10. 13:15 Ok 13:15√/ CanIsharethelinkstothe GoogleDocwith you? 13:15 Sure! 13:15√/ ? 回 0"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer paying easy money for Google reviews is a classic task scam.\n- Sender uses an international number (+234) and suspicious external document links.\n\nRECOMMENDATION:\n- Do not open any links, Google Docs, or download files from this sender.\n- Block and report the sender number (+234 7755) immediately.",
+          "timestamp": "2026-10-05T15:41:19.238Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-05T15:22:28.923Z",
+      "updated_at": "2026-10-05T15:41:19.238Z"
+    },
+    {
+      "id": "MANUAL-1791102989782",
+      "title": "hi how are you",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "hi how are you",
+          "timestamp": "2026-10-04T08:36:39.652Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Hello! I am doing well, thank you for asking. \n\nHow can I assist you today? If you have any suspicious messages, emails, links, or bank account details you would like me to analyze for scam risks, please feel free to share them with me!",
+          "timestamp": "2026-10-04T08:36:39.656Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "so are you pro in dating the scam",
+          "timestamp": "2026-10-04T08:46:36.242Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, I am well-equipped to help you identify romance and dating scams! \n\nDating scams typically involve fake profiles created to build trust and emotional connections quickly. Once trust is established, scammers usually invent emergencies, request financial assistance, or try to lure victims into fake investment schemes (such as cryptocurrency).\n\nIf you are communicating with someone online and notice red flags—or if you have a message, profile detail, or money request you'd like me to evaluate—feel free to share it here and I can analyze the risk for you!",
+          "timestamp": "2026-10-04T08:46:36.248Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "oh so if my rear wife want to message me how to know it's a real person or it's a scammer",
+          "timestamp": "2026-10-04T09:03:33.847Z"
+        },
+        {
+          "role": "assistant",
+          "text": "To verify if a message is truly from your wife, call her directly on her normal phone number or ask a personal question only she would know. Scammers often use new accounts, create sudden financial emergencies, and refuse live video calls.",
+          "timestamp": "2026-10-04T09:03:33.851Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-04T09:54:00.594Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791102989782/1791107640592-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer using vague details and suspicious contact formatting.\n- Matches common text-scam tactics designed to lure victims into fake job schemes.\n\nRECOMMENDATION:\n- Do not reply or contact the phone number provided in the message.\n- Block the sender and report the SMS as spam on your device.",
+          "timestamp": "2026-10-04T09:54:05.949Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "are you sure?",
+          "timestamp": "2026-10-05T15:02:40.878Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, I am confident. Legitimate employers do not send unsolicited job offers via SMS using mangled text (\"Cootac\") and hidden contact formats to offer high salaries. This format is a well-known recruitment scam tactic designed to lure victims into advance-fee fraud or identity theft.",
+          "timestamp": "2026-10-05T15:02:40.881Z",
+          "messageType": "follow_up"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-04T08:36:29.782Z",
+      "updated_at": "2026-10-05T15:02:40.881Z"
+    },
     {
       "id": "MANUAL-1790612733532",
       "title": "testWrongGrammar_lazada",
@@ -126,50 +251,7 @@
         }
       ],
       "created_at": "2026-09-28T16:25:33.532Z",
-      "updated_at": "2026-10-04T09:10:20.923Z"
-    },
-    {
-      "id": "MANUAL-1791102989782",
-      "title": "hi how are you",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "hi how are you",
-          "timestamp": "2026-10-04T08:36:39.652Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Hello! I am doing well, thank you for asking. \n\nHow can I assist you today? If you have any suspicious messages, emails, links, or bank account details you would like me to analyze for scam risks, please feel free to share them with me!",
-          "timestamp": "2026-10-04T08:36:39.656Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "so are you pro in dating the scam",
-          "timestamp": "2026-10-04T08:46:36.242Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Yes, I am well-equipped to help you identify romance and dating scams! \n\nDating scams typically involve fake profiles created to build trust and emotional connections quickly. Once trust is established, scammers usually invent emergencies, request financial assistance, or try to lure victims into fake investment schemes (such as cryptocurrency).\n\nIf you are communicating with someone online and notice red flags—or if you have a message, profile detail, or money request you'd like me to evaluate—feel free to share it here and I can analyze the risk for you!",
-          "timestamp": "2026-10-04T08:46:36.248Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "oh so if my rear wife want to message me how to know it's a real person or it's a scammer",
-          "timestamp": "2026-10-04T09:03:33.847Z"
-        },
-        {
-          "role": "assistant",
-          "text": "To verify if a message is truly from your wife, call her directly on her normal phone number or ask a personal question only she would know. Scammers often use new accounts, create sudden financial emergencies, and refuse live video calls.",
-          "timestamp": "2026-10-04T09:03:33.851Z",
-          "messageType": "general"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-04T08:36:29.782Z",
-      "updated_at": "2026-10-04T09:03:33.851Z"
+      "updated_at": "2026-10-04T09:50:08.373Z"
     },
     {
       "id": "MANUAL-1790130648454",

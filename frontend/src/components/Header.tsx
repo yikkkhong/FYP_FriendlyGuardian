@@ -1,10 +1,19 @@
 import React from "react";
+import { Notification, Notification as NotificationType } from "./Notification";
 
 interface HeaderProps {
   isConnected: boolean; // only to know socket is connected or no
+  notifications?: NotificationType[];
+  onMarkAsRead?: (id: string) => void;
+  onClearAll?: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ isConnected }) => {
+export const Header: React.FC<HeaderProps> = ({
+  isConnected,
+  notifications = [],
+  onMarkAsRead,
+  onClearAll,
+}) => {
   return (
     <header className="control-bar-wrapper">
       <div className="control-bar">
@@ -19,6 +28,11 @@ export const Header: React.FC<HeaderProps> = ({ isConnected }) => {
             </span>
           </div>
         </div>
+        <Notification
+          notifications={notifications}
+          onMarkAsRead={onMarkAsRead}
+          onClearAll={onClearAll}
+        />
       </div>
     </header>
   );

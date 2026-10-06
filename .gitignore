@@ -30,5 +30,6 @@ venv/
 .venv/
 env/
 
-# cursor skill
+# skill
 .cursor/
+.windsurf/

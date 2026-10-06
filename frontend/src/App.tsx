@@ -9,6 +9,10 @@ import ManualView, {
   ManualMessageType,
 } from "./views/ManualView";
 import { Header } from "./components/Header";
+import {
+  Notification,
+  Notification as NotificationType,
+} from "./components/Notification";
 
 // interface ScamAlertData {
 //   text: string;
@@ -27,6 +31,7 @@ const App: React.FC = () => {
 
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [blockedCount, setBlockedCount] = useState<number>(12);
+  const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
   //const [chatInput, setChatInput] = useState<string>("");
 
@@ -51,6 +56,7 @@ const App: React.FC = () => {
     socket.on("connect", () => {
       setIsConnected(true);
       socket.emit("manual_list_conversations");
+      addNotification("Connected to Friendly Guardian server", "success");
     });
     socket.on("disconnect", () => setIsConnected(false));
 
@@ -320,10 +326,40 @@ const App: React.FC = () => {
     }
   };
 
+  // Notification handlers
+  const addNotification = (
+    message: string,
+    type: NotificationType["type"] = "info",
+  ) => {
+    const newNotification: NotificationType = {
+      id: Date.now().toString(),
+      message,
+      timestamp: new Date().toISOString(),
+      read: false,
+      type,
+    };
+    setNotifications((prev) => [newNotification, ...prev]);
+  };
+
+  const handleMarkAsRead = (id: string) => {
+    setNotifications((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, read: true } : n)),
+    );
+  };
+
+  const handleClearAllNotifications = () => {
+    setNotifications([]);
+  };
+
   return (
     <div className="canvas-root" data-mode={"SME"}>
       {/* top nav bar */}
-      <Header isConnected={isConnected} />
+      <Header
+        isConnected={isConnected}
+        notifications={notifications}
+        onMarkAsRead={handleMarkAsRead}
+        onClearAll={handleClearAllNotifications}
+      />
       {/*     <header className="control-bar-wrapper">
         <div className="control-bar">
           <div className="brand-group">

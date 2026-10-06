@@ -597,8 +597,13 @@ export const ManualView: React.FC<ManualViewProps> = ({
             className="query-input"
             value={queryInput}
             onChange={(e) => {
-              setQueryInput(e.target.value);
-              isVoiceInputRef.current = false;
+              const val = e.target.value;
+              setQueryInput(val);
+              // isVoiceInputRef.current = false;
+              // reset only if the user deletes all the text, so voice reply still works
+              if (!val.trim()) {
+                isVoiceInputRef.current = false;
+              }
             }}
             disabled={isLoading}
             autoComplete="off"
