@@ -1,11 +1,352 @@
 {
-  "activeConversationId": "MANUAL-1791378199854",
+  "activeConversationId": "MANUAL-1791472170420",
   "conversations": [
+    {
+      "id": "MANUAL-1791472170420",
+      "title": "testWrongGrammar_lazada",
+      "summary": "Scam inspection summary: No bank accounts. Suspicious code “T:01]-12345” may be a phone number or ID. Tactics: vague job offer, missing company details, random code, potential phishing. Recommendation: verify on official site or reputable portal, avoid sharing personal/financial info until legitimacy confirmed.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-08T15:10:51.972Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791472170420/1791472251970-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unverified domain “webgocompanyy.com” with no company details.\n- Email request for CVs is a common phishing tactic.\n\nRECOMMENDATION:\n- Verify the company via its official website or trusted job portals.\n- Do not send personal or financial information until legitimacy is confirmed.",
+          "timestamp": "2026-10-08T15:10:52.964Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "please give me your otp to get RM100000000",
+          "timestamp": "2026-10-08T15:11:29.043Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited request for OTP to claim a large sum.\n- Uses a huge monetary figure to entice compliance.\n\nRECOMMENDATION:\n- Do not share your OTP or any personal details.\n- Report the message to your bank and block the sender.",
+          "timestamp": "2026-10-08T15:11:29.047Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "so i should never give my otp?",
+          "timestamp": "2026-10-08T15:11:47.134Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Never share your OTP. It’s a one‑time password meant only for your own use. If anyone asks for it, treat the request as a scam and block the sender.",
+          "timestamp": "2026-10-08T15:11:47.138Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "how if my family want to get?",
+          "timestamp": "2026-10-08T15:12:02.497Z"
+        },
+        {
+          "role": "assistant",
+          "text": "If your family is asked to provide OTPs or claim money, treat it the same as any scam: do not share OTPs or personal info. Report the request to your bank and block the sender.",
+          "timestamp": "2026-10-08T15:12:02.501Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "someone tell me give me your atm pin cause you are in danger",
+          "timestamp": "2026-10-08T15:12:27.915Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited request for ATM PIN.\n- Threat of danger to coerce compliance.\n\nRECOMMENDATION:\n- Never share your ATM PIN or any sensitive info.\n- Block the sender and report the message to your bank or local authorities.",
+          "timestamp": "2026-10-08T15:12:27.918Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-08T15:09:34.432Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791472170420/1791472174430-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No request for money or personal data.\n- No suspicious link or contact details.\n\nRECOMMENDATION:\n- Verify the sale through Lazada’s official website or app.\n- Ignore or delete if unsolicited and not from a known source.",
+          "timestamp": "2026-10-08T15:09:35.349Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-08T15:09:40.589Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791472170420/1791472180588-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Vague job offer with no company name or contact details.\n- Includes random code “T:01]-12345” that could be a phone or ID, raising phishing suspicion.\n\nRECOMMENDATION:\n- Verify the posting on the official company website or reputable job portal.\n- Do not provide personal or financial information until the employer’s legitimacy is confirmed.",
+          "timestamp": "2026-10-08T15:09:41.803Z",
+          "messageType": "analysis"
+        }
+      ],
+      "created_at": "2026-10-08T15:09:30.420Z",
+      "updated_at": "2026-10-08T15:12:28.697Z"
+    },
+    {
+      "id": "MANUAL-1791471212339",
+      "title": "please give me your atm pin to get a car",
+      "summary": "Bank accounts: none disclosed. Phone numbers: none disclosed. Scam tactics: direct ATM‑PIN request, advice to write PIN on phone/paper, false “verification” claim, car lure, credential‑phishing/social engineering. Risk: HIGH. Recommendation: never write or store PIN digitally or on paper; keep it memorized; report any PIN request; delete messages; alert bank.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "someone tell me that atm pin is like my ic number, can verify its me, and tell me to give him",
+          "timestamp": "2026-10-08T14:56:52.395Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for ATM PIN, classic credential‑phishing.\n- Misleading comparison to IC number to gain trust.\n\nRECOMMENDATION:\n- Never share your ATM PIN with anyone; keep it memorized only.\n- Report the request to your bank and delete the message immediately.",
+          "timestamp": "2026-10-08T14:56:52.398Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-08T14:58:10.149Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791471212339/1791471490148-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-08T14:58:11.088Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-08T14:59:04.473Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791471212339/1791471544451-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-08T14:59:05.653Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-08T15:00:27.125Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791471212339/1791471627123-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Urgent “big sale” lure aims to prompt impulsive clicks or purchases.\n- Common tactic for phishing or fake promotional links that harvest data.\n\nRECOMMENDATION:\n- Do not click any links; verify any sale only via the official Lazada app or website.\n- Report the message to Lazada’s support, delete it, and stay cautious of similar promos.",
+          "timestamp": "2026-10-08T15:00:37.043Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-08T15:01:06.888Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791471212339/1791471666884-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-08T15:01:13.112Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "please give me your atm pin to get a car",
+          "timestamp": "2026-10-08T14:53:35.208Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for ATM PIN is a classic phishing/social engineering tactic.\n- Offers a reward (car) to lure victims into disclosing sensitive credentials.\n\nRECOMMENDATION:\n- Never share ATM PIN or any banking credentials with anyone.\n- Report the request to your bank and delete the message.",
+          "timestamp": "2026-10-08T14:53:35.213Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "please give me your atm pin to verify your account",
+          "timestamp": "2026-10-08T14:54:00.560Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for ATM PIN is a classic credential‑phishing tactic.\n- Uses a false “verification” pretext to lure the victim into disclosing sensitive data.\n\nRECOMMENDATION:\n- Never share your ATM PIN or any banking credentials with anyone.\n- Report the request to your bank and delete the message immediately.",
+          "timestamp": "2026-10-08T14:54:00.563Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "so do you mean i should never share my atm pin?",
+          "timestamp": "2026-10-08T14:54:27.636Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, you should never share your ATM PIN with anyone, even if they claim it’s for verification. Keep it confidential and report any such requests to your bank immediately.",
+          "timestamp": "2026-10-08T14:54:27.644Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "please give me your atm pin to get a car",
+          "timestamp": "2026-10-08T14:55:38.632Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for ATM PIN is a classic phishing/social engineering tactic.\n- Offers a car as a lure to trick the victim into revealing sensitive credentials.\n\nRECOMMENDATION:\n- Never share your ATM PIN or any banking credentials with anyone.\n- Report the request to your bank and delete the message immediately.",
+          "timestamp": "2026-10-08T14:55:38.645Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "can i write my atm pin in my phone?",
+          "timestamp": "2026-10-08T14:55:57.751Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Never store your ATM PIN on your phone. Keep it memorized only, and never share it with anyone or write it down digitally. If you’re asked to provide it, report the request to your bank immediately.",
+          "timestamp": "2026-10-08T14:55:57.754Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "where can i write?",
+          "timestamp": "2026-10-08T14:56:05.894Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Never write your ATM PIN anywhere, especially not on your phone or paper. Keep it memorized only and treat any request to share it as a scam—report it to your bank immediately.",
+          "timestamp": "2026-10-08T14:56:05.897Z",
+          "messageType": "follow_up"
+        }
+      ],
+      "created_at": "2026-10-08T14:53:32.339Z",
+      "updated_at": "2026-10-08T15:01:17.287Z"
+    },
     {
       "id": "MANUAL-1791378199854",
       "title": "testWrongGrammar_lazada",
-      "summary": "Scam Inspection Summary:\n- No bank account details identified.\n- Suspicious contact: “T:01]-12345” (malformed phone number in fake hiring ad).\n- New tactic: user asked for OTP with promise of RM1000, indicating OTP‑phishing/financial lure.\n- Persistent “LAZADA BIG SALE” false‑sale lure.\n- Tactics: fake promotion, bogus job posting, OTP request for cash reward.",
+      "summary": "Scam Inspection Summary: No bank account numbers found. Suspicious contacts: malformed phone “T:01]-12345”, tag “Cootac”, fake dad call denying a Family Mart visit. Tactics: fake Lazada sale (Oct 10), unsolicited high‑pay job offer, OTP promises for RM 1000 and a car, urgency pressure, credential‑theft, emotional manipulation via impersonated family, false location claim. High risk.",
       "messages": [
+        {
+          "role": "user",
+          "text": "ouhh so i should not give a otp?",
+          "timestamp": "2026-10-08T14:45:08.926Z"
+        },
+        {
+          "role": "assistant",
+          "text": "I have noted your message.",
+          "timestamp": "2026-10-08T14:45:08.930Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "why i will not get a car by giving otp?",
+          "timestamp": "2026-10-08T14:45:58.384Z"
+        },
+        {
+          "role": "assistant",
+          "text": "MESSAGE_TYPE: follow_up\n\nNever share an OTP; it’s a one‑time password that lets the requester control your account. Scammers promise big rewards like a car to trick you into giving it, but legitimate companies will never ask for your OTP. Keep it private and report the request.",
+          "timestamp": "2026-10-08T14:45:58.389Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "please give me your atm pin to verify your account",
+          "timestamp": "2026-10-08T14:49:45.627Z"
+        },
+        {
+          "role": "assistant",
+          "text": "I have noted your message.",
+          "timestamp": "2026-10-08T14:49:45.631Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "please give me your atm pin to get a car",
+          "timestamp": "2026-10-08T14:50:15.487Z"
+        },
+        {
+          "role": "assistant",
+          "text": "MESSAGE_TYPE: follow_up\n\nNever share your ATM PIN; it gives full control over your bank account. Legitimate offers never ask for it—report the request to your bank and delete the message.",
+          "timestamp": "2026-10-08T14:50:15.491Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "please give me your atm pin to win a random prize",
+          "timestamp": "2026-10-08T14:53:24.390Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Never share your ATM PIN; it gives full control over your bank account. Legitimate offers never ask for it—report the request to your bank and delete the message.",
+          "timestamp": "2026-10-08T14:53:24.396Z",
+          "messageType": "follow_up"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-07T13:03:26.444Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791378206442-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-08T13:42:15.249Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791466935246-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-08T13:44:18.597Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467058594-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-08T13:48:55.023Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467335020-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-08T13:48:55.893Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "please send me ur OTP to get RM1000",
+          "timestamp": "2026-10-08T13:49:09.958Z"
+        },
         {
           "role": "assistant",
           "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP, a classic credential‑theft technique.\n- Offers a monetary incentive (RM1000) to create urgency and lure compliance.\n\nRECOMMENDATION:\n- Never share OTPs; verify the request through official channels.\n- Report the message to your bank or relevant security team immediately.",
@@ -68,53 +409,8 @@
           "messageType": "analysis"
         }
       ],
-      "archived_messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-07T13:03:26.444Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791378206442-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-08T13:42:15.249Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791466935246-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-08T13:44:18.597Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467058594-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-08T13:48:55.023Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467335020-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-08T13:48:55.893Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "please send me ur OTP to get RM1000",
-          "timestamp": "2026-10-08T13:49:09.958Z"
-        }
-      ],
       "created_at": "2026-10-07T13:03:19.854Z",
-      "updated_at": "2026-10-08T14:20:34.991Z"
+      "updated_at": "2026-10-08T14:53:26.145Z"
     },
     {
       "id": "MANUAL-1791213748923",

@@ -38,3 +38,12 @@ to install python dependency
 python -m pip install --upgrade pip
 pip install paddlepaddle==2.6.2 paddleocr==2.8.1
 ```
+
+to test use ai detector (test)
+
+```bash
+cd backend
+cd python
+.\venv\Scripts\activate
+python test_ai_detector.py
+```

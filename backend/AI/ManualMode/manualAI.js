@@ -7,7 +7,7 @@ const Groq = require("groq-sdk");
 
 const apiKey = process.env.GROQ_API_KEY;
 const ai = new Groq({ apiKey });
-const aiModel = "openai/gpt-oss-120b"; //llama-3.3-70b-versatile
+const aiModel = "openai/gpt-oss-20b"; //llama-3.3-70b-versatile
 // backup model:
 // qwen/qwen3.8-27b (2nd main model)
 // openai/gpt-oss-20b (fast reply)
