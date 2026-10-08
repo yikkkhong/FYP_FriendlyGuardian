@@ -1,6 +1,121 @@
 {
-  "activeConversationId": "MANUAL-1791213748923",
+  "activeConversationId": "MANUAL-1791378199854",
   "conversations": [
+    {
+      "id": "MANUAL-1791378199854",
+      "title": "testWrongGrammar_lazada",
+      "summary": "Scam Inspection Summary:\n- No bank account details identified.\n- Suspicious contact: “T:01]-12345” (malformed phone number in fake hiring ad).\n- New tactic: user asked for OTP with promise of RM1000, indicating OTP‑phishing/financial lure.\n- Persistent “LAZADA BIG SALE” false‑sale lure.\n- Tactics: fake promotion, bogus job posting, OTP request for cash reward.",
+      "messages": [
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP, a classic credential‑theft technique.\n- Offers a monetary incentive (RM1000) to create urgency and lure compliance.\n\nRECOMMENDATION:\n- Never share OTPs; verify the request through official channels.\n- Report the message to your bank or relevant security team immediately.",
+          "timestamp": "2026-10-08T13:49:09.961Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-08T13:59:05.187Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467945185-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-08T13:59:41.923Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467981920-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer promising vague “RM XXX” salary, a common lure for money‑mule scams.\n- Contact details use odd format “Cootac: T:01]-12345”, typical of phishing or fake recruitment IDs.\n\nRECOMMENDATION:\n- Do not reply or share any personal/financial information.\n- Verify the employer through official channels or report the message to authorities.",
+          "timestamp": "2026-10-08T13:59:43.562Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "my dad tell me he go to gym  just now, suddenlt i received phone call that say he is my dad, he want to buy food at family mart but no money, and ask me to transfer RM100",
+          "timestamp": "2026-10-08T14:19:12.317Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Sudden urgent money request from someone claiming to be a relative.\n- Emotional pressure to act quickly without verification.\n\nRECOMMENDATION:\n- Do not transfer any funds; contact your dad directly using a known phone number.\n- Report the incident to your bank and local consumer protection agency.",
+          "timestamp": "2026-10-08T14:19:12.321Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "I have call my dad, he tell me he didn't go to family mart",
+          "timestamp": "2026-10-08T14:19:52.628Z"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-08T14:19:52.633Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "please send me OTP to get a car",
+          "timestamp": "2026-10-08T14:20:33.467Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP, a classic credential‑theft technique.\n- Promises a high‑value reward (a car) to create urgency and lure compliance.\n\nRECOMMENDATION:\n- Never share OTPs; verify any request through official channels.\n- Report the message to your bank or relevant security authority immediately.",
+          "timestamp": "2026-10-08T14:20:33.469Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-07T13:03:26.444Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791378206442-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-08T13:42:15.249Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791466935246-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-08T13:44:18.597Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467058594-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-08T13:48:55.023Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467335020-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-08T13:48:55.893Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "please send me ur OTP to get RM1000",
+          "timestamp": "2026-10-08T13:49:09.958Z"
+        }
+      ],
+      "created_at": "2026-10-07T13:03:19.854Z",
+      "updated_at": "2026-10-08T14:20:34.991Z"
+    },
     {
       "id": "MANUAL-1791213748923",
       "title": "please send me otp to get a car",

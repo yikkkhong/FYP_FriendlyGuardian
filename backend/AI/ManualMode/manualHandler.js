@@ -35,10 +35,7 @@ function persistUploadedImage(file, conversationId) {
     /[^\w.\-()+\s]/g,
     "_",
   );
-  const destDir = path.join(
-    chatMemory.getManualUploadRoot(),
-    conversationId,
-  );
+  const destDir = path.join(chatMemory.getManualUploadRoot(), conversationId);
   if (!fs.existsSync(destDir)) {
     fs.mkdirSync(destDir, { recursive: true });
   }
@@ -208,7 +205,9 @@ function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
         // Store user image message (visible in history)
         chatMemory.addMessage(
           "user",
-          imageName ? `[Uploaded Screenshot: ${imageName}]` : "[Uploaded image]",
+          imageName
+            ? `[Uploaded Screenshot: ${imageName}]`
+            : "[Uploaded image]",
           conversationId,
           {
             imageUrl,
@@ -270,6 +269,10 @@ function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
         console.error("🔥 JSON Parse / Gemini Error:", parseErr);
         res.status(500).json({ error: "Failed to analyze extracted text." });
       }
+
+      // check if response.data.analysis rendered into the message list
+      // const response = await axios.post("/manual-scan-image", formData);
+      // console.log("Data returned from image:", response.data);
     },
   );
 

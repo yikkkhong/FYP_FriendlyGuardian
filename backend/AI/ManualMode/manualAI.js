@@ -1,7 +1,18 @@
-const { GoogleGenAI } = require("@google/genai");
+// temporary switch to groq as gemini api not available for now, will remain groq if groq fit better
+// const { GoogleGenAI } = require("@google/genai");
+const Groq = require("groq-sdk");
 
-const apiKey = process.env.GEMINI_API_KEY;
-const ai = new GoogleGenAI({ apiKey });
+// const apiKey = process.env.GEMINI_API_KEY;
+// const ai = new GoogleGenAI({ apiKey });
+
+const apiKey = process.env.GROQ_API_KEY;
+const ai = new Groq({ apiKey });
+const aiModel = "openai/gpt-oss-120b"; //llama-3.3-70b-versatile
+// backup model:
+// qwen/qwen3.8-27b (2nd main model)
+// openai/gpt-oss-20b (fast reply)
+// minimaxai/minimax-m2.7 (for benchmark)
+// openai/gpt-oss-safeguard-20b (safety-focused, heavy rate-limited)
 
 const { STM, LTM } = require("../../memory/securityMemory.js");
 const chatMemory = require("../../memory/chatMemory.js");
@@ -68,6 +79,10 @@ function classifyAndCleanReply(rawReply, options = {}) {
       messageType = typeMatch[1].toLowerCase();
     }
     text = text.slice(typeMatch[0].length).trim();
+  }
+
+  if (!text) {
+    text = rawReply;
   }
 
   if (!messageType) {
@@ -188,18 +203,36 @@ Other rules:
 4. Keep analysis bullet points under 15 words each.
 `;
 
-    const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
-      contents: prompt,
-      config: {
-        temperature: 0.2,
-      },
+    // const response = await ai.models.generateContent({
+    //   model: "gemini-3.6-flash",
+    //   contents: prompt,
+    //   config: {
+    //     temperature: 0.2,
+    //   },
+    // });
+
+    // const rawReply = response.text.trim();
+
+    const completion = await ai.chat.completions.create({
+      model: aiModel,
+      messages: [
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+      temperature: 0.2,
     });
 
-    const rawReply = response.text.trim();
+    const rawReply = completion.choices[0]?.message?.content?.trim() || "";
+
+    //console.log("🤖 [DEBUG RAW REPLY]:\n", rawReply);
+
     const { messageType, text: reply } = classifyAndCleanReply(rawReply, {
       forcedType,
     });
+
+    //console.log("🧹 [DEBUG CLEANED REPLY]:\n", reply);
 
     // Persist user message unless caller already stored it (e.g. image upload)
     if (!options.skipUserPersist) {
@@ -264,11 +297,25 @@ Old Messages:
 ${text}
 `;
 
-  const res = await ai.models.generateContent({
-    model: "gemini-3.6-flash",
-    contents: prompt,
+  // const res = await ai.models.generateContent({
+  //   model: "gemini-3.6-flash",
+  //   contents: prompt,
+  // });
+  // return res.text.trim();
+
+  const completion = await ai.chat.completions.create({
+    model: aiModel,
+    messages: [
+      {
+        role: "user",
+        content: prompt,
+      },
+    ],
+    temperature: 0.2,
   });
-  return res.text.trim();
+
+  const rawReply = completion.choices[0]?.message?.content?.trim() || "";
+  return rawReply;
 }
 
 function clearManualHistory(conversationId = null) {
