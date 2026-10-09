@@ -7,7 +7,7 @@ const Groq = require("groq-sdk");
 
 const apiKey = process.env.GROQ_API_KEY;
 const ai = new Groq({ apiKey });
-const aiModel = "openai/gpt-oss-20b"; //llama-3.3-70b-versatile
+const aiModel = "openai/gpt-oss-20b";
 // backup model:
 // qwen/qwen3.8-27b (2nd main model)
 // openai/gpt-oss-20b (fast reply)
@@ -222,9 +222,23 @@ Other rules:
         },
       ],
       temperature: 0.2,
+      max_completion_tokens: 350,
+      reasoning_effort: "low",
     });
 
-    const rawReply = completion.choices[0]?.message?.content?.trim() || "";
+    console.log(
+      "👀 [GROQ RAW MESSAGE]:",
+      JSON.stringify(completion.choices[0]?.message),
+    );
+
+    const msg = completion.choices[0]?.message;
+    const rawReply = (
+      msg?.content ||
+      msg?.reasoning ||
+      msg?.reasoning_content ||
+      ""
+    ).trim();
+    //const rawReply = completion.choices[0]?.message?.content?.trim() || "";
 
     //console.log("🤖 [DEBUG RAW REPLY]:\n", rawReply);
 
@@ -312,9 +326,20 @@ ${text}
       },
     ],
     temperature: 0.2,
+    max_completion_tokens: 350,
+    reasoning_effort: "low",
   });
 
-  const rawReply = completion.choices[0]?.message?.content?.trim() || "";
+  // const rawReply = completion.choices[0]?.message?.content?.trim() || "";
+  // return rawReply;
+  const msg = completion.choices[0]?.message;
+  const rawReply = (
+    msg?.content ||
+    msg?.reasoning ||
+    msg?.reasoning_content ||
+    ""
+  ).trim();
+
   return rawReply;
 }
 

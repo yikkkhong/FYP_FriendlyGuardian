@@ -1,473 +1,321 @@
 {
-  "activeConversationId": "MANUAL-1791472170420",
+  "activeConversationId": "MANUAL-1791554675575",
   "conversations": [
     {
-      "id": "MANUAL-1791472170420",
-      "title": "testWrongGrammar_lazada",
-      "summary": "Scam inspection summary: No bank accounts. Suspicious code “T:01]-12345” may be a phone number or ID. Tactics: vague job offer, missing company details, random code, potential phishing. Recommendation: verify on official site or reputable portal, avoid sharing personal/financial info until legitimacy confirmed.",
+      "id": "MANUAL-1791559693012",
+      "title": "testHandWriting",
+      "summary": "",
       "messages": [
         {
           "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-09T15:28:40.589Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791559693012/1791559720588-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No known scam sender or account pattern.\n- Content appears as a job posting, not a request for money or personal info.\n\nRECOMMENDATION:\n- Verify the employer’s legitimacy via official website or contact details.\n- Do not share sensitive personal or financial information until you confirm the job offer.",
+          "timestamp": "2026-10-09T15:28:41.520Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
           "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-08T15:10:51.972Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791472170420/1791472251970-hiring4.png",
+          "timestamp": "2026-10-09T15:28:47.094Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791559693012/1791559727093-hiring4.png",
           "imageName": "hiring4.png",
           "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unverified domain “webgocompanyy.com” with no company details.\n- Email request for CVs is a common phishing tactic.\n\nRECOMMENDATION:\n- Verify the company via its official website or trusted job portals.\n- Do not send personal or financial information until legitimacy is confirmed.",
-          "timestamp": "2026-10-08T15:10:52.964Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "please give me your otp to get RM100000000",
-          "timestamp": "2026-10-08T15:11:29.043Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited request for OTP to claim a large sum.\n- Uses a huge monetary figure to entice compliance.\n\nRECOMMENDATION:\n- Do not share your OTP or any personal details.\n- Report the message to your bank and block the sender.",
-          "timestamp": "2026-10-08T15:11:29.047Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "so i should never give my otp?",
-          "timestamp": "2026-10-08T15:11:47.134Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Never share your OTP. It’s a one‑time password meant only for your own use. If anyone asks for it, treat the request as a scam and block the sender.",
-          "timestamp": "2026-10-08T15:11:47.138Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "how if my family want to get?",
-          "timestamp": "2026-10-08T15:12:02.497Z"
-        },
-        {
-          "role": "assistant",
-          "text": "If your family is asked to provide OTPs or claim money, treat it the same as any scam: do not share OTPs or personal info. Report the request to your bank and block the sender.",
-          "timestamp": "2026-10-08T15:12:02.501Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "someone tell me give me your atm pin cause you are in danger",
-          "timestamp": "2026-10-08T15:12:27.915Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited request for ATM PIN.\n- Threat of danger to coerce compliance.\n\nRECOMMENDATION:\n- Never share your ATM PIN or any sensitive info.\n- Block the sender and report the message to your bank or local authorities.",
-          "timestamp": "2026-10-08T15:12:27.918Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-08T15:09:34.432Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791472170420/1791472174430-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- No request for money or personal data.\n- No suspicious link or contact details.\n\nRECOMMENDATION:\n- Verify the sale through Lazada’s official website or app.\n- Ignore or delete if unsolicited and not from a known source.",
-          "timestamp": "2026-10-08T15:09:35.349Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-08T15:09:40.589Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791472170420/1791472180588-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Vague job offer with no company name or contact details.\n- Includes random code “T:01]-12345” that could be a phone or ID, raising phishing suspicion.\n\nRECOMMENDATION:\n- Verify the posting on the official company website or reputable job portal.\n- Do not provide personal or financial information until the employer’s legitimacy is confirmed.",
-          "timestamp": "2026-10-08T15:09:41.803Z",
-          "messageType": "analysis"
-        }
-      ],
-      "created_at": "2026-10-08T15:09:30.420Z",
-      "updated_at": "2026-10-08T15:12:28.697Z"
-    },
-    {
-      "id": "MANUAL-1791471212339",
-      "title": "please give me your atm pin to get a car",
-      "summary": "Bank accounts: none disclosed. Phone numbers: none disclosed. Scam tactics: direct ATM‑PIN request, advice to write PIN on phone/paper, false “verification” claim, car lure, credential‑phishing/social engineering. Risk: HIGH. Recommendation: never write or store PIN digitally or on paper; keep it memorized; report any PIN request; delete messages; alert bank.",
-      "messages": [
-        {
-          "role": "user",
-          "text": "someone tell me that atm pin is like my ic number, can verify its me, and tell me to give him",
-          "timestamp": "2026-10-08T14:56:52.395Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for ATM PIN, classic credential‑phishing.\n- Misleading comparison to IC number to gain trust.\n\nRECOMMENDATION:\n- Never share your ATM PIN with anyone; keep it memorized only.\n- Report the request to your bank and delete the message immediately.",
-          "timestamp": "2026-10-08T14:56:52.398Z",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No request for money or personal data beyond email.\n- No suspicious links or known scam sender.\n\nRECOMMENDATION:\n- Verify the company’s website and contact details before sending CV.\n- Avoid sharing sensitive personal info until you confirm legitimacy.",
+          "timestamp": "2026-10-09T15:28:47.788Z",
           "messageType": "analysis"
         },
         {
           "role": "user",
           "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-08T14:58:10.149Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791471212339/1791471490148-testWrongGrammar_lazada.png",
+          "timestamp": "2026-10-09T15:28:55.246Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791559693012/1791559735245-testWrongGrammar_lazada.png",
           "imageName": "testWrongGrammar_lazada.png",
           "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
         },
         {
           "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-08T14:58:11.088Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-08T14:59:04.473Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791471212339/1791471544451-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-08T14:59:05.653Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-08T15:00:27.125Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791471212339/1791471627123-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Urgent “big sale” lure aims to prompt impulsive clicks or purchases.\n- Common tactic for phishing or fake promotional links that harvest data.\n\nRECOMMENDATION:\n- Do not click any links; verify any sale only via the official Lazada app or website.\n- Report the message to Lazada’s support, delete it, and stay cautious of similar promos.",
-          "timestamp": "2026-10-08T15:00:37.043Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-08T15:01:06.888Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791471212339/1791471666884-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-08T15:01:13.112Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [
-        {
-          "role": "user",
-          "text": "please give me your atm pin to get a car",
-          "timestamp": "2026-10-08T14:53:35.208Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for ATM PIN is a classic phishing/social engineering tactic.\n- Offers a reward (car) to lure victims into disclosing sensitive credentials.\n\nRECOMMENDATION:\n- Never share ATM PIN or any banking credentials with anyone.\n- Report the request to your bank and delete the message.",
-          "timestamp": "2026-10-08T14:53:35.213Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "please give me your atm pin to verify your account",
-          "timestamp": "2026-10-08T14:54:00.560Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for ATM PIN is a classic credential‑phishing tactic.\n- Uses a false “verification” pretext to lure the victim into disclosing sensitive data.\n\nRECOMMENDATION:\n- Never share your ATM PIN or any banking credentials with anyone.\n- Report the request to your bank and delete the message immediately.",
-          "timestamp": "2026-10-08T14:54:00.563Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "so do you mean i should never share my atm pin?",
-          "timestamp": "2026-10-08T14:54:27.636Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Yes, you should never share your ATM PIN with anyone, even if they claim it’s for verification. Keep it confidential and report any such requests to your bank immediately.",
-          "timestamp": "2026-10-08T14:54:27.644Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "please give me your atm pin to get a car",
-          "timestamp": "2026-10-08T14:55:38.632Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for ATM PIN is a classic phishing/social engineering tactic.\n- Offers a car as a lure to trick the victim into revealing sensitive credentials.\n\nRECOMMENDATION:\n- Never share your ATM PIN or any banking credentials with anyone.\n- Report the request to your bank and delete the message immediately.",
-          "timestamp": "2026-10-08T14:55:38.645Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "can i write my atm pin in my phone?",
-          "timestamp": "2026-10-08T14:55:57.751Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Never store your ATM PIN on your phone. Keep it memorized only, and never share it with anyone or write it down digitally. If you’re asked to provide it, report the request to your bank immediately.",
-          "timestamp": "2026-10-08T14:55:57.754Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "where can i write?",
-          "timestamp": "2026-10-08T14:56:05.894Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Never write your ATM PIN anywhere, especially not on your phone or paper. Keep it memorized only and treat any request to share it as a scam—report it to your bank immediately.",
-          "timestamp": "2026-10-08T14:56:05.897Z",
-          "messageType": "follow_up"
-        }
-      ],
-      "created_at": "2026-10-08T14:53:32.339Z",
-      "updated_at": "2026-10-08T15:01:17.287Z"
-    },
-    {
-      "id": "MANUAL-1791378199854",
-      "title": "testWrongGrammar_lazada",
-      "summary": "Scam Inspection Summary: No bank account numbers found. Suspicious contacts: malformed phone “T:01]-12345”, tag “Cootac”, fake dad call denying a Family Mart visit. Tactics: fake Lazada sale (Oct 10), unsolicited high‑pay job offer, OTP promises for RM 1000 and a car, urgency pressure, credential‑theft, emotional manipulation via impersonated family, false location claim. High risk.",
-      "messages": [
-        {
-          "role": "user",
-          "text": "ouhh so i should not give a otp?",
-          "timestamp": "2026-10-08T14:45:08.926Z"
-        },
-        {
-          "role": "assistant",
-          "text": "I have noted your message.",
-          "timestamp": "2026-10-08T14:45:08.930Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "why i will not get a car by giving otp?",
-          "timestamp": "2026-10-08T14:45:58.384Z"
-        },
-        {
-          "role": "assistant",
-          "text": "MESSAGE_TYPE: follow_up\n\nNever share an OTP; it’s a one‑time password that lets the requester control your account. Scammers promise big rewards like a car to trick you into giving it, but legitimate companies will never ask for your OTP. Keep it private and report the request.",
-          "timestamp": "2026-10-08T14:45:58.389Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "please give me your atm pin to verify your account",
-          "timestamp": "2026-10-08T14:49:45.627Z"
-        },
-        {
-          "role": "assistant",
-          "text": "I have noted your message.",
-          "timestamp": "2026-10-08T14:49:45.631Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "please give me your atm pin to get a car",
-          "timestamp": "2026-10-08T14:50:15.487Z"
-        },
-        {
-          "role": "assistant",
-          "text": "MESSAGE_TYPE: follow_up\n\nNever share your ATM PIN; it gives full control over your bank account. Legitimate offers never ask for it—report the request to your bank and delete the message.",
-          "timestamp": "2026-10-08T14:50:15.491Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "please give me your atm pin to win a random prize",
-          "timestamp": "2026-10-08T14:53:24.390Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Never share your ATM PIN; it gives full control over your bank account. Legitimate offers never ask for it—report the request to your bank and delete the message.",
-          "timestamp": "2026-10-08T14:53:24.396Z",
-          "messageType": "follow_up"
-        }
-      ],
-      "archived_messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-07T13:03:26.444Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791378206442-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-08T13:42:15.249Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791466935246-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-08T13:44:18.597Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467058594-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-08T13:48:55.023Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467335020-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-08T13:48:55.893Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "please send me ur OTP to get RM1000",
-          "timestamp": "2026-10-08T13:49:09.958Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP, a classic credential‑theft technique.\n- Offers a monetary incentive (RM1000) to create urgency and lure compliance.\n\nRECOMMENDATION:\n- Never share OTPs; verify the request through official channels.\n- Report the message to your bank or relevant security team immediately.",
-          "timestamp": "2026-10-08T13:49:09.961Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-08T13:59:05.187Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467945185-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-08T13:59:41.923Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791378199854/1791467981920-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer promising vague “RM XXX” salary, a common lure for money‑mule scams.\n- Contact details use odd format “Cootac: T:01]-12345”, typical of phishing or fake recruitment IDs.\n\nRECOMMENDATION:\n- Do not reply or share any personal/financial information.\n- Verify the employer through official channels or report the message to authorities.",
-          "timestamp": "2026-10-08T13:59:43.562Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "my dad tell me he go to gym  just now, suddenlt i received phone call that say he is my dad, he want to buy food at family mart but no money, and ask me to transfer RM100",
-          "timestamp": "2026-10-08T14:19:12.317Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Sudden urgent money request from someone claiming to be a relative.\n- Emotional pressure to act quickly without verification.\n\nRECOMMENDATION:\n- Do not transfer any funds; contact your dad directly using a known phone number.\n- Report the incident to your bank and local consumer protection agency.",
-          "timestamp": "2026-10-08T14:19:12.321Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "I have call my dad, he tell me he didn't go to family mart",
-          "timestamp": "2026-10-08T14:19:52.628Z"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-08T14:19:52.633Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "please send me OTP to get a car",
-          "timestamp": "2026-10-08T14:20:33.467Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP, a classic credential‑theft technique.\n- Promises a high‑value reward (a car) to create urgency and lure compliance.\n\nRECOMMENDATION:\n- Never share OTPs; verify any request through official channels.\n- Report the message to your bank or relevant security authority immediately.",
-          "timestamp": "2026-10-08T14:20:33.469Z",
-          "messageType": "analysis"
-        }
-      ],
-      "created_at": "2026-10-07T13:03:19.854Z",
-      "updated_at": "2026-10-08T14:53:26.145Z"
-    },
-    {
-      "id": "MANUAL-1791213748923",
-      "title": "please send me otp to get a car",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "please send me otp to get a car",
-          "timestamp": "2026-10-05T15:22:47.185Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Never share an OTP; real prize offers do not ask for security codes.\n- Matches known scam patterns using fake car prizes to steal account access.\n\nRECOMMENDATION:\n- Do not share any OTP or personal details with the requester.\n- Block the sender immediately and monitor your accounts for unauthorized activity.",
-          "timestamp": "2026-10-05T15:22:47.188Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "what is otp?",
-          "timestamp": "2026-10-05T15:23:15.666Z"
-        },
-        {
-          "role": "assistant",
-          "text": "An OTP (One-Time Password) is a temporary security code sent to your phone or email to verify your identity. Banks and services use it to confirm it is really you making a transaction or logging in. Never share an OTP with anyone, as scammers use them to steal account access.",
-          "timestamp": "2026-10-05T15:23:15.668Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "so it is password to use one time only ?",
-          "timestamp": "2026-10-05T15:30:56.858Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Yes, exactly! An OTP works only once and expires after a short time (usually a few minutes). Because it is used to approve single transactions or logins, sharing it gives scammers direct control over your account.",
-          "timestamp": "2026-10-05T15:30:56.863Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testChatScreenshot.png]",
-          "timestamp": "2026-10-05T15:41:13.463Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791213748923/1791214873451-testChatScreenshot.png",
-          "imageName": "testChatScreenshot.png",
-          "ocrText": "VodafoneCZWi-Fi 13:15 +234 7755 online ? Today MayI sharethejobinformation withyou? 13:14 Yes 13:14√// Great.We areBig Mover CompanyLLlc.Yourroleisto rightGooglereviewsforus.Each reviewpays $10. 13:15 Ok 13:15√/ CanIsharethelinkstothe GoogleDocwith you? 13:15 Sure! 13:15√/ ? 回 0"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer paying easy money for Google reviews is a classic task scam.\n- Sender uses an international number (+234) and suspicious external document links.\n\nRECOMMENDATION:\n- Do not open any links, Google Docs, or download files from this sender.\n- Block and report the sender number (+234 7755) immediately.",
-          "timestamp": "2026-10-05T15:41:19.238Z",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No request for money or personal data.\n- Generic promotional claim, no suspicious links or sender ID.\n\nRECOMMENDATION:\n- Verify the offer on the official Lazada website or app.\n- Avoid clicking unknown links; use official channels to confirm legitimacy.",
+          "timestamp": "2026-10-09T15:28:55.944Z",
           "messageType": "analysis"
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-10-05T15:22:28.923Z",
-      "updated_at": "2026-10-05T15:41:19.238Z"
+      "created_at": "2026-10-09T15:28:13.012Z",
+      "updated_at": "2026-10-09T15:28:55.944Z"
+    },
+    {
+      "id": "MANUAL-1791554675575",
+      "title": "hiring42342424",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None mentioned.  \n- **Suspicious phone numbers:** None provided.  \n- **Scam tactics:** Fake job posting (“WE ARE HIRING”) with a misspelled domain (webgocompanyy.com) and unsolicited email address (hello@webgocompanyy.com). Typical phishing/recruitment scam; no further contact info shared.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-09T14:12:29.856Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791555149836-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Generic promotional claim with no official source or contact details.\n- Uses urgent language (“Only In 10 Oct”) typical of click‑bait scams.\n\nRECOMMENDATION:\n- Verify the offer directly on Lazada’s official website or app.\n- Do not click any links or provide personal information from unsolicited messages.",
+          "timestamp": "2026-10-09T14:12:30.773Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-09T14:12:41.241Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791555161240-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unclear salary format “Rm XXX” and odd contact “Cootac: T:01]-12345”.\n- No company name or legitimate email/website provided.\n\nRECOMMENDATION:\n- Verify the employer via official website or LinkedIn before responding.\n- Do not share personal or financial details; report the message to your IT/security team.",
+          "timestamp": "2026-10-09T14:12:42.078Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "hi i am your friend, can you borrow me RM3? I want to buy a drink",
+          "timestamp": "2026-10-09T14:13:16.533Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No suspicious links or requests for personal data.\n- Simple, informal request for a small amount.\n\nRECOMMENDATION:\n- Verify the identity of the sender if unsure.\n- Only transfer money if you trust the person and have confirmed their identity.",
+          "timestamp": "2026-10-09T14:13:16.536Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: Transaction details (1).png]",
+          "timestamp": "2026-10-09T14:15:33.500Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791555333499-Transaction details (1).png",
+          "imageName": "Transaction details (1).png",
+          "ocrText": "4:01 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 16:00:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No request for money or personal data.\n- Contains standard transaction confirmation details.\n\nRECOMMENDATION:\n- Verify the transaction with your eWallet provider if unsure.\n- Keep the receipt for your records; no further action needed.",
+          "timestamp": "2026-10-09T14:15:34.265Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: VERSION MANAGEMENT INTERFACE.png]",
+          "timestamp": "2026-10-09T15:04:16.474Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791558256473-VERSION MANAGEMENT INTERFACE.png",
+          "imageName": "VERSION MANAGEMENT INTERFACE.png",
+          "ocrText": "TNGeWallet Configuration Management >Production Baselines > Baseline BL-2026-Q3 PROD-ENV System Synced ACTIVECONFIGURATION ActiveProductionBaseline:BL-2026-Q3(Releasev2.1.0) LOCKED & PROTECTED RELEASE DATE GIT COMMIT TAG CCB APPROVAL 2026-09-30 tag/v2.1.0-release Approved byCCB(BoardSign-off) BaselineConfigurationItems(Cl)Inventory 5 Items Active Configuration Item (CI) Repository/Artifact VersionTag Git Commit Hash Quality GateStatus Baseline Lock Status Mobile App Client tng-mobile-client v2.1.0 git#c81df02 PASSED LOCKED Payment Backend Service svc-payment-core v2.1.0 git#b44ea91 PASSED LOCKED ETMVSValidationEngine svc-etmvs-engine v1.0.0 git#e90bb14 ·PASSED LOCKED Ledger Database Schema db-tng-ledger migration-v2.1.sql git#73ac28f PASSED LOCKED APIGateway Config kong-gateway-rules v1.4.2 git#18ff02a ·PASSED LOCKED ? CompareDiff with Previous Baseline (v1.0.o) ExportSBOM(SoftwareBillof Materials) TriggerRollbackRunbook"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Content is internal configuration data, no personal or financial request.\n- No suspicious links, phone numbers, or known scam patterns detected.\n\nRECOMMENDATION:\n- Verify the baseline version and commit hashes against your internal repo.\n- Ensure only authorized personnel have access to this configuration information.",
+          "timestamp": "2026-10-09T15:04:17.369Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T14:04:39.993Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791554679992-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-09T14:04:41.803Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T14:12:14.812Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791555134811-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Generic job posting with unsolicited email address, typical of phishing.\n- Domain \"webgocompanyy.com\" is misspelled, suspicious for spoofing.\n\nRECOMMENDATION:\n- Verify company via official website or LinkedIn before replying.\n- Do not send CV or personal info; report the email to your IT/security team.",
+          "timestamp": "2026-10-09T14:12:15.817Z",
+          "messageType": "analysis"
+        }
+      ],
+      "created_at": "2026-10-09T14:04:35.575Z",
+      "updated_at": "2026-10-09T15:04:18.158Z"
+    },
+    {
+      "id": "MANUAL-1791555086824",
+      "title": "hiring4",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T14:11:31.338Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791555086824/1791555091337-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unverified sender domain (webgocompanyy.com) not in known safe list.\n- Mass hiring email with generic address, common phishing tactic.\n\nRECOMMENDATION:\n- Verify company via official website or LinkedIn before replying.\n- Do not send CV; contact employer through verified channels.",
+          "timestamp": "2026-10-09T14:11:32.553Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-09T14:11:26.824Z",
+      "updated_at": "2026-10-09T14:11:32.553Z"
+    },
+    {
+      "id": "MANUAL-1791554068534",
+      "title": "hiring4",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T13:54:33.006Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791554068534/1791554073005-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-09T13:54:33.534Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-09T13:54:28.534Z",
+      "updated_at": "2026-10-09T13:54:33.534Z"
+    },
+    {
+      "id": "MANUAL-1791553657700",
+      "title": "hiring4",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T13:47:41.914Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791553657700/1791553661912-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-09T13:47:43.610Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-09T13:47:37.700Z",
+      "updated_at": "2026-10-09T13:47:43.610Z"
+    },
+    {
+      "id": "MANUAL-1791553195674",
+      "title": "hiring4",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T13:39:59.987Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791553195674/1791553199985-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-09T13:40:01.283Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-09T13:39:55.674Z",
+      "updated_at": "2026-10-09T13:40:01.283Z"
+    },
+    {
+      "id": "MANUAL-1791553109444",
+      "title": "hiring4",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T13:38:33.266Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791553109444/1791553113265-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-09T13:38:33.985Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-09T13:38:29.444Z",
+      "updated_at": "2026-10-09T13:38:33.985Z"
+    },
+    {
+      "id": "MANUAL-1791552889646",
+      "title": "hiring4",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T13:34:54.384Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791552889646/1791552894382-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-09T13:34:54.866Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-09T13:35:13.669Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791552889646/1791552913668-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "",
+          "timestamp": "2026-10-09T13:35:14.723Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-09T13:34:49.646Z",
+      "updated_at": "2026-10-09T13:35:14.723Z"
     },
     {
       "id": "MANUAL-1791102989782",

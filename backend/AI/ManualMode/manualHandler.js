@@ -217,6 +217,8 @@ function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
         );
 
         if (!extractedText) {
+          console.log("📷 [OCR Result]: No readable text detected in image.");
+
           const noTextMsg =
             "No readable text detected in this image. Try a clearer screenshot.";
           chatMemory.addMessage("assistant", noTextMsg, conversationId, {
@@ -238,6 +240,8 @@ function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
 
         console.log("📷 [OCR Detected Text]:", extractedText);
 
+        // console.log("extractedText length:::", extractedText.length);
+
         const aiAnalysis = await chatWithManualAI(
           extractedText,
           conversationId,
@@ -246,6 +250,9 @@ function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
             skipUserPersist: true,
           },
         );
+
+        // console.log("Analysis Result End:::", aiAnalysis.messageType);
+        // console.log("🔥 [AI Real Reply]:", JSON.stringify(aiAnalysis.message));
 
         res.json({
           extractedText,
