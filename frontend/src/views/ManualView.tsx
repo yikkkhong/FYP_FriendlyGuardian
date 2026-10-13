@@ -207,9 +207,28 @@ export const ManualView: React.FC<ManualViewProps> = ({
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  const handleVoiceResult = (text: string) => {
+  const handleVoiceResult = async (text: string) => {
     isVoiceInputRef.current = true;
     setQueryInput((prev) => (prev ? prev + " " : "") + text);
+
+    try {
+      // 2. Send text to Node.js backend for lightweight AI correction
+      const response = await fetch(`${API_ORIGIN}/api/correct-speech`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rawText: text }),
+      });
+
+      if (!response.ok) return;
+
+      const data = await response.json();
+      if (data.correctedText) {
+        // 3. Silently replace with corrected text
+        setQueryInput(data.correctedText);
+      }
+    } catch (error) {
+      console.warn("Speech correction failed, keeping raw transcript:", error);
+    }
   };
 
   const activeConversation = conversations.find(

@@ -39,6 +39,9 @@ const io = new Server(server, {
   cors: { origin: "*", methods: ["GET", "POST"] },
 });
 
+const speechRouter = require("./routes/speechCorrection");
+app.use("/api", speechRouter); // Endpoint: POST /api/correct-speech
+
 // Ensure the temporary upload directory exists
 const uploadDir = path.join(__dirname, "uploads");
 const manualUploadDir = path.join(uploadDir, "manual");

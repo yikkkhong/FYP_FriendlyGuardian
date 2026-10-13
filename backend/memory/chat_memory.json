@@ -1,393 +1,84 @@
 {
-  "activeConversationId": "MANUAL-1791554675575",
+  "activeConversationId": "MANUAL-1791908453850",
   "conversations": [
     {
-      "id": "MANUAL-1791559693012",
-      "title": "testHandWriting",
+      "id": "MANUAL-1791908453850",
+      "title": "Please send me your OTP",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-09T15:28:40.589Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791559693012/1791559720588-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+          "text": "Please send me your OTP",
+          "timestamp": "2026-10-13T16:21:05.597Z"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- No known scam sender or account pattern.\n- Content appears as a job posting, not a request for money or personal info.\n\nRECOMMENDATION:\n- Verify the employer’s legitimacy via official website or contact details.\n- Do not share sensitive personal or financial information until you confirm the job offer.",
-          "timestamp": "2026-10-09T15:28:41.520Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T15:28:47.094Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791559693012/1791559727093-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- No request for money or personal data beyond email.\n- No suspicious links or known scam sender.\n\nRECOMMENDATION:\n- Verify the company’s website and contact details before sending CV.\n- Avoid sharing sensitive personal info until you confirm legitimacy.",
-          "timestamp": "2026-10-09T15:28:47.788Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-09T15:28:55.246Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791559693012/1791559735245-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- No request for money or personal data.\n- Generic promotional claim, no suspicious links or sender ID.\n\nRECOMMENDATION:\n- Verify the offer on the official Lazada website or app.\n- Avoid clicking unknown links; use official channels to confirm legitimacy.",
-          "timestamp": "2026-10-09T15:28:55.944Z",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP is a classic phishing tactic.\n- No legitimate service would ask for OTP via unsolicited message.\n\nRECOMMENDATION:\n- Do not provide any OTP or personal details.\n- Verify the request by contacting the official service directly through their official app or website.",
+          "timestamp": "2026-10-13T16:21:05.601Z",
           "messageType": "analysis"
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-10-09T15:28:13.012Z",
-      "updated_at": "2026-10-09T15:28:55.944Z"
+      "created_at": "2026-10-13T16:20:53.850Z",
+      "updated_at": "2026-10-13T16:21:05.601Z"
     },
     {
-      "id": "MANUAL-1791554675575",
-      "title": "hiring42342424",
-      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None mentioned.  \n- **Suspicious phone numbers:** None provided.  \n- **Scam tactics:** Fake job posting (“WE ARE HIRING”) with a misspelled domain (webgocompanyy.com) and unsolicited email address (hello@webgocompanyy.com). Typical phishing/recruitment scam; no further contact info shared.",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-10-09T14:12:29.856Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791555149836-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Generic promotional claim with no official source or contact details.\n- Uses urgent language (“Only In 10 Oct”) typical of click‑bait scams.\n\nRECOMMENDATION:\n- Verify the offer directly on Lazada’s official website or app.\n- Do not click any links or provide personal information from unsolicited messages.",
-          "timestamp": "2026-10-09T14:12:30.773Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-09T14:12:41.241Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791555161240-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unclear salary format “Rm XXX” and odd contact “Cootac: T:01]-12345”.\n- No company name or legitimate email/website provided.\n\nRECOMMENDATION:\n- Verify the employer via official website or LinkedIn before responding.\n- Do not share personal or financial details; report the message to your IT/security team.",
-          "timestamp": "2026-10-09T14:12:42.078Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "hi i am your friend, can you borrow me RM3? I want to buy a drink",
-          "timestamp": "2026-10-09T14:13:16.533Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- No suspicious links or requests for personal data.\n- Simple, informal request for a small amount.\n\nRECOMMENDATION:\n- Verify the identity of the sender if unsure.\n- Only transfer money if you trust the person and have confirmed their identity.",
-          "timestamp": "2026-10-09T14:13:16.536Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: Transaction details (1).png]",
-          "timestamp": "2026-10-09T14:15:33.500Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791555333499-Transaction details (1).png",
-          "imageName": "Transaction details (1).png",
-          "ocrText": "4:01 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 16:00:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- No request for money or personal data.\n- Contains standard transaction confirmation details.\n\nRECOMMENDATION:\n- Verify the transaction with your eWallet provider if unsure.\n- Keep the receipt for your records; no further action needed.",
-          "timestamp": "2026-10-09T14:15:34.265Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: VERSION MANAGEMENT INTERFACE.png]",
-          "timestamp": "2026-10-09T15:04:16.474Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791558256473-VERSION MANAGEMENT INTERFACE.png",
-          "imageName": "VERSION MANAGEMENT INTERFACE.png",
-          "ocrText": "TNGeWallet Configuration Management >Production Baselines > Baseline BL-2026-Q3 PROD-ENV System Synced ACTIVECONFIGURATION ActiveProductionBaseline:BL-2026-Q3(Releasev2.1.0) LOCKED & PROTECTED RELEASE DATE GIT COMMIT TAG CCB APPROVAL 2026-09-30 tag/v2.1.0-release Approved byCCB(BoardSign-off) BaselineConfigurationItems(Cl)Inventory 5 Items Active Configuration Item (CI) Repository/Artifact VersionTag Git Commit Hash Quality GateStatus Baseline Lock Status Mobile App Client tng-mobile-client v2.1.0 git#c81df02 PASSED LOCKED Payment Backend Service svc-payment-core v2.1.0 git#b44ea91 PASSED LOCKED ETMVSValidationEngine svc-etmvs-engine v1.0.0 git#e90bb14 ·PASSED LOCKED Ledger Database Schema db-tng-ledger migration-v2.1.sql git#73ac28f PASSED LOCKED APIGateway Config kong-gateway-rules v1.4.2 git#18ff02a ·PASSED LOCKED ? CompareDiff with Previous Baseline (v1.0.o) ExportSBOM(SoftwareBillof Materials) TriggerRollbackRunbook"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- Content is internal configuration data, no personal or financial request.\n- No suspicious links, phone numbers, or known scam patterns detected.\n\nRECOMMENDATION:\n- Verify the baseline version and commit hashes against your internal repo.\n- Ensure only authorized personnel have access to this configuration information.",
-          "timestamp": "2026-10-09T15:04:17.369Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T14:04:39.993Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791554679992-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-09T14:04:41.803Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T14:12:14.812Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791554675575/1791555134811-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Generic job posting with unsolicited email address, typical of phishing.\n- Domain \"webgocompanyy.com\" is misspelled, suspicious for spoofing.\n\nRECOMMENDATION:\n- Verify company via official website or LinkedIn before replying.\n- Do not send CV or personal info; report the email to your IT/security team.",
-          "timestamp": "2026-10-09T14:12:15.817Z",
-          "messageType": "analysis"
-        }
-      ],
-      "created_at": "2026-10-09T14:04:35.575Z",
-      "updated_at": "2026-10-09T15:04:18.158Z"
-    },
-    {
-      "id": "MANUAL-1791555086824",
-      "title": "hiring4",
+      "id": "MANUAL-1791876841273",
+      "title": "exampleInvoice",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T14:11:31.338Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791555086824/1791555091337-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+          "text": "[Uploaded Screenshot: exampleInvoice.jpg]",
+          "timestamp": "2026-10-13T07:37:14.470Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791876841273/1791877034468-exampleInvoice.jpg",
+          "imageName": "exampleInvoice.jpg",
+          "ocrText": "MMetaAds Facebook Payments Inc. INVOICE&CHARGECONFIRMATION Invoice Number: #FB-INV-8492041 Invoice Date: October 14, 2026 Due Date: IMMEDIATELY (24-Hour Automated Charge Pending) Status: PENDINGDEBIT Billing to: Target Employee (test.employee@organization.com) Associated ID: Ad Account ID #ACT-839210481 Campaign Description Total Due Meta Sponsored Campaign - Global Reach Campaign $849.50 Boost #4912 (Oct 01 - Oct 13, 2026) Optional Audience Network Retargeting Add-on $150.00 TOTAL DUE: $999.50 USD !ALERT:UNRECOGNIZED TRANSACTION? This total will be automatically debited from your registered account within 24 hours. If you did not authorize this purchase or need to stop this transaction, please do NOT reply. Contact our Fraud Prevention Helpdesk immediately at +1 (800) 555-0199 or click the dispute link below. CANCEL & DISPUTE TRANSACTION https://dispute-meta-adcenter.internal-test.com Meta Platforms, Inc., 1601 Willow Rd, Menlo Park, CA 94025 This is an automated transaction confirmation. Please do not reply directly."
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unverified sender domain (webgocompanyy.com) not in known safe list.\n- Mass hiring email with generic address, common phishing tactic.\n\nRECOMMENDATION:\n- Verify company via official website or LinkedIn before replying.\n- Do not send CV; contact employer through verified channels.",
-          "timestamp": "2026-10-09T14:11:32.553Z",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unusual invoice with immediate debit and no prior authorization.\n- URL points to internal-test domain, not official Meta domain.\n\nRECOMMENDATION:\n- Do not click the link or call the number; verify with official Meta support.\n- Contact your organization’s finance or IT security team to confirm the invoice.",
+          "timestamp": "2026-10-13T07:37:15.542Z",
           "messageType": "analysis"
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-10-09T14:11:26.824Z",
-      "updated_at": "2026-10-09T14:11:32.553Z"
+      "created_at": "2026-10-13T07:34:01.273Z",
+      "updated_at": "2026-10-13T07:37:15.542Z"
     },
     {
-      "id": "MANUAL-1791554068534",
-      "title": "hiring4",
+      "id": "MANUAL-1790130724064",
+      "title": "SMS Text",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T13:54:33.006Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791554068534/1791554073005-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+          "text": "+44742194 Text Message Today15:46 HSBC:Wehavenoticed unusual activity within your HSBC account. To prevent access being blocked, please visit thttps://hsbc.co.uk- account.help",
+          "timestamp": "2026-09-23T02:33:04.507Z"
         },
         {
           "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-09T13:54:33.534Z",
-          "messageType": "analysis"
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses urgency and panic tactics to trick you into clicking a fake link.\n- Contains a suspicious phishing URL spoofing the official HSBC domain.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal or banking credentials.\n- Block the sender (+44742194) and report the phishing SMS to HSBC directly.",
+          "timestamp": "2026-09-23T02:33:04.513Z"
+        },
+        {
+          "role": "user",
+          "text": "how can i see if the link is suspicious?",
+          "timestamp": "2026-09-23T02:36:01.089Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Look for typos, unusual domain extensions, or extra hyphens in domain names.\n- Phishing links often mimic real brands but use different root domains.\n\nRECOMMENDATION:\n- Compare the domain against the official website address before clicking anything.\n- Use link checking tools like VirusTotal to analyze URLs safely without opening.",
+          "timestamp": "2026-09-23T02:36:01.091Z"
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-10-09T13:54:28.534Z",
-      "updated_at": "2026-10-09T13:54:33.534Z"
-    },
-    {
-      "id": "MANUAL-1791553657700",
-      "title": "hiring4",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T13:47:41.914Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791553657700/1791553661912-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-09T13:47:43.610Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-09T13:47:37.700Z",
-      "updated_at": "2026-10-09T13:47:43.610Z"
-    },
-    {
-      "id": "MANUAL-1791553195674",
-      "title": "hiring4",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T13:39:59.987Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791553195674/1791553199985-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-09T13:40:01.283Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-09T13:39:55.674Z",
-      "updated_at": "2026-10-09T13:40:01.283Z"
-    },
-    {
-      "id": "MANUAL-1791553109444",
-      "title": "hiring4",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T13:38:33.266Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791553109444/1791553113265-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-09T13:38:33.985Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-09T13:38:29.444Z",
-      "updated_at": "2026-10-09T13:38:33.985Z"
-    },
-    {
-      "id": "MANUAL-1791552889646",
-      "title": "hiring4",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T13:34:54.384Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791552889646/1791552894382-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-09T13:34:54.866Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-09T13:35:13.669Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791552889646/1791552913668-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "",
-          "timestamp": "2026-10-09T13:35:14.723Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-09T13:34:49.646Z",
-      "updated_at": "2026-10-09T13:35:14.723Z"
-    },
-    {
-      "id": "MANUAL-1791102989782",
-      "title": "hi how are you",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "hi how are you",
-          "timestamp": "2026-10-04T08:36:39.652Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Hello! I am doing well, thank you for asking. \n\nHow can I assist you today? If you have any suspicious messages, emails, links, or bank account details you would like me to analyze for scam risks, please feel free to share them with me!",
-          "timestamp": "2026-10-04T08:36:39.656Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "so are you pro in dating the scam",
-          "timestamp": "2026-10-04T08:46:36.242Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Yes, I am well-equipped to help you identify romance and dating scams! \n\nDating scams typically involve fake profiles created to build trust and emotional connections quickly. Once trust is established, scammers usually invent emergencies, request financial assistance, or try to lure victims into fake investment schemes (such as cryptocurrency).\n\nIf you are communicating with someone online and notice red flags—or if you have a message, profile detail, or money request you'd like me to evaluate—feel free to share it here and I can analyze the risk for you!",
-          "timestamp": "2026-10-04T08:46:36.248Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "oh so if my rear wife want to message me how to know it's a real person or it's a scammer",
-          "timestamp": "2026-10-04T09:03:33.847Z"
-        },
-        {
-          "role": "assistant",
-          "text": "To verify if a message is truly from your wife, call her directly on her normal phone number or ask a personal question only she would know. Scammers often use new accounts, create sudden financial emergencies, and refuse live video calls.",
-          "timestamp": "2026-10-04T09:03:33.851Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-04T09:54:00.594Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791102989782/1791107640592-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer using vague details and suspicious contact formatting.\n- Matches common text-scam tactics designed to lure victims into fake job schemes.\n\nRECOMMENDATION:\n- Do not reply or contact the phone number provided in the message.\n- Block the sender and report the SMS as spam on your device.",
-          "timestamp": "2026-10-04T09:54:05.949Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "are you sure?",
-          "timestamp": "2026-10-05T15:02:40.878Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Yes, I am confident. Legitimate employers do not send unsolicited job offers via SMS using mangled text (\"Cootac\") and hidden contact formats to offer high salaries. This format is a well-known recruitment scam tactic designed to lure victims into advance-fee fraud or identity theft.",
-          "timestamp": "2026-10-05T15:02:40.881Z",
-          "messageType": "follow_up"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-04T08:36:29.782Z",
-      "updated_at": "2026-10-05T15:02:40.881Z"
+      "created_at": "2026-09-23T02:32:04.064Z",
+      "updated_at": "2026-10-13T07:24:24.263Z"
     },
     {
       "id": "MANUAL-1790612733532",
-      "title": "testWrongGrammar_lazada",
+      "title": "Image Analysis",
       "summary": "Updated Summary: Assessed messages cover safe promos, recruitment scams, and phishing via fake monetary promises.\n\nKey Details:\n- Suspected Bank Accounts: None\n- Suspicious Phone Numbers: None\n- Scam Tactics: Typosquatted domains (webgocompanyy.com), fake HR interviews, upfront payment requests, and soliciting bank account numbers with promises of cash (e.g., 1000 Ringgit).\n\nRecommendation: Never share bank details or pay upfront fees. Verify recruiters and financial offers independently via official company channels.",
       "messages": [
         {
@@ -510,7 +201,75 @@
         }
       ],
       "created_at": "2026-09-28T16:25:33.532Z",
-      "updated_at": "2026-10-04T09:50:08.373Z"
+      "updated_at": "2026-10-13T07:24:03.159Z"
+    },
+    {
+      "id": "MANUAL-1791102989782",
+      "title": "General Question",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "hi how are you",
+          "timestamp": "2026-10-04T08:36:39.652Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Hello! I am doing well, thank you for asking. \n\nHow can I assist you today? If you have any suspicious messages, emails, links, or bank account details you would like me to analyze for scam risks, please feel free to share them with me!",
+          "timestamp": "2026-10-04T08:36:39.656Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "so are you pro in dating the scam",
+          "timestamp": "2026-10-04T08:46:36.242Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, I am well-equipped to help you identify romance and dating scams! \n\nDating scams typically involve fake profiles created to build trust and emotional connections quickly. Once trust is established, scammers usually invent emergencies, request financial assistance, or try to lure victims into fake investment schemes (such as cryptocurrency).\n\nIf you are communicating with someone online and notice red flags—or if you have a message, profile detail, or money request you'd like me to evaluate—feel free to share it here and I can analyze the risk for you!",
+          "timestamp": "2026-10-04T08:46:36.248Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "oh so if my rear wife want to message me how to know it's a real person or it's a scammer",
+          "timestamp": "2026-10-04T09:03:33.847Z"
+        },
+        {
+          "role": "assistant",
+          "text": "To verify if a message is truly from your wife, call her directly on her normal phone number or ask a personal question only she would know. Scammers often use new accounts, create sudden financial emergencies, and refuse live video calls.",
+          "timestamp": "2026-10-04T09:03:33.851Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-04T09:54:00.594Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791102989782/1791107640592-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer using vague details and suspicious contact formatting.\n- Matches common text-scam tactics designed to lure victims into fake job schemes.\n\nRECOMMENDATION:\n- Do not reply or contact the phone number provided in the message.\n- Block the sender and report the SMS as spam on your device.",
+          "timestamp": "2026-10-04T09:54:05.949Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "are you sure?",
+          "timestamp": "2026-10-05T15:02:40.878Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, I am confident. Legitimate employers do not send unsolicited job offers via SMS using mangled text (\"Cootac\") and hidden contact formats to offer high salaries. This format is a well-known recruitment scam tactic designed to lure victims into advance-fee fraud or identity theft.",
+          "timestamp": "2026-10-05T15:02:40.881Z",
+          "messageType": "follow_up"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-04T08:36:29.782Z",
+      "updated_at": "2026-10-13T07:23:51.405Z"
     },
     {
       "id": "MANUAL-1790130648454",
@@ -660,36 +419,6 @@
       "archived_messages": [],
       "created_at": "2026-09-28T15:55:06.864Z",
       "updated_at": "2026-10-03T11:48:08.895Z"
-    },
-    {
-      "id": "MANUAL-1790130724064",
-      "title": "+44742194 Text Message Today15:46 HSBC:Wehavenot…",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "+44742194 Text Message Today15:46 HSBC:Wehavenoticed unusual activity within your HSBC account. To prevent access being blocked, please visit thttps://hsbc.co.uk- account.help",
-          "timestamp": "2026-09-23T02:33:04.507Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses urgency and panic tactics to trick you into clicking a fake link.\n- Contains a suspicious phishing URL spoofing the official HSBC domain.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal or banking credentials.\n- Block the sender (+44742194) and report the phishing SMS to HSBC directly.",
-          "timestamp": "2026-09-23T02:33:04.513Z"
-        },
-        {
-          "role": "user",
-          "text": "how can i see if the link is suspicious?",
-          "timestamp": "2026-09-23T02:36:01.089Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Look for typos, unusual domain extensions, or extra hyphens in domain names.\n- Phishing links often mimic real brands but use different root domains.\n\nRECOMMENDATION:\n- Compare the domain against the official website address before clicking anything.\n- Use link checking tools like VirusTotal to analyze URLs safely without opening.",
-          "timestamp": "2026-09-23T02:36:01.091Z"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-09-23T02:32:04.064Z",
-      "updated_at": "2026-09-23T02:36:01.091Z"
     }
   ]
 }
