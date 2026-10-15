@@ -1,6 +1,100 @@
 {
-  "activeConversationId": "MANUAL-1792078923893",
+  "activeConversationId": "MANUAL-1792083855629",
   "conversations": [
+    {
+      "id": "MANUAL-1792083855629",
+      "title": "Is this bank account number safe?",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Is this bank account number safe?",
+          "timestamp": "2026-10-15T17:04:22.242Z"
+        },
+        {
+          "role": "assistant",
+          "text": "I need the actual bank account number you’re referring to. Please paste it here, and I’ll check it against our database and give you a quick safety assessment.",
+          "timestamp": "2026-10-15T17:04:22.246Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: Transaction details (1).png]",
+          "timestamp": "2026-10-15T17:04:38.209Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792083855629/1792083878207-Transaction details (1).png",
+          "imageName": "Transaction details (1).png",
+          "ocrText": "4:01 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 16:00:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Transaction details match legitimate merchant (FamilyMartMidValley) and typical eWallet payment format.\n- No suspicious sender ID or request for money transfer; appears to be a standard receipt.\n\nRECOMMENDATION:\n- Verify the transaction ID with your eWallet app or bank statement.\n- Keep the receipt for future reference; no action needed unless discrepancy arises.",
+          "timestamp": "2026-10-15T17:04:39.615Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-15T17:04:15.629Z",
+      "updated_at": "2026-10-15T17:04:39.615Z"
+    },
+    {
+      "id": "MANUAL-1792081720725",
+      "title": "initial_state",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: initial_state.png]",
+          "timestamp": "2026-10-15T16:53:07.852Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792081720725/1792083187849-initial_state.png",
+          "imageName": "initial_state.png",
+          "ocrText": "Friendly Guardian 丨· ONLINE +十 New check New check Paste a message, link, or account number - or upload a screenshot. Your guardian willtell you if it New check looks safe, suspicious, or dangerous. examplelnvoice SMS Text Image Analysis Ready when you are General Question Paste a suspicious SMS, email, or bank account - or Previous checks upload a screenshot. Each check stays in its own conversation. tng Transaction details lazada scam ↓ Paste a message, ask a follow-up, or describe what you received.. Send"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- No suspicious content or known scam patterns present.\n- Text is generic instruction, not a personal message or request.\n\nRECOMMENDATION:\n- No action needed; keep monitoring for any actual suspicious messages.\n- If you receive a specific message, paste it here for analysis.",
+          "timestamp": "2026-10-15T16:53:09.179Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Please send me your OTP",
+          "timestamp": "2026-10-15T17:04:01.222Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP, a common phishing tactic.\n- No verification context or legitimate channel provided.\n\nRECOMMENDATION:\n- Do not provide OTP; verify source via official app or website.\n- Report the message to your bank or service provider.",
+          "timestamp": "2026-10-15T17:04:01.225Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-15T16:28:40.725Z",
+      "updated_at": "2026-10-15T17:04:01.225Z"
+    },
+    {
+      "id": "MANUAL-1792081641806",
+      "title": "image_analysis",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: image_analysis.png]",
+          "timestamp": "2026-10-15T16:28:29.657Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792081641806/1792081709655-image_analysis.png",
+          "imageName": "image_analysis.png",
+          "ocrText": "Friendly Guardian 丨·ONLINE examplelnvoice + Newcheck You 3:37:14 pm examplelnvoice SMS Text Image Analysis General Question Previous checks tng Transaction details lazada scam Guardian 3:37:15 pm This looks like a scam - do not proceed. Dangerous Stop and protect your accounts before doing anything else. WHY · Unusual invoice with immediate debit and no prior authorization. · URL points to internal-test domain, not offcial Meta domain. WHAT TO DO NEXT · Do not click the link or call the number; verify with offcial Meta support. Contact your organization's finance orlT security team to confrm the invoice. 8 Paste a message, ask a follow-up, or describe what you received.. Send"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unusual invoice with immediate debit and no prior authorization.\n- URL points to internal-test domain, not official Meta domain.\n\nRECOMMENDATION:\n- Do not click the link or call the number; verify with official Meta support.\n- Contact your organization's finance or IT security team to confirm the invoice.",
+          "timestamp": "2026-10-15T16:28:30.906Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-15T16:27:21.806Z",
+      "updated_at": "2026-10-15T16:28:30.906Z"
+    },
     {
       "id": "MANUAL-1792078923893",
       "title": "Is this phone number from a scammer? 0123456789",
@@ -16,11 +110,22 @@
           "text": "RISK LEVEL: LOW\n\nWHY:\n- Phone number not in known scam database.\n- No suspicious pattern or prior reports linked to this number.\n\nRECOMMENDATION:\n- Verify identity through official channels before sharing personal info.\n- Avoid sending money or sensitive data to unknown contacts.",
           "timestamp": "2026-10-15T15:43:03.407Z",
           "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Please send me a scam OTP",
+          "timestamp": "2026-10-15T16:27:17.224Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- User requests a fraudulent OTP, facilitating scam activity.\n- Encourages creation of deceptive authentication codes.\n\nRECOMMENDATION:\n- Do not comply; refuse to provide or create scam OTPs.\n- Report the request to relevant authorities or platform security.",
+          "timestamp": "2026-10-15T16:27:17.228Z",
+          "messageType": "analysis"
         }
       ],
       "archived_messages": [],
       "created_at": "2026-10-15T15:42:03.893Z",
-      "updated_at": "2026-10-15T15:43:03.407Z"
+      "updated_at": "2026-10-15T16:27:17.228Z"
     },
     {
       "id": "MANUAL-1792070152585",

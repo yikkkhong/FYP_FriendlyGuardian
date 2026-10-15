@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useImperativeHandle, forwardRef } from "react";
 
 // Web Speech API is not included in the default TypeScript types, so need to declare ourself
 interface ISpeechRecognitionResultItem {
@@ -25,6 +25,7 @@ interface ISpeechRecognition extends EventTarget {
   onerror: ((event: { error: string }) => void) | null;
   start: () => void;
   stop: () => void;
+  abort?: () => void;
 }
 type SpeechRecognitionConstructor = new () => ISpeechRecognition;
 
@@ -33,240 +34,209 @@ const SpeechRecognitionCtor: SpeechRecognitionConstructor | null =
   (window as any).webkitSpeechRecognition ||
   null;
 
-// ---------- for external interface ----------
-interface VoiceInputButtonProps {
+// External interface
+export interface VoiceInputHandle {
+  stop: () => void;
+  cancel: () => void;
+  start: () => void;
+  isListening: boolean;
+}
+
+export interface VoiceInputButtonProps {
   onResult: (text: string) => void;
-  onInterim?: (text: string) => void; //  optional：Temporary text displayed while speaking
-  lang?: string; // "zh-CN" | "en-US" | "ms-MY"
+  onInterim?: (text: string) => void;
+  lang?: string;
   disabled?: boolean;
+  onPanelStateChange?: (isActive: boolean) => void;
+  onError?: (error: string | null) => void;
 }
 
 function MicIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24">
-      <path
-        fill="currentColor"
-        d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 
-      1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 
-      3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"
-      />
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="22"
+      height="22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+      <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+      <line x1="12" y1="19" x2="12" y2="23" />
+      <line x1="8" y1="23" x2="16" y2="23" />
     </svg>
   );
 }
 
 function StopIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24">
-      <path
-        fill="currentColor"
-        d="M6 6h12v12H6z"
-      />
+    <svg viewBox="0 0 24 24" aria-hidden="true" width="16" height="16">
+      <rect x="5" y="5" width="14" height="14" rx="2.5" fill="white" />
     </svg>
   );
 }
 
-export default function VoiceInputButton({
-  onResult,
-  onInterim,
-  lang = "en-US",
-  disabled = false,
-}: VoiceInputButtonProps) {
-  const [listening, setListening] = useState(false);
-  const [interimText, setInterimText] = useState("");
-  const [error, setError] = useState<string | null>(null);
-  const [startTime, setStartTime] = useState<number | null>(null);
-  const [elapsed, setElapsed] = useState(0);
-  const recognitionRef = useRef<ISpeechRecognition | null>(null);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+export const VoiceInputButton = forwardRef<VoiceInputHandle, VoiceInputButtonProps>(
+  (
+    {
+      onResult,
+      onInterim,
+      lang = "en-US",
+      disabled = false,
+      onPanelStateChange,
+      onError,
+    },
+    ref
+  ) => {
+    const [listening, setListening] = useState(false);
+    const recognitionRef = useRef<ISpeechRecognition | null>(null);
 
-  // Timer for elapsed time
-  useEffect(() => {
-    if (listening && startTime) {
-      timerRef.current = setInterval(() => {
-        setElapsed(Math.floor((Date.now() - startTime) / 1000));
-      }, 1000);
-    } else {
-      if (timerRef.current) {
-        clearInterval(timerRef.current);
-        timerRef.current = null;
+    const stopListening = () => {
+      try {
+        recognitionRef.current?.stop();
+      } catch (e) {
+        console.warn("Speech stop warning:", e);
       }
-    }
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current);
-    };
-  }, [listening, startTime]);
-
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
-
-  const toggle = () => {
-    if (!SpeechRecognitionCtor) {
-      setError("Voice input not supported. Please use Chrome or Edge.");
-      return;
-    }
-    if (listening) {
-      recognitionRef.current?.stop();
-      return;
-    }
-
-    // Clear previous error
-    setError(null);
-    setInterimText("");
-    setElapsed(0);
-    setStartTime(Date.now());
-
-    // Haptic feedback if supported
-    if ("vibrate" in navigator) {
-      navigator.vibrate(50);
-    }
-
-    const rec = new SpeechRecognitionCtor();
-    recognitionRef.current = rec;
-    rec.lang = lang;
-    rec.continuous = false; // It plays in segments, pausing between them, and stops automatically when finished.
-    rec.interimResults = true; // Intermediate results are also returned (for live preview)
-
-    rec.onresult = (event) => {
-      let interim = "";
-      let finalText = "";
-      for (let i = event.resultIndex; i < event.results.length; i++) {
-        const r = event.results[i];
-        if (r.isFinal) finalText += r[0].transcript;
-        else interim += r[0].transcript;
-      }
-      if (interim) {
-        setInterimText(interim);
-        onInterim?.(interim);
-      }
-      if (finalText) onResult(finalText.trim());
     };
 
-    rec.onend = () => {
+    const cancelListening = () => {
+      try {
+        if (recognitionRef.current?.abort) {
+          recognitionRef.current.abort();
+        } else {
+          recognitionRef.current?.stop();
+        }
+      } catch (e) {
+        console.warn("Speech abort warning:", e);
+      }
       setListening(false);
-      setInterimText("");
-      setStartTime(null);
       onInterim?.("");
-      // Haptic feedback on stop
+      onPanelStateChange?.(false);
+    };
+
+    useImperativeHandle(ref, () => ({
+      stop: stopListening,
+      cancel: cancelListening,
+      start: () => {
+        if (!listening) toggle();
+      },
+      isListening: listening,
+    }));
+
+    const toggle = () => {
+      if (!SpeechRecognitionCtor) {
+        const msg = "Voice input is not supported in this browser. Please use Chrome or Edge.";
+        onError?.(msg);
+        return;
+      }
+      if (listening) {
+        stopListening();
+        return;
+      }
+
+      onError?.(null);
+      onInterim?.("");
+
       if ("vibrate" in navigator) {
-        navigator.vibrate(30);
+        navigator.vibrate(50);
+      }
+
+      const rec = new SpeechRecognitionCtor();
+      recognitionRef.current = rec;
+      rec.lang = lang;
+      rec.continuous = true;
+      rec.interimResults = true;
+
+      rec.onresult = (event) => {
+        let interim = "";
+        let finalText = "";
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const r = event.results[i];
+          if (r.isFinal) finalText += r[0].transcript;
+          else interim += r[0].transcript;
+        }
+        if (interim) {
+          onInterim?.(interim);
+        }
+        if (finalText) {
+          onResult(finalText.trim());
+        }
+      };
+
+      rec.onend = () => {
+        setListening(false);
+        onInterim?.("");
+        onPanelStateChange?.(false);
+        if ("vibrate" in navigator) {
+          navigator.vibrate(30);
+        }
+      };
+
+      rec.onerror = (e) => {
+        console.error("Speech recognition error:", e.error);
+        setListening(false);
+        onInterim?.("");
+        onPanelStateChange?.(false);
+
+        let errMsg = "I couldn't hear you. Please try again or type your message.";
+        if (e.error === "not-allowed") {
+          errMsg = "Microphone access denied. Please allow microphone permission in your browser.";
+        } else if (e.error === "no-speech") {
+          errMsg = "I couldn't hear you. Please try again or type your message.";
+        }
+        onError?.(errMsg);
+      };
+
+      try {
+        rec.start();
+        setListening(true);
+        onPanelStateChange?.(true);
+      } catch (err) {
+        console.error("Speech recognition failed to start:", err);
+        setListening(false);
+        onPanelStateChange?.(false);
+        onError?.("Unable to start microphone. Please try again.");
       }
     };
 
-    rec.onerror = (e) => {
-      console.error("Speech recognition error:", e.error);
-      setListening(false);
-      setStartTime(null);
-      switch (e.error) {
-        case "not-allowed":
-          setError("Microphone access denied. Please allow microphone permission.");
-          break;
-        case "no-speech":
-          setError("No speech detected. Please try again.");
-          break;
-        case "network":
-          setError("Network error. Please check your connection.");
-          break;
-        default:
-          setError("I couldn't hear you. Please try again, or type your message.");
-      }
-    };
+    // Stop recording on unmount
+    useEffect(() => {
+      return () => {
+        try {
+          recognitionRef.current?.stop();
+        } catch (_) {}
+      };
+    }, []);
 
-    rec.start();
-    setListening(true);
-  };
+    if (!SpeechRecognitionCtor) return null;
 
-  // Stop recording when the component is removed
-  useEffect(() => {
-    return () => recognitionRef.current?.stop();
-  }, []);
+    return (
+      <div className="voice-btn-container">
+        {listening && (
+          <>
+            <span className="mic-pulse-ring" aria-hidden="true" />
+            <span className="mic-pulse-wave" aria-hidden="true" />
+          </>
+        )}
+        <button
+          type="button"
+          onClick={toggle}
+          title={listening ? "Tap to finish speaking" : "Tap to speak"}
+          disabled={disabled}
+          className={`query-upload-btn query-voice-btn ${listening ? "is-listening" : ""}`}
+          aria-label={listening ? "Stop listening" : "Start voice input"}
+        >
+          {listening ? <StopIcon /> : <MicIcon />}
+        </button>
+      </div>
+    );
+  }
+);
 
-  if (!SpeechRecognitionCtor) return null; // button no display in unsupported browsers
+VoiceInputButton.displayName = "VoiceInputButton";
 
-  return (
-    <>
-      <button
-        type="button"
-        onClick={toggle}
-        title={listening ? "Tap to stop" : "Tap to speak"}
-        disabled={disabled}
-        className={`query-upload-btn query-voice-btn ${listening ? "is-listening" : ""}`}
-        aria-label={listening ? "Stop listening" : "Start voice input"}
-        style={{
-          width: "56px",
-          height: "56px",
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        {listening ? <StopIcon /> : <MicIcon />}
-      </button>
-
-      {/* Voice overlay when listening */}
-      {listening && (
-        <div className="voice-overlay" role="dialog" aria-modal="true" aria-label="Voice input active">
-          <div className="voice-overlay-content">
-            <div className="voice-status">
-              <div className="voice-pulse-ring"></div>
-              <div className="voice-pulse-ring voice-pulse-ring-2"></div>
-              <div className="voice-pulse-ring voice-pulse-ring-3"></div>
-              <div className="voice-icon">
-                <MicIcon />
-              </div>
-            </div>
-            <h2 className="voice-title">Listening...</h2>
-            <p className="voice-subtitle">Speak now, or tap to stop</p>
-            {interimText && (
-              <p className="voice-transcript" aria-live="polite">
-                "{interimText}"
-              </p>
-            )}
-            <p className="voice-timer">{formatTime(elapsed)}</p>
-            <div className="voice-actions">
-              <button
-                type="button"
-                className="voice-action-btn voice-action-cancel"
-                onClick={toggle}
-                aria-label="Cancel voice input"
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                className="voice-action-btn voice-action-done"
-                onClick={() => {
-                  if (interimText) {
-                    onResult(interimText.trim());
-                  }
-                  toggle();
-                }}
-                disabled={!interimText}
-                aria-label="Send voice input"
-              >
-                Send
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Error message */}
-      {error && (
-        <div className="voice-error-toast" role="alert" aria-live="assertive">
-          <p>{error}</p>
-          <button
-            type="button"
-            onClick={() => setError(null)}
-            aria-label="Dismiss error"
-          >
-            ×
-          </button>
-        </div>
-      )}
-    </>
-  );
-}
+export default VoiceInputButton;

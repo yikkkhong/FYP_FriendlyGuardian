@@ -353,12 +353,23 @@ const App: React.FC = () => {
 
   return (
     <div className="canvas-root" data-mode={"SME"}>
+      {/* [HIDDEN_FOR_PUBLIC_VERSION] Aurora gradient blobs and film-grain overlay commented out for flat original look
+      <div className="aurora-bg" aria-hidden="true">
+        <div className="aurora-orb aurora-orb-1" />
+        <div className="aurora-orb aurora-orb-2" />
+        <div className="aurora-orb aurora-orb-3" />
+      </div>
+      <div className="film-grain" aria-hidden="true" />
+      */}
+
       {/* top nav bar */}
       <Header
         isConnected={isConnected}
         notifications={notifications}
         onMarkAsRead={handleMarkAsRead}
         onClearAll={handleClearAllNotifications}
+        onNewConversation={handleNewManualConversation}
+        isLoading={isManualLoading}
       />
       {/*     <header className="control-bar-wrapper">
         <div className="control-bar">

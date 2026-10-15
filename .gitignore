@@ -34,3 +34,4 @@ env/
 .cursor/
 .windsurf/
 .claude/
+.agent/

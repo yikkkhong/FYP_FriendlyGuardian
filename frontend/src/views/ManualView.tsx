@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import ThreatReportCard, { parseReport } from "../components/ThreatReportCard";
-import VoiceInputButton from "../components/VoiceInputButton";
+import VoiceInputButton, { VoiceInputHandle } from "../components/VoiceInputButton";
 import useTextToSpeech from "../hooks/useTextToSpeech";
 import FormattedMessage, { AiResponseCard } from "../components/AiResponseCard";
 
@@ -54,11 +54,113 @@ function resolveImageUrl(url?: string) {
 
 function CameraIcon() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
-      <path
-        fill="currentColor"
-        d="M9 3l1.2 2H15l1.2-2H20a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5zm3 5a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"
-      />
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="22"
+      height="22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+      <circle cx="12" cy="13" r="4" />
+    </svg>
+  );
+}
+
+function BankIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M14 10v11M12 2L2 7h20L12 2z" />
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+      <line x1="12" y1="18" x2="12.01" y2="18" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <polyline points="22,6 12,13 2,6" />
+    </svg>
+  );
+}
+
+function TrendingIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="18"
+      height="18"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+      <polyline points="17 6 23 6 23 12" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      width="20"
+      height="20"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="18" y1="6" x2="6" y2="18" />
+      <line x1="6" y1="6" x2="18" y2="18" />
     </svg>
   );
 }
@@ -130,11 +232,21 @@ export const ManualView: React.FC<ManualViewProps> = ({
   const [renameValue, setRenameValue] = useState("");
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const [showScrollToBottom, setShowScrollToBottom] = useState(false);
+  const [voicePanelActive, setVoicePanelActive] = useState(false);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
+  const [voiceTranscript, setVoiceTranscript] = useState("");
+  const [voiceTranscriptFinal, setVoiceTranscriptFinal] = useState("");
+  const [voiceTranscriptInterim, setVoiceTranscriptInterim] = useState("");
+  const [voiceStartTime, setVoiceStartTime] = useState<number | null>(null);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const voiceInputRef = useRef<VoiceInputHandle>(null);
+  const textBeforeVoiceRef = useRef("");
   const chatEndRef = useRef<HTMLDivElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const renameInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const streamViewportRef = useRef<HTMLDivElement>(null);
+  const voiceTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // use text to speech hook
   const { speak, stop } = useTextToSpeech();
@@ -197,6 +309,29 @@ export const ManualView: React.FC<ManualViewProps> = ({
     }
   }, [queryInput]);
 
+  // Voice timer
+  useEffect(() => {
+    if (voicePanelActive && voiceStartTime) {
+      voiceTimerRef.current = setInterval(() => {
+        setElapsedTime(Math.floor((Date.now() - voiceStartTime) / 1000));
+      }, 1000);
+    } else {
+      if (voiceTimerRef.current) {
+        clearInterval(voiceTimerRef.current);
+        voiceTimerRef.current = null;
+      }
+    }
+    return () => {
+      if (voiceTimerRef.current) clearInterval(voiceTimerRef.current);
+    };
+  }, [voicePanelActive, voiceStartTime]);
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, "0")}`;
+  };
+
   // Scroll to bottom detection
   useEffect(() => {
     const viewport = streamViewportRef.current;
@@ -214,6 +349,63 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
   const scrollToBottom = () => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleVoicePanelStateChange = (isActive: boolean) => {
+    setVoicePanelActive(isActive);
+    if (isActive) {
+      textBeforeVoiceRef.current = queryInput;
+      setVoiceStartTime(Date.now());
+      setElapsedTime(0);
+      setVoiceError(null);
+    } else {
+      setVoiceStartTime(null);
+    }
+  };
+
+  const handleVoiceInterim = (text: string) => {
+    if (!text.trim()) return;
+    const prefix = textBeforeVoiceRef.current ? `${textBeforeVoiceRef.current} ` : "";
+    setQueryInput(prefix + text);
+  };
+
+  const handleVoiceResult = async (text: string) => {
+    isVoiceInputRef.current = true;
+    const prefix = textBeforeVoiceRef.current ? `${textBeforeVoiceRef.current} ` : "";
+    const fullText = prefix + text;
+    setQueryInput(fullText);
+
+    try {
+      const response = await fetch(`${API_ORIGIN}/api/correct-speech`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rawText: text }),
+      });
+
+      if (!response.ok) return;
+
+      const data = await response.json();
+      if (data.correctedText) {
+        setQueryInput(prefix + data.correctedText);
+      }
+    } catch (error) {
+      console.warn("Speech correction failed, keeping raw transcript:", error);
+    }
+  };
+
+  const handleCancelVoice = () => {
+    voiceInputRef.current?.cancel();
+    setVoicePanelActive(false);
+    setVoiceError(null);
+    setQueryInput(textBeforeVoiceRef.current);
+    textBeforeVoiceRef.current = "";
+  };
+
+  const handleFinishVoice = () => {
+    voiceInputRef.current?.stop();
+    setVoicePanelActive(false);
+    setVoiceError(null);
+    textBeforeVoiceRef.current = "";
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -236,30 +428,6 @@ export const ManualView: React.FC<ManualViewProps> = ({
     if (!file || isLoading) return;
     onUploadImage(file);
     if (fileInputRef.current) fileInputRef.current.value = "";
-  };
-
-  const handleVoiceResult = async (text: string) => {
-    isVoiceInputRef.current = true;
-    setQueryInput((prev) => (prev ? prev + " " : "") + text);
-
-    try {
-      // 2. Send text to Node.js backend for lightweight AI correction
-      const response = await fetch(`${API_ORIGIN}/api/correct-speech`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ rawText: text }),
-      });
-
-      if (!response.ok) return;
-
-      const data = await response.json();
-      if (data.correctedText) {
-        // 3. Silently replace with corrected text
-        setQueryInput(data.correctedText);
-      }
-    } catch (error) {
-      console.warn("Speech correction failed, keeping raw transcript:", error);
-    }
   };
 
   const activeConversation = conversations.find(
@@ -445,93 +613,86 @@ export const ManualView: React.FC<ManualViewProps> = ({
             <MenuIcon />
           </button> */}
 
-          {/* New chat button added for public version */}
-          <button
+          {/* [HIDDEN_FOR_PUBLIC_VERSION] Stand-alone + button moved to global Header component */}
+          {/* <button
             type="button"
             className="manual-new-chat-mini"
-            onClick={() => {
-              onNewConversation();
-            }}
+            onClick={() => { onNewConversation(); }}
             disabled={isLoading}
             aria-label="Start new conversation"
             title="New conversation"
           >
             <PlusIcon />
-          </button>
+          </button> */}
 
-          <div className="manual-title-row">
-            {renamingId === activeConversationId ? (
-              <input
-                ref={renameInputRef}
-                className="manual-title-rename"
-                value={renameValue}
-                onChange={(e) => setRenameValue(e.target.value)}
-                onBlur={commitRename}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    commitRename();
-                  }
-                  if (e.key === "Escape") setRenamingId(null);
-                }}
-                aria-label="Rename conversation"
-              />
-            ) : (
-              <h1>{activeTitle}</h1>
-            )}
-
-            {activeConversationId && (
-              <div className="manual-title-actions">
-                <button
-                  type="button"
-                  className="manual-icon-btn"
-                  aria-label="Conversation options"
-                  disabled={isLoading}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setMenuOpenId((prev) =>
-                      prev === `title-${activeConversationId}`
-                        ? null
-                        : `title-${activeConversationId}`,
-                    );
+          {/* [HIDDEN_FOR_PUBLIC_VERSION] Title+subtitle hidden when empty — hero already conveys the same */}
+          {hasMessages && (
+            <div className="manual-title-row">
+              {renamingId === activeConversationId ? (
+                <input
+                  ref={renameInputRef}
+                  className="manual-title-rename"
+                  value={renameValue}
+                  onChange={(e) => setRenameValue(e.target.value)}
+                  onBlur={commitRename}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      commitRename();
+                    }
+                    if (e.key === "Escape") setRenamingId(null);
                   }}
-                >
-                  <MoreIcon />
-                </button>
-                {menuOpenId === `title-${activeConversationId}` &&
-                  activeConversation && (
-                    <div
-                      className="manual-overflow-menu align-right"
-                      role="menu"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      <button
-                        type="button"
-                        role="menuitem"
-                        onClick={() => beginRename(activeConversation)}
-                      >
-                        Rename
-                      </button>
-                      <button
-                        type="button"
-                        role="menuitem"
-                        className="danger"
-                        onClick={() => requestDelete(activeConversation)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  )}
-              </div>
-            )}
-          </div>
+                  aria-label="Rename conversation"
+                />
+              ) : (
+                <h1>{activeTitle}</h1>
+              )}
 
-          {!hasMessages && (
-            <p className="manual-subcopy">
-              Paste a message, link, or account number — or upload a screenshot.
-              Your guardian will tell you if it looks safe, suspicious, or
-              dangerous.
-            </p>
+              {activeConversationId && (
+                <div className="manual-title-actions">
+                  <button
+                    type="button"
+                    className="manual-icon-btn"
+                    aria-label="Conversation options"
+                    disabled={isLoading}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setMenuOpenId((prev) =>
+                        prev === `title-${activeConversationId}`
+                          ? null
+                          : `title-${activeConversationId}`,
+                      );
+                    }}
+                  >
+                    <MoreIcon />
+                  </button>
+                  {menuOpenId === `title-${activeConversationId}` &&
+                    activeConversation && (
+                      <div
+                        className="manual-overflow-menu align-right"
+                        role="menu"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <button
+                          type="button"
+                          role="menuitem"
+                          onClick={() => beginRename(activeConversation)}
+                        >
+                          Rename
+                        </button>
+                        <button
+                          type="button"
+                          role="menuitem"
+                          className="danger"
+                          onClick={() => requestDelete(activeConversation)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                </div>
+              )}
+            </div>
           )}
         </header>
 
@@ -545,11 +706,13 @@ export const ManualView: React.FC<ManualViewProps> = ({
         >
           {messages.length === 0 && !isLoading && (
             <div className="manual-empty-state">
-              <GuardianMark />
-              <h2>Ready when you are</h2>
+              <div className="guardian-orb" aria-hidden="true">
+                <GuardianMark />
+              </div>
+              <h2>Is this a scam?</h2>
               <p>
-                Paste a suspicious SMS, email, or bank account — or upload a
-                screenshot. Each check stays in its own conversation.
+                Paste a suspicious SMS, email, link, or bank account —
+                your Guardian checks it instantly.
               </p>
               <div className="manual-suggestion-chips">
                 <button
@@ -558,7 +721,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
                   onClick={() => setQueryInput("Is this bank account number safe?")}
                   disabled={isLoading}
                 >
-                  Check bank account
+                  <BankIcon /> Check bank account
                 </button>
                 <button
                   type="button"
@@ -566,7 +729,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
                   onClick={() => setQueryInput("Is this phone number from a scammer?")}
                   disabled={isLoading}
                 >
-                  Check phone number
+                  <PhoneIcon /> Check phone number
                 </button>
                 <button
                   type="button"
@@ -574,7 +737,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
                   onClick={() => setQueryInput("Analyze this message: I won a prize, send bank details")}
                   disabled={isLoading}
                 >
-                  Analyze prize message
+                  <MailIcon /> Analyze message
                 </button>
                 <button
                   type="button"
@@ -582,9 +745,10 @@ export const ManualView: React.FC<ManualViewProps> = ({
                   onClick={() => setQueryInput("Is this investment opportunity real?")}
                   disabled={isLoading}
                 >
-                  Check investment
+                  <TrendingIcon /> Check investment
                 </button>
               </div>
+              <p className="hero-no-signup">No sign-up needed · Free to use</p>
             </div>
           )}
 
@@ -679,76 +843,170 @@ export const ManualView: React.FC<ManualViewProps> = ({
           )}
         </div>
 
-        <form onSubmit={handleSubmit} className="manual-composer">
-          <input
-            type="file"
-            ref={fileInputRef}
-            className="manual-file-input"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-          <button
-            type="button"
-            className="query-upload-btn"
-            onClick={() => fileInputRef.current?.click()}
-            disabled={isLoading}
-            aria-label="Upload suspicious screenshot"
-            title="Upload suspicious screenshot"
-          >
-            <CameraIcon />
-          </button>
+        <div className="manual-composer-wrapper">
+          {/* Floating error pill above composer — non-intrusive, auto-dismissible */}
+          {voiceError && (
+            <div className="voice-error-banner" role="alert" aria-live="polite">
+              <span className="voice-error-text">{voiceError}</span>
+              <button
+                type="button"
+                className="voice-error-retry"
+                onClick={() => {
+                  setVoiceError(null);
+                  voiceInputRef.current?.start();
+                }}
+              >
+                Try again
+              </button>
+              <button
+                type="button"
+                className="voice-error-close"
+                onClick={() => setVoiceError(null)}
+                aria-label="Dismiss error"
+              >
+                ×
+              </button>
+            </div>
+          )}
 
-          <VoiceInputButton onResult={handleVoiceResult} lang="en-US" />
+          <form onSubmit={handleSubmit} className={`manual-composer ${voicePanelActive ? "is-voice-listening" : ""}`}>
+            {/* [HIDDEN_FOR_PUBLIC_VERSION] Voice scrim overlay commented out for flat, unblurred experience */}
+            {/* {voicePanelActive && (
+              <div className="voice-scrim" onClick={(e) => e.preventDefault()} />
+            )} */}
 
-          <label htmlFor="manual-query-input" className="sr-only">
-            Message or account to check
-          </label>
-          <textarea
-            ref={textareaRef}
-            id="manual-query-input"
-            placeholder="Paste a message, ask a follow-up, or describe what you received…"
-            className="query-input"
-            value={queryInput}
-            onChange={(e) => {
-              const val = e.target.value;
-              setQueryInput(val);
-              // isVoiceInputRef.current = false;
-              // reset only if the user deletes all the text, so voice reply still works
-              if (!val.trim()) {
-                isVoiceInputRef.current = false;
-              }
-            }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter" && !e.shiftKey) {
-                e.preventDefault();
-                if (queryInput.trim() && !isLoading) {
-                  handleSubmit(e);
+            <input
+              type="file"
+              ref={fileInputRef}
+              className="manual-file-input"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+
+            {/* Camera slot transforms into ghost Cancel (X) button when voice listening */}
+            {voicePanelActive ? (
+              <button
+                type="button"
+                className="query-cancel-btn"
+                onClick={handleCancelVoice}
+                aria-label="Cancel voice input"
+                title="Cancel voice input"
+              >
+                <CloseIcon />
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="query-upload-btn"
+                onClick={() => fileInputRef.current?.click()}
+                disabled={isLoading}
+                aria-label="Upload suspicious screenshot"
+                title="Upload suspicious screenshot"
+              >
+                <CameraIcon />
+              </button>
+            )}
+
+            <VoiceInputButton
+              ref={voiceInputRef}
+              onResult={handleVoiceResult}
+              onInterim={handleVoiceInterim}
+              lang="en-US"
+              onPanelStateChange={handleVoicePanelStateChange}
+              onError={setVoiceError}
+            />
+
+            {/* Balanced fancy soundwave equalizer animation while user is talking */}
+            {voicePanelActive && (
+              <div className="composer-voice-eq" aria-hidden="true" title="Listening to voice">
+                <span className="composer-voice-bar" />
+                <span className="composer-voice-bar" />
+                <span className="composer-voice-bar" />
+                <span className="composer-voice-bar" />
+              </div>
+            )}
+
+            {/* [HIDDEN_FOR_PUBLIC_VERSION] Large voice panel card modal commented out in favor of in-place pill transformation */}
+            {/* {voicePanelActive && (
+              <div className="voice-panel-legacy">Legacy voice panel commented out</div>
+            )} */}
+
+            <label htmlFor="manual-query-input" className="sr-only">
+              Message or account to check
+            </label>
+            <textarea
+              ref={textareaRef}
+              id="manual-query-input"
+              placeholder={voicePanelActive ? "Listening... speak now" : "Paste a message, ask a follow-up, or describe what you received…"}
+              className="query-input"
+              value={queryInput}
+              aria-live={voicePanelActive ? "polite" : "off"}
+              onChange={(e) => {
+                const val = e.target.value;
+                setQueryInput(val);
+                if (voiceError) setVoiceError(null);
+                if (!val.trim()) {
+                  isVoiceInputRef.current = false;
                 }
-              }
-              if (e.key === "Escape") {
-                setQueryInput("");
-              }
-            }}
-            disabled={isLoading}
-            autoComplete="off"
-            rows={1}
-            style={{
-              resize: "none",
-              height: "auto",
-              minHeight: "44px",
-              maxHeight: "150px",
-              overflowY: "auto",
-            }}
-          />
-          <button
-            type="submit"
-            className="query-submit-action"
-            disabled={isLoading || !queryInput.trim()}
-          >
-            {isLoading ? "…" : "Send"}
-          </button>
-        </form>
-      </section>
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Escape") {
+                  if (voicePanelActive) {
+                    handleCancelVoice();
+                  } else {
+                    setQueryInput("");
+                  }
+                }
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  if (voicePanelActive) {
+                    handleFinishVoice();
+                  } else if (queryInput.trim() && !isLoading) {
+                    handleSubmit(e);
+                  }
+                }
+              }}
+              disabled={isLoading}
+              autoComplete="off"
+              rows={1}
+              style={{
+                resize: "none",
+                height: "auto",
+                minHeight: "44px",
+                maxHeight: "150px",
+                overflowY: "auto",
+              }}
+            />
+
+            {/* Live timer when speaking */}
+            {voicePanelActive && (
+              <span className="composer-voice-timer" aria-live="off">
+                {formatTime(elapsedTime)}
+              </span>
+            )}
+
+            {/* Send button becomes Done button when voice listening */}
+            {voicePanelActive ? (
+              <button
+                type="button"
+                className="query-submit-action voice-done-btn"
+                onClick={handleFinishVoice}
+                aria-label="Finish speaking"
+              >
+                Done
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="query-submit-action"
+                disabled={isLoading || !queryInput.trim()}
+              >
+                {isLoading ? "…" : "Send"}
+              </button>
+            )}
+          </form>
+        </div>
+    </section>
 
       {confirmDeleteId && (
         <div className="manual-confirm-backdrop" role="presentation">
