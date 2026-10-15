@@ -33,3 +33,4 @@ env/
 # skill
 .cursor/
 .windsurf/
+.claude/

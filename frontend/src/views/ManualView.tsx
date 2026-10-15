@@ -129,9 +129,12 @@ export const ManualView: React.FC<ManualViewProps> = ({
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameValue, setRenameValue] = useState("");
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [showScrollToBottom, setShowScrollToBottom] = useState(false);
   const chatEndRef = useRef<HTMLDivElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const renameInputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const streamViewportRef = useRef<HTMLDivElement>(null);
 
   // use text to speech hook
   const { speak, stop } = useTextToSpeech();
@@ -184,6 +187,34 @@ export const ManualView: React.FC<ManualViewProps> = ({
       return () => window.removeEventListener("click", close);
     }
   }, [menuOpenId]);
+
+  // Auto-growing textarea
+  useEffect(() => {
+    const textarea = textareaRef.current;
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = `${Math.min(textarea.scrollHeight, 150)}px`;
+    }
+  }, [queryInput]);
+
+  // Scroll to bottom detection
+  useEffect(() => {
+    const viewport = streamViewportRef.current;
+    if (!viewport) return;
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = viewport;
+      const isNearBottom = scrollHeight - scrollTop - clientHeight < 100;
+      setShowScrollToBottom(!isNearBottom);
+    };
+
+    viewport.addEventListener("scroll", handleScroll);
+    return () => viewport.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToBottom = () => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -276,7 +307,8 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
   return (
     <div className="manual-workspace">
-      <aside
+      {/* [HIDDEN_FOR_PUBLIC_VERSION] Sidebar commented out for public demo */}
+      {/* <aside
         className={`manual-sidebar ${sidebarOpen ? "is-open" : ""}`}
         aria-label="Conversation history"
       >
@@ -399,17 +431,32 @@ export const ManualView: React.FC<ManualViewProps> = ({
           aria-label="Close conversation list"
           onClick={() => setSidebarOpen(false)}
         />
-      )}
+      )} */}
 
       <section className="manual-main" aria-label="Scam check workspace">
         <header className="manual-main-header">
-          <button
+          {/* [HIDDEN_FOR_PUBLIC_VERSION] Sidebar toggle button commented out */}
+          {/* <button
             type="button"
             className="manual-sidebar-toggle"
             aria-label="Open conversation list"
             onClick={() => setSidebarOpen(true)}
           >
             <MenuIcon />
+          </button> */}
+
+          {/* New chat button added for public version */}
+          <button
+            type="button"
+            className="manual-new-chat-mini"
+            onClick={() => {
+              onNewConversation();
+            }}
+            disabled={isLoading}
+            aria-label="Start new conversation"
+            title="New conversation"
+          >
+            <PlusIcon />
           </button>
 
           <div className="manual-title-row">
@@ -489,10 +536,12 @@ export const ManualView: React.FC<ManualViewProps> = ({
         </header>
 
         <div
+          ref={streamViewportRef}
           className="manual-stream-viewport"
           role="log"
           aria-live="polite"
-          aria-relevant="additions"
+          aria-atomic="false"
+          aria-label="Chat messages"
         >
           {messages.length === 0 && !isLoading && (
             <div className="manual-empty-state">
@@ -502,6 +551,40 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 Paste a suspicious SMS, email, or bank account — or upload a
                 screenshot. Each check stays in its own conversation.
               </p>
+              <div className="manual-suggestion-chips">
+                <button
+                  type="button"
+                  className="manual-suggestion-chip"
+                  onClick={() => setQueryInput("Is this bank account number safe?")}
+                  disabled={isLoading}
+                >
+                  Check bank account
+                </button>
+                <button
+                  type="button"
+                  className="manual-suggestion-chip"
+                  onClick={() => setQueryInput("Is this phone number from a scammer?")}
+                  disabled={isLoading}
+                >
+                  Check phone number
+                </button>
+                <button
+                  type="button"
+                  className="manual-suggestion-chip"
+                  onClick={() => setQueryInput("Analyze this message: I won a prize, send bank details")}
+                  disabled={isLoading}
+                >
+                  Analyze prize message
+                </button>
+                <button
+                  type="button"
+                  className="manual-suggestion-chip"
+                  onClick={() => setQueryInput("Is this investment opportunity real?")}
+                  disabled={isLoading}
+                >
+                  Check investment
+                </button>
+              </div>
             </div>
           )}
 
@@ -583,6 +666,17 @@ export const ManualView: React.FC<ManualViewProps> = ({
             </div>
           )}
           <div ref={chatEndRef} />
+
+          {showScrollToBottom && (
+            <button
+              type="button"
+              className="scroll-to-bottom-btn"
+              onClick={scrollToBottom}
+              aria-label="Scroll to bottom"
+            >
+              ↓
+            </button>
+          )}
         </div>
 
         <form onSubmit={handleSubmit} className="manual-composer">
@@ -609,9 +703,9 @@ export const ManualView: React.FC<ManualViewProps> = ({
           <label htmlFor="manual-query-input" className="sr-only">
             Message or account to check
           </label>
-          <input
+          <textarea
+            ref={textareaRef}
             id="manual-query-input"
-            type="text"
             placeholder="Paste a message, ask a follow-up, or describe what you received…"
             className="query-input"
             value={queryInput}
@@ -624,8 +718,27 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 isVoiceInputRef.current = false;
               }
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                if (queryInput.trim() && !isLoading) {
+                  handleSubmit(e);
+                }
+              }
+              if (e.key === "Escape") {
+                setQueryInput("");
+              }
+            }}
             disabled={isLoading}
             autoComplete="off"
+            rows={1}
+            style={{
+              resize: "none",
+              height: "auto",
+              minHeight: "44px",
+              maxHeight: "150px",
+              overflowY: "auto",
+            }}
           />
           <button
             type="submit"

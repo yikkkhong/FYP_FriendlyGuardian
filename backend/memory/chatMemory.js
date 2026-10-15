@@ -155,7 +155,9 @@ class ChatMemory {
         ? `Image: ${firstUser.imageName}`
         : "Uploaded image";
     }
-    const text = String(firstUser.text || "").replace(/\s+/g, " ").trim();
+    const text = String(firstUser.text || "")
+      .replace(/\s+/g, " ")
+      .trim();
     return text.length > 72 ? `${text.slice(0, 72)}…` : text;
   }
 
@@ -179,7 +181,9 @@ class ChatMemory {
   }
 
   renameConversation(conversationId, title) {
-    const cleaned = String(title || "").replace(/\s+/g, " ").trim();
+    const cleaned = String(title || "")
+      .replace(/\s+/g, " ")
+      .trim();
     if (!cleaned) return null;
 
     const store = this.readStore();
@@ -301,9 +305,7 @@ class ChatMemory {
                 m.ocrText ||
                 m.text ||
                 (m.imageUrl ? "[User uploaded an image for analysis]" : "");
-              const typeHint = m.messageType
-                ? ` [${m.messageType}]`
-                : "";
+              const typeHint = m.messageType ? ` [${m.messageType}]` : "";
               return `${label}${typeHint}: ${body}`;
             })
             .join("\n")

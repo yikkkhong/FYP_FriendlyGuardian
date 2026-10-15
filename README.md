@@ -16,7 +16,7 @@ An AI-powered anti-scam assistant that helps users assess suspicious messages an
 - **Frontend**: React (Vite), TypeScript, Tailwind CSS
 - **Backend Services**: Node.js (Express)
 - **OCR Engine**: Python (PaddleOCR)
-- **AI Core**: Groq API (LLM analysis)
+- **AI Core**: Groq API (LLM analysis), Qwen2.5-0.5B
 
 ## Getting Started
 
@@ -25,7 +25,6 @@ An AI-powered anti-scam assistant that helps users assess suspicious messages an
 ```bash
 cd frontend
 npm install
-npm run dev
 ```
 
 ### 2. Backend Setup
@@ -33,20 +32,19 @@ npm run dev
 ```bash
 cd backend
 npm install
-node server.js
 ```
 
 ### 3. API Setup
 
-Create a ".env" file in the backend/ folder
+1. Create a ".env" file in the backend/ folder
 
 ```bash
 PORT=5000
 GROQ_API_KEY=your_groq_api_key_here
 ```
 
-4. Go to https://console.groq.com/ to get an API key for free
-5. Replace "your_groq_api_key_here" with tour API key
+2. Go to https://console.groq.com/ to get an API key for free
+3. Replace "your_groq_api_key_here" with tour API key
 
 ### Setting up Python Virtual Environment
 

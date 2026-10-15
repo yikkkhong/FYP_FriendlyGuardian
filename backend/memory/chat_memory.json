@@ -1,6 +1,59 @@
 {
-  "activeConversationId": "MANUAL-1791908453850",
+  "activeConversationId": "MANUAL-1792078923893",
   "conversations": [
+    {
+      "id": "MANUAL-1792078923893",
+      "title": "Is this phone number from a scammer? 0123456789",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Is this phone number from a scammer? 0123456789",
+          "timestamp": "2026-10-15T15:43:03.401Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Phone number not in known scam database.\n- No suspicious pattern or prior reports linked to this number.\n\nRECOMMENDATION:\n- Verify identity through official channels before sharing personal info.\n- Avoid sending money or sensitive data to unknown contacts.",
+          "timestamp": "2026-10-15T15:43:03.407Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-15T15:42:03.893Z",
+      "updated_at": "2026-10-15T15:43:03.407Z"
+    },
+    {
+      "id": "MANUAL-1792070152585",
+      "title": "jsdfhkjsdfsdf",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "jsdfhkjsdfsdf",
+          "timestamp": "2026-10-15T13:15:57.535Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- No recognizable scam content or known sender/account.\n- Text is random gibberish, not a phishing or malicious message.\n\nRECOMMENDATION:\n- No action needed; ignore or delete the message.\n- If you receive similar random text, treat it as spam and block the sender.",
+          "timestamp": "2026-10-15T13:15:57.539Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "I just am hurting",
+          "timestamp": "2026-10-15T13:16:10.908Z"
+        },
+        {
+          "role": "assistant",
+          "text": "It sounds like you’re going through a tough time. If you need someone to talk to, consider reaching out to a trusted friend, family member, or a professional counselor. If you’re in immediate distress, please contact emergency services or a local helpline right away.",
+          "timestamp": "2026-10-15T13:16:10.910Z",
+          "messageType": "general"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-15T13:15:52.585Z",
+      "updated_at": "2026-10-15T13:16:10.910Z"
+    },
     {
       "id": "MANUAL-1791908453850",
       "title": "Please send me your OTP",

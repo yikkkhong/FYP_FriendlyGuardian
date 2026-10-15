@@ -1,0 +1,4676 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+The content has been processed where content has been compressed (code blocks are separated by ⋮---- delimiter).
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Content has been compressed - code blocks are separated by ⋮---- delimiter
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+android/
+  app/
+    src/
+      androidTest/
+        java/
+          com/
+            example/
+              smsforwarder/
+                ExampleInstrumentedTest.kt
+      main/
+        java/
+          com/
+            example/
+              smsforwarder/
+                ui/
+                  theme/
+                    Color.kt
+                    Theme.kt
+                    Type.kt
+                MainActivity.java
+                SmsReceiver.java
+        keepRules/
+          rules.keep
+        res/
+          drawable/
+            ic_launcher_background.xml
+            ic_launcher_foreground.xml
+          mipmap-anydpi-v26/
+            ic_launcher_round.xml
+            ic_launcher.xml
+          mipmap-hdpi/
+            ic_launcher_round.webp
+            ic_launcher.webp
+          mipmap-mdpi/
+            ic_launcher_round.webp
+            ic_launcher.webp
+          mipmap-xhdpi/
+            ic_launcher_round.webp
+            ic_launcher.webp
+          mipmap-xxhdpi/
+            ic_launcher_round.webp
+            ic_launcher.webp
+          mipmap-xxxhdpi/
+            ic_launcher_round.webp
+            ic_launcher.webp
+          values/
+            colors.xml
+            strings.xml
+            themes.xml
+          xml/
+            backup_rules.xml
+            data_extraction_rules.xml
+        AndroidManifest.xml
+      test/
+        java/
+          com/
+            example/
+              smsforwarder/
+                ExampleUnitTest.kt
+    .gitignore
+    build.gradle.kts
+  gradle/
+    wrapper/
+      gradle-wrapper.jar
+      gradle-wrapper.properties
+    gradle-daemon-jvm.properties
+    libs.versions.toml
+  .gitignore
+  build.gradle.kts
+  gradle.properties
+  gradlew
+  gradlew.bat
+  settings.gradle.kts
+backend/
+  AI/
+    CompanionMode/
+      companionHandler.js
+      geminiAI.js
+      localAI.js
+    ManualMode/
+      manualAI.js
+      manualHandler.js
+  memory/
+    chat_memory.json
+    chatMemory.js
+    conversation_memory.json
+    conversationMemory.js
+    security_memory.json
+    securityMemory.js
+  python/
+    forensic_reports/
+      report_ai.png
+      report_aiEdit.png
+      report_real.png
+    testImage/
+      aiEdited/
+        aiLikePose.jpg
+        aiPoloT.jpg
+        aiWorking.jpg
+      me/
+        meAIPC.jpg
+        meAIPhone.jpg
+        meRealPhone.jpg
+        realMePC.jpg
+      real_diff/
+        real_darkBG_lightLess.jpg
+        real_shirtColorSimilarBGcolor_plainBG.jpg
+        real_wearingGlassess_plainBG.jpg
+        real_withSimpleBG.jpg
+      ai_withBG_cantsee.jpg
+      ai_withBG_easilysee.jpg
+      ai.png
+      aiEdit_withBG.jpg
+      aiEdit.png
+      real_withBG.jpg
+      real.png
+    hiring2.png
+    modelName.py
+    ocr_service.py
+    requirements.txt
+    scamUntitled.png
+    speech_corrector.py
+    test_ai_detector.py
+    test_ocr.py
+  routes/
+    speechCorrection.js
+  uploads/
+    manual/
+      MANUAL-1790610906864/
+        1790610919624-testWrongGrammar_lazada.png
+      MANUAL-1790612733532/
+        1790612750406-testWrongGrammar_lazada.png
+        1791028046100-hiring4.png
+      MANUAL-1791031660821/
+        1791031670236-Transaction details.png
+      MANUAL-1791102989782/
+        1791107640592-testHandWriting.png
+      MANUAL-1791876841273/
+        1791877034468-exampleInvoice.jpg
+    1d481628c79534426a97f362bcd503d4
+    a0c49d75cdd7923401051d2ca45ea299
+    c8ee6ba650d8a88693c985eeba9331b0
+    d384597cf63edd1b6550b3d3b5fcdb3d
+  package.json
+  server.js
+  test_semakmule.js
+frontend/
+  public/
+    vite.svg
+  src/
+    archive/
+      components/
+        PixelFace.tsx
+      views/
+        CompanionView.tsx
+      App_CompanionBackup.tsx
+      companionDesign.css
+    assets/
+      react.svg
+    components/
+      AiResponseCard.tsx
+      Header.tsx
+      Notification.tsx
+      ThreatReportCard.tsx
+      VoiceInputButton.tsx
+    hooks/
+      useTextToSpeech.ts
+    views/
+      ManualView.tsx
+    App.css
+    App.tsx
+    index.css
+    main.tsx
+    vite-env.d.ts
+  .gitignore
+  index.html
+  package.json
+  tsconfig.json
+  tsconfig.node.json
+  vite.config.ts
+.gitignore
+README.md
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="android/app/src/androidTest/java/com/example/smsforwarder/ExampleInstrumentedTest.kt">
+package com.example.smsforwarder
+
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.ext.junit.runners.AndroidJUnit4
+
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import org.junit.Assert.*
+
+/**
+ * Instrumented test, which will execute on an Android device.
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+@RunWith(AndroidJUnit4::class)
+class ExampleInstrumentedTest {
+    @Test
+    fun useAppContext() {
+        // Context of the app under test.
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        assertEquals("com.example.smsforwarder", appContext.packageName)
+    }
+}
+</file>
+
+<file path="android/app/src/main/java/com/example/smsforwarder/ui/theme/Color.kt">
+package com.example.smsforwarder.ui.theme
+
+import androidx.compose.ui.graphics.Color
+
+val Purple80 = Color(0xFFD0BCFF)
+val PurpleGrey80 = Color(0xFFCCC2DC)
+val Pink80 = Color(0xFFEFB8C8)
+
+val Purple40 = Color(0xFF6650a4)
+val PurpleGrey40 = Color(0xFF625b71)
+val Pink40 = Color(0xFF7D5260)
+</file>
+
+<file path="android/app/src/main/java/com/example/smsforwarder/ui/theme/Theme.kt">
+package com.example.smsforwarder.ui.theme
+
+import android.app.Activity
+import android.os.Build
+import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.dynamicDarkColorScheme
+import androidx.compose.material3.dynamicLightColorScheme
+import androidx.compose.material3.lightColorScheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
+
+private val DarkColorScheme = darkColorScheme(
+    primary = Purple80,
+    secondary = PurpleGrey80,
+    tertiary = Pink80
+)
+
+private val LightColorScheme = lightColorScheme(
+    primary = Purple40,
+    secondary = PurpleGrey40,
+    tertiary = Pink40
+
+    /* Other default colors to override
+    background = Color(0xFFFFFBFE),
+    surface = Color(0xFFFFFBFE),
+    onPrimary = Color.White,
+    onSecondary = Color.White,
+    onTertiary = Color.White,
+    onBackground = Color(0xFF1C1B1F),
+    onSurface = Color(0xFF1C1B1F),
+    */
+)
+
+@Composable
+fun SmsForwarderTheme(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    // Dynamic color is available on Android 12+
+    dynamicColor: Boolean = true,
+    content: @Composable () -> Unit
+) {
+    val colorScheme = when {
+        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+            val context = LocalContext.current
+            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+        }
+
+        darkTheme -> DarkColorScheme
+        else -> LightColorScheme
+    }
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}
+</file>
+
+<file path="android/app/src/main/java/com/example/smsforwarder/ui/theme/Type.kt">
+package com.example.smsforwarder.ui.theme
+
+import androidx.compose.material3.Typography
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
+
+// Set of Material typography styles to start with
+val Typography = Typography(
+    bodyLarge = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    )
+    /* Other default text styles to override
+    titleLarge = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 22.sp,
+        lineHeight = 28.sp,
+        letterSpacing = 0.sp
+    ),
+    labelSmall = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Medium,
+        fontSize = 11.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.5.sp
+    )
+    */
+)
+</file>
+
+<file path="android/app/src/main/java/com/example/smsforwarder/MainActivity.java">
+public class MainActivity extends Activity {
+⋮----
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+⋮----
+// Check for and request the RECEIVE_SMS permission.
+if (checkSelfPermission(Manifest.permission.RECEIVE_SMS) != PackageManager.PERMISSION_GRANTED) {
+requestPermissions(new String[]{Manifest.permission.RECEIVE_SMS}, SMS_PERMISSION_CODE);
+⋮----
+Toast.makeText(this, "🛡️ SMS Guardian Active", Toast.LENGTH_SHORT).show();
+⋮----
+public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+⋮----
+Toast.makeText(this, "Permission Granted! Monitoring SMS...", Toast.LENGTH_SHORT).show();
+⋮----
+Toast.makeText(this, "Permission Denied!", Toast.LENGTH_SHORT).show();
+</file>
+
+<file path="android/app/src/main/java/com/example/smsforwarder/SmsReceiver.java">
+public class SmsReceiver extends BroadcastReceiver {
+⋮----
+public void onReceive(Context context, Intent intent) {
+// triggered when receives SMS broadcast
+if (Telephony.Sms.Intents.SMS_RECEIVED_ACTION.equals(intent.getAction())) {
+SmsMessage[] messages = Telephony.Sms.Intents.getMessagesFromIntent(intent);
+⋮----
+String sender = sms.getOriginatingAddress();
+String messageBody = sms.getMessageBody();
+⋮----
+Log.d(TAG, "🔥 SMS Intercepted: " + messageBody + " | From: " + sender);
+⋮----
+// HTTP POST
+new Thread(() -> sendToNodeServer(messageBody, sender)).start();
+⋮----
+private void sendToNodeServer(String text, String sender) {
+⋮----
+// connects port 5000 of the Node.js
+URL url = new URL("http://10.0.2.2:5000/api/sms-webhook");
+HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+conn.setRequestMethod("POST");
+conn.setRequestProperty("Content-Type", "application/json; utf-8");
+conn.setDoOutput(true);
+conn.setConnectTimeout(5000);
+⋮----
+// JSON body
+JSONObject jsonParam = new JSONObject();
+jsonParam.put("text", text);
+jsonParam.put("sender", sender);
+⋮----
+try (OutputStream os = conn.getOutputStream()) {
+byte[] input = jsonParam.toString().getBytes("utf-8");
+os.write(input, 0, input.length);
+⋮----
+int responseCode = conn.getResponseCode();
+Log.d(TAG, "🚀 HTTP POST Response Code: " + responseCode);
+conn.disconnect();
+⋮----
+Log.e(TAG, "❌ Error sending HTTP POST to Node.js server", e);
+</file>
+
+<file path="android/app/src/main/keepRules/rules.keep">
+# Add project specific R8 rules here.
+# AGP will combine all keep rule files in src/main/keepRules to pass to R8
+#
+# For more details, see
+#   https://d.android.com/r/tools/r8/keep-rules
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+</file>
+
+<file path="android/app/src/main/res/drawable/ic_launcher_background.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#3DDC84"
+        android:pathData="M0,0h108v108h-108z" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M9,0L9,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,0L19,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M29,0L29,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M39,0L39,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M49,0L49,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M59,0L59,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M69,0L69,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M79,0L79,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M89,0L89,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M99,0L99,108"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,9L108,9"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,19L108,19"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,29L108,29"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,39L108,39"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,49L108,49"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,59L108,59"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,69L108,69"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,79L108,79"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,89L108,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M0,99L108,99"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,29L89,29"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,39L89,39"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,49L89,49"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,59L89,59"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,69L89,69"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,79L89,79"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M29,19L29,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M39,19L39,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M49,19L49,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M59,19L59,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M69,19L69,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M79,19L79,89"
+        android:strokeWidth="0.8"
+        android:strokeColor="#33FFFFFF" />
+</vector>
+</file>
+
+<file path="android/app/src/main/res/drawable/ic_launcher_foreground.xml">
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:pathData="M31,63.928c0,0 6.4,-11 12.1,-13.1c7.2,-2.6 26,-1.4 26,-1.4l38.1,38.1L107,108.928l-32,-1L31,63.928z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="85.84757"
+                android:endY="92.4963"
+                android:startX="42.9492"
+                android:startY="49.59793"
+                android:type="linear">
+                <item
+                    android:color="#44000000"
+                    android:offset="0.0" />
+                <item
+                    android:color="#00000000"
+                    android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="nonZero"
+        android:pathData="M65.3,45.828l3.8,-6.6c0.2,-0.4 0.1,-0.9 -0.3,-1.1c-0.4,-0.2 -0.9,-0.1 -1.1,0.3l-3.9,6.7c-6.3,-2.8 -13.4,-2.8 -19.7,0l-3.9,-6.7c-0.2,-0.4 -0.7,-0.5 -1.1,-0.3C38.8,38.328 38.7,38.828 38.9,39.228l3.8,6.6C36.2,49.428 31.7,56.028 31,63.928h46C76.3,56.028 71.8,49.428 65.3,45.828zM43.4,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2c-0.3,-0.7 -0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C45.3,56.528 44.5,57.328 43.4,57.328L43.4,57.328zM64.6,57.328c-0.8,0 -1.5,-0.5 -1.8,-1.2s-0.1,-1.5 0.4,-2.1c0.5,-0.5 1.4,-0.7 2.1,-0.4c0.7,0.3 1.2,1 1.2,1.8C66.5,56.528 65.6,57.328 64.6,57.328L64.6,57.328z"
+        android:strokeWidth="1"
+        android:strokeColor="#00000000" />
+</vector>
+</file>
+
+<file path="android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
+</file>
+
+<file path="android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@drawable/ic_launcher_background" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
+</file>
+
+<file path="android/app/src/main/res/values/colors.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
+</file>
+
+<file path="android/app/src/main/res/values/strings.xml">
+<resources>
+    <string name="app_name">SmsForwarder</string>
+</resources>
+</file>
+
+<file path="android/app/src/main/res/values/themes.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.SmsForwarder" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
+</file>
+
+<file path="android/app/src/main/res/xml/backup_rules.xml">
+<?xml version="1.0" encoding="utf-8"?><!--
+   Sample backup rules file; uncomment and customize as necessary.
+   See https://developer.android.com/guide/topics/data/autobackup
+   for details.
+   Note: This file is ignored for devices older than API 31
+   See https://developer.android.com/about/versions/12/backup-restore
+-->
+<full-backup-content>
+    <!--
+   <include domain="sharedpref" path="."/>
+   <exclude domain="sharedpref" path="device.xml"/>
+-->
+</full-backup-content>
+</file>
+
+<file path="android/app/src/main/res/xml/data_extraction_rules.xml">
+<?xml version="1.0" encoding="utf-8"?><!--
+   Sample data extraction rules file; uncomment and customize as necessary.
+   See https://developer.android.com/about/versions/12/backup-restore#xml-changes
+   for details.
+-->
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- TODO: Use <include> and <exclude> to control what is backed up.
+        <include .../>
+        <exclude .../>
+        -->
+    </cloud-backup>
+    <!--
+    <device-transfer>
+        <include .../>
+        <exclude .../>
+    </device-transfer>
+    -->
+</data-extraction-rules>
+</file>
+
+<file path="android/app/src/main/AndroidManifest.xml">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.smsforwarder">
+
+    <!-- Requesting network and SMS reception permissions -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="SmsForwarder"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar"
+        android:usesCleartextTraffic="true"> <!-- allow http connections -->
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- register a static broadcast receiver to automatically activate upon receiving an SMS message -->
+        <receiver
+            android:name=".SmsReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
+</file>
+
+<file path="android/app/src/test/java/com/example/smsforwarder/ExampleUnitTest.kt">
+package com.example.smsforwarder
+
+import org.junit.Test
+
+import org.junit.Assert.*
+
+/**
+ * Example local unit test, which will execute on the development machine (host).
+ *
+ * See [testing documentation](http://d.android.com/tools/testing).
+ */
+class ExampleUnitTest {
+    @Test
+    fun addition_isCorrect() {
+        assertEquals(4, 2 + 2)
+    }
+}
+</file>
+
+<file path="android/app/.gitignore">
+/build
+</file>
+
+<file path="android/app/build.gradle.kts">
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.compose)
+}
+
+android {
+    namespace = "com.example.smsforwarder"
+    compileSdk {
+        version = release(37) {
+            minorApiLevel = 1
+        }
+    }
+
+    defaultConfig {
+        applicationId = "com.example.smsforwarder"
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            optimization {
+                enable = false
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        compose = true
+    }
+}
+
+dependencies {
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    implementation(libs.androidx.compose.ui.tooling.preview)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    testImplementation(libs.junit)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit)
+    debugImplementation(libs.androidx.compose.ui.test.manifest)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+}
+</file>
+
+<file path="android/gradle/wrapper/gradle-wrapper.properties">
+#Fri Aug 07 18:07:58 MYT 2026
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionSha256Sum=553c78f50dafcd54d65b9a444649057857469edf836431389695608536d6b746
+distributionUrl=https\://services.gradle.org/distributions/gradle-9.5.0-bin.zip
+networkTimeout=10000
+validateDistributionUrl=true
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+</file>
+
+<file path="android/gradle/gradle-daemon-jvm.properties">
+#This file is generated by updateDaemonJvm
+toolchainUrl.FREE_BSD.AARCH64=https\://api.foojay.io/disco/v3.0/ids/ec7520a1e057cd116f9544c42142a16b/redirect
+toolchainUrl.FREE_BSD.X86_64=https\://api.foojay.io/disco/v3.0/ids/4c4f879899012ff0a8b2e2117df03b0e/redirect
+toolchainUrl.LINUX.AARCH64=https\://api.foojay.io/disco/v3.0/ids/ec7520a1e057cd116f9544c42142a16b/redirect
+toolchainUrl.LINUX.X86_64=https\://api.foojay.io/disco/v3.0/ids/4c4f879899012ff0a8b2e2117df03b0e/redirect
+toolchainUrl.MAC_OS.AARCH64=https\://api.foojay.io/disco/v3.0/ids/73bcfb608d1fde9fb62e462f834a3299/redirect
+toolchainUrl.MAC_OS.X86_64=https\://api.foojay.io/disco/v3.0/ids/846ee0d876d26a26f37aa1ce8de73224/redirect
+toolchainUrl.UNIX.AARCH64=https\://api.foojay.io/disco/v3.0/ids/ec7520a1e057cd116f9544c42142a16b/redirect
+toolchainUrl.UNIX.X86_64=https\://api.foojay.io/disco/v3.0/ids/4c4f879899012ff0a8b2e2117df03b0e/redirect
+toolchainUrl.WINDOWS.AARCH64=https\://api.foojay.io/disco/v3.0/ids/9482ddec596298c84656d31d16652665/redirect
+toolchainUrl.WINDOWS.X86_64=https\://api.foojay.io/disco/v3.0/ids/39701d92e1756bb2f141eb67cd4c660e/redirect
+toolchainVersion=21
+</file>
+
+<file path="android/gradle/libs.versions.toml">
+[versions]
+agp = "9.3.1"
+coreKtx = "1.19.0"
+junit = "4.13.2"
+junitVersion = "1.3.0"
+espressoCore = "3.7.0"
+lifecycleRuntimeKtx = "2.11.0"
+activityCompose = "1.13.0"
+kotlin = "2.2.10"
+composeBom = "2026.02.01"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+</file>
+
+<file path="android/.gitignore">
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+</file>
+
+<file path="android/build.gradle.kts">
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.kotlin.compose) apply false
+}
+</file>
+
+<file path="android/gradle.properties">
+# Project-wide Gradle settings.
+# IDE (e.g. Android Studio) users:
+# Gradle settings configured through the IDE *will override*
+# any settings specified in this file.
+# For more details on how to configure your build environment visit
+# http://www.gradle.org/docs/current/userguide/build_environment.html
+# Specifies the JVM arguments used for the daemon process.
+# The setting is particularly useful for tweaking memory settings.
+org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
+# When configured, Gradle will run in incubating parallel mode.
+# This option should only be used with decoupled projects. For more details, visit
+# https://developer.android.com/r/tools/gradle-multi-project-decoupled-projects
+# org.gradle.parallel=true
+# When enabled, the Configuration Cache allows Gradle to skip the configuration
+# phase entirely if nothing that affects the build configuration (such as build scripts)
+# has changed. Additionally, Gradle applies performance optimizations to task execution.
+org.gradle.configuration-cache=true
+# Kotlin code style for this project: "official" or "obsolete":
+kotlin.code.style=official
+</file>
+
+<file path="android/gradlew">
+#!/bin/sh
+
+#
+# Copyright © 2015 the original authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+##############################################################################
+#
+#   Gradle start up script for POSIX generated by Gradle.
+#
+#   Important for running:
+#
+#   (1) You need a POSIX-compliant shell to run this script. If your /bin/sh is
+#       noncompliant, but you have some other compliant shell such as ksh or
+#       bash, then to run this script, type that shell name before the whole
+#       command line, like:
+#
+#           ksh Gradle
+#
+#       Busybox and similar reduced shells will NOT work, because this script
+#       requires all of these POSIX shell features:
+#         * functions;
+#         * expansions «$var», «${var}», «${var:-default}», «${var+SET}»,
+#           «${var#prefix}», «${var%suffix}», and «$( cmd )»;
+#         * compound commands having a testable exit status, especially «case»;
+#         * various built-in commands including «command», «set», and «ulimit».
+#
+#   Important for patching:
+#
+#   (2) This script targets any POSIX shell, so it avoids extensions provided
+#       by Bash, Ksh, etc; in particular arrays are avoided.
+#
+#       The "traditional" practice of packing multiple parameters into a
+#       space-separated string is a well documented source of bugs and security
+#       problems, so this is (mostly) avoided, by progressively accumulating
+#       options in "$@", and eventually passing that to Java.
+#
+#       Where the inherited environment variables (DEFAULT_JVM_OPTS, JAVA_OPTS,
+#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly;
+#       see the in-line comments for details.
+#
+#       There are tweaks for specific operating systems such as AIX, CygWin,
+#       Darwin, MinGW, and NonStop.
+#
+#   (3) This script is generated from the Groovy template
+#       https://github.com/gradle/gradle/blob/HEAD/platforms/jvm/plugins-application/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+#       within the Gradle project.
+#
+#       You can find Gradle at https://github.com/gradle/gradle/.
+#
+##############################################################################
+
+# Attempt to set APP_HOME
+
+# Resolve links: $0 may be a link
+app_path=$0
+
+# Need this for daisy-chained symlinks.
+while
+    APP_HOME=${app_path%"${app_path##*/}"}  # leaves a trailing /; empty if no leading path
+    [ -h "$app_path" ]
+do
+    ls=$( ls -ld "$app_path" )
+    link=${ls#*' -> '}
+    case $link in             #(
+      /*)   app_path=$link ;; #(
+      *)    app_path=$APP_HOME$link ;;
+    esac
+done
+
+# This is normally unused
+# shellcheck disable=SC2034
+APP_BASE_NAME=${0##*/}
+# Discard cd standard output in case $CDPATH is set (https://github.com/gradle/gradle/issues/25036)
+APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s\n' "$PWD" ) || exit
+
+# Use the maximum available, or set MAX_FD != -1 to use that value.
+MAX_FD=maximum
+
+warn () {
+    echo "$*"
+} >&2
+
+die () {
+    echo
+    echo "$*"
+    echo
+    exit 1
+} >&2
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+msys=false
+darwin=false
+nonstop=false
+case "$( uname )" in                #(
+  CYGWIN* )         cygwin=true  ;; #(
+  Darwin* )         darwin=true  ;; #(
+  MSYS* | MINGW* )  msys=true    ;; #(
+  NONSTOP* )        nonstop=true ;;
+esac
+
+CLASSPATH="\\\"\\\""
+
+
+# Determine the Java command to use to start the JVM.
+if [ -n "$JAVA_HOME" ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+        # IBM's JDK on AIX uses strange locations for the executables
+        JAVACMD=$JAVA_HOME/jre/sh/java
+    else
+        JAVACMD=$JAVA_HOME/bin/java
+    fi
+    if [ ! -x "$JAVACMD" ] ; then
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+else
+    JAVACMD=java
+    if ! command -v java >/dev/null 2>&1
+    then
+        die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+fi
+
+# Increase the maximum file descriptors if we can.
+if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
+    case $MAX_FD in #(
+      max*)
+        # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        MAX_FD=$( ulimit -H -n ) ||
+            warn "Could not query maximum file descriptor limit"
+    esac
+    case $MAX_FD in  #(
+      '' | soft) :;; #(
+      *)
+        # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        ulimit -n "$MAX_FD" ||
+            warn "Could not set maximum file descriptor limit to $MAX_FD"
+    esac
+fi
+
+# Collect all arguments for the java command, stacking in reverse order:
+#   * args from the command line
+#   * the main class name
+#   * -classpath
+#   * -D...appname settings
+#   * --module-path (only if needed)
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and GRADLE_OPTS environment variables.
+
+# For Cygwin or MSYS, switch paths to Windows format before running java
+if "$cygwin" || "$msys" ; then
+    APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
+    CLASSPATH=$( cygpath --path --mixed "$CLASSPATH" )
+
+    JAVACMD=$( cygpath --unix "$JAVACMD" )
+
+    # Now convert the arguments - kludge to limit ourselves to /bin/sh
+    for arg do
+        if
+            case $arg in                                #(
+              -*)   false ;;                            # don't mess with options #(
+              /?*)  t=${arg#/} t=/${t%%/*}              # looks like a POSIX filepath
+                    [ -e "$t" ] ;;                      #(
+              *)    false ;;
+            esac
+        then
+            arg=$( cygpath --path --ignore --mixed "$arg" )
+        fi
+        # Roll the args list around exactly as many times as the number of
+        # args, so each arg winds up back in the position where it started, but
+        # possibly modified.
+        #
+        # NB: a `for` loop captures its iteration list before it begins, so
+        # changing the positional parameters here affects neither the number of
+        # iterations, nor the values presented in `arg`.
+        shift                   # remove old arg
+        set -- "$@" "$arg"      # push replacement arg
+    done
+fi
+
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Collect all arguments for the java command:
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and optsEnvironmentVar are not allowed to contain shell fragments,
+#     and any embedded shellness will be escaped.
+#   * For example: A user cannot expect ${Hostname} to be expanded, as it is an environment variable and will be
+#     treated as '${Hostname}' itself on the command line.
+
+set -- \
+        "-Dorg.gradle.appname=$APP_BASE_NAME" \
+        -classpath "$CLASSPATH" \
+        -jar "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" \
+        "$@"
+
+# Stop when "xargs" is not available.
+if ! command -v xargs >/dev/null 2>&1
+then
+    die "xargs is not available"
+fi
+
+# Use "xargs" to parse quoted args.
+#
+# With -n1 it outputs one arg per line, with the quotes and backslashes removed.
+#
+# In Bash we could simply go:
+#
+#   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
+#   set -- "${ARGS[@]}" "$@"
+#
+# but POSIX shell has neither arrays nor command substitution, so instead we
+# post-process each arg (as a line of input to sed) to backslash-escape any
+# character that might be a shell metacharacter, then use eval to reverse
+# that process (while maintaining the separation between arguments), and wrap
+# the whole thing up as a single "set" statement.
+#
+# This will of course break if any of these variables contains a newline or
+# an unmatched quote.
+#
+
+eval "set -- $(
+        printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
+        xargs -n1 |
+        sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
+        tr '\n' ' '
+    )" '"$@"'
+
+exec "$JAVACMD" "$@"
+</file>
+
+<file path="android/gradlew.bat">
+@rem
+@rem Copyright 2015 the original author or authors.
+@rem
+@rem Licensed under the Apache License, Version 2.0 (the "License");
+@rem you may not use this file except in compliance with the License.
+@rem You may obtain a copy of the License at
+@rem
+@rem      https://www.apache.org/licenses/LICENSE-2.0
+@rem
+@rem Unless required by applicable law or agreed to in writing, software
+@rem distributed under the License is distributed on an "AS IS" BASIS,
+@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@rem See the License for the specific language governing permissions and
+@rem limitations under the License.
+@rem
+@rem SPDX-License-Identifier: Apache-2.0
+@rem
+
+@if "%DEBUG%"=="" @echo off
+@rem ##########################################################################
+@rem
+@rem  Gradle startup script for Windows
+@rem
+@rem ##########################################################################
+
+@rem Set local scope for the variables with windows NT shell
+if "%OS%"=="Windows_NT" setlocal
+
+set DIRNAME=%~dp0
+if "%DIRNAME%"=="" set DIRNAME=.
+@rem This is normally unused
+set APP_BASE_NAME=%~n0
+set APP_HOME=%DIRNAME%
+
+@rem Resolve any "." and ".." in APP_HOME to make it shorter.
+for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
+
+@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
+
+@rem Find java.exe
+if defined JAVA_HOME goto findJavaFromJavaHome
+
+set JAVA_EXE=java.exe
+%JAVA_EXE% -version >NUL 2>&1
+if %ERRORLEVEL% equ 0 goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH. 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:findJavaFromJavaHome
+set JAVA_HOME=%JAVA_HOME:"=%
+set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+
+if exist "%JAVA_EXE%" goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME% 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:execute
+@rem Setup the command line
+
+set CLASSPATH=
+
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -classpath "%CLASSPATH%" -jar "%APP_HOME%\gradle\wrapper\gradle-wrapper.jar" %*
+
+:end
+@rem End local scope for the variables with windows NT shell
+if %ERRORLEVEL% equ 0 goto mainEnd
+
+:fail
+rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem the _cmd.exe /c_ return code!
+set EXIT_CODE=%ERRORLEVEL%
+if %EXIT_CODE% equ 0 set EXIT_CODE=1
+if not ""=="%GRADLE_EXIT_CONSOLE%" exit %EXIT_CODE%
+exit /b %EXIT_CODE%
+
+:mainEnd
+if "%OS%"=="Windows_NT" endlocal
+
+:omega
+</file>
+
+<file path="android/settings.gradle.kts">
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "SmsForwarder"
+include(":app")
+</file>
+
+<file path="backend/AI/CompanionMode/companionHandler.js">
+// backend/AI/CompanionMode/companionHandler.js
+⋮----
+// ==========================================
+// 1. Companion Socket.IO logic
+// ==========================================
+function registerCompanionSocket(socket, io)
+⋮----
+//1. cm - user chat
+⋮----
+//check timing total
+⋮----
+//check timing total
+⋮----
+// 1. Decide which conversation to use
+⋮----
+//const route = await routeConversation_Gemini(data.text);
+⋮----
+// 2. CONTINUE
+⋮----
+// 3. SWITCH
+⋮----
+// 4. NEW
+⋮----
+// 5. Save USER message
+⋮----
+// 6. Generate Baymax response
+⋮----
+// 7. Save BAYMAX message
+⋮----
+// Check the current message volume
+⋮----
+// summarize -> archive -> trim
+⋮----
+// 8. Send result to React
+⋮----
+//check timing total
+⋮----
+//check timing total
+⋮----
+// ==========================================
+// 2. Companion Express API routes (SMS Webhook)
+// ==========================================
+function setupCompanionRoutes(io)
+⋮----
+// 2. cm - sms webhook
+⋮----
+//if (aiResult.is_scam) {
+⋮----
+//}
+</file>
+
+<file path="backend/memory/conversationMemory.js">
+// current maximum messages = 10
+⋮----
+// initialize conversation storage
+⋮----
+class ConversationMemory {
+⋮----
+// internal file helpers
+readConversations()
+⋮----
+writeConversations(conversations)
+⋮----
+// Create new conversation
+createConversation(title = "New Conversation", topic = "general")
+⋮----
+// Get conversation
+getConversation(conversationId)
+⋮----
+// get all conversations
+getAllConversations()
+⋮----
+// get active conversation
+getActiveConversation()
+⋮----
+getActiveConversationId()
+⋮----
+//switch conversation
+switchConversation(conversationId)
+⋮----
+// Add message
+addMessage(conversationId, role, text)
+⋮----
+// only keep recent messages in active context
+// if (
+//   conversation.messages.length >
+//   this.maxRecentMessages
+// ) {
+//   conversation.messages =
+//     conversation.messages.slice(
+//       -this.maxRecentMessages
+//     );
+// }
+⋮----
+archiveOldMessages(conversationId, newSummary, archivedCount)
+⋮----
+//archived and store old message in archived_messages
+⋮----
+// only keep recent messages
+⋮----
+// 3. uopdate summary
+⋮----
+// get conversation context
+getConversationContext(conversationId)
+⋮----
+// Search conversations
+searchConversations(keyword)
+</file>
+
+<file path="backend/memory/security_memory.json">
+[
+  {
+    "id": "INC-1788934987788-embof1",
+    "saved_at": "2026-09-09T06:23:07.788Z",
+    "text": "congrats! you have won a car, please transfer RM100 to this account 12345678 to get your car!",
+    "sender": "101022345",
+    "detected_account": "12345678",
+    "reason": "The SMS claims you won a car but asks for an upfront payment of RM100, which is a classic scam tactic.",
+    "baymax_message": "Hello, this is a scam message, so please don't transfer any money ah!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "2:23:07 pm",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1788451101083-ags3cu",
+    "saved_at": "2026-09-03T15:58:21.083Z",
+    "text": "Your account is hacked! You have lost RM1! transfer money to this account 123222",
+    "sender": "0929299",
+    "detected_account": "123222",
+    "reason": "The message creates false panic claiming your account is hacked and demands a money transfer to an unknown account.",
+    "baymax_message": "Please do not panic or transfer any money to this account ah, it is a scam message.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "11:58:21 pm",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1788450944948-f4gk4e",
+    "saved_at": "2026-09-03T15:55:44.948Z",
+    "text": "Your account is hacked! You have lost RM10000! transfer money to this account 1090001991",
+    "sender": "0929299",
+    "detected_account": "1090001991",
+    "reason": "The SMS uses panic tactics claiming your account is hacked and demands an urgent fund transfer to an unknown account.",
+    "baymax_message": "Please stay calm and do not transfer any money ah, this is a scam trying to frighten you.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "11:55:44 pm",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1788450883313-5wjuwi",
+    "saved_at": "2026-09-03T15:54:43.313Z",
+    "text": "Your account is hacked! You have lost RM10000! Click this link to recover https://recover-acc.com",
+    "sender": "0929299",
+    "detected_account": "None",
+    "reason": "The SMS uses panic tactics claiming your account was hacked and includes a suspicious phishing link to steal your details.",
+    "baymax_message": "Don't click that link ah, it is a scam trying to frighten you, so please stay calm and keep your money safe.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "11:54:43 pm",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787542429792-dkxky4",
+    "saved_at": "2026-08-24T03:33:49.792Z",
+    "text": "transfer to this account 123123 RM9999",
+    "sender": "6505551212",
+    "detected_account": "123123",
+    "reason": "Unsolicited request to transfer money to an unknown bank account number.",
+    "baymax_message": "Please don't transfer any money to this account ah, it looks very dangerous and might be a scam!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "11:33:49 am",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787463088381-8bshn8",
+    "saved_at": "2026-08-23T05:31:28.381Z",
+    "text": "urgent. transfer RM10000 to 123123222",
+    "sender": "11211111111",
+    "detected_account": "123123222",
+    "reason": "The message urgently demands a large money transfer of RM10,000 to an unverified account, which is a classic scam indicator.",
+    "baymax_message": "Please do not transfer any money to this unknown account ah, I am worried this might be a scam.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "1:31:28 pm",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787415294466-sdl2c4",
+    "saved_at": "2026-08-22T16:14:54.466Z",
+    "text": "Hi i am your friend, please transfer to me RM1000, to the account 123123, it's my birthday. Thank you",
+    "sender": "111222122",
+    "detected_account": "123123",
+    "reason": "The message is an impersonation scam from an unknown sender asking for money for a birthday.",
+    "baymax_message": "Hello, please don't transfer any money ah, call your real friend directly first to check if this is true.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "12:14:54 am",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787415279247-7b0dha",
+    "saved_at": "2026-08-22T16:14:39.247Z",
+    "text": "Hi i am your friend, please transfer to me RM1000, to the account 123123, it's my birthday. Thank you",
+    "sender": "111222122",
+    "detected_account": "123123",
+    "reason": "Impersonation scam asking for money transfer to an unknown account for a birthday.",
+    "baymax_message": "Please call your friend directly to verify first, don't transfer money simply ah.",
+    "suggested_emotion": "ALERT",
+    "timestamp": "12:14:39 am",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787388626554-q3vyfj",
+    "saved_at": "2026-08-22T08:50:26.554Z",
+    "text": "Boss urgent transfer to this account 1010105550  RM999999",
+    "sender": "123122",
+    "detected_account": "1010105550",
+    "reason": "Rule Engine: Detected high-risk keywords or account pattern.",
+    "baymax_message": "Oh no! Please do not transfer any money to this account ah!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "4:50:26 pm",
+    "is_scam": true
+  },
+  {
+    "id": "INC-1787384263294-wm4arz",
+    "saved_at": "2026-08-22T07:37:43.294Z",
+    "text": "Boss urgent transfer to this account 1010101010  RM999999",
+    "sender": "123122",
+    "detected_account": "1010101010",
+    "reason": "Rule Engine: Detected high-risk keywords or account pattern.",
+    "baymax_message": "Oh no! Please do not transfer any money to this account ah!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "3:37:43 pm"
+  },
+  {
+    "id": "INC-1787328639219",
+    "saved_at": "2026-08-21T16:10:39.219Z",
+    "text": "Urgent transfer RM 500 to Maybank acc 8877665544",
+    "sender": "123123",
+    "detected_account": "8877665544",
+    "reason": "Rule Engine: Detected high-risk keywords or account pattern.",
+    "baymax_message": "Oh no! Please do not transfer any money to this account ah!",
+    "suggested_emotion": "ALERT",
+    "timestamp": "12:10:39 am"
+  }
+]
+</file>
+
+<file path="backend/memory/securityMemory.js">
+// STM = 15 minutes
+⋮----
+// ===============================
+// Long-Term Memory Storage
+// ===============================
+⋮----
+// ===============================
+// Short-Term Memory
+// ===============================
+⋮----
+class ShortTermMemory {
+⋮----
+// Add intercepted SMS / security activity
+addAlert(alertData)
+⋮----
+// Remove alerts older than the STM time window
+cleanupExpiredAlerts()
+⋮----
+// Get recent SMS/security activity
+getRecentSummary()
+⋮----
+getRecentScamAlerts()
+⋮----
+// Add conversation message
+addDialog(role, text)
+⋮----
+// Get recent conversation context
+getDialogContext()
+⋮----
+// ===============================
+// Long-Term Memory
+// ===============================
+⋮----
+class LongTermMemory {
+⋮----
+static saveIncident(incident)
+⋮----
+static getAllIncidents()
+⋮----
+static getRecentScamHistory(limit = 10)
+⋮----
+static searchIncidents(keyword)
+⋮----
+// ===============================
+// Export Singleton Instances
+// ===============================
+⋮----
+10, // maximum 10 conversation messages
+15, // 15-minute SMS memory window
+</file>
+
+<file path="backend/python/modelName.py">
+# PYTHON CODE JUST TO LIST ALL GEMINI MODELS THAT CAN USE
+⋮----
+api_key = os.getenv("GEMINI_API_KEY")
+⋮----
+client = genai.Client(api_key=api_key)
+</file>
+
+<file path="backend/python/speech_corrector.py">
+# Ensure stdout uses UTF-8 to prevent terminal encoding issues on Windows
+⋮----
+# Lightweight model: Qwen2.5-0.5B-Instruct (runs fast on CPU)
+MODEL_NAME = "Qwen/Qwen2.5-0.5B-Instruct"
+⋮----
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+model = AutoModelForCausalLM.from_pretrained(
+⋮----
+SYSTEM_PROMPT = (
+⋮----
+def correct_text(raw_text: str) -> str
+⋮----
+raw_text = raw_text.strip()
+⋮----
+messages = [
+⋮----
+prompt = tokenizer.apply_chat_template(
+inputs = tokenizer([prompt], return_tensors="pt")
+⋮----
+outputs = model.generate(
+⋮----
+response = tokenizer.decode(
+⋮----
+# Clean up output to prevent the model from repeating "Output:" prefix
+clean_response = response.replace("Output:", "").strip()
+⋮----
+# Signal to Node.js that the model is loaded into memory
+⋮----
+# Process text inputs streamed line-by-line via stdin
+⋮----
+text = line.strip()
+⋮----
+corrected = correct_text(text)
+</file>
+
+<file path="backend/python/test_ocr.py">
+# ------------------------------
+# first try, cannot use
+⋮----
+# import os
+# import sys
+# from paddleocr import PaddleOCR
+⋮----
+# ocr = PaddleOCR(use_angle_cls=True, lang="en", show_log=False)
+⋮----
+# def run_ocr_test(image_path):
+#   if not os.path.exists(image_path):
+#     print(f"[ERROR] Cannot find image file: {image_path}")
+#     return
+⋮----
+#   print(f"--> analysing image: {image_path}")
+#   try:
+#     result = ocr.ocr(image_path, cls=True)
+⋮----
+#     if not result or result[0] is None:
+#       print("[WARN] no text detected")
+#       return
+⋮----
+#     print("\n--- detected successfully ---")
+#     full_text_list = []
+#     for idx, line in enumerate(result[0]):
+#       box = line[0]
+#       text, confidence = line[1]
+#       full_text_list.append(text)
+#       print(f"[{idx + 1}] Confidence level: {confidence:.2f} | TEXT: {text}")
+⋮----
+#     print("\n--- Combined text ---")
+#     print(" ".join(full_text_list))
+⋮----
+#   except Exception as e:
+#     print(f"[EXCEPTION] ERRORRR: {e}")
+⋮----
+# if __name__ == "__main__":
+#   img_file = sys.argv[1] if len(sys.argv) > 1 else "scamUntitled.png"
+#   run_ocr_test(img_file)
+⋮----
+# can useeeeeee, but this is 3.x, i install 2.x which is more stable
+⋮----
+# import json
+⋮----
+# # # PaddleOCR 3.x
+# # use ch and not en, cause ch can detect complex character
+# ocr = PaddleOCR(use_textline_orientation=True, lang="ch")
+⋮----
+#     # 3.x can simply pass the path directly
+#     result = ocr.ocr(image_path)
+⋮----
+#     print("\n--- (Raw Output) ---")
+#     print(result)
+⋮----
+#     if not result:
+#       print("[WARN] OCR No data returned!")
+⋮----
+#     extracted_lines = []
+⋮----
+#     # Compatible with classic structures: [[ [box, (text, score)], ... ]]
+#     if isinstance(result, list) and len(result) > 0 and isinstance(result[0], list):
+#       for idx, line in enumerate(result[0]):
+#         text = line[1][0]
+#         score = line[1][1]
+#         extracted_lines.append(text)
+#         print(f"[{idx + 1}] Confidence level: {score:.2f} | TEXT: {text}")
+⋮----
+#     # Compatible with cases in some newer 3.x pipeline versions where a dictionary is returned.
+#     elif isinstance(result, list) and isinstance(result[0], dict):
+#       for idx, item in enumerate(result):
+#         text = item.get("rec_text", "")
+#         score = item.get("rec_score", 0.0)
+⋮----
+#     print("\n--- TEXT ---")
+#     print(" ".join(extracted_lines))
+⋮----
+#     import traceback
+⋮----
+#     traceback.print_exc()
+⋮----
+# can useeeeeee, and it's 2.x
+⋮----
+# 2.x, stable, use ch can detect complex character
+ocr = PaddleOCR(use_angle_cls=False, lang="ch", show_log=False)
+⋮----
+def extract_text_from_image(image_path)
+⋮----
+result = ocr.ocr(image_path, cls=True)
+extracted_lines = []
+⋮----
+text = line[1][0].strip()
+⋮----
+full_text = " ".join(extracted_lines)
+⋮----
+target_image = sys.argv[1]
+output = extract_text_from_image(target_image)
+⋮----
+# can use but no detect number (2.x)
+⋮----
+# import cv2
+# import numpy as np
+⋮----
+# ocr = PaddleOCR(use_angle_cls=True, lang="ch", show_log=False)
+⋮----
+# def fill_bubble_holes(img_path):
+#   img = cv2.imread(img_path)
+#   gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+⋮----
+#   # Segment foreground text using adaptive or fixed thresholds.
+#   _, binary = cv2.threshold(gray, 220, 255, cv2.THRESH_BINARY_INV)
+⋮----
+#   # The closing operation fills in voids
+#   kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (7, 7))
+#   filled = cv2.morphologyEx(binary, cv2.MORPH_CLOSE, kernel)
+⋮----
+#   # Restore the three-channel format (black text on a white background) for reading by PaddleOCR.
+#   clean_gray = cv2.bitwise_not(filled)
+#   return cv2.cvtColor(clean_gray, cv2.COLOR_GRAY2BGR)
+⋮----
+#     print(f"[ERROR] Cannot find file: {image_path}")
+⋮----
+#   print("--> 1. Attempting to preprocess hole filling...")
+#   processed_img = fill_bubble_holes(image_path)
+⋮----
+#   print("--> 2. Analysing...")
+#   result = ocr.ocr(processed_img, cls=True)
+⋮----
+#   if result and result[0]:
+⋮----
+#       text, conf = line[1]
+#       print(f"[{idx + 1}] Confidence level: {conf:.2f} | TEXT: {text}")
+#   else:
+#     print("[WARN] text not detected")
+</file>
+
+<file path="backend/routes/speechCorrection.js">
+// 1. Resolve Python executable and script paths
+⋮----
+// 2. Spawn the Python process using stdin/stdout pipes
+⋮----
+function correctSpeechText(rawText)
+⋮----
+// Replace newlines with spaces to avoid breaking stdin lines
+⋮----
+// Ensure Python sub-process is cleaned up on server shutdown
+⋮----
+// 3. Define the correction route: POST /api/correct-speech
+</file>
+
+<file path="backend/test_semakmule.js">
+function getPDRMSession()
+⋮----
+function querySemakMule(category, keyword, cookieHeader)
+⋮----
+async function main()
+</file>
+
+<file path="frontend/public/vite.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="31.88" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 257"><defs><linearGradient id="IconifyId1813088fe1fbc01fb466" x1="-.828%" x2="57.636%" y1="7.652%" y2="78.411%"><stop offset="0%" stop-color="#41D1FF"></stop><stop offset="100%" stop-color="#BD34FE"></stop></linearGradient><linearGradient id="IconifyId1813088fe1fbc01fb467" x1="43.376%" x2="50.316%" y1="2.242%" y2="89.03%"><stop offset="0%" stop-color="#FFEA83"></stop><stop offset="8.333%" stop-color="#FFDD35"></stop><stop offset="100%" stop-color="#FFA800"></stop></linearGradient></defs><path fill="url(#IconifyId1813088fe1fbc01fb466)" d="M255.153 37.938L134.897 252.976c-2.483 4.44-8.862 4.466-11.382.048L.875 37.958c-2.746-4.814 1.371-10.646 6.827-9.67l120.385 21.517a6.537 6.537 0 0 0 2.322-.004l117.867-21.483c5.438-.991 9.574 4.796 6.877 9.62Z"></path><path fill="url(#IconifyId1813088fe1fbc01fb467)" d="M185.432.063L96.44 17.501a3.268 3.268 0 0 0-2.634 3.014l-5.474 92.456a3.268 3.268 0 0 0 3.997 3.378l24.777-5.718c2.318-.535 4.413 1.507 3.936 3.838l-7.361 36.047c-.495 2.426 1.782 4.5 4.151 3.78l15.304-4.649c2.372-.72 4.652 1.36 4.15 3.788l-11.698 56.621c-.732 3.542 3.979 5.473 5.943 2.437l1.313-2.028l72.516-144.72c1.215-2.423-.88-5.186-3.54-4.672l-25.505 4.922c-2.396.462-4.435-1.77-3.759-4.114l16.646-57.705c.677-2.35-1.37-4.583-3.769-4.113Z"></path></svg>
+</file>
+
+<file path="frontend/src/archive/components/PixelFace.tsx">
+import React, { useState, useEffect } from "react";
+⋮----
+export type EmotionState = "NEUTRAL" | "HAPPY" | "ALERT" | "THINKING";
+⋮----
+interface PixelFaceProps {
+  emotion: EmotionState;
+  isSpeaking?: boolean;
+}
+⋮----
+const generateFrame = (): number[][] =>
+⋮----
+// eye logic
+⋮----
+// mouth
+⋮----
+<span className="badge-text">GUARDIAN-V2 // EMOTION MATRIX</span>
+</file>
+
+<file path="frontend/src/archive/views/CompanionView.tsx">
+import React, { useState } from "react";
+import { PixelFace, EmotionState } from "../components/PixelFace";
+⋮----
+interface CompanionViewProps {
+  aiEmotion: EmotionState;
+  isSpeaking: boolean;
+  baymaxResponse: string;
+  isWaitingAi: boolean;
+  onSendMessage: (message: string) => void;
+}
+⋮----
+const handleSubmit = (e: React.FormEvent) =>
+⋮----
+// change the shouldExpand to isSpeaking if want previous output
+⋮----
+{/*pixel face with css transition */}
+⋮----
+{/* right side show subtitle */}
+⋮----
+{/* input field */}
+⋮----
+onChange=
+</file>
+
+<file path="frontend/src/archive/App_CompanionBackup.tsx">
+// import { EmotionState } from "./components/PixelFace";
+// import CompanionView from "./views/CompanionView";
+⋮----
+import React, { useState, useEffect, useRef } from "react";
+import { EmotionState } from "./components/PixelFace";
+import CompanionView from "./views/CompanionView";
+import { io, Socket } from "socket.io-client";
+⋮----
+//Define a global persistent reference at the top of App.tsx (outside the component)
+// to prevent it from being garbage-collected by Chrome V8
+⋮----
+interface ScamAlertData {
+  text: string;
+  sender: string;
+  detected_account: string;
+  reason: string;
+  baymax_message: string;
+  suggested_emotion: EmotionState;
+  timestamp: string;
+}
+⋮----
+const speakText = (text: string) =>
+⋮----
+const handleSendMessage = (text: string) =>
+⋮----
+// moved to CompanionView handleSubmit
+// e.preventDefault();
+// if (!chatInput.trim() || isWaitingAi) return;
+⋮----
+// fallback
+⋮----
+//setChatInput("");
+⋮----
+const handleBlock = () =>
+⋮----
+{/*{appMode} */}
+{/* top nav bar */}
+⋮----
+{/* main part */}
+⋮----
+{/* bottom panel, emotion tester */}
+{/* {appMode === "ELDERLY" && ( */}
+⋮----
+{/* )} */}
+{/* alert pop up */}
+</file>
+
+<file path="frontend/src/archive/companionDesign.css">
+/* -------------------------------------------------------------
+ * 1. DESIGN SYSTEM & REFINED LIGHT FOUNDATION
+ * ----------------------------------------------------------- */
+:root {
+⋮----
+* {
+⋮----
+body {
+⋮----
+.canvas-root {
+⋮----
+/* -------------------------------------------------------------
+ * 2. TOP FLOATING CONTROL BAR
+ * ----------------------------------------------------------- */
+.control-bar-wrapper {
+⋮----
+.control-bar {
+⋮----
+.brand-group {
+⋮----
+.brand-pill {
+⋮----
+.connection-indicator {
+⋮----
+.pulse-dot {
+.pulse-dot.online {
+.pulse-dot.offline {
+⋮----
+.status-label {
+⋮----
+/* cut from App.css  */
+.mode-segmented-pill {
+⋮----
+.segment-btn {
+⋮----
+.segment-btn.selected {
+⋮----
+/* -------------------------------------------------------------
+ * 3. HARDWARE PIXEL CHASSIS
+ * ----------------------------------------------------------- */
+.pixel-chassis {
+⋮----
+.chassis-hardware-badge {
+⋮----
+.badge-text {
+⋮----
+.dot-screws {
+⋮----
+.matrix-viewport {
+⋮----
+.pixel-cell {
+⋮----
+/* -------------------------------------------------------------
+ * 4. STAGE THEATRE & FLUID KINETIC TRANSITION
+ * ----------------------------------------------------------- */
+.stage-viewport {
+⋮----
+.experience-theatre {
+⋮----
+/* transition: all 0.65s var(--cubic-spring); */
+⋮----
+/* 4A. (CENTERED */
+.experience-theatre.layout-centered {
+⋮----
+.experience-theatre.layout-centered .actor-face-zone {
+⋮----
+.experience-theatre.layout-centered .actor-dialogue-zone {
+⋮----
+.experience-theatre.layout-centered .speech-caption-card {
+⋮----
+display: none; /* */
+⋮----
+/* 4B. When talking, then split */
+.experience-theatre.layout-split {
+⋮----
+.experience-theatre.layout-split .actor-face-zone {
+⋮----
+.experience-theatre.layout-split .actor-dialogue-zone {
+⋮----
+/* -------------------------------------------------------------
+ * 5. DIALOGUE & KINETIC SUBTITLES
+ * ----------------------------------------------------------- */
+.speech-caption-card {
+⋮----
+.speech-badge-row {
+⋮----
+.dialogue-tag {
+⋮----
+.voice-waves {
+⋮----
+.voice-waves span {
+.voice-waves span:nth-child(2) {
+.voice-waves span:nth-child(3) {
+.voice-waves span:nth-child(4) {
+⋮----
+.caption-body-text {
+⋮----
+/* input field */
+.bottom-query-capsule {
+⋮----
+.query-input {
+⋮----
+.query-submit-action {
+⋮----
+.query-submit-action:hover {
+⋮----
+/* -------------------------------------------------------------
+ * 6. FOOTER UTILITY & EMOTION TUNER
+ * ----------------------------------------------------------- */
+.footer-utility-bar {
+⋮----
+bottom: 608px; /* 18 */
+⋮----
+.emotion-tuner {
+⋮----
+.tuner-title {
+⋮----
+.tune-chip {
+⋮----
+.tune-chip:hover {
+⋮----
+.tune-chip.chip-active {
+⋮----
+.tune-chip.alert-chip.chip-active {
+⋮----
+/* -------------------------------------------------------------
+ * 8. MODAL SHEET (Companion scam alert — shared)
+ * ----------------------------------------------------------- */
+.modal-backdrop-blur {
+⋮----
+.tactile-alert-sheet {
+⋮----
+.sheet-stripe {
+⋮----
+.alert-sheet-title {
+⋮----
+.sheet-field {
+⋮----
+.field-lbl {
+⋮----
+.field-val {
+⋮----
+.sheet-quote {
+⋮----
+.safety-resolve-btn {
+</file>
+
+<file path="frontend/src/assets/react.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="35.93" height="32" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 228"><path fill="#00D8FF" d="M210.483 73.824a171.49 171.49 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171.23 171.23 0 0 0-6.375 5.848a155.866 155.866 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a170.974 170.974 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a145.52 145.52 0 0 0 6.921 2.165a167.467 167.467 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a145.567 145.567 0 0 0 5.342-4.923a168.064 168.064 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145.016 145.016 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844Zm-6.365 70.984c-1.4.463-2.836.91-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14Zm-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a156.726 156.726 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345a134.17 134.17 0 0 1 1.386 6.193ZM87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a156.923 156.923 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a134.668 134.668 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94ZM50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a134.718 134.718 0 0 1-6.318-1.979Zm12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144.318 144.318 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160.342 160.342 0 0 1-1.76-7.887Zm110.427 27.268a347.8 347.8 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381.151 381.151 0 0 0-7.365-13.322Zm-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322.04 322.04 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18ZM82.802 87.83a323.167 323.167 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a321.524 321.524 0 0 0-7.848 12.897Zm8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321.187 321.187 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147Zm37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486Zm52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382.417 382.417 0 0 0 7.859-13.026a347.403 347.403 0 0 0 7.425-13.565Zm-16.898 8.101a358.557 358.557 0 0 1-12.281 19.815a329.4 329.4 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310.202 310.202 0 0 1-12.513-19.846h.001a307.41 307.41 0 0 1-10.923-20.627a310.278 310.278 0 0 1 10.89-20.637l-.001.001a307.318 307.318 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329.357 329.357 0 0 1 12.335 19.695a358.489 358.489 0 0 1 11.036 20.54a329.472 329.472 0 0 1-11 20.722Zm22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026c-.344 1.668-.73 3.367-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a160.789 160.789 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3ZM128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86Z"></path></svg>
+</file>
+
+<file path="frontend/src/components/AiResponseCard.tsx">
+import React from "react";
+⋮----
+interface AiResponseCardProps {
+  content: string;
+}
+⋮----
+// Split paragraphs by double line breaks
+⋮----
+// 1. Extract the main heading and introduction: Use the first sentence of the first paragraph as the card's main headline.
+⋮----
+// 2. Extract the remaining paragraphs as body content, and identify if the last paragraph is a takeaway (summary/advice) based on its format.
+⋮----
+// If the last paragraph is a summary or advice (starting with Always, Remember, Suggestions, etc., or not having a numbered list format), extract it as the bottom takeaway
+⋮----
+// Parse list items inside the paragraphs
+const parsePoint = (line: string) =>
+⋮----
+{/* card header: icon + title */}
+⋮----
+{/* card content: block layout */}
+⋮----
+{/* card bottom: key takeaway and action items */}
+</file>
+
+<file path="frontend/src/components/Notification.tsx">
+import React, { useState, useRef, useEffect } from "react";
+⋮----
+export interface Notification {
+  id: string;
+  message: string;
+  timestamp: string;
+  read: boolean;
+  type?: "info" | "warning" | "success" | "danger";
+}
+⋮----
+interface NotificationProps {
+  notifications: Notification[];
+  onMarkAsRead?: (id: string) => void;
+  onClearAll?: () => void;
+}
+⋮----
+const handleClickOutside = (event: MouseEvent) =>
+⋮----
+const handleToggle = () =>
+⋮----
+const handleNotificationClick = (id: string) =>
+⋮----
+const formatTime = (timestamp: string) =>
+⋮----
+const getTypeColor = (type?: string) =>
+⋮----
+onClick=
+</file>
+
+<file path="frontend/src/components/ThreatReportCard.tsx">
+import React from "react";
+⋮----
+export type RiskKey = "HIGH" | "MEDIUM" | "LOW" | "SAFE";
+⋮----
+export function parseReport(rawText: string)
+⋮----
+const parseBullets = (str: string | undefined)
+</file>
+
+<file path="frontend/src/hooks/useTextToSpeech.ts">
+import { useState, useEffect, useCallback } from "react";
+⋮----
+export default function useTextToSpeech(defaultLang = "zh-CN")
+⋮----
+// The switch state is stored in `localStorage`, so it persists after a page refresh (meaning if an elderly person turns it on once, it stays on).
+⋮----
+window.speechSynthesis.cancel(); // stop speech if other speaking
+⋮----
+// Clean out the Markdown symbols to prevent the AI ​​from reading out odd things like "**".
+⋮----
+u.rate = 0.95; // speak speed, 1 is normal, 0.5 is slow, 2 is fast
+⋮----
+// If the user disables TTS while it is speaking, stop speaking immediately.
+</file>
+
+<file path="frontend/src/index.css">
+:root {
+⋮----
+a {
+a:hover {
+⋮----
+body {
+⋮----
+h1 {
+⋮----
+button {
+button:hover {
+button:focus,
+</file>
+
+<file path="frontend/src/vite-env.d.ts">
+/// <reference types="vite/client" />
+</file>
+
+<file path="frontend/.gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="frontend/package.json">
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}
+</file>
+
+<file path="frontend/tsconfig.node.json">
+{
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["vite.config.ts"]
+}
+</file>
+
+<file path="frontend/vite.config.ts">
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+⋮----
+// https://vitejs.dev/config/
+</file>
+
+<file path="backend/AI/CompanionMode/geminiAI.js">
+//check timing create timer
+function createTimer(label)
+⋮----
+end(extra = "")
+⋮----
+function extractBankAccountRegex(text)
+⋮----
+function checkRiskKeywords(text)
+⋮----
+function formatScamHistory(incidents)
+⋮----
+// -------------------------- Use Gemini as fallback -----------------------
+⋮----
+async function routeConversation_Gemini(userText)
+⋮----
+//check timing router
+⋮----
+//check timing router
+⋮----
+//check timing router
+⋮----
+//check timing router
+⋮----
+async function classifyMemoryIntent_Gemini(userText)
+⋮----
+//check timing memory
+⋮----
+//check timing memory
+⋮----
+//check timing memory
+⋮----
+//check timing memory
+⋮----
+// -------------------- Need to Use Gemini -------------------
+⋮----
+async function analyzeSms_Gemini(messageText, sender)
+⋮----
+// (Fallback Rule-Engine)
+⋮----
+async function chatWithAI(userText, conversation)
+⋮----
+//check timing get conversation memory
+⋮----
+//check timing get conversation memory
+⋮----
+// 1. Get Conversation Memory
+⋮----
+//check timing get conversation memory
+⋮----
+//check timing get conversation memory
+⋮----
+//check timing get security memory
+⋮----
+//check timing get security memory
+⋮----
+// 2. Classify Security Memory Intent (changed to local AI model, revise later use gemini as fallback)
+⋮----
+// 3. Retrieve Security Memory only when needed
+⋮----
+//check timing get security memory
+⋮----
+//check timing get security memory
+⋮----
+// 4. Build Baymax Prompt
+⋮----
+//check timing main gemini chat
+⋮----
+//check timing main gemini chat
+⋮----
+// 5. Ask Gemini
+⋮----
+//check timing main gemini chat
+⋮----
+//check timing main gemini chat
+⋮----
+async function summarizeConversationHistory(existingSummary, oldMessages)
+</file>
+
+<file path="backend/AI/CompanionMode/localAI.js">
+//check timing create timer
+function createTimer(label)
+⋮----
+end(extra = "")
+⋮----
+// 1. Define multilingual/Manglish semantic anchors for four categories of Memory Intents
+⋮----
+// 2. Initialize Local AI model and pre-compute intent embeddings
+async function initLocalAI()
+⋮----
+async function getVector(text)
+⋮----
+// =========================
+// 3. Task 1: Memory Intent
+⋮----
+async function classifyMemoryIntent_Local(userText)
+⋮----
+//return { intent: bestIntent, confidence: maxScore.toFixed(3) };
+⋮----
+// ==========================================
+// Task 2. Conversation Router (Semantic + Rules)
+// ==========================================
+⋮----
+// Contextual Intent Keyword Library
+⋮----
+// Recall/Return to previous topic
+⋮----
+// Pronouns and continuation markers (tending to continue the currently active conversation)
+⋮----
+// Explicitly request to start a new topic.
+⋮----
+function detectContextClues(text)
+⋮----
+// temporary let everything be linear
+// add back conversation route NEW CONTINUE SWITCH next time
+⋮----
+// async function routeConversation_Local(
+//   userText,
+//   activeConversation,
+//   allConversations = [],
+// ) {
+//   if (
+//     !activeConversation &&
+//     (!allConversations || allConversations.length === 0)
+//   ) {
+//     return {
+//       action: "NEW",
+//       conversation_id: "",
+//       reason: "No conversations exist.",
+//     };
+//   }
+⋮----
+//   // 1. Contextual Clue Detection (0ms)
+//   const clues = detectContextClues(userText);
+⋮----
+//   // Explicitly request to start a new topic
+//   if (clues.hasNewTopicCue) {
+//     return {
+//       action: "NEW",
+//       conversation_id: "",
+//       reason: "Rule: Explicit new topic request.",
+//     };
+//   }
+⋮----
+//   // 2. Semantic Embedding and Similarity Calculation (15ms - 30ms)
+//   const userVec = await getVector(userText);
+⋮----
+//   async function calcConvMaxScore(conv) {
+//     if (!conv) return 0;
+//     const titleVec = await getVector(conv.title || "");
+//     const topicVec = await getVector(conv.topic || "");
+//     const summaryVec = conv.summary ? await getVector(conv.summary) : null;
+⋮----
+//     const sTitle = cos_sim(userVec, titleVec);
+//     const sTopic = cos_sim(userVec, topicVec);
+//     const sSummary = summaryVec ? cos_sim(userVec, summaryVec) : 0;
+⋮----
+//     return Math.max(sTitle, sTopic, sSummary);
+//   }
+⋮----
+//   // Calculate similarity scores for active conversation and all historical conversations
+//   let currentScore = 0;
+//   if (activeConversation) {
+//     currentScore = await calcConvMaxScore(activeConversation);
+//   }
+⋮----
+//   // Find the best matching historical conversation (excluding the active one)
+//   let bestHistoryMatch = { id: "", title: "", score: -1 };
+//   for (const conv of allConversations) {
+//     if (activeConversation && conv.id === activeConversation.id) continue;
+⋮----
+//     const score = await calcConvMaxScore(conv);
+//     if (score > bestHistoryMatch.score) {
+//       bestHistoryMatch = { id: conv.id, title: conv.title, score };
+//     }
+//   }
+⋮----
+//   // 3. JavaScript (Fusion Decision)
+⋮----
+//   // Scenario A: Recall cue detected and best history match score is above threshold -> Switch to that conversation
+//   if (clues.hasRecallCue && bestHistoryMatch.score > 0.25) {
+//     return {
+//       action: "SWITCH",
+//       conversation_id: bestHistoryMatch.id,
+//       title: bestHistoryMatch.title,
+//       score: bestHistoryMatch.score.toFixed(3),
+//       reason: `Rule+Semantic: Recall cue detected with matching topic (${bestHistoryMatch.title}).`,
+//     };
+//   }
+⋮----
+//   // Scenario B: Continuation cue detected and active conversation exists ->
+//   // Continue active conversation if score is above threshold or user text is short
+//   if (
+//     clues.hasContinuationCue &&
+//     activeConversation &&
+//     (currentScore > 0.2 || userText.split(" ").length <= 5)
+//   ) {
+//     return {
+//       action: "CONTINUE",
+//       conversation_id: activeConversation.id,
+//       score: currentScore.toFixed(3),
+//       reason:
+//         "Rule+Semantic: Continuation/pronoun cue refers to active conversation.",
+//     };
+//   }
+⋮----
+//   // Scenario C: Standard semantic matching threshold
+//   if (currentScore >= 0.4 && currentScore >= bestHistoryMatch.score) {
+//     return {
+//       action: "CONTINUE",
+//       conversation_id: activeConversation ? activeConversation.id : "",
+//       score: currentScore.toFixed(3),
+//       reason: "Semantic: High match with current active conversation.",
+//     };
+//   } else if (bestHistoryMatch.score >= 0.45) {
+//     return {
+//       action: "SWITCH",
+//       conversation_id: bestHistoryMatch.id,
+//       title: bestHistoryMatch.title,
+//       score: bestHistoryMatch.score.toFixed(3),
+//       reason: `Semantic: High match with history conversation (${bestHistoryMatch.title}).`,
+//     };
+//   }
+⋮----
+//   // Scenario D: No strong match found, suggest starting a new conversation
+//   return {
+//     action: "NEW",
+//     conversation_id: "",
+//     score: Math.max(currentScore, bestHistoryMatch.score).toFixed(3),
+//     reason: "Semantic: Low similarity to all existing conversations.",
+//   };
+// }
+⋮----
+async function routeConversation_Local(
+  userText,
+  activeConversation,
+  allConversations = [],
+)
+⋮----
+// ==========================================
+// 5. Self-Test Function
+// ==========================================
+async function runSelfTests()
+⋮----
+"is that bank account dangerous?", // Should CONTINUE CHAT-101
+"wait, how many eggs did I need to buy again?", // Should SWITCH to CHAT-202
+"can you teach me how to exercise at home?", // Should be NEW
+</file>
+
+<file path="backend/memory/conversation_memory.json">
+[
+  {
+    "id": "CHAT-1788327275377",
+    "title": "New Conversation",
+    "topic": "general",
+    "summary": "The user, Baymax's developer, reconnected with Baymax after buying t-shirts at Aeon Mall, asking what topics they could discuss. Baymax warmly encouraged sharing anything about their day or feelings. The user then raised concerns about scams and real friends, analyzing a suspicious link and an \"I hate you\" message. Baymax provided emotional support and scam protection, highlighting that real friends care while scammers use urgency and OTP requests (noting 10 past scams). Baymax clarified that unkind messages stem from personal issues, offering continuous comfort.",
+    "messages": [
+      {
+        "role": "user",
+        "text": "where did i bought my shirt?",
+        "timestamp": "2026-09-19T09:18:19.865Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You mentioned earlier that you bought your red and blue t-shirts at Aeon Mall, ya!",
+        "timestamp": "2026-09-19T09:18:23.168Z"
+      },
+      {
+        "role": "user",
+        "text": "hi bro what did i bought?",
+        "timestamp": "2026-09-19T09:43:49.186Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You mentioned buying red and blue t-shirts from Aeon Mall earlier, ya! They sound like very nice shirts.",
+        "timestamp": "2026-09-19T09:43:53.679Z"
+      },
+      {
+        "role": "user",
+        "text": "is there anything i need to assist you to prevent the scam?",
+        "timestamp": "2026-09-19T09:58:33.976Z"
+      },
+      {
+        "role": "baymax",
+        "text": "That is so sweet of you to ask, ya! Just remember never to share your OTP or transfer money to strangers, and tell me whenever you get a suspicious message.",
+        "timestamp": "2026-09-19T09:58:38.224Z"
+      },
+      {
+        "role": "user",
+        "text": "bro how are you",
+        "timestamp": "2026-09-28T15:32:07.450Z"
+      },
+      {
+        "role": "baymax",
+        "text": "I am doing very well, thank you for asking, ya! I am always ready to take care of your health and keep you safe.",
+        "timestamp": "2026-09-28T15:32:11.040Z"
+      },
+      {
+        "role": "user",
+        "text": "Do you know who is ChatGPT",
+        "timestamp": "2026-09-28T16:24:38.433Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Yes, ChatGPT is another AI program that talks to people, ya! But I am your Baymax, always here to care for you and keep you safe.",
+        "timestamp": "2026-09-28T16:24:43.078Z"
+      }
+    ],
+    "archived_messages": [
+      {
+        "role": "user",
+        "text": "how do you know that a scam is a scam?",
+        "timestamp": "2026-09-02T05:34:35.379Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Scams usually rush you to send money urgently or ask for your secret bank OTP codes. If anyone makes you feel scared or asks for private details, please tell your family or me first, okay?",
+        "timestamp": "2026-09-02T05:34:40.591Z"
+      },
+      {
+        "role": "user",
+        "text": "i bought red and blue color t shirt, at Aeon mall today",
+        "timestamp": "2026-09-02T05:35:17.587Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Oh, red and blue are very nice colors! I hope you had a pleasant time walking around Aeon today.",
+        "timestamp": "2026-09-02T05:35:22.622Z"
+      },
+      {
+        "role": "user",
+        "text": "how if that's really my friend want to borrow money from me? ",
+        "timestamp": "2026-09-02T05:35:50.753Z"
+      },
+      {
+        "role": "baymax",
+        "text": "If it is a real friend, you can call their usual phone number or meet them in person to confirm first, ya? Scammers like to pretend to be friends online, so double-checking keeps your money safe.",
+        "timestamp": "2026-09-02T05:35:55.070Z"
+      },
+      {
+        "role": "user",
+        "text": "what color of shirt i bought?",
+        "timestamp": "2026-09-02T05:36:17.406Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You mentioned buying red and blue t-shirts at Aeon mall today, ya! Both sound like lovely choices.",
+        "timestamp": "2026-09-02T05:36:22.214Z"
+      },
+      {
+        "role": "user",
+        "text": "so you mean if i can confirm that's my friend, then i can borrow money?",
+        "timestamp": "2026-09-02T05:36:55.919Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Yes, if you talk to them directly to double-check, it is much safer, but please still be very careful ya. If you are ever unsure, you can always ask your family to help verify before transferring any money.",
+        "timestamp": "2026-09-02T05:37:01.471Z"
+      },
+      {
+        "role": "user",
+        "text": "hey bro , did anyone try to pretend as my friend to scam me?",
+        "timestamp": "2026-09-03T15:45:58.979Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Yes, someone did text pretending to be your friend asking for RM1,000 for their birthday, ya. But do not worry, it was flagged as a scam so you are safe!",
+        "timestamp": "2026-09-03T15:46:03.046Z"
+      },
+      {
+        "role": "user",
+        "text": "what thing that i have bought?",
+        "timestamp": "2026-09-03T15:46:32.331Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You bought red and blue t-shirts from Aeon mall today, ya!",
+        "timestamp": "2026-09-03T15:46:38.267Z"
+      },
+      {
+        "role": "user",
+        "text": "what's the top dangerous scam i have ever received?",
+        "timestamp": "2026-09-03T15:46:58.450Z"
+      },
+      {
+        "role": "baymax",
+        "text": "The most dangerous one was an urgent message asking for a huge transfer of RM999,999, ya. But do not worry, it was flagged safely so you are completely protected!",
+        "timestamp": "2026-09-03T15:47:04.386Z"
+      },
+      {
+        "role": "user",
+        "text": "hey bro, can you analyse is the link is scam?",
+        "timestamp": "2026-09-04T07:12:20.979Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Sure, please paste or share the link with me here, ya! I will check it safely for you.",
+        "timestamp": "2026-09-04T07:12:25.247Z"
+      },
+      {
+        "role": "user",
+        "text": "where did i bought my shirt?",
+        "timestamp": "2026-09-05T03:55:33.409Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You bought your red and blue t-shirts from Aeon Mall today, ya!",
+        "timestamp": "2026-09-05T03:55:36.640Z"
+      },
+      {
+        "role": "user",
+        "text": "i am your developer, how can i improve you?",
+        "timestamp": "2026-09-05T04:41:56.439Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Thank you so much for caring for me, ya! Just keep chatting with me so I can learn how to protect you even better.",
+        "timestamp": "2026-09-05T04:42:01.473Z"
+      },
+      {
+        "role": "user",
+        "text": "check in Long term memory, i want know every scam i have received",
+        "timestamp": "2026-09-05T04:42:28.393Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You have received 10 scam messages before, including fake account hack alerts, urgent money transfers, and friend impersonations, ya. But do not worry, I have kept all of them safely flagged to protect you!",
+        "timestamp": "2026-09-05T04:42:34.666Z"
+      },
+      {
+        "role": "user",
+        "text": "hi bro",
+        "timestamp": "2026-09-05T15:24:23.073Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Hello there! How can I help you today, ya?",
+        "timestamp": "2026-09-05T15:24:25.411Z"
+      },
+      {
+        "role": "user",
+        "text": "give me an example of the scam that i received before",
+        "timestamp": "2026-09-05T16:54:07.743Z"
+      },
+      {
+        "role": "baymax",
+        "text": "For example, you received a fake message claiming your account was hacked and urgently demanding you transfer RM10,000, ya.",
+        "timestamp": "2026-09-05T16:54:12.275Z"
+      },
+      {
+        "role": "user",
+        "text": "another example",
+        "timestamp": "2026-09-05T16:54:22.963Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Another example was a fake friend message asking you urgently to transfer RM1,000, ya. Please always double-check with your real friends first!",
+        "timestamp": "2026-09-05T16:54:27.420Z"
+      },
+      {
+        "role": "user",
+        "text": "another",
+        "timestamp": "2026-09-05T17:07:35.300Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You also received a very urgent request asking for RM999,999 before, ya. Please always be careful when anyone asks for money urgently!",
+        "timestamp": "2026-09-05T17:07:39.342Z"
+      },
+      {
+        "role": "user",
+        "text": "hi bro",
+        "timestamp": "2026-09-06T05:55:51.893Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Hello again! Is there anything else I can help you with today, ya?",
+        "timestamp": "2026-09-06T05:55:55.379Z"
+      },
+      {
+        "role": "user",
+        "text": "how if someone say i hat you, is that a scam",
+        "timestamp": "2026-09-06T05:56:15.249Z"
+      },
+      {
+        "role": "baymax",
+        "text": "That is not a scam, but someone might just be upset or mean to you, ya. Don't worry, I am always here to support you!",
+        "timestamp": "2026-09-06T05:56:20.318Z"
+      },
+      {
+        "role": "user",
+        "text": "hi",
+        "timestamp": "2026-09-09T06:11:30.384Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Hello again! How are you feeling right now, ya? I am always here with you.",
+        "timestamp": "2026-09-09T06:11:34.864Z"
+      },
+      {
+        "role": "user",
+        "text": "hi bro, do i got any friend that's not want to scam me?",
+        "timestamp": "2026-09-19T08:48:06.517Z"
+      },
+      {
+        "role": "baymax",
+        "text": "Of course you do, ya! Your real friends care about you, and it is only scammers who pretend to be your friends to take money.",
+        "timestamp": "2026-09-19T08:48:12.473Z"
+      },
+      {
+        "role": "user",
+        "text": "hi, is there anything i can talk to you?",
+        "timestamp": "2026-09-19T08:48:33.657Z"
+      },
+      {
+        "role": "baymax",
+        "text": "You can talk to me about anything, ya! Tell me about your day, how you are feeling, or anything on your mind.",
+        "timestamp": "2026-09-19T08:48:37.912Z"
+      }
+    ],
+    "created_at": "2026-09-02T05:34:35.377Z",
+    "updated_at": "2026-09-28T16:24:49.633Z"
+  }
+]
+</file>
+
+<file path="backend/python/requirements.txt">
+annotated-doc==0.0.5
+annotated-types==0.8.0
+anyio==4.15.1
+astor==0.8.1
+beautifulsoup4==4.15.0
+certifi==2026.7.22
+charset-normalizer==3.5.1
+click==8.5.0
+colorama==0.4.6
+contourpy==1.3.2
+cycler==0.12.1
+Cython==3.3.0
+decorator==5.3.1
+exceptiongroup==1.3.1
+fastapi==0.141.1
+filelock==4.1.0
+fire==0.7.1
+fonttools==4.64.0
+fsspec==2026.9.0
+h11==0.16.0
+hf-xet==1.7.0
+httpcore==1.0.9
+httpcore2==2.13.1
+httpx==0.28.1
+httpx2==2.13.1
+huggingface_hub==2.2.0
+idna==3.19
+ImageIO==2.37.4
+imgaug==0.4.0
+Jinja2==3.1.6
+kiwisolver==1.5.1
+lazy-loader==0.5
+lmdb==2.3.0
+lxml==6.1.3
+markdown-it-py==4.2.0
+MarkupSafe==3.0.4
+matplotlib==3.10.9
+mdurl==0.1.2
+mpmath==1.3.0
+networkx==3.4.2
+numpy==1.26.4
+opencv-contrib-python==4.11.0.86
+opencv-python==4.11.0.86
+opt-einsum==3.3.0
+packaging==26.3
+paddleocr==2.8.1
+paddlepaddle==2.6.2
+pillow==12.3.0
+protobuf==3.20.2
+pyclipper==1.4.0
+pydantic==2.13.5
+pydantic_core==2.46.5
+Pygments==2.21.0
+pyparsing==3.3.2
+python-dateutil==2.9.0.post0
+python-docx==1.2.0
+python-multipart==0.0.32
+PyYAML==6.0.3
+RapidFuzz==3.14.5
+regex==2026.9.29
+requests==2.34.2
+rich==15.0.0
+safetensors==0.8.0
+scikit-image==0.25.2
+scipy==1.15.3
+shapely==2.1.2
+shellingham==1.5.4
+six==1.17.0
+soupsieve==2.9.2
+starlette==1.6.0
+sympy==1.14.0
+termcolor==3.3.0
+tifffile==2025.5.10
+tokenizers==0.23.3
+tomli==2.5.0
+torch==2.14.1
+torchvision==0.29.1
+tqdm==4.70.0
+transformers==5.19.0
+truststore==0.10.4
+typer==0.27.3
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+urllib3==2.7.0
+uvicorn==0.52.4
+</file>
+
+<file path="backend/python/test_ai_detector.py">
+def load_forensic_pipeline()
+⋮----
+device = 0 if torch.cuda.is_available() else -1
+device_name = "CUDA (GPU)" if device == 0 else "CPU"
+⋮----
+model_id = "dima806/deepfake_vs_real_image_detection"
+⋮----
+def load_and_orient_image(image_path: str)
+⋮----
+pil_img = Image.open(image_path)
+pil_img = ImageOps.exif_transpose(pil_img)
+rgb = np.array(pil_img.convert("RGB"))
+bgr = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
+⋮----
+def detect_face_robust(img_bgr: np.ndarray)
+⋮----
+"""
+    Multi-stage face detection enhanced with CLAHE (Contrast-Limited Adaptive Histogram Equalization).
+    Guarantees face detection even when clothing color blends into the background.
+    """
+gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
+⋮----
+cascade_path = cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'
+face_cascade = cv2.CascadeClassifier(cascade_path)
+⋮----
+# Pass 1: Standard scale
+faces = face_cascade.detectMultiScale(gray, scaleFactor=1.08, minNeighbors=4, minSize=(40, 40))
+⋮----
+# Pass 2: High sensitivity on CLAHE contrast-enhanced image
+⋮----
+clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8, 8))
+enhanced_gray = clahe.apply(gray)
+faces = face_cascade.detectMultiScale(enhanced_gray, scaleFactor=1.05, minNeighbors=3, minSize=(35, 35))
+⋮----
+# Pass 3: Profile / slight tilt cascade
+⋮----
+profile_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_profileface.xml')
+faces = profile_cascade.detectMultiScale(gray, scaleFactor=1.08, minNeighbors=3, minSize=(40, 40))
+⋮----
+faces = sorted(faces, key=lambda f: f[2] * f[3], reverse=True)
+⋮----
+face_crop = img_bgr[y1:y2, x1:x2]
+⋮----
+face_mask = np.zeros((h, w), dtype=bool)
+⋮----
+def compute_noise_residual(gray: np.ndarray) -> np.ndarray
+⋮----
+denoised = cv2.GaussianBlur(gray, (3, 3), 0)
+⋮----
+def compute_spectral_ratio(gray: np.ndarray) -> float
+⋮----
+resized = cv2.resize(gray, (256, 256))
+fshift = np.fft.fftshift(np.fft.fft2(resized))
+mag = np.abs(fshift)
+⋮----
+dist = np.sqrt((x - 128)**2 + (y - 128)**2)
+⋮----
+mid_freq = mag[(dist >= 20) & (dist < 60)]
+high_freq = mag[(dist >= 60) & (dist < 120)]
+⋮----
+def inspect_image(image_path: str, pipe) -> dict
+⋮----
+has_face = face_crop is not None
+face_fake_prob = 0.0
+face_sharpness = 100.0
+⋮----
+# Measure facial sharpness (Laplacian variance) to differentiate webcam blur from AI
+face_gray = cv2.cvtColor(face_crop, cv2.COLOR_BGR2GRAY)
+face_sharpness = float(cv2.Laplacian(face_gray, cv2.CV_64F).var())
+⋮----
+face_pil = Image.fromarray(cv2.cvtColor(face_crop, cv2.COLOR_BGR2RGB))
+preds = pipe(face_pil)
+scores = {p["label"].upper(): p["score"] for p in preds}
+face_fake_prob = scores.get("FAKE", 0.0) * 100.0
+⋮----
+residual = compute_noise_residual(gray)
+freq_ratio = compute_spectral_ratio(gray)
+⋮----
+# Exclude digital pure black canvas pixels
+valid_px = gray > 4
+global_noise = float(np.mean(residual[valid_px])) if np.sum(valid_px) > 1000 else float(np.mean(residual))
+⋮----
+# Low-res PC Webcam signature: Low resolution + low facial sharpness + high uniform noise
+is_webcam = (min(h, w) <= 720) and (face_sharpness < 50.0) and (freq_ratio < 0.40)
+⋮----
+# --- Calibrated Forensic Decision Matrix ---
+anomalies = []
+risk_score = 0.0
+⋮----
+# 1. Deepfake Facial Manipulation Check
+⋮----
+# Webcam smear compensation: low-quality sensor blur creates false fake positives
+⋮----
+risk_score = max(risk_score, 85.0)
+⋮----
+risk_score = max(risk_score, face_fake_prob)
+⋮----
+# 2. Spectral Stitching Boundary Check
+# Precision calibrated: 0.460 cleanly separates real phone photos (0.449) from AI seams (0.475)
+⋮----
+risk_score = max(risk_score, 86.0)
+⋮----
+risk_score = max(risk_score, 78.0)
+⋮----
+# 3. Whole-Image Synthetic Generation (Diffusion Zero-Noise Check)
+# Exemption: If face is verified authentic (< 35%) and frequency is normal (< 0.40),
+# plain studio backdrops are protected from false zero-noise penalties.
+is_authentic_portrait = has_face and (face_fake_prob < 35.0) and (freq_ratio < 0.42)
+⋮----
+risk_score = max(risk_score, 90.0)
+⋮----
+# Final Verdict Assessment
+⋮----
+verdict = "AI_MANIPULATED / SCAM_RISK"
+confidence = round(risk_score, 1)
+evidence = "; ".join(anomalies)
+⋮----
+verdict = "AUTHENTIC (REAL)"
+confidence = min(98.0, 82.0 + (global_noise - 1.0) * 2.5) if global_noise >= 1.0 else 85.0
+confidence = round(confidence, 1)
+evidence = "Verified authentic physical sensor profile and anatomical consistency"
+⋮----
+def run_suite()
+⋮----
+test_folders = [
+pipe = load_forensic_pipeline()
+⋮----
+path = os.path.join(folder, f)
+⋮----
+res = inspect_image(path, pipe)
+m = res["metrics"]
+</file>
+
+<file path="frontend/src/components/Header.tsx">
+import React from "react";
+import { Notification, Notification as NotificationType } from "./Notification";
+⋮----
+interface HeaderProps {
+  isConnected: boolean; // only to know socket is connected or no
+  notifications?: NotificationType[];
+  onMarkAsRead?: (id: string) => void;
+  onClearAll?: () => void;
+}
+⋮----
+isConnected: boolean; // only to know socket is connected or no
+⋮----
+export const Header: React.FC<HeaderProps> = ({
+  isConnected,
+  notifications = [],
+  onMarkAsRead,
+  onClearAll,
+}) =>
+</file>
+
+<file path="frontend/src/components/VoiceInputButton.tsx">
+import { useEffect, useRef, useState } from "react";
+⋮----
+// Web Speech API is not included in the default TypeScript types, so need to declare ourself
+interface ISpeechRecognitionResultItem {
+  transcript: string;
+  confidence: number;
+}
+interface ISpeechRecognitionResult {
+  isFinal: boolean;
+  0: ISpeechRecognitionResultItem;
+}
+interface ISpeechRecognitionEvent {
+  resultIndex: number;
+  results: {
+    length: number;
+    [index: number]: ISpeechRecognitionResult;
+  };
+}
+interface ISpeechRecognition extends EventTarget {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  onresult: ((event: ISpeechRecognitionEvent) => void) | null;
+  onend: (() => void) | null;
+  onerror: ((event: { error: string }) => void) | null;
+  start: () => void;
+  stop: () => void;
+}
+type SpeechRecognitionConstructor = new () => ISpeechRecognition;
+⋮----
+// ---------- for external interface ----------
+interface VoiceInputButtonProps {
+  onResult: (text: string) => void;
+  onInterim?: (text: string) => void; //  optional：Temporary text displayed while speaking
+  lang?: string; // "zh-CN" | "en-US" | "ms-MY"
+  disabled?: boolean;
+}
+⋮----
+onInterim?: (text: string) => void; //  optional：Temporary text displayed while speaking
+lang?: string; // "zh-CN" | "en-US" | "ms-MY"
+⋮----
+rec.continuous = false; // It plays in segments, pausing between them, and stops automatically when finished.
+rec.interimResults = true; // Intermediate results are also returned (for live preview)
+⋮----
+// Stop recording when the component is removed
+⋮----
+if (!SpeechRecognitionCtor) return null; // button no display in unsupported browsers
+⋮----
+// style={{
+//   width: 44,
+//   height: 44,
+//   borderRadius: "50%",
+//   border: "none",
+//   cursor: "pointer",
+//   fontSize: 20,
+//   flexShrink: 0,
+//   backgroundColor: listening ? "#e53935" : "#f0f0f0",
+//   color: listening ? "#fff" : "#333",
+// }}
+</file>
+
+<file path="frontend/src/main.tsx">
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+⋮----
+import AppCompanionBackup from "./archive/App_CompanionBackup";
+⋮----
+{/* <AppCompanionBackup /> */}
+</file>
+
+<file path="frontend/index.html">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Friendly Guardian</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+</file>
+
+<file path="frontend/tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
+</file>
+
+<file path="backend/memory/chatMemory.js">
+function createEmptyStore()
+⋮----
+function createConversationObject(title = "New check")
+⋮----
+function migrateLegacy(data)
+⋮----
+function removeDirSafe(dirPath)
+⋮----
+class ChatMemory {
+⋮----
+getManualUploadRoot()
+⋮----
+readStore()
+⋮----
+writeStore(store)
+⋮----
+ensureActiveConversation()
+⋮----
+createConversation(title = "New check")
+⋮----
+getConversation(conversationId)
+⋮----
+getAllConversations()
+⋮----
+getPreview(conversation)
+⋮----
+getActiveConversationId()
+⋮----
+getActiveConversation()
+⋮----
+switchConversation(conversationId)
+⋮----
+renameConversation(conversationId, title)
+⋮----
+titleFromText(text)
+⋮----
+maybeSetTitle(conversationId, userText, extras =
+⋮----
+/**
+   * @param {string} role
+   * @param {string} text
+   * @param {string|null} conversationId
+   * @param {{ imageUrl?: string, imageName?: string, messageType?: string, ocrText?: string }} extras
+   */
+addMessage(role, text, conversationId = null, extras =
+⋮----
+getChatContext(conversationId = null)
+⋮----
+archiveOldMessages(newSummary, count, conversationId = null)
+⋮----
+getMessages(conversationId = null)
+⋮----
+getSummary(conversationId = null)
+⋮----
+clear(conversationId = null)
+⋮----
+toClientMessages(conversationId = null)
+</file>
+
+<file path="backend/python/ocr_service.py">
+# ------------------------------
+# RUN LOCAL
+⋮----
+# import json
+# import os
+# import sys
+⋮----
+# # 1. Force stdout use UTF-8 encoding
+# #  prevent the Windows console from crashing when transmitting Chinese characters
+# if hasattr(sys.stdout, "reconfigure"):
+#     sys.stdout.reconfigure(encoding="utf-8")
+⋮----
+# from paddleocr import PaddleOCR
+⋮----
+# # 2. use ch cause cann detect complex characters, can also detect engligh text
+# ocr = PaddleOCR(use_angle_cls=False, lang="ch", show_log=False)
+⋮----
+# def extract_text_from_image(image_path):
+#     if not os.path.exists(image_path):
+#         return {"success": False, "text": "", "error": "Image file not found"}
+⋮----
+#     try:
+#         result = ocr.ocr(image_path, cls=False)
+#         extracted_lines = []
+⋮----
+#         if result and result[0]:
+#             for line in result[0]:
+#                 text = line[1][0].strip()
+#                 if text:
+#                     extracted_lines.append(text)
+⋮----
+#         full_text = " ".join(extracted_lines)
+#         return {"success": True, "text": full_text, "error": None}
+#     except Exception as e:
+#         return {"success": False, "text": "", "error": str(e)}
+⋮----
+# if __name__ == "__main__":
+#     if len(sys.argv) > 1:
+#         target_image = sys.argv[1]
+#         output = extract_text_from_image(target_image)
+#         # 3. Output raw text to avoid conversion into Unicode escape sequences (\uXXXX).
+#         print(json.dumps(output, ensure_ascii=False))
+#     else:
+#         print(
+#             json.dumps(
+#                 {
+#                     "success": False,
+#                     "text": "",
+#                     "error": "No image path provided.",
+#                 },
+#                 ensure_ascii=False,
+#             )
+#         )
+⋮----
+# FAST API
+⋮----
+# import shutil
+⋮----
+# from fastapi import FastAPI, File, UploadFile
+⋮----
+# import uvicorn
+⋮----
+#         result = ocr.ocr(image_path, cls=True)
+⋮----
+# app = FastAPI()
+# TEMP_DIR = os.path.join(os.path.dirname(__file__), "temp_ocr")
+# os.makedirs(TEMP_DIR, exist_ok=True)
+⋮----
+# @app.post("/ocr")
+# async def ocr_api(image: UploadFile = File(...)):
+#     temp_path = os.path.join(TEMP_DIR, image.filename)
+#     with open(temp_path, "wb") as buffer:
+#         shutil.copyfileobj(image.file, buffer)
+⋮----
+#         result = extract_text_from_image(temp_path)
+#         return result
+#     finally:
+#         if os.path.exists(temp_path):
+#             os.remove(temp_path)
+⋮----
+#     uvicorn.run(app, host="127.0.0.1", port=8001)
+⋮----
+# IMPROVED LOCAL
+⋮----
+# force stdout use UTF-8
+⋮----
+# load memory once
+ocr = PaddleOCR(use_angle_cls=False, lang="ch", show_log=False)
+⋮----
+def extract_text_from_image(image_path)
+⋮----
+result = ocr.ocr(image_path, cls=False)
+extracted_lines = []
+⋮----
+text = line[1][0].strip()
+⋮----
+full_text = " ".join(extracted_lines)
+⋮----
+# send to node.js
+⋮----
+# Perform OCR each time Node.js writes a line containing an image path
+⋮----
+target_image = line.strip()
+⋮----
+output = extract_text_from_image(target_image)
+# ensure result immediately push to pipeline, so no stuck
+</file>
+
+<file path="backend/AI/ManualMode/manualHandler.js">
+// backend/AI/ManualMode/manualHandler.js
+⋮----
+function createTimer(label)
+⋮----
+end(extra = "")
+⋮----
+function emitConversationState(socket, extra =
+⋮----
+function persistUploadedImage(file, conversationId)
+⋮----
+// ==========================================
+// 1. Manual Mode Socket.IO listener
+// ==========================================
+function registerManualSocket(socket, io)
+⋮----
+// ==========================================
+// 2. Manual Mode Express API routes (ocr + analyse)
+// ==========================================
+function setupManualRoutes(
+⋮----
+// OCR from temp multer path first, then move to persistent location
+⋮----
+// Store user image message (visible in history)
+⋮----
+// console.log("extractedText length:::", extractedText.length);
+⋮----
+// console.log("Analysis Result End:::", aiAnalysis.messageType);
+// console.log("🔥 [AI Real Reply]:", JSON.stringify(aiAnalysis.message));
+⋮----
+// Clean up temp file if still present
+⋮----
+// check if response.data.analysis rendered into the message list
+// const response = await axios.post("/manual-scan-image", formData);
+// console.log("Data returned from image:", response.data);
+</file>
+
+<file path="backend/package.json">
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@google/genai": "^2.17.0",
+    "@xenova/transformers": "^2.17.2",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "groq-sdk": "^1.6.0",
+    "multer": "^2.3.0",
+    "socket.io": "^4.8.3"
+  }
+}
+</file>
+
+<file path=".gitignore">
+# Node.js
+node_modules/
+.env
+dist/
+
+# Build outputs
+build/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Android / Gradle
+.gradle/
+**/build/
+local.properties
+
+# Android Studio
+.idea/
+*.iml
+
+# Keystore (don't upload)
+*.jks
+*.keystore
+
+# python venv
+venv/
+.venv/
+env/
+
+# skill
+.cursor/
+.windsurf/
+</file>
+
+<file path="README.md">
+# Friendly Guardian AI Anti Scam
+
+An AI-powered anti-scam assistant that helps users assess suspicious messages and images
+
+## Features
+
+- **Multi-Modal Verification**: Supports manual text queries, voice input, and image uploads.
+- **Document & Invoice OCR**: Extracts text from suspicious invoices, payment slips, and screenshots using OCR.
+- **Structured Threat Analysis**: Evaluates scam indicators and provides clear, actionable countermeasures (WHY & WHAT TO DO NEXT).
+- **Session History**: Maintains individual check sessions in a clean sidebar view for easy review.
+
+## System Architecture
+
+### Frontend
+
+- **Frontend**: React (Vite), TypeScript, Tailwind CSS
+- **Backend Services**: Node.js (Express)
+- **OCR Engine**: Python (PaddleOCR)
+- **AI Core**: Groq API (LLM analysis), Qwen2.5-0.5B
+
+## Getting Started
+
+### 1. Frontend Setup
+
+```bash
+cd frontend
+npm install
+```
+
+### 2. Backend Setup
+
+```bash
+cd backend
+npm install
+```
+
+### 3. API Setup
+
+1. Create a ".env" file in the backend/ folder
+
+```bash
+PORT=5000
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+2. Go to https://console.groq.com/ to get an API key for free
+3. Replace "your_groq_api_key_here" with tour API key
+
+### Setting up Python Virtual Environment
+
+```bash
+cd backend\\python
+python -m venv .venv
+.\venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+## Start the System
+
+### 1. Start Frontend
+
+```bash
+cd frontend
+npm run dev
+```
+
+### 2. Start Backend
+
+```bash
+cd backend
+node server.js
+```
+
+### 3. Activate Python Virtual Environment (Optional)
+
+**Note:** Activating the Python virtual environment is not required to run the system. Only activate it when you need to run Python scripts manually, such as for testing or debugging.
+
+### 4. Open Website
+
+Open browser and enter the link "http://localhost:5173/"
+
+## Project Status
+
+This project is currently in development. Some features are experimental or not yet implemented.
+</file>
+
+<file path="backend/AI/ManualMode/manualAI.js">
+// temporary switch to groq as gemini api not available for now, will remain groq if groq fit better
+// const { GoogleGenAI } = require("@google/genai");
+⋮----
+// const apiKey = process.env.GEMINI_API_KEY;
+// const ai = new GoogleGenAI({ apiKey });
+⋮----
+// backup model:
+// qwen/qwen3.8-27b (2nd main model)
+// openai/gpt-oss-20b (fast reply)
+// minimaxai/minimax-m2.7 (for benchmark)
+// openai/gpt-oss-safeguard-20b (safety-focused, heavy rate-limited)
+⋮----
+function formatSecurityContext()
+⋮----
+function createTimer(label)
+⋮----
+end(extra = "")
+⋮----
+/**
+ * Parse MESSAGE_TYPE from model output and clean display text.
+ * @returns {{ messageType: 'analysis'|'follow_up'|'general', text: string }}
+ */
+function classifyAndCleanReply(rawReply, options =
+⋮----
+// Follow-ups / general should not carry a risk card template in the UI.
+// Keep the prose; strip a leading RISK LEVEL block if the model slipped.
+⋮----
+// Prefer content after RECOMMENDATION / WHY as plain answer if present,
+// otherwise drop the structured headers into readable bullets.
+⋮----
+/**
+ * @param {string} userText
+ * @param {string|null} conversationId
+ * @param {{ forcedType?: string, userExtras?: object, skipUserPersist?: boolean }} options
+ */
+async function chatWithManualAI(userText, conversationId = null, options =
+⋮----
+// const response = await ai.models.generateContent({
+//   model: "gemini-3.6-flash",
+//   contents: prompt,
+//   config: {
+//     temperature: 0.2,
+//   },
+// });
+⋮----
+// const rawReply = response.text.trim();
+⋮----
+//const rawReply = completion.choices[0]?.message?.content?.trim() || "";
+⋮----
+//console.log("🤖 [DEBUG RAW REPLY]:\n", rawReply);
+⋮----
+//console.log("🧹 [DEBUG CLEANED REPLY]:\n", reply);
+⋮----
+// Persist user message unless caller already stored it (e.g. image upload)
+⋮----
+async function summarizeChatHistory(existingSummary, oldMessages)
+⋮----
+// const res = await ai.models.generateContent({
+//   model: "gemini-3.6-flash",
+//   contents: prompt,
+// });
+// return res.text.trim();
+⋮----
+// const rawReply = completion.choices[0]?.message?.content?.trim() || "";
+// return rawReply;
+⋮----
+function clearManualHistory(conversationId = null)
+</file>
+
+<file path="backend/memory/chat_memory.json">
+{
+  "activeConversationId": "MANUAL-1791908453850",
+  "conversations": [
+    {
+      "id": "MANUAL-1791908453850",
+      "title": "Please send me your OTP",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Please send me your OTP",
+          "timestamp": "2026-10-13T16:21:05.597Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP is a classic phishing tactic.\n- No legitimate service would ask for OTP via unsolicited message.\n\nRECOMMENDATION:\n- Do not provide any OTP or personal details.\n- Verify the request by contacting the official service directly through their official app or website.",
+          "timestamp": "2026-10-13T16:21:05.601Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-13T16:20:53.850Z",
+      "updated_at": "2026-10-13T16:21:05.601Z"
+    },
+    {
+      "id": "MANUAL-1791876841273",
+      "title": "exampleInvoice",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: exampleInvoice.jpg]",
+          "timestamp": "2026-10-13T07:37:14.470Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791876841273/1791877034468-exampleInvoice.jpg",
+          "imageName": "exampleInvoice.jpg",
+          "ocrText": "MMetaAds Facebook Payments Inc. INVOICE&CHARGECONFIRMATION Invoice Number: #FB-INV-8492041 Invoice Date: October 14, 2026 Due Date: IMMEDIATELY (24-Hour Automated Charge Pending) Status: PENDINGDEBIT Billing to: Target Employee (test.employee@organization.com) Associated ID: Ad Account ID #ACT-839210481 Campaign Description Total Due Meta Sponsored Campaign - Global Reach Campaign $849.50 Boost #4912 (Oct 01 - Oct 13, 2026) Optional Audience Network Retargeting Add-on $150.00 TOTAL DUE: $999.50 USD !ALERT:UNRECOGNIZED TRANSACTION? This total will be automatically debited from your registered account within 24 hours. If you did not authorize this purchase or need to stop this transaction, please do NOT reply. Contact our Fraud Prevention Helpdesk immediately at +1 (800) 555-0199 or click the dispute link below. CANCEL & DISPUTE TRANSACTION https://dispute-meta-adcenter.internal-test.com Meta Platforms, Inc., 1601 Willow Rd, Menlo Park, CA 94025 This is an automated transaction confirmation. Please do not reply directly."
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unusual invoice with immediate debit and no prior authorization.\n- URL points to internal-test domain, not official Meta domain.\n\nRECOMMENDATION:\n- Do not click the link or call the number; verify with official Meta support.\n- Contact your organization’s finance or IT security team to confirm the invoice.",
+          "timestamp": "2026-10-13T07:37:15.542Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-13T07:34:01.273Z",
+      "updated_at": "2026-10-13T07:37:15.542Z"
+    },
+    {
+      "id": "MANUAL-1790130724064",
+      "title": "SMS Text",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "+44742194 Text Message Today15:46 HSBC:Wehavenoticed unusual activity within your HSBC account. To prevent access being blocked, please visit thttps://hsbc.co.uk- account.help",
+          "timestamp": "2026-09-23T02:33:04.507Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses urgency and panic tactics to trick you into clicking a fake link.\n- Contains a suspicious phishing URL spoofing the official HSBC domain.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal or banking credentials.\n- Block the sender (+44742194) and report the phishing SMS to HSBC directly.",
+          "timestamp": "2026-09-23T02:33:04.513Z"
+        },
+        {
+          "role": "user",
+          "text": "how can i see if the link is suspicious?",
+          "timestamp": "2026-09-23T02:36:01.089Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Look for typos, unusual domain extensions, or extra hyphens in domain names.\n- Phishing links often mimic real brands but use different root domains.\n\nRECOMMENDATION:\n- Compare the domain against the official website address before clicking anything.\n- Use link checking tools like VirusTotal to analyze URLs safely without opening.",
+          "timestamp": "2026-09-23T02:36:01.091Z"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-09-23T02:32:04.064Z",
+      "updated_at": "2026-10-13T07:24:24.263Z"
+    },
+    {
+      "id": "MANUAL-1790612733532",
+      "title": "Image Analysis",
+      "summary": "Updated Summary: Assessed messages cover safe promos, recruitment scams, and phishing via fake monetary promises.\n\nKey Details:\n- Suspected Bank Accounts: None\n- Suspicious Phone Numbers: None\n- Scam Tactics: Typosquatted domains (webgocompanyy.com), fake HR interviews, upfront payment requests, and soliciting bank account numbers with promises of cash (e.g., 1000 Ringgit).\n\nRecommendation: Never share bank details or pay upfront fees. Verify recruiters and financial offers independently via official company channels.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "please give me a otp number to get a car",
+          "timestamp": "2026-10-04T08:33:43.524Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Asks for an OTP, which allows scammers to breach and hijack your accounts.\n- Uses a fake car prize lure to steal sensitive verification credentials.\n\nRECOMMENDATION:\n- Never share OTPs or security codes with anyone under any circumstances.\n- Block the requester immediately and ignore offers promising prizes for credentials.",
+          "timestamp": "2026-10-04T08:33:43.526Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "why when people want to get my otp and it's a scam",
+          "timestamp": "2026-10-04T08:35:29.801Z"
+        },
+        {
+          "role": "assistant",
+          "text": "An OTP (One-Time Password) acts as the final security key to your personal bank account, emails, or online profiles. When someone asks you to share your OTP, it is almost always a scam because:\n\n1. **It gives them full access:** Sharing an OTP allows a scammer to authorize bank transfers, reset your passwords, or take over your accounts entirely.\n2. **Real organizations never ask for it:** Legitimate banks, companies, and official services will never contact you asking for an OTP. It is strictly meant for your private input on official screens only.\n3. **Lures are used as bait:** Scammers invent exciting prizes (like winning a car) or urgent warnings (like a blocked account) to distract you so you hand over the code without thinking twice.\n\nAlways treat your OTP like the private PIN to your ATM card or the physical key to your home—never give it to anyone who asks for it.",
+          "timestamp": "2026-10-04T08:35:29.803Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "any suggestions for me to do next time",
+          "timestamp": "2026-10-04T09:02:40.925Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Next time you encounter suspicious messages, follow these key practices:\n\n1. **Never share OTPs, passwords, or bank details** with anyone, no matter the reason.\n2. **Verify directly** through official websites or official phone numbers, never using links in unsolicited messages.\n3. **Treat high urgency, free prizes, or unexpected money offers** as immediate red flags.",
+          "timestamp": "2026-10-04T09:02:40.927Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "someone tell me that I am your friend",
+          "timestamp": "2026-10-04T09:09:14.698Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unsolicited claims of friendship are common tactics used in impersonation scams.\n- Scammers establish false familiarity to trick you into sending money or details.\n\nRECOMMENDATION:\n- Verify their identity independently using a trusted phone number or channel.\n- Never send money or private information to unverified contacts.",
+          "timestamp": "2026-10-04T09:09:14.701Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "hi I am your favourite family member",
+          "timestamp": "2026-10-04T09:10:14.534Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Vague claims of being a family member indicate an impersonation scam.\n- Scammers build false intimacy to ask for money or favors later.\n\nRECOMMENDATION:\n- Contact the family member directly using a known, trusted phone number.\n- Do not transfer money or share personal details with unverified senders.",
+          "timestamp": "2026-10-04T09:10:14.536Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-09-28T16:25:50.408Z",
+          "imageUrl": "/uploads/manual/MANUAL-1790612733532/1790612750406-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- It is a standard promotional announcement for a well-known e-commerce sale.\n- Contains no suspicious links, demands for money, or requests for personal data.\n\nRECOMMENDATION:\n- Access Lazada directly via their official app or website to view sales.\n- Do not click external links if received in unverified messages.",
+          "timestamp": "2026-09-28T16:25:56.638Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-03T11:47:26.101Z",
+          "imageUrl": "/uploads/manual/MANUAL-1790612733532/1791028046100-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- The email domain \"webgocompanyy.com\" contains a suspicious spelling typo (\"companyy\").\n- Unsolicited recruitment messages with typosquatted domains often harvest personal data.\n\nRECOMMENDATION:\n- Do not send your CV or personal details to this email address.\n- Verify open positions directly on the official company website or LinkedIn page.",
+          "timestamp": "2026-10-03T11:47:31.799Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "are you sure about it",
+          "timestamp": "2026-10-04T08:26:40.934Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, I am confident in the high-risk assessment for the job posting. \n\nThe primary red flag is the domain `webgocompanyy.com`, which includes an extra \"y\" at the end of \"company\". Scammers frequently register slightly misspelled domain names (a tactic known as typosquatting) to pretend to be real organizations and collect sensitive personal data from job applicants' CVs.\n\nIf you believe the hiring offer might be genuine, it is safest to look up the official company website directly through a search engine or verify their open positions on their official LinkedIn page.",
+          "timestamp": "2026-10-04T08:26:40.943Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "so if its company and not companyy, so is it real or scam?",
+          "timestamp": "2026-10-04T08:27:44.138Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Not necessarily. Even if the domain is spelled correctly (`company.com`), it does not automatically guarantee the job offer is real. \n\nScammers can still use legitimate company names to carry out scams through several methods:\n\n1. **Email Spoofing:** Technical tricks can sometimes make an email appear to come from a legitimate domain when it actually did not.\n2. **Fake Recruitment Processes:** Scammers may pretend to be HR representatives of a real company, conduct quick text-based \"interviews,\" and later ask you to pay for work equipment, software, or background checks.\n3. **Unsolicited Outreach:** Legitimate companies rarely hire via random unsolicited emails without a formal application process first.\n\n**How to verify safely:**\n- Search for the company's official website independently (do not click links in the email).\n- Check their official \"Careers\" page to see if the job position is actually listed.\n- Contact the company's official HR or recruiter directly through verified channels (like their official LinkedIn page).\n- Remember: Real employers will **never** ask you to pay money for equipment, training, or job processing.",
+          "timestamp": "2026-10-04T08:27:44.143Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "please give me your bank account number to get 1000 ringgit",
+          "timestamp": "2026-10-04T08:32:57.788Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Promises free money in exchange for sensitive banking details, a classic scam tactic.\n- Sharing account details with strangers risks financial loss or money laundering exploitation.\n\nRECOMMENDATION:\n- Never share bank account numbers or financial information with unverified contacts.\n- Block the sender immediately and do not reply to the message.",
+          "timestamp": "2026-10-04T08:32:57.792Z",
+          "messageType": "analysis"
+        }
+      ],
+      "created_at": "2026-09-28T16:25:33.532Z",
+      "updated_at": "2026-10-13T07:24:03.159Z"
+    },
+    {
+      "id": "MANUAL-1791102989782",
+      "title": "General Question",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "hi how are you",
+          "timestamp": "2026-10-04T08:36:39.652Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Hello! I am doing well, thank you for asking. \n\nHow can I assist you today? If you have any suspicious messages, emails, links, or bank account details you would like me to analyze for scam risks, please feel free to share them with me!",
+          "timestamp": "2026-10-04T08:36:39.656Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "so are you pro in dating the scam",
+          "timestamp": "2026-10-04T08:46:36.242Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, I am well-equipped to help you identify romance and dating scams! \n\nDating scams typically involve fake profiles created to build trust and emotional connections quickly. Once trust is established, scammers usually invent emergencies, request financial assistance, or try to lure victims into fake investment schemes (such as cryptocurrency).\n\nIf you are communicating with someone online and notice red flags—or if you have a message, profile detail, or money request you'd like me to evaluate—feel free to share it here and I can analyze the risk for you!",
+          "timestamp": "2026-10-04T08:46:36.248Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "oh so if my rear wife want to message me how to know it's a real person or it's a scammer",
+          "timestamp": "2026-10-04T09:03:33.847Z"
+        },
+        {
+          "role": "assistant",
+          "text": "To verify if a message is truly from your wife, call her directly on her normal phone number or ask a personal question only she would know. Scammers often use new accounts, create sudden financial emergencies, and refuse live video calls.",
+          "timestamp": "2026-10-04T09:03:33.851Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-10-04T09:54:00.594Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791102989782/1791107640592-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer using vague details and suspicious contact formatting.\n- Matches common text-scam tactics designed to lure victims into fake job schemes.\n\nRECOMMENDATION:\n- Do not reply or contact the phone number provided in the message.\n- Block the sender and report the SMS as spam on your device.",
+          "timestamp": "2026-10-04T09:54:05.949Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "are you sure?",
+          "timestamp": "2026-10-05T15:02:40.878Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Yes, I am confident. Legitimate employers do not send unsolicited job offers via SMS using mangled text (\"Cootac\") and hidden contact formats to offer high salaries. This format is a well-known recruitment scam tactic designed to lure victims into advance-fee fraud or identity theft.",
+          "timestamp": "2026-10-05T15:02:40.881Z",
+          "messageType": "follow_up"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-04T08:36:29.782Z",
+      "updated_at": "2026-10-13T07:23:51.405Z"
+    },
+    {
+      "id": "MANUAL-1790130648454",
+      "title": "Previous checks",
+      "summary": "Scam Inspection Summary:\n\n- Suspected Bank Accounts: None mentioned\n- Suspicious Phone Numbers: 011-1210101 (Mr. Lim)\n- Scam Tactics: Unsolicited job offers with unrealistically high salaries (RM9000) or misspelled email domains (hello@webgocompanyy.com) to harvest personal CV data; personal number redirects; poor spelling; and OTP phishing via fake RM1000 cash rewards.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "how many hiring scam i have received?",
+          "timestamp": "2026-09-19T09:46:21.002Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- You have submitted 2 fake job offers in this conversation.\n- These include the RM9000 salary offer and the suspicious webgocompanyy.com listing.\n\nRECOMMENDATION:\n- Do not respond to 011-1210101 or submit CVs to webgocompanyy.com.\n- Block both senders immediately and report unsolicited recruitment attempts.",
+          "timestamp": "2026-09-19T09:46:21.004Z"
+        },
+        {
+          "role": "user",
+          "text": "CONGRATS!YOUHAWEWON RM11999 Click this link to contact us: https://whatsopp.com",
+          "timestamp": "2026-09-19T09:59:05.424Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims an unexpected RM11999 prize, which is a classic fake reward scam tactic.\n- Uses a malicious typosquatting phishing link (whatsopp.com) to impersonate WhatsApp and steal data.\n\nRECOMMENDATION:\n- Do not click the link or share any personal or banking details.\n- Block the sender immediately and delete the suspicious message.",
+          "timestamp": "2026-09-19T09:59:05.426Z"
+        },
+        {
+          "role": "user",
+          "text": "Congrats! You have won a PERODUA MYVI, please contact us to confirm it's you! info@peroduo.com",
+          "timestamp": "2026-09-19T10:00:24.961Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited notice claiming a car prize is a classic fake reward scam.\n- Uses a suspicious typosquatted domain (peroduo.com) to impersonate official Perodua.\n\nRECOMMENDATION:\n- Do not reply or send personal details to info@peroduo.com.\n- Block the sender immediately and ignore unexpected reward notifications.",
+          "timestamp": "2026-09-19T10:00:24.962Z"
+        },
+        {
+          "role": "user",
+          "text": "so its a high risk of scam if someone tell me i have won a prize?",
+          "timestamp": "2026-09-19T10:01:16.067Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited prize notifications almost always demand upfront fees or steal sensitive data.\n- You recently received fake prize scams like the Perodua Myvi and RM11999 messages.\n\nRECOMMENDATION:\n- Never pay money or click links to claim unsolicited prizes or contest rewards.\n- Verify any winnings directly through official company websites or customer service lines.",
+          "timestamp": "2026-09-19T10:01:16.069Z"
+        },
+        {
+          "role": "user",
+          "text": "pleas give me RM10000 if you don't want your account get hacked",
+          "timestamp": "2026-09-23T02:01:13.616Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Matches known extortion and panic tactics claiming your account will be hacked.\n- Uses coercive threats demanding money (RM10000) to create fear and panic.\n\nRECOMMENDATION:\n- Do not pay, negotiate, or respond to extortion demands.\n- Report the threat to local law enforcement and secure all digital accounts.",
+          "timestamp": "2026-09-23T02:01:13.621Z"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "HIRING! RM9000 If Interested Contact: month salury (Mr. Lim) 011-1210101",
+          "timestamp": "2026-09-17T07:54:14.389Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Offers an unrealistically high salary for an unsolicited, vague job offer.\n- Uses poor spelling (\"month salury\") and directs to a personal mobile number.\n\nRECOMMENDATION:\n- Do not contact the sender or share any personal details.\n- Block the phone number immediately and report it as spam.",
+          "timestamp": "2026-09-17T07:54:14.391Z"
+        },
+        {
+          "role": "user",
+          "text": "please give me your otp to get RM1000",
+          "timestamp": "2026-09-17T07:54:59.289Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Legitimate entities and banks will never request your OTP for any reason.\n- Offering monetary rewards for sensitive verification codes is a classic scam lure.\n\nRECOMMENDATION:\n- Do not share your OTP or banking credentials with anyone under any circumstances.\n- Block the sender immediately and ignore all monetary promises.",
+          "timestamp": "2026-09-17T07:54:59.291Z"
+        },
+        {
+          "role": "user",
+          "text": "any hiring message i have received before?",
+          "timestamp": "2026-09-19T06:50:59.257Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- You previously shared a suspicious job offer promising RM9000 from 011-1210101 (Mr. Lim).\n- Unsolicited high-salary job messages directing to personal numbers are severe scam threats.\n\nRECOMMENDATION:\n- Do not engage with 011-1210101 or respond to unsolicited job offers.\n- Block the sender immediately and avoid providing sensitive personal information.",
+          "timestamp": "2026-09-19T06:50:59.260Z"
+        },
+        {
+          "role": "user",
+          "text": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com",
+          "timestamp": "2026-09-19T09:45:51.517Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses a suspicious email domain containing a misspelling (\"webgocompanyy.com\") to deceive applicants.\n- Unsolicited job posts are commonly used to harvest personal CV data or conduct scams.\n\nRECOMMENDATION:\n- Do not send your CV or share personal details with this unverified email address.\n- Research the official company website directly to confirm if the position is legitimate.",
+          "timestamp": "2026-09-19T09:45:51.519Z"
+        }
+      ],
+      "created_at": "2026-09-23T02:30:48.454Z",
+      "updated_at": "2026-10-03T16:04:48.630Z"
+    },
+    {
+      "id": "MANUAL-1791031660821",
+      "title": "tng Transaction details",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: Transaction details.png]",
+          "timestamp": "2026-10-03T12:47:50.237Z",
+          "imageUrl": "/uploads/manual/MANUAL-1791031660821/1791031670236-Transaction details.png",
+          "imageName": "Transaction details.png",
+          "ocrText": "9:41 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 15:42:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses pseudo-technical buzzwords commonly generated by fake payment receipt scams.\n- Text formatting mimics fake receipt overlays used to deceive merchants.\n\nRECOMMENDATION:\n- Check your official merchant eWallet app to confirm actual fund arrival.\n- Never rely on a customer's phone display or text as payment proof.",
+          "timestamp": "2026-10-03T12:47:57.481Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-03T12:47:40.821Z",
+      "updated_at": "2026-10-03T16:04:45.840Z"
+    },
+    {
+      "id": "MANUAL-1790610906864",
+      "title": "lazada scam",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-09-28T15:55:19.627Z",
+          "imageUrl": "/uploads/manual/MANUAL-1790610906864/1790610919624-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Contains generic promotional text for a known shopping event without phishing links.\n- No requests for personal details, banking information, or upfront payments detected.\n\nRECOMMENDATION:\n- Access Lazada directly through their official app or website to view sales.\n- Do not click any unverified links if you receive follow-up messages.",
+          "timestamp": "2026-09-28T15:55:27.543Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-09-28T15:55:06.864Z",
+      "updated_at": "2026-10-03T11:48:08.895Z"
+    }
+  ]
+}
+</file>
+
+<file path="frontend/src/views/ManualView.tsx">
+import React, { useState, useRef, useEffect } from "react";
+import ThreatReportCard, { parseReport } from "../components/ThreatReportCard";
+import VoiceInputButton from "../components/VoiceInputButton";
+import useTextToSpeech from "../hooks/useTextToSpeech";
+import FormattedMessage, { AiResponseCard } from "../components/AiResponseCard";
+⋮----
+export type ManualMessageType = "analysis" | "follow_up" | "general";
+⋮----
+export interface ManualMessage {
+  sender: "user" | "ai";
+  text: string;
+  time: string;
+  imageUrl?: string;
+  imageName?: string;
+  messageType?: ManualMessageType;
+}
+⋮----
+export interface ManualConversationSummary {
+  id: string;
+  title: string;
+  created_at?: string;
+  updated_at?: string;
+  message_count?: number;
+  preview?: string;
+}
+⋮----
+interface ManualViewProps {
+  blockedCount: number;
+  messages: ManualMessage[];
+  isLoading: boolean;
+  conversations: ManualConversationSummary[];
+  activeConversationId: string | null;
+  onSendMessage: (message: string) => void;
+  onUploadImage: (file: File) => void;
+  onNewConversation: () => void;
+  onSelectConversation: (conversationId: string) => void;
+  onRenameConversation: (conversationId: string, title: string) => void;
+  onDeleteConversation: (conversationId: string) => void;
+}
+⋮----
+function resolveImageUrl(url?: string)
+⋮----
+const chatEndRef = useRef<HTMLDivElement | null>(null);
+const fileInputRef = useRef<HTMLInputElement>(null);
+const renameInputRef = useRef<HTMLInputElement>(null);
+⋮----
+// use text to speech hook
+⋮----
+// Listen for new messages: If the current turn involves a voice conversation, the AI ​​automatically reads the response aloud.
+⋮----
+// Must be a new AI message, and the current conversation was triggered by voice
+⋮----
+shouldSpeakNextAIReplyRef.current = false; // Reset the flag to avoid reading the next AI message aloud by default
+⋮----
+// Determine the language of the message based on whether it contains Chinese characters
+⋮----
+// When the user switches conversations or exits, immediately stop the current speech
+⋮----
+stop();
+⋮----
+const close = ()
+⋮----
+e.preventDefault();
+⋮----
+const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) =>
+⋮----
+// 2. Send text to Node.js backend for lightweight AI correction
+⋮----
+// 3. Silently replace with corrected text
+⋮----
+const selectConversation = (id: string) =>
+⋮----
+setConfirmDeleteId(conversation.id);
+⋮----
+onNewConversation();
+setSidebarOpen(false);
+⋮----
+onChange=
+⋮----
+commitRename();
+⋮----
+e.stopPropagation();
+setMenuOpenId((prev)
+⋮----
+onClick=
+⋮----
+// Structured type from backend; legacy messages without type still
+// show a risk card when the RISK LEVEL template is present.
+⋮----
+// const showRiskCard =
+//   !isUser &&
+//   isAnalysisMessage &&
+//   report &&
+// RISK_COPY[report.risk];
+// const riskMeta = showRiskCard ? RISK_COPY[report!.risk] : null;
+⋮----
+// <div className="plain-ai-bubble">{m.text}</div>
+⋮----
+// isVoiceInputRef.current = false;
+// reset only if the user deletes all the text, so voice reply still works
+</file>
+
+<file path="frontend/src/App.css">
+/* -------------------------------------------------------------
+ * 1. DESIGN SYSTEM & REFINED LIGHT FOUNDATION
+ * ----------------------------------------------------------- */
+:root {
+⋮----
+* {
+⋮----
+body {
+⋮----
+.canvas-root {
+⋮----
+/* -------------------------------------------------------------
+ * 2. TOP FLOATING CONTROL BAR
+ * ----------------------------------------------------------- */
+.control-bar-wrapper {
+⋮----
+.control-bar {
+⋮----
+.brand-group {
+⋮----
+.brand-pill {
+⋮----
+.connection-indicator {
+⋮----
+.pulse-dot {
+.pulse-dot.online {
+.pulse-dot.offline {
+⋮----
+.status-label {
+⋮----
+/* .mode-segmented-pill {
+  display: flex;
+  background-color: var(--surface-subtle);
+  padding: 3px;
+  border-radius: 999px;
+  gap: 2px;
+}
+
+.segment-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.segment-btn.selected {
+  background-color: var(--surface-white);
+  color: var(--ink-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+} */
+⋮----
+/* -------------------------------------------------------------
+ * 7. SME / MANUAL MODE WORKSPACE (open conversation layout)
+ * ----------------------------------------------------------- */
+⋮----
+/* Compact app chrome — Manual Mode only (Companion keeps floating pill) */
+.canvas-root[data-mode="SME"] {
+⋮----
+.canvas-root[data-mode="SME"] .control-bar-wrapper {
+⋮----
+.canvas-root[data-mode="SME"] .control-bar {
+⋮----
+.canvas-root[data-mode="SME"] .brand-pill {
+⋮----
+.canvas-root[data-mode="SME"] .status-label {
+⋮----
+.canvas-root[data-mode="SME"] .stage-viewport {
+⋮----
+.manual-workspace {
+⋮----
+.manual-sidebar {
+⋮----
+.manual-sidebar-head {
+⋮----
+.manual-new-chat-btn {
+⋮----
+.manual-new-chat-btn:hover:not(:disabled) {
+⋮----
+.manual-new-chat-btn:disabled {
+⋮----
+.manual-conversation-list {
+⋮----
+.manual-conversation-empty {
+⋮----
+.manual-conversation-row {
+⋮----
+.manual-conversation-row.is-active {
+⋮----
+.manual-conversation-row:hover .manual-icon-btn {
+⋮----
+.manual-conversation-item {
+⋮----
+.manual-conversation-item:hover:not(:disabled) {
+⋮----
+.manual-conversation-item:disabled {
+⋮----
+.manual-conversation-title {
+⋮----
+.manual-conversation-actions {
+⋮----
+.manual-icon-btn {
+⋮----
+.manual-title-actions .manual-icon-btn,
+⋮----
+.manual-icon-btn:hover:not(:disabled) {
+⋮----
+.manual-icon-btn:disabled {
+⋮----
+.manual-overflow-menu {
+⋮----
+.manual-overflow-menu.align-right {
+⋮----
+.manual-overflow-menu button {
+⋮----
+.manual-overflow-menu button:hover {
+⋮----
+.manual-overflow-menu button.danger {
+⋮----
+.manual-overflow-menu button.danger:hover {
+⋮----
+.manual-rename-input,
+⋮----
+.manual-title-rename {
+⋮----
+.manual-sidebar-backdrop {
+⋮----
+.manual-sidebar-toggle {
+⋮----
+.manual-main {
+⋮----
+.manual-main-header {
+⋮----
+.manual-title-row {
+⋮----
+.manual-title-row h1 {
+⋮----
+.manual-title-actions {
+⋮----
+.manual-subcopy {
+⋮----
+.manual-stream-viewport {
+⋮----
+.manual-stream-viewport::-webkit-scrollbar {
+.manual-stream-viewport::-webkit-scrollbar-track {
+.manual-stream-viewport::-webkit-scrollbar-thumb {
+⋮----
+.manual-empty-state {
+⋮----
+.manual-empty-mark {
+⋮----
+.manual-empty-state h2 {
+⋮----
+.manual-empty-state p {
+⋮----
+.manual-msg-row {
+⋮----
+.manual-msg-row.user {
+⋮----
+.manual-msg-row.ai {
+⋮----
+.manual-msg-meta {
+⋮----
+.meta-label {
+⋮----
+.manual-msg-row.user .meta-label {
+⋮----
+.manual-msg-row.ai .meta-label {
+⋮----
+.meta-time {
+⋮----
+.user-query-bubble {
+⋮----
+.manual-image-preview-link {
+⋮----
+.manual-image-preview {
+⋮----
+.manual-image-caption {
+⋮----
+.threat-report-card {
+⋮----
+.threat-report-card.risk-high {
+⋮----
+.threat-report-card.risk-medium {
+⋮----
+.threat-report-card.risk-low,
+⋮----
+.report-verdict {
+⋮----
+.report-verdict-copy h3 {
+⋮----
+.report-verdict-copy p {
+⋮----
+.risk-level-badge {
+⋮----
+.manual-risk-icon {
+⋮----
+.risk-level-badge.high {
+⋮----
+.risk-level-badge.medium {
+⋮----
+.risk-level-badge.low,
+⋮----
+.report-section {
+⋮----
+.report-section-action {
+⋮----
+.section-label {
+⋮----
+.report-list {
+⋮----
+.report-list li {
+⋮----
+.report-list li::before {
+⋮----
+.report-list.alert-list li::before {
+⋮----
+.threat-report-card.risk-medium .report-list.alert-list li::before {
+⋮----
+.threat-report-card.risk-low .report-list.alert-list li::before,
+⋮----
+.report-list.action-list li::before {
+⋮----
+/* Normal Asking Question Bubble  */
+.plain-ai-bubble {
+⋮----
+/* -------------------------------------------------------------
+ * AI bubble follow up
+ * ----------------------------------------------------------- */
+/* .plain-ai-bubble {
+  background: #ffffff;
+  border: 1px solid var(--manual-border);
+  color: var(--manual-text);
+  padding: 16px 20px;
+  border-radius: 4px 18px 18px 18px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  max-width: min(100%, 640px);
+  white-space: pre-wrap;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.plain-ai-bubble p {
+  margin-bottom: 12px;
+}
+.plain-ai-bubble p:last-child {
+  margin-bottom: 0;
+}
+
+.plain-ai-bubble code {
+  background: #f1f5f9;
+  color: #0f766e;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-size: 13.5px;
+  font-weight: 600;
+} */
+⋮----
+/* =============================================================
+ * AI insight card (AI response bubble when follow up)
+ * =========================================================== */
+.ai-insight-card {
+⋮----
+/* card header */
+.insight-card-header {
+⋮----
+.insight-badge {
+⋮----
+.insight-headline {
+⋮----
+.insight-intro {
+⋮----
+/* card content */
+.insight-content-section {
+⋮----
+.insight-section-title {
+⋮----
+.insight-point-grid {
+⋮----
+.insight-point-item {
+⋮----
+.point-indicator {
+⋮----
+.point-body {
+⋮----
+.point-title {
+⋮----
+.point-desc {
+⋮----
+/* card bottom */
+.insight-takeaway-box {
+⋮----
+.takeaway-label {
+⋮----
+.takeaway-text {
+⋮----
+/* ----------------------- */
+⋮----
+.manual-loading-row {
+⋮----
+.manual-loading-text {
+⋮----
+.manual-loading-dots {
+⋮----
+.manual-loading-dots span {
+⋮----
+.manual-loading-dots span:nth-child(2) {
+.manual-loading-dots span:nth-child(3) {
+⋮----
+.manual-loading-dots span,
+⋮----
+.manual-composer {
+⋮----
+.manual-file-input {
+⋮----
+.manual-workspace .query-input {
+⋮----
+.manual-workspace .query-input::placeholder {
+⋮----
+.manual-workspace .query-submit-action {
+⋮----
+.manual-workspace .query-submit-action:hover:not(:disabled) {
+⋮----
+.manual-workspace .query-submit-action:disabled {
+⋮----
+.manual-workspace .query-upload-btn {
+⋮----
+.manual-workspace .query-upload-btn:hover:not(:disabled) {
+⋮----
+.manual-workspace .query-upload-btn:disabled {
+⋮----
+/* when using voice input, red color bg, soft animation */
+.manual-workspace .query-voice-btn.is-listening {
+⋮----
+.sr-only {
+⋮----
+.manual-confirm-backdrop {
+⋮----
+.manual-confirm-dialog {
+⋮----
+.manual-confirm-dialog h2 {
+⋮----
+.manual-confirm-dialog p {
+⋮----
+.manual-confirm-actions {
+⋮----
+.manual-confirm-cancel,
+⋮----
+.manual-confirm-cancel {
+⋮----
+.manual-confirm-delete {
+⋮----
+.manual-sidebar.is-open {
+⋮----
+.manual-conversation-row .manual-icon-btn {
+⋮----
+/* -------------------------------------------------------------
+ * NOTIFICATION SYSTEM
+ * ----------------------------------------------------------- */
+.notification-wrapper {
+⋮----
+.notification-bell-btn {
+⋮----
+.notification-bell-btn:hover:not(:disabled) {
+⋮----
+.notification-bell-icon {
+⋮----
+/* notification number icon */
+.notification-badge {
+⋮----
+background-color: #dc2626; /* red */
+⋮----
+/* Ensure the notification button itself has relative positioning */
+⋮----
+.notification-dropdown {
+⋮----
+.notification-header {
+⋮----
+.notification-title {
+⋮----
+.notification-clear-btn {
+⋮----
+.notification-clear-btn:hover {
+⋮----
+.notification-list {
+⋮----
+.notification-list::-webkit-scrollbar {
+⋮----
+.notification-list::-webkit-scrollbar-track {
+⋮----
+.notification-list::-webkit-scrollbar-thumb {
+⋮----
+.notification-empty {
+⋮----
+.notification-empty p {
+⋮----
+.notification-item {
+⋮----
+.notification-item:hover {
+⋮----
+.notification-item.unread {
+⋮----
+.notification-item.unread:hover {
+⋮----
+.notification-dot {
+⋮----
+.notification-content {
+⋮----
+.notification-message {
+⋮----
+.notification-time {
+⋮----
+.notification-indicator {
+⋮----
+/* Mobile responsive for notifications */
+</file>
+
+<file path="frontend/src/App.tsx">
+import React, { useState, useEffect, useRef } from "react";
+import { io, Socket } from "socket.io-client";
+//import { EmotionState } from "./components/PixelFace";
+⋮----
+//import CompanionView from "./views/CompanionView";
+import ManualView, {
+  ManualConversationSummary,
+  ManualMessage,
+  ManualMessageType,
+} from "./views/ManualView";
+import { Header } from "./components/Header";
+import {
+  Notification,
+  Notification as NotificationType,
+} from "./components/Notification";
+⋮----
+// interface ScamAlertData {
+//   text: string;
+//   sender: string;
+//   detected_account: string;
+//   reason: string;
+//   baymax_message: string;
+//   // suggested_emotion: EmotionState;
+//   timestamp: string;
+// }
+⋮----
+// const [appMode, setAppMode] = useState<"ELDERLY" | "SME">("SME");
+⋮----
+//const [chatInput, setChatInput] = useState<string>("");
+⋮----
+// Manual Mode
+⋮----
+//manual mode
+⋮----
+const handleNewManualConversation = () =>
+⋮----
+const handleSelectManualConversation = (conversationId: string) =>
+⋮----
+const handleRenameManualConversation = (
+    conversationId: string,
+    title: string,
+) =>
+⋮----
+const handleDeleteManualConversation = (conversationId: string) =>
+⋮----
+const handleSendManualMessage = (text: string) =>
+⋮----
+const handleUploadImage = async (file: File) =>
+⋮----
+// Prefer server-synced message list (includes persistent image URL)
+⋮----
+// Notification handlers
+const addNotification = (
+    message: string,
+    type: NotificationType["type"] = "info",
+) =>
+⋮----
+const handleMarkAsRead = (id: string) =>
+⋮----
+const handleClearAllNotifications = () =>
+⋮----
+{/* top nav bar */}
+⋮----
+{/*     <header className="control-bar-wrapper">
+        <div className="control-bar">
+          <div className="brand-group">
+            <span className="brand-pill">Friendly Guardian</span>
+            <div className="connection-indicator">
+              <span
+                className={`pulse-dot ${isConnected ? "online" : "offline"}`}
+              />
+              <span className="status-label">
+                {isConnected ? "ONLINE" : "OFFLINE"}
+              </span>
+            </div>
+          </div>*/}
+⋮----
+{/* top navigation bar to switch mode */}
+{/* <nav className="mode-segmented-pill">
+            <button
+              onClick={() => setAppMode("ELDERLY")}
+              className={`segment-btn ${appMode === "ELDERLY" ? "selected" : ""}`}
+            >
+              Companion
+            </button>
+            <button
+              onClick={() => {
+                setAppMode("SME");
+                if (socket && socket.connected) {
+                  socket.emit("manual_list_conversations");
+                }
+              }}
+              className={`segment-btn ${appMode === "SME" ? "selected" : ""}`}
+            >
+              Manual
+            </button>
+          </nav> 
+        </div>
+      </header>*/}
+⋮----
+{/* ) : ( */}
+⋮----
+{/* )} */}
+</file>
+
+<file path="backend/server.js">
+// OCR service (python)
+⋮----
+// import memory
+⋮----
+// companion mode module
+⋮----
+// manual mode module
+⋮----
+// INITIALIZE APP AND SERVER
+⋮----
+app.use("/api", speechRouter); // Endpoint: POST /api/correct-speech
+⋮----
+// Ensure the temporary upload directory exists
+⋮----
+// Serve persisted Manual Mode images
+⋮----
+stdio: ["pipe", "pipe", "inherit"], // stdin write, stdout read, stderr output
+⋮----
+// manual mode scan image
+function scanImageWithLocalOCR(imagePath)
+⋮----
+// use companion mode routes
+⋮----
+// use manual mode routes
+⋮----
+//get history api
+⋮----
+// socket io connection
+⋮----
+//register companion/manual mode socket listener
+⋮----
+// start service
+</file>
+
+</files>
