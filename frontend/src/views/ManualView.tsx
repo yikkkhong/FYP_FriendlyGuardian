@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import ThreatReportCard, { parseReport } from "../components/ThreatReportCard";
-import VoiceInputButton, { VoiceInputHandle } from "../components/VoiceInputButton";
+import VoiceInputButton, {
+  VoiceInputHandle,
+} from "../components/VoiceInputButton";
 import useTextToSpeech from "../hooks/useTextToSpeech";
 import FormattedMessage, { AiResponseCard } from "../components/AiResponseCard";
 
@@ -365,13 +367,17 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
   const handleVoiceInterim = (text: string) => {
     if (!text.trim()) return;
-    const prefix = textBeforeVoiceRef.current ? `${textBeforeVoiceRef.current} ` : "";
+    const prefix = textBeforeVoiceRef.current
+      ? `${textBeforeVoiceRef.current} `
+      : "";
     setQueryInput(prefix + text);
   };
 
   const handleVoiceResult = async (text: string) => {
     isVoiceInputRef.current = true;
-    const prefix = textBeforeVoiceRef.current ? `${textBeforeVoiceRef.current} ` : "";
+    const prefix = textBeforeVoiceRef.current
+      ? `${textBeforeVoiceRef.current} `
+      : "";
     const fullText = prefix + text;
     setQueryInput(fullText);
 
@@ -711,14 +717,16 @@ export const ManualView: React.FC<ManualViewProps> = ({
               </div>
               <h2>Is this a scam?</h2>
               <p>
-                Paste a suspicious SMS, email, link, or bank account —
-                your Guardian checks it instantly.
+                Paste a suspicious SMS, email, link, or bank account — your
+                Guardian checks it instantly.
               </p>
               <div className="manual-suggestion-chips">
                 <button
                   type="button"
                   className="manual-suggestion-chip"
-                  onClick={() => setQueryInput("Is this bank account number safe?")}
+                  onClick={() =>
+                    setQueryInput("Is this bank account number safe?")
+                  }
                   disabled={isLoading}
                 >
                   <BankIcon /> Check bank account
@@ -726,7 +734,9 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 <button
                   type="button"
                   className="manual-suggestion-chip"
-                  onClick={() => setQueryInput("Is this phone number from a scammer?")}
+                  onClick={() =>
+                    setQueryInput("Is this phone number from a scammer?")
+                  }
                   disabled={isLoading}
                 >
                   <PhoneIcon /> Check phone number
@@ -734,7 +744,11 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 <button
                   type="button"
                   className="manual-suggestion-chip"
-                  onClick={() => setQueryInput("Analyze this message: I won a prize, send bank details")}
+                  onClick={() =>
+                    setQueryInput(
+                      "Analyze this message: I won a prize, send bank details",
+                    )
+                  }
                   disabled={isLoading}
                 >
                   <MailIcon /> Analyze message
@@ -742,7 +756,9 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 <button
                   type="button"
                   className="manual-suggestion-chip"
-                  onClick={() => setQueryInput("Is this investment opportunity real?")}
+                  onClick={() =>
+                    setQueryInput("Is this investment opportunity real?")
+                  }
                   disabled={isLoading}
                 >
                   <TrendingIcon /> Check investment
@@ -810,7 +826,10 @@ export const ManualView: React.FC<ManualViewProps> = ({
                     )}
                   </div>
                 ) : showRiskCard && report ? (
-                  <ThreatReportCard report={report!} />
+                  <ThreatReportCard
+                    report={report!}
+                    isNew={!isUser && idx === messages.length - 1}
+                  />
                 ) : (
                   // <div className="plain-ai-bubble">{m.text}</div>
                   <AiResponseCard content={m.text} />
@@ -864,12 +883,15 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 onClick={() => setVoiceError(null)}
                 aria-label="Dismiss error"
               >
-                ×
+                x
               </button>
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className={`manual-composer ${voicePanelActive ? "is-voice-listening" : ""}`}>
+          <form
+            onSubmit={handleSubmit}
+            className={`manual-composer ${voicePanelActive ? "is-voice-listening" : ""}`}
+          >
             {/* [HIDDEN_FOR_PUBLIC_VERSION] Voice scrim overlay commented out for flat, unblurred experience */}
             {/* {voicePanelActive && (
               <div className="voice-scrim" onClick={(e) => e.preventDefault()} />
@@ -918,7 +940,11 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
             {/* Balanced fancy soundwave equalizer animation while user is talking */}
             {voicePanelActive && (
-              <div className="composer-voice-eq" aria-hidden="true" title="Listening to voice">
+              <div
+                className="composer-voice-eq"
+                aria-hidden="true"
+                title="Listening to voice"
+              >
                 <span className="composer-voice-bar" />
                 <span className="composer-voice-bar" />
                 <span className="composer-voice-bar" />
@@ -937,7 +963,11 @@ export const ManualView: React.FC<ManualViewProps> = ({
             <textarea
               ref={textareaRef}
               id="manual-query-input"
-              placeholder={voicePanelActive ? "Listening... speak now" : "Paste a message, ask a follow-up, or describe what you received…"}
+              placeholder={
+                voicePanelActive
+                  ? "Listening... speak now"
+                  : "Paste a message, ask a follow-up, or describe what you received…"
+              }
               className="query-input"
               value={queryInput}
               aria-live={voicePanelActive ? "polite" : "off"}
@@ -1006,7 +1036,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
             )}
           </form>
         </div>
-    </section>
+      </section>
 
       {confirmDeleteId && (
         <div className="manual-confirm-backdrop" role="presentation">

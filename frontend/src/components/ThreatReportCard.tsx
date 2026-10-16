@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 
 export type RiskKey = "HIGH" | "MEDIUM" | "LOW" | "SAFE";
 
@@ -88,50 +88,159 @@ interface ThreatReportCardProps {
     why: string[];
     recommendations: string[];
   };
+  isNew?: boolean;
 }
 
 export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
   report,
+  isNew = false,
 }) => {
   const riskMeta = RISK_COPY[report.risk];
+  const hasStreamedRef = useRef(!isNew);
+
+  const segments = useMemo(() => {
+    const list: { key: string; text: string }[] = [];
+    if (riskMeta) {
+      list.push({ key: "headline", text: riskMeta.headline });
+      list.push({ key: "guidance", text: riskMeta.guidance });
+    }
+    report.why.forEach((point, i) => {
+      list.push({ key: `why-${i}`, text: point });
+    });
+    report.recommendations.forEach((point, i) => {
+      list.push({ key: `rec-${i}`, text: point });
+    });
+    return list;
+  }, [riskMeta, report]);
+
+  const totalLength = useMemo(() => {
+    return segments.reduce((sum, seg) => sum + seg.text.length, 0);
+  }, [segments]);
+
+  const [streamedLength, setStreamedLength] = useState(() =>
+    isNew ? 0 : totalLength
+  );
+
+  useEffect(() => {
+    if (!isNew || hasStreamedRef.current) {
+      setStreamedLength(totalLength);
+      return;
+    }
+
+    let current = 0;
+    // Rapid streaming: completes in ~35 ticks (approx 700ms)
+    const stepSize = Math.max(3, Math.ceil(totalLength / 35));
+    const interval = setInterval(() => {
+      current += stepSize;
+      if (current >= totalLength) {
+        current = totalLength;
+        clearInterval(interval);
+        hasStreamedRef.current = true;
+      }
+      setStreamedLength(current);
+    }, 20);
+
+    return () => clearInterval(interval);
+  }, [isNew, totalLength]);
+
   if (!riskMeta) {
     return null;
   }
 
+  const getSegment = (key: string) => {
+    if (!isNew || hasStreamedRef.current || streamedLength >= totalLength) {
+      const seg = segments.find((s) => s.key === key);
+      return { text: seg?.text || "", isTyping: false, isVisible: true };
+    }
+
+    let accumulated = 0;
+    for (const seg of segments) {
+      const segStart = accumulated;
+      const segEnd = accumulated + seg.text.length;
+      accumulated = segEnd;
+
+      if (seg.key === key) {
+        if (streamedLength <= segStart) {
+          return { text: "", isTyping: false, isVisible: false };
+        }
+        if (streamedLength >= segEnd) {
+          return { text: seg.text, isTyping: false, isVisible: true };
+        }
+        const visibleChars = streamedLength - segStart;
+        return {
+          text: seg.text.slice(0, visibleChars),
+          isTyping: true,
+          isVisible: true,
+        };
+      }
+    }
+    return { text: "", isTyping: false, isVisible: false };
+  };
+
+  const headlineData = getSegment("headline");
+  const guidanceData = getSegment("guidance");
+
+  const hasStartedWhy = report.why.some((_, i) => getSegment(`why-${i}`).isVisible);
+  const hasStartedRecs = report.recommendations.some(
+    (_, i) => getSegment(`rec-${i}`).isVisible
+  );
+
   return (
     <article
-      className={`threat-report-card risk-${report!.risk.toLowerCase()}`}
+      className={`threat-report-card risk-${report.risk.toLowerCase()}${isNew ? " is-streaming-card" : ""}`}
       aria-label={`Risk result: ${riskMeta.label}`}
     >
       <div className="report-verdict">
-        <div className={`risk-level-badge ${report!.risk.toLowerCase()}`}>
-          <RiskIcon risk={report!.risk} />
+        <div className={`risk-level-badge ${report.risk.toLowerCase()}`}>
+          <RiskIcon risk={report.risk} />
           <span>{riskMeta.label}</span>
         </div>
         <div className="report-verdict-copy">
-          <h3>{riskMeta.headline}</h3>
-          <p>{riskMeta.guidance}</p>
+          <h3>
+            {headlineData.text}
+            {headlineData.isTyping && <span className="streaming-cursor" aria-hidden="true">▍</span>}
+          </h3>
+          {(guidanceData.text || guidanceData.isTyping) && (
+            <p>
+              {guidanceData.text}
+              {guidanceData.isTyping && <span className="streaming-cursor" aria-hidden="true">▍</span>}
+            </p>
+          )}
         </div>
       </div>
 
-      {report!.why.length > 0 && (
+      {report.why.length > 0 && hasStartedWhy && (
         <div className="report-section">
           <span className="section-label">Why</span>
           <ul className="report-list alert-list">
-            {report!.why.map((point, i) => (
-              <li key={i}>{point}</li>
-            ))}
+            {report.why.map((point, i) => {
+              const seg = getSegment(`why-${i}`);
+              if (!seg.isVisible) return null;
+              return (
+                <li key={i}>
+                  {seg.text}
+                  {seg.isTyping && <span className="streaming-cursor" aria-hidden="true">▍</span>}
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
 
-      {report!.recommendations.length > 0 && (
+      {report.recommendations.length > 0 && hasStartedRecs && (
         <div className="report-section report-section-action">
           <span className="section-label">What to do next</span>
           <ul className="report-list action-list">
-            {report!.recommendations.map((point, i) => (
-              <li key={i}>{point}</li>
-            ))}
+            {report.recommendations.map((point, i) => {
+              const seg = getSegment(`rec-${i}`);
+              if (!seg.isVisible) return null;
+              return (
+                <li key={i}>
+                  {seg.text}
+                  {seg.isTyping && <span className="streaming-cursor" aria-hidden="true">▍</span>}
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

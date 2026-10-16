@@ -3058,11 +3058,31 @@ body {
 @keyframes verdict-appear {
   from {
     opacity: 0;
-    transform: scale(0.97);
+    transform: translateY(10px) scale(0.98);
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Streaming typewriter cursor */
+.streaming-cursor {
+  display: inline-block;
+  color: var(--manual-primary);
+  font-size: 0.85em;
+  line-height: 1;
+  margin-left: 2px;
+  vertical-align: baseline;
+  animation: cursor-blink 0.5s infinite alternate;
+}
+
+@keyframes cursor-blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.15;
   }
 }
 

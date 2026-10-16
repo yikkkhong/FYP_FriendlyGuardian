@@ -1,6 +1,66 @@
 {
-  "activeConversationId": "MANUAL-1792083855629",
+  "activeConversationId": "MANUAL-1792084976102",
   "conversations": [
+    {
+      "id": "MANUAL-1792084976102",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-10-15T17:22:56.102Z",
+      "updated_at": "2026-10-15T17:22:56.102Z"
+    },
+    {
+      "id": "MANUAL-1792084942442",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-10-15T17:22:22.442Z",
+      "updated_at": "2026-10-15T17:22:22.442Z"
+    },
+    {
+      "id": "MANUAL-1792084754354",
+      "title": "someone tell me to send the otp",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "someone tell me to send the otp",
+          "timestamp": "2026-10-15T17:19:20.549Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Request to send OTP is a classic phishing tactic.\n- No verification of source or context; could be a scam.\n\nRECOMMENDATION:\n- Do not share your OTP; verify the request through official channels.\n- Report the message to your bank or service provider immediately.",
+          "timestamp": "2026-10-15T17:19:20.557Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-15T17:19:14.354Z",
+      "updated_at": "2026-10-15T17:19:20.557Z"
+    },
+    {
+      "id": "MANUAL-1792084724655",
+      "title": "I want to test a scam call",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "I want to test a scam call",
+          "timestamp": "2026-10-15T17:19:00.644Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Sure! If you’re looking to test a scam call, you can set up a controlled scenario: use a separate phone line, avoid sharing personal info, and record the call. Then review the script for red flags like urgent requests, threats, or asking for money. Let me know if you need a checklist or specific red‑flag signs.",
+          "timestamp": "2026-10-15T17:19:00.648Z",
+          "messageType": "general"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-15T17:18:44.655Z",
+      "updated_at": "2026-10-15T17:19:00.648Z"
+    },
     {
       "id": "MANUAL-1792083855629",
       "title": "Is this bank account number safe?",
