@@ -1,11 +1,134 @@
 {
-  "activeConversationId": "MANUAL-1792251424527",
+  "activeConversationId": "MANUAL-1792257769818",
   "conversations": [
+    {
+      "id": "MANUAL-1792257769818",
+      "title": "Investment",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: Investment.png]",
+          "timestamp": "2026-10-17T17:22:53.282Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792257769818/1792257773280-Investment.png",
+          "imageName": "Investment.png",
+          "ocrText": "INVESTNOW! Earn 30% profit in just 7 days! Contact 012-3456789 For More Info !"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises high returns in 7 days, classic investment scam bait.\n\nRECOMMENDATION:\n- Block the number and delete the message immediately.\n- Do not transfer any money or share personal details.",
+          "timestamp": "2026-10-17T17:22:54.253Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-17T17:23:06.392Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792257769818/1792257786390-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unsolicited job offer with vague details and urgent tone.\n- Email address uses a suspicious domain (webgocompanyy.com) not a known reputable company.\n\nRECOMMENDATION:\n- Verify the company’s legitimacy by searching for official website, contact details, and employee reviews.\n- Do not send personal or financial information until you confirm the employer’s authenticity.",
+          "timestamp": "2026-10-17T17:23:07.235Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-17T17:23:11.183Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792257769818/1792257791162-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unsolicited job offer with vague details and urgent tone.\n- Email address uses a suspicious domain (webgocompanyy.com) not a known reputable company.\n\nRECOMMENDATION:\n- Verify the company’s legitimacy by searching for an official website, contact details, and employee reviews.\n- Do not send personal or financial information until you confirm the employer’s authenticity.",
+          "timestamp": "2026-10-17T17:23:11.679Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-17T17:22:49.818Z",
+      "updated_at": "2026-10-17T17:23:11.679Z"
+    },
     {
       "id": "MANUAL-1792251424527",
       "title": "prize",
-      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None mentioned.  \n- **Suspicious phone numbers:** None provided.  \n- **Scam tactics:** Claims of a large cash prize (RM9999), urgent contact request, and a misspelled URL (faceebook.com) indicating phishing.  \n\n**Recommendation:** Do not click the link or share personal info; report the message and block the sender.",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None.  \n- **Suspicious phone numbers:** 0123456789, 012345678.  \n- **Scam tactics:** OTP request, prize‑claim urgency, misspelled URL (faceebook.com), RM9999 reward claim.  \n\n**Recommendation:** Do not share OTP or personal info, avoid links, block the numbers, and report the messages.",
       "messages": [
+        {
+          "role": "user",
+          "text": "check this phone number 012-345678",
+          "timestamp": "2026-10-17T16:52:35.160Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Phone number not listed in known scam database.\n- No suspicious activity or pattern associated with this number.\n\nRECOMMENDATION:\n- Treat messages from this number as normal unless further suspicious content appears.\n- Verify identity before sharing personal info or making payments.",
+          "timestamp": "2026-10-17T16:52:35.162Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "check this phone number 012-345678",
+          "timestamp": "2026-10-17T16:57:33.645Z"
+        },
+        {
+          "role": "assistant",
+          "text": "The number 012-345678 is not listed in our scam database. Treat it as normal unless future messages contain suspicious requests. If you receive any odd requests, verify the sender’s identity before sharing personal info.",
+          "timestamp": "2026-10-17T16:57:33.647Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "check this phone number 012-3456789",
+          "timestamp": "2026-10-17T16:57:50.632Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Number not listed in known scam database.\n- No suspicious activity or pattern associated with this number.\n\nRECOMMENDATION:\n- Treat messages from this number as normal unless future content is suspicious.\n- Verify identity before sharing personal info or making payments.",
+          "timestamp": "2026-10-17T16:57:50.636Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "check this phone number 012-3456789",
+          "timestamp": "2026-10-17T16:58:21.430Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Number not listed in known scam database.\n- No suspicious activity or pattern associated with this number.\n\nRECOMMENDATION:\n- Treat messages from this number as normal unless future content is suspicious.\n- Verify identity before sharing personal info or making payments.",
+          "timestamp": "2026-10-17T16:58:21.434Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "check this phone number 012-3456789",
+          "timestamp": "2026-10-17T17:00:36.782Z"
+        },
+        {
+          "role": "assistant",
+          "text": "The number 012-3456789 is not listed in our scam database. Treat it as normal unless future messages contain suspicious requests. If you receive any odd requests, verify the sender’s identity before sharing personal info.",
+          "timestamp": "2026-10-17T17:00:36.785Z",
+          "messageType": "follow_up"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize.png]",
+          "timestamp": "2026-10-17T15:42:34.030Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792251424527/1792251754028-prize.png",
+          "imageName": "prize.png",
+          "ocrText": "CONGRATS!! WDn RM9999 Contact us to get it https://faceebook.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\nWHY:\n- Claims a large cash prize with urgent contact request.\n- URL is misspelled (faceebook.com) indicating phishing.\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
+          "timestamp": "2026-10-17T15:42:34.616Z",
+          "messageType": "analysis"
+        },
         {
           "role": "user",
           "text": "[Uploaded Screenshot: prize.png]",
@@ -75,26 +198,32 @@
           "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims a large cash prize with urgent contact request.\n- URL is misspelled (faceebook.com) indicating phishing.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
           "timestamp": "2026-10-17T15:51:56.664Z",
           "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [
+        },
         {
           "role": "user",
-          "text": "[Uploaded Screenshot: prize.png]",
-          "timestamp": "2026-10-17T15:42:34.030Z",
-          "imageUrl": "/uploads/manual/MANUAL-1792251424527/1792251754028-prize.png",
-          "imageName": "prize.png",
-          "ocrText": "CONGRATS!! WDn RM9999 Contact us to get it https://faceebook.com"
+          "text": "i received message from number 0123456789 tell me to give otp",
+          "timestamp": "2026-10-17T16:52:06.673Z"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: HIGH\nWHY:\n- Claims a large cash prize with urgent contact request.\n- URL is misspelled (faceebook.com) indicating phishing.\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
-          "timestamp": "2026-10-17T15:42:34.616Z",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Request for OTP is a common phishing tactic.\n- No legitimate sender or known scam pattern in database.\n\nRECOMMENDATION:\n- Do not share your OTP or any personal info.\n- Block the number and report the message to your mobile provider.",
+          "timestamp": "2026-10-17T16:52:06.681Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "check this phone number 012345678",
+          "timestamp": "2026-10-17T16:52:26.327Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Phone number not listed in known scam database.\n- No suspicious activity or pattern associated with this number.\n\nRECOMMENDATION:\n- Treat messages from this number as normal unless further suspicious content appears.\n- If you receive requests for personal info or money, verify identity before responding.",
+          "timestamp": "2026-10-17T16:52:26.329Z",
           "messageType": "analysis"
         }
       ],
       "created_at": "2026-10-17T15:37:04.527Z",
-      "updated_at": "2026-10-17T15:51:57.278Z"
+      "updated_at": "2026-10-17T17:00:37.407Z"
     },
     {
       "id": "MANUAL-1792114869489",

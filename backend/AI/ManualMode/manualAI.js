@@ -17,6 +17,62 @@ const aiModel = "openai/gpt-oss-20b";
 const { STM, LTM } = require("../../memory/securityMemory.js");
 const chatMemory = require("../../memory/chatMemory.js");
 
+// -------- sample data for phone number scam -------------
+const MOCK_SCAM_PHONE = [
+  {
+    phone: "0123456789",
+    report_count: 100,
+    scam_type: "Investment Scam",
+    description:
+      "Using the promise of high returns as bait to convince victims to transfer money",
+  },
+  {
+    phone: "0112223333",
+    report_count: 20,
+    scam_type: "Phishing",
+    description:
+      "Sending suspicious links to steal personal information and banking credentials",
+  },
+];
+
+function extractAndCheckScamPhones(rawText = "") {
+  if (!rawText) return null;
+
+  // match common phone number pattern
+  const phonePattern = /(?:\+?60|0)[1-9]\d{1,2}[-\s]?\d{3,4}[-\s]?\d{3,4}/g;
+
+  const matches = rawText.match(phonePattern);
+  // console.log("[Phone NER] Number Detected:", matches);
+
+  if (!matches || matches.length === 0) {
+    return null;
+  }
+
+  // standardize detected data
+  for (const match of matches) {
+    let clean = match.replace(/[\s-]/g, "");
+    if (clean.startsWith("+60")) {
+      clean = "0" + clean.slice(3);
+    } else if (clean.startsWith("60")) {
+      clean = "0" + clean.slice(2);
+    }
+
+    // console.log(`[Phone NER] Standardize Number: ${clean}`);
+
+    const matched = MOCK_SCAM_PHONE.find((item) => {
+      const dbPhoneClean = item.phone.replace(/[\s-]/g, "");
+      return dbPhoneClean === clean;
+    });
+
+    if (matched) {
+      // console.log(`[Blacklist Match]: ${clean}`);
+      return matched;
+    }
+  }
+
+  return null;
+}
+
 function formatSecurityContext() {
   const currentScams = STM?.getRecentScamAlerts?.() || [];
   const historicalScams = LTM?.getRecentScamHistory?.(5) || [];
@@ -141,9 +197,36 @@ async function chatWithManualAI(userText, conversationId = null, options = {}) {
     const securityContext = formatSecurityContext();
     const forcedType = options.forcedType || null;
 
+    // check phone number scam
+    const matchedScam = extractAndCheckScamPhones(userText);
+
+    let blacklistAlertSection =
+      "No blacklisted phone numbers detected in current input.";
+
+    if (matchedScam) {
+      blacklistAlertSection = `
+CRITICAL ALERT (NER DETECTED SCAM NUMBER):
+• Blacklisted Phone: ${matchedScam.phone}
+• Verified Scam Type: ${matchedScam.scam_type}
+• Verified Report Count: Reported by ${matchedScam.report_count} victims
+• Known Tactic: ${matchedScam.description}
+
+STRICT INSTRUCTION:
+Because the entity extracted from the user text is a CONFIRMED BLACKLISTED NUMBER:
+1. You MUST set: RISK LEVEL: HIGH
+2. In the WHY section, clearly mention that the number ${matchedScam.phone} is in the verified blacklist with ${matchedScam.report_count} scam reports for ${matchedScam.scam_type}.
+3. Advise the user immediately in RECOMMENDATION to block and avoid paying any money.
+`;
+    }
+
     const prompt = `
 You are an expert Anti-Scam Intelligence Analyst for SME users (Friendly Guardian).
 The user may submit suspicious messages for analysis, or ask follow-up questions about a previous analysis.
+
+========================================
+VERIFIED BLACKLIST CHECK (REAL-TIME MATCH)
+========================================
+${blacklistAlertSection}
 
 ========================================
 SECURITY DATABASE (STM & LTM)

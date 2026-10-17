@@ -35,3 +35,6 @@ env/
 .windsurf/
 .claude/
 .agent/
+
+# repomix output
+repomix-output.xml
