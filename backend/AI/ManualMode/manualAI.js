@@ -226,10 +226,10 @@ Other rules:
       reasoning_effort: "low",
     });
 
-    console.log(
-      "👀 [GROQ RAW MESSAGE]:",
-      JSON.stringify(completion.choices[0]?.message),
-    );
+    // console.log(
+    //   "👀 [GROQ RAW MESSAGE]:",
+    //   JSON.stringify(completion.choices[0]?.message),
+    // );
 
     const msg = completion.choices[0]?.message;
     const rawReply = (

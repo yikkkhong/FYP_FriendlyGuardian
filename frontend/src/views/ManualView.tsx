@@ -250,6 +250,61 @@ export const ManualView: React.FC<ManualViewProps> = ({
   const streamViewportRef = useRef<HTMLDivElement>(null);
   const voiceTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  // ---------- to be a component initial page buttons -------------
+  // paste message button
+  const handlePaste = async () => {
+    try {
+      const clipText = await navigator.clipboard.readText();
+      if (!clipText) return;
+
+      const textarea = textareaRef.current;
+      if (!textarea) {
+        setQueryInput(clipText);
+        return;
+      }
+
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const nextText =
+        queryInput.substring(0, start) + clipText + queryInput.substring(end);
+
+      onSendMessage(nextText);
+
+      setTimeout(() => {
+        textarea.focus();
+        textarea.setSelectionRange(
+          start + clipText.length,
+          start + clipText.length,
+        );
+      }, 0);
+    } catch (err) {
+      console.error("No Copied Message:", err);
+    }
+  };
+
+  // open file upload button
+  const handleOpenExplorer = () => {
+    fileInputRef.current?.click();
+  };
+
+  let questionIndex = React.useRef(0);
+  const handleNextQuestion = () => {
+    const questions: string[] = [
+      "What is a scam?",
+      "What are the most common types of scams?",
+      "How can I tell if a message or phone call is a scam?",
+      "What should I do if I have been scammed?",
+      "How can I protect myself from scams?",
+    ];
+
+    const question = questions[questionIndex.current];
+    questionIndex.current = (questionIndex.current + 1) % questions.length;
+
+    setQueryInput(question);
+  };
+
+  // ---------------------------------------------------------------
+
   // use text to speech hook
   const { speak, stop } = useTextToSpeech();
   const isVoiceInputRef = useRef(false);
@@ -721,7 +776,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 Guardian checks it instantly.
               </p>
               <div className="manual-suggestion-chips">
-                <button
+                {/* <button
                   type="button"
                   className="manual-suggestion-chip"
                   onClick={() =>
@@ -730,38 +785,30 @@ export const ManualView: React.FC<ManualViewProps> = ({
                   disabled={isLoading}
                 >
                   <BankIcon /> Check bank account
+                </button> */}
+                <button
+                  type="button"
+                  className="manual-suggestion-chip"
+                  onClick={() => handlePaste()}
+                  disabled={isLoading}
+                >
+                  <PhoneIcon /> Paste Message
                 </button>
                 <button
                   type="button"
                   className="manual-suggestion-chip"
-                  onClick={() =>
-                    setQueryInput("Is this phone number from a scammer?")
-                  }
+                  onClick={() => handleOpenExplorer()}
                   disabled={isLoading}
                 >
-                  <PhoneIcon /> Check phone number
+                  <CameraIcon /> Upload Image
                 </button>
                 <button
                   type="button"
                   className="manual-suggestion-chip"
-                  onClick={() =>
-                    setQueryInput(
-                      "Analyze this message: I won a prize, send bank details",
-                    )
-                  }
+                  onClick={() => handleNextQuestion()}
                   disabled={isLoading}
                 >
-                  <MailIcon /> Analyze message
-                </button>
-                <button
-                  type="button"
-                  className="manual-suggestion-chip"
-                  onClick={() =>
-                    setQueryInput("Is this investment opportunity real?")
-                  }
-                  disabled={isLoading}
-                >
-                  <TrendingIcon /> Check investment
+                  <MenuIcon /> General Question
                 </button>
               </div>
               <p className="hero-no-signup">No sign-up needed · Free to use</p>

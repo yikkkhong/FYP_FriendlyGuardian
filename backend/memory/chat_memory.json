@@ -1,642 +1,193 @@
 {
-  "activeConversationId": "MANUAL-1792084976102",
+  "activeConversationId": "MANUAL-1792251424527",
   "conversations": [
     {
-      "id": "MANUAL-1792084976102",
-      "title": "New check",
-      "summary": "",
-      "messages": [],
-      "archived_messages": [],
-      "created_at": "2026-10-15T17:22:56.102Z",
-      "updated_at": "2026-10-15T17:22:56.102Z"
-    },
-    {
-      "id": "MANUAL-1792084942442",
-      "title": "New check",
-      "summary": "",
-      "messages": [],
-      "archived_messages": [],
-      "created_at": "2026-10-15T17:22:22.442Z",
-      "updated_at": "2026-10-15T17:22:22.442Z"
-    },
-    {
-      "id": "MANUAL-1792084754354",
-      "title": "someone tell me to send the otp",
-      "summary": "",
+      "id": "MANUAL-1792251424527",
+      "title": "prize",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None mentioned.  \n- **Suspicious phone numbers:** None provided.  \n- **Scam tactics:** Claims of a large cash prize (RM9999), urgent contact request, and a misspelled URL (faceebook.com) indicating phishing.  \n\n**Recommendation:** Do not click the link or share personal info; report the message and block the sender.",
       "messages": [
         {
           "role": "user",
-          "text": "someone tell me to send the otp",
-          "timestamp": "2026-10-15T17:19:20.549Z"
+          "text": "[Uploaded Screenshot: prize.png]",
+          "timestamp": "2026-10-17T15:45:16.890Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792251424527/1792251916888-prize.png",
+          "imageName": "prize.png",
+          "ocrText": "CONGRATS!! WDn RM9999 Contact us to get it https://faceebook.com"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Request to send OTP is a classic phishing tactic.\n- No verification of source or context; could be a scam.\n\nRECOMMENDATION:\n- Do not share your OTP; verify the request through official channels.\n- Report the message to your bank or service provider immediately.",
-          "timestamp": "2026-10-15T17:19:20.557Z",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims a large cash prize with urgent contact request.\n- URL is misspelled (faceebook.com) indicating phishing.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
+          "timestamp": "2026-10-17T15:45:17.697Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize.png]",
+          "timestamp": "2026-10-17T15:46:50.157Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792251424527/1792252010156-prize.png",
+          "imageName": "prize.png",
+          "ocrText": "CONGRATS!! Woh OL RM 9999 Contact us to get it https://faceebook.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims a large cash prize with urgent contact request.\n- URL is misspelled (faceebook.com) indicating phishing.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
+          "timestamp": "2026-10-17T15:46:50.907Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize.png]",
+          "timestamp": "2026-10-17T15:47:43.568Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792251424527/1792252063567-prize.png",
+          "imageName": "prize.png",
+          "ocrText": "CONGRATS!! WOn OW Rm/00 00 Contact us to get it https://faceebook.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims a large cash prize with urgent contact request.\n- URL is misspelled (faceebook.com) indicating phishing.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
+          "timestamp": "2026-10-17T15:47:45.541Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize2.png]",
+          "timestamp": "2026-10-17T15:51:38.441Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792251424527/1792252298440-prize2.png",
+          "imageName": "prize2.png",
+          "ocrText": "Clicl t get RMI000U https://priize.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims a prize with a misspelled URL (priize.com) typical phishing.\n- No legitimate sender or account info, likely a scam.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
+          "timestamp": "2026-10-17T15:51:39.048Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize.png]",
+          "timestamp": "2026-10-17T15:51:55.866Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792251424527/1792252315864-prize.png",
+          "imageName": "prize.png",
+          "ocrText": "CONGRATS!! WDn RM9999 Contact us to get it https://faceebook.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims a large cash prize with urgent contact request.\n- URL is misspelled (faceebook.com) indicating phishing.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
+          "timestamp": "2026-10-17T15:51:56.664Z",
           "messageType": "analysis"
         }
       ],
-      "archived_messages": [],
-      "created_at": "2026-10-15T17:19:14.354Z",
-      "updated_at": "2026-10-15T17:19:20.557Z"
-    },
-    {
-      "id": "MANUAL-1792084724655",
-      "title": "I want to test a scam call",
-      "summary": "",
-      "messages": [
+      "archived_messages": [
         {
           "role": "user",
-          "text": "I want to test a scam call",
-          "timestamp": "2026-10-15T17:19:00.644Z"
+          "text": "[Uploaded Screenshot: prize.png]",
+          "timestamp": "2026-10-17T15:42:34.030Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792251424527/1792251754028-prize.png",
+          "imageName": "prize.png",
+          "ocrText": "CONGRATS!! WDn RM9999 Contact us to get it https://faceebook.com"
         },
         {
           "role": "assistant",
-          "text": "Sure! If you’re looking to test a scam call, you can set up a controlled scenario: use a separate phone line, avoid sharing personal info, and record the call. Then review the script for red flags like urgent requests, threats, or asking for money. Let me know if you need a checklist or specific red‑flag signs.",
-          "timestamp": "2026-10-15T17:19:00.648Z",
-          "messageType": "general"
+          "text": "RISK LEVEL: HIGH\nWHY:\n- Claims a large cash prize with urgent contact request.\n- URL is misspelled (faceebook.com) indicating phishing.\nRECOMMENDATION:\n- Do not click the link or provide any personal info.\n- Report the message to your mobile provider and block the sender.",
+          "timestamp": "2026-10-17T15:42:34.616Z",
+          "messageType": "analysis"
         }
       ],
-      "archived_messages": [],
-      "created_at": "2026-10-15T17:18:44.655Z",
-      "updated_at": "2026-10-15T17:19:00.648Z"
+      "created_at": "2026-10-17T15:37:04.527Z",
+      "updated_at": "2026-10-17T15:51:57.278Z"
     },
     {
-      "id": "MANUAL-1792083855629",
-      "title": "Is this bank account number safe?",
+      "id": "MANUAL-1792114869489",
+      "title": "pls send me otp",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "Is this bank account number safe?",
-          "timestamp": "2026-10-15T17:04:22.242Z"
+          "text": "pls send me otp",
+          "timestamp": "2026-10-16T01:41:50.970Z"
         },
         {
           "role": "assistant",
-          "text": "I need the actual bank account number you’re referring to. Please paste it here, and I’ll check it against our database and give you a quick safety assessment.",
-          "timestamp": "2026-10-15T17:04:22.246Z",
-          "messageType": "follow_up"
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited request for OTP is a common phishing tactic.\n- No verification of identity or context provided.\n\nRECOMMENDATION:\n- Do not provide OTP or personal details.\n- Verify the request through official channels (bank app, official website, or customer support).",
+          "timestamp": "2026-10-16T01:41:50.976Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "can you help me",
+          "timestamp": "2026-10-16T01:43:59.692Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Sure, how can I assist you today?",
+          "timestamp": "2026-10-16T01:43:59.711Z",
+          "messageType": "general"
         },
         {
           "role": "user",
           "text": "[Uploaded Screenshot: Transaction details (1).png]",
-          "timestamp": "2026-10-15T17:04:38.209Z",
-          "imageUrl": "/uploads/manual/MANUAL-1792083855629/1792083878207-Transaction details (1).png",
+          "timestamp": "2026-10-16T01:46:49.219Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792114869489/1792115209155-Transaction details (1).png",
           "imageName": "Transaction details (1).png",
           "ocrText": "4:01 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 16:00:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- Transaction details match legitimate merchant (FamilyMartMidValley) and typical eWallet payment format.\n- No suspicious sender ID or request for money transfer; appears to be a standard receipt.\n\nRECOMMENDATION:\n- Verify the transaction ID with your eWallet app or bank statement.\n- Keep the receipt for future reference; no action needed unless discrepancy arises.",
-          "timestamp": "2026-10-15T17:04:39.615Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-15T17:04:15.629Z",
-      "updated_at": "2026-10-15T17:04:39.615Z"
-    },
-    {
-      "id": "MANUAL-1792081720725",
-      "title": "initial_state",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: initial_state.png]",
-          "timestamp": "2026-10-15T16:53:07.852Z",
-          "imageUrl": "/uploads/manual/MANUAL-1792081720725/1792083187849-initial_state.png",
-          "imageName": "initial_state.png",
-          "ocrText": "Friendly Guardian 丨· ONLINE +十 New check New check Paste a message, link, or account number - or upload a screenshot. Your guardian willtell you if it New check looks safe, suspicious, or dangerous. examplelnvoice SMS Text Image Analysis Ready when you are General Question Paste a suspicious SMS, email, or bank account - or Previous checks upload a screenshot. Each check stays in its own conversation. tng Transaction details lazada scam ↓ Paste a message, ask a follow-up, or describe what you received.. Send"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- No suspicious content or known scam patterns present.\n- Text is generic instruction, not a personal message or request.\n\nRECOMMENDATION:\n- No action needed; keep monitoring for any actual suspicious messages.\n- If you receive a specific message, paste it here for analysis.",
-          "timestamp": "2026-10-15T16:53:09.179Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "Please send me your OTP",
-          "timestamp": "2026-10-15T17:04:01.222Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP, a common phishing tactic.\n- No verification context or legitimate channel provided.\n\nRECOMMENDATION:\n- Do not provide OTP; verify source via official app or website.\n- Report the message to your bank or service provider.",
-          "timestamp": "2026-10-15T17:04:01.225Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-15T16:28:40.725Z",
-      "updated_at": "2026-10-15T17:04:01.225Z"
-    },
-    {
-      "id": "MANUAL-1792081641806",
-      "title": "image_analysis",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: image_analysis.png]",
-          "timestamp": "2026-10-15T16:28:29.657Z",
-          "imageUrl": "/uploads/manual/MANUAL-1792081641806/1792081709655-image_analysis.png",
-          "imageName": "image_analysis.png",
-          "ocrText": "Friendly Guardian 丨·ONLINE examplelnvoice + Newcheck You 3:37:14 pm examplelnvoice SMS Text Image Analysis General Question Previous checks tng Transaction details lazada scam Guardian 3:37:15 pm This looks like a scam - do not proceed. Dangerous Stop and protect your accounts before doing anything else. WHY · Unusual invoice with immediate debit and no prior authorization. · URL points to internal-test domain, not offcial Meta domain. WHAT TO DO NEXT · Do not click the link or call the number; verify with offcial Meta support. Contact your organization's finance orlT security team to confrm the invoice. 8 Paste a message, ask a follow-up, or describe what you received.. Send"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unusual invoice with immediate debit and no prior authorization.\n- URL points to internal-test domain, not official Meta domain.\n\nRECOMMENDATION:\n- Do not click the link or call the number; verify with official Meta support.\n- Contact your organization's finance or IT security team to confirm the invoice.",
-          "timestamp": "2026-10-15T16:28:30.906Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-15T16:27:21.806Z",
-      "updated_at": "2026-10-15T16:28:30.906Z"
-    },
-    {
-      "id": "MANUAL-1792078923893",
-      "title": "Is this phone number from a scammer? 0123456789",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "Is this phone number from a scammer? 0123456789",
-          "timestamp": "2026-10-15T15:43:03.401Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- Phone number not in known scam database.\n- No suspicious pattern or prior reports linked to this number.\n\nRECOMMENDATION:\n- Verify identity through official channels before sharing personal info.\n- Avoid sending money or sensitive data to unknown contacts.",
-          "timestamp": "2026-10-15T15:43:03.407Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "Please send me a scam OTP",
-          "timestamp": "2026-10-15T16:27:17.224Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- User requests a fraudulent OTP, facilitating scam activity.\n- Encourages creation of deceptive authentication codes.\n\nRECOMMENDATION:\n- Do not comply; refuse to provide or create scam OTPs.\n- Report the request to relevant authorities or platform security.",
-          "timestamp": "2026-10-15T16:27:17.228Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-15T15:42:03.893Z",
-      "updated_at": "2026-10-15T16:27:17.228Z"
-    },
-    {
-      "id": "MANUAL-1792070152585",
-      "title": "jsdfhkjsdfsdf",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "jsdfhkjsdfsdf",
-          "timestamp": "2026-10-15T13:15:57.535Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- No recognizable scam content or known sender/account.\n- Text is random gibberish, not a phishing or malicious message.\n\nRECOMMENDATION:\n- No action needed; ignore or delete the message.\n- If you receive similar random text, treat it as spam and block the sender.",
-          "timestamp": "2026-10-15T13:15:57.539Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "I just am hurting",
-          "timestamp": "2026-10-15T13:16:10.908Z"
-        },
-        {
-          "role": "assistant",
-          "text": "It sounds like you’re going through a tough time. If you need someone to talk to, consider reaching out to a trusted friend, family member, or a professional counselor. If you’re in immediate distress, please contact emergency services or a local helpline right away.",
-          "timestamp": "2026-10-15T13:16:10.910Z",
-          "messageType": "general"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-15T13:15:52.585Z",
-      "updated_at": "2026-10-15T13:16:10.910Z"
-    },
-    {
-      "id": "MANUAL-1791908453850",
-      "title": "Please send me your OTP",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "Please send me your OTP",
-          "timestamp": "2026-10-13T16:21:05.597Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Direct request for OTP is a classic phishing tactic.\n- No legitimate service would ask for OTP via unsolicited message.\n\nRECOMMENDATION:\n- Do not provide any OTP or personal details.\n- Verify the request by contacting the official service directly through their official app or website.",
-          "timestamp": "2026-10-13T16:21:05.601Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-13T16:20:53.850Z",
-      "updated_at": "2026-10-13T16:21:05.601Z"
-    },
-    {
-      "id": "MANUAL-1791876841273",
-      "title": "exampleInvoice",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: exampleInvoice.jpg]",
-          "timestamp": "2026-10-13T07:37:14.470Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791876841273/1791877034468-exampleInvoice.jpg",
-          "imageName": "exampleInvoice.jpg",
-          "ocrText": "MMetaAds Facebook Payments Inc. INVOICE&CHARGECONFIRMATION Invoice Number: #FB-INV-8492041 Invoice Date: October 14, 2026 Due Date: IMMEDIATELY (24-Hour Automated Charge Pending) Status: PENDINGDEBIT Billing to: Target Employee (test.employee@organization.com) Associated ID: Ad Account ID #ACT-839210481 Campaign Description Total Due Meta Sponsored Campaign - Global Reach Campaign $849.50 Boost #4912 (Oct 01 - Oct 13, 2026) Optional Audience Network Retargeting Add-on $150.00 TOTAL DUE: $999.50 USD !ALERT:UNRECOGNIZED TRANSACTION? This total will be automatically debited from your registered account within 24 hours. If you did not authorize this purchase or need to stop this transaction, please do NOT reply. Contact our Fraud Prevention Helpdesk immediately at +1 (800) 555-0199 or click the dispute link below. CANCEL & DISPUTE TRANSACTION https://dispute-meta-adcenter.internal-test.com Meta Platforms, Inc., 1601 Willow Rd, Menlo Park, CA 94025 This is an automated transaction confirmation. Please do not reply directly."
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unusual invoice with immediate debit and no prior authorization.\n- URL points to internal-test domain, not official Meta domain.\n\nRECOMMENDATION:\n- Do not click the link or call the number; verify with official Meta support.\n- Contact your organization’s finance or IT security team to confirm the invoice.",
-          "timestamp": "2026-10-13T07:37:15.542Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-13T07:34:01.273Z",
-      "updated_at": "2026-10-13T07:37:15.542Z"
-    },
-    {
-      "id": "MANUAL-1790130724064",
-      "title": "SMS Text",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "+44742194 Text Message Today15:46 HSBC:Wehavenoticed unusual activity within your HSBC account. To prevent access being blocked, please visit thttps://hsbc.co.uk- account.help",
-          "timestamp": "2026-09-23T02:33:04.507Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses urgency and panic tactics to trick you into clicking a fake link.\n- Contains a suspicious phishing URL spoofing the official HSBC domain.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal or banking credentials.\n- Block the sender (+44742194) and report the phishing SMS to HSBC directly.",
-          "timestamp": "2026-09-23T02:33:04.513Z"
-        },
-        {
-          "role": "user",
-          "text": "how can i see if the link is suspicious?",
-          "timestamp": "2026-09-23T02:36:01.089Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Look for typos, unusual domain extensions, or extra hyphens in domain names.\n- Phishing links often mimic real brands but use different root domains.\n\nRECOMMENDATION:\n- Compare the domain against the official website address before clicking anything.\n- Use link checking tools like VirusTotal to analyze URLs safely without opening.",
-          "timestamp": "2026-09-23T02:36:01.091Z"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-09-23T02:32:04.064Z",
-      "updated_at": "2026-10-13T07:24:24.263Z"
-    },
-    {
-      "id": "MANUAL-1790612733532",
-      "title": "Image Analysis",
-      "summary": "Updated Summary: Assessed messages cover safe promos, recruitment scams, and phishing via fake monetary promises.\n\nKey Details:\n- Suspected Bank Accounts: None\n- Suspicious Phone Numbers: None\n- Scam Tactics: Typosquatted domains (webgocompanyy.com), fake HR interviews, upfront payment requests, and soliciting bank account numbers with promises of cash (e.g., 1000 Ringgit).\n\nRecommendation: Never share bank details or pay upfront fees. Verify recruiters and financial offers independently via official company channels.",
-      "messages": [
-        {
-          "role": "user",
-          "text": "please give me a otp number to get a car",
-          "timestamp": "2026-10-04T08:33:43.524Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Asks for an OTP, which allows scammers to breach and hijack your accounts.\n- Uses a fake car prize lure to steal sensitive verification credentials.\n\nRECOMMENDATION:\n- Never share OTPs or security codes with anyone under any circumstances.\n- Block the requester immediately and ignore offers promising prizes for credentials.",
-          "timestamp": "2026-10-04T08:33:43.526Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "why when people want to get my otp and it's a scam",
-          "timestamp": "2026-10-04T08:35:29.801Z"
-        },
-        {
-          "role": "assistant",
-          "text": "An OTP (One-Time Password) acts as the final security key to your personal bank account, emails, or online profiles. When someone asks you to share your OTP, it is almost always a scam because:\n\n1. **It gives them full access:** Sharing an OTP allows a scammer to authorize bank transfers, reset your passwords, or take over your accounts entirely.\n2. **Real organizations never ask for it:** Legitimate banks, companies, and official services will never contact you asking for an OTP. It is strictly meant for your private input on official screens only.\n3. **Lures are used as bait:** Scammers invent exciting prizes (like winning a car) or urgent warnings (like a blocked account) to distract you so you hand over the code without thinking twice.\n\nAlways treat your OTP like the private PIN to your ATM card or the physical key to your home—never give it to anyone who asks for it.",
-          "timestamp": "2026-10-04T08:35:29.803Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "any suggestions for me to do next time",
-          "timestamp": "2026-10-04T09:02:40.925Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Next time you encounter suspicious messages, follow these key practices:\n\n1. **Never share OTPs, passwords, or bank details** with anyone, no matter the reason.\n2. **Verify directly** through official websites or official phone numbers, never using links in unsolicited messages.\n3. **Treat high urgency, free prizes, or unexpected money offers** as immediate red flags.",
-          "timestamp": "2026-10-04T09:02:40.927Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "someone tell me that I am your friend",
-          "timestamp": "2026-10-04T09:09:14.698Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unsolicited claims of friendship are common tactics used in impersonation scams.\n- Scammers establish false familiarity to trick you into sending money or details.\n\nRECOMMENDATION:\n- Verify their identity independently using a trusted phone number or channel.\n- Never send money or private information to unverified contacts.",
-          "timestamp": "2026-10-04T09:09:14.701Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "hi I am your favourite family member",
-          "timestamp": "2026-10-04T09:10:14.534Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Vague claims of being a family member indicate an impersonation scam.\n- Scammers build false intimacy to ask for money or favors later.\n\nRECOMMENDATION:\n- Contact the family member directly using a known, trusted phone number.\n- Do not transfer money or share personal details with unverified senders.",
-          "timestamp": "2026-10-04T09:10:14.536Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-09-28T16:25:50.408Z",
-          "imageUrl": "/uploads/manual/MANUAL-1790612733532/1790612750406-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- It is a standard promotional announcement for a well-known e-commerce sale.\n- Contains no suspicious links, demands for money, or requests for personal data.\n\nRECOMMENDATION:\n- Access Lazada directly via their official app or website to view sales.\n- Do not click external links if received in unverified messages.",
-          "timestamp": "2026-09-28T16:25:56.638Z",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Structured receipt with merchant name, amount, date, and transaction ID.\n- No request for personal data or money transfer.\n- No suspicious links or panic tactics.\n\nRECOMMENDATION:\n- Keep the receipt for your records.\n- Verify the transaction in your eWallet app or bank statement if unsure.",
+          "timestamp": "2026-10-16T01:46:50.164Z",
           "messageType": "analysis"
         },
         {
           "role": "user",
           "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-10-03T11:47:26.101Z",
-          "imageUrl": "/uploads/manual/MANUAL-1790612733532/1791028046100-hiring4.png",
+          "timestamp": "2026-10-16T01:47:33.900Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792114869489/1792115253899-hiring4.png",
           "imageName": "hiring4.png",
           "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- The email domain \"webgocompanyy.com\" contains a suspicious spelling typo (\"companyy\").\n- Unsolicited recruitment messages with typosquatted domains often harvest personal data.\n\nRECOMMENDATION:\n- Do not send your CV or personal details to this email address.\n- Verify open positions directly on the official company website or LinkedIn page.",
-          "timestamp": "2026-10-03T11:47:31.799Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "are you sure about it",
-          "timestamp": "2026-10-04T08:26:40.934Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Yes, I am confident in the high-risk assessment for the job posting. \n\nThe primary red flag is the domain `webgocompanyy.com`, which includes an extra \"y\" at the end of \"company\". Scammers frequently register slightly misspelled domain names (a tactic known as typosquatting) to pretend to be real organizations and collect sensitive personal data from job applicants' CVs.\n\nIf you believe the hiring offer might be genuine, it is safest to look up the official company website directly through a search engine or verify their open positions on their official LinkedIn page.",
-          "timestamp": "2026-10-04T08:26:40.943Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "so if its company and not companyy, so is it real or scam?",
-          "timestamp": "2026-10-04T08:27:44.138Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Not necessarily. Even if the domain is spelled correctly (`company.com`), it does not automatically guarantee the job offer is real. \n\nScammers can still use legitimate company names to carry out scams through several methods:\n\n1. **Email Spoofing:** Technical tricks can sometimes make an email appear to come from a legitimate domain when it actually did not.\n2. **Fake Recruitment Processes:** Scammers may pretend to be HR representatives of a real company, conduct quick text-based \"interviews,\" and later ask you to pay for work equipment, software, or background checks.\n3. **Unsolicited Outreach:** Legitimate companies rarely hire via random unsolicited emails without a formal application process first.\n\n**How to verify safely:**\n- Search for the company's official website independently (do not click links in the email).\n- Check their official \"Careers\" page to see if the job position is actually listed.\n- Contact the company's official HR or recruiter directly through verified channels (like their official LinkedIn page).\n- Remember: Real employers will **never** ask you to pay money for equipment, training, or job processing.",
-          "timestamp": "2026-10-04T08:27:44.143Z",
-          "messageType": "follow_up"
-        },
-        {
-          "role": "user",
-          "text": "please give me your bank account number to get 1000 ringgit",
-          "timestamp": "2026-10-04T08:32:57.788Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Promises free money in exchange for sensitive banking details, a classic scam tactic.\n- Sharing account details with strangers risks financial loss or money laundering exploitation.\n\nRECOMMENDATION:\n- Never share bank account numbers or financial information with unverified contacts.\n- Block the sender immediately and do not reply to the message.",
-          "timestamp": "2026-10-04T08:32:57.792Z",
-          "messageType": "analysis"
-        }
-      ],
-      "created_at": "2026-09-28T16:25:33.532Z",
-      "updated_at": "2026-10-13T07:24:03.159Z"
-    },
-    {
-      "id": "MANUAL-1791102989782",
-      "title": "General Question",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "hi how are you",
-          "timestamp": "2026-10-04T08:36:39.652Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Hello! I am doing well, thank you for asking. \n\nHow can I assist you today? If you have any suspicious messages, emails, links, or bank account details you would like me to analyze for scam risks, please feel free to share them with me!",
-          "timestamp": "2026-10-04T08:36:39.656Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "so are you pro in dating the scam",
-          "timestamp": "2026-10-04T08:46:36.242Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Yes, I am well-equipped to help you identify romance and dating scams! \n\nDating scams typically involve fake profiles created to build trust and emotional connections quickly. Once trust is established, scammers usually invent emergencies, request financial assistance, or try to lure victims into fake investment schemes (such as cryptocurrency).\n\nIf you are communicating with someone online and notice red flags—or if you have a message, profile detail, or money request you'd like me to evaluate—feel free to share it here and I can analyze the risk for you!",
-          "timestamp": "2026-10-04T08:46:36.248Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "oh so if my rear wife want to message me how to know it's a real person or it's a scammer",
-          "timestamp": "2026-10-04T09:03:33.847Z"
-        },
-        {
-          "role": "assistant",
-          "text": "To verify if a message is truly from your wife, call her directly on her normal phone number or ask a personal question only she would know. Scammers often use new accounts, create sudden financial emergencies, and refuse live video calls.",
-          "timestamp": "2026-10-04T09:03:33.851Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: testHandWriting.png]",
-          "timestamp": "2026-10-04T09:54:00.594Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791102989782/1791107640592-testHandWriting.png",
-          "imageName": "testHandWriting.png",
-          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited job offer using vague details and suspicious contact formatting.\n- Matches common text-scam tactics designed to lure victims into fake job schemes.\n\nRECOMMENDATION:\n- Do not reply or contact the phone number provided in the message.\n- Block the sender and report the SMS as spam on your device.",
-          "timestamp": "2026-10-04T09:54:05.949Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "are you sure?",
-          "timestamp": "2026-10-05T15:02:40.878Z"
-        },
-        {
-          "role": "assistant",
-          "text": "Yes, I am confident. Legitimate employers do not send unsolicited job offers via SMS using mangled text (\"Cootac\") and hidden contact formats to offer high salaries. This format is a well-known recruitment scam tactic designed to lure victims into advance-fee fraud or identity theft.",
-          "timestamp": "2026-10-05T15:02:40.881Z",
-          "messageType": "follow_up"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-10-04T08:36:29.782Z",
-      "updated_at": "2026-10-13T07:23:51.405Z"
-    },
-    {
-      "id": "MANUAL-1790130648454",
-      "title": "Previous checks",
-      "summary": "Scam Inspection Summary:\n\n- Suspected Bank Accounts: None mentioned\n- Suspicious Phone Numbers: 011-1210101 (Mr. Lim)\n- Scam Tactics: Unsolicited job offers with unrealistically high salaries (RM9000) or misspelled email domains (hello@webgocompanyy.com) to harvest personal CV data; personal number redirects; poor spelling; and OTP phishing via fake RM1000 cash rewards.",
-      "messages": [
-        {
-          "role": "user",
-          "text": "how many hiring scam i have received?",
-          "timestamp": "2026-09-19T09:46:21.002Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- You have submitted 2 fake job offers in this conversation.\n- These include the RM9000 salary offer and the suspicious webgocompanyy.com listing.\n\nRECOMMENDATION:\n- Do not respond to 011-1210101 or submit CVs to webgocompanyy.com.\n- Block both senders immediately and report unsolicited recruitment attempts.",
-          "timestamp": "2026-09-19T09:46:21.004Z"
-        },
-        {
-          "role": "user",
-          "text": "CONGRATS!YOUHAWEWON RM11999 Click this link to contact us: https://whatsopp.com",
-          "timestamp": "2026-09-19T09:59:05.424Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims an unexpected RM11999 prize, which is a classic fake reward scam tactic.\n- Uses a malicious typosquatting phishing link (whatsopp.com) to impersonate WhatsApp and steal data.\n\nRECOMMENDATION:\n- Do not click the link or share any personal or banking details.\n- Block the sender immediately and delete the suspicious message.",
-          "timestamp": "2026-09-19T09:59:05.426Z"
-        },
-        {
-          "role": "user",
-          "text": "Congrats! You have won a PERODUA MYVI, please contact us to confirm it's you! info@peroduo.com",
-          "timestamp": "2026-09-19T10:00:24.961Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited notice claiming a car prize is a classic fake reward scam.\n- Uses a suspicious typosquatted domain (peroduo.com) to impersonate official Perodua.\n\nRECOMMENDATION:\n- Do not reply or send personal details to info@peroduo.com.\n- Block the sender immediately and ignore unexpected reward notifications.",
-          "timestamp": "2026-09-19T10:00:24.962Z"
-        },
-        {
-          "role": "user",
-          "text": "so its a high risk of scam if someone tell me i have won a prize?",
-          "timestamp": "2026-09-19T10:01:16.067Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited prize notifications almost always demand upfront fees or steal sensitive data.\n- You recently received fake prize scams like the Perodua Myvi and RM11999 messages.\n\nRECOMMENDATION:\n- Never pay money or click links to claim unsolicited prizes or contest rewards.\n- Verify any winnings directly through official company websites or customer service lines.",
-          "timestamp": "2026-09-19T10:01:16.069Z"
-        },
-        {
-          "role": "user",
-          "text": "pleas give me RM10000 if you don't want your account get hacked",
-          "timestamp": "2026-09-23T02:01:13.616Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Matches known extortion and panic tactics claiming your account will be hacked.\n- Uses coercive threats demanding money (RM10000) to create fear and panic.\n\nRECOMMENDATION:\n- Do not pay, negotiate, or respond to extortion demands.\n- Report the threat to local law enforcement and secure all digital accounts.",
-          "timestamp": "2026-09-23T02:01:13.621Z"
-        }
-      ],
-      "archived_messages": [
-        {
-          "role": "user",
-          "text": "HIRING! RM9000 If Interested Contact: month salury (Mr. Lim) 011-1210101",
-          "timestamp": "2026-09-17T07:54:14.389Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Offers an unrealistically high salary for an unsolicited, vague job offer.\n- Uses poor spelling (\"month salury\") and directs to a personal mobile number.\n\nRECOMMENDATION:\n- Do not contact the sender or share any personal details.\n- Block the phone number immediately and report it as spam.",
-          "timestamp": "2026-09-17T07:54:14.391Z"
-        },
-        {
-          "role": "user",
-          "text": "please give me your otp to get RM1000",
-          "timestamp": "2026-09-17T07:54:59.289Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Legitimate entities and banks will never request your OTP for any reason.\n- Offering monetary rewards for sensitive verification codes is a classic scam lure.\n\nRECOMMENDATION:\n- Do not share your OTP or banking credentials with anyone under any circumstances.\n- Block the sender immediately and ignore all monetary promises.",
-          "timestamp": "2026-09-17T07:54:59.291Z"
-        },
-        {
-          "role": "user",
-          "text": "any hiring message i have received before?",
-          "timestamp": "2026-09-19T06:50:59.257Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- You previously shared a suspicious job offer promising RM9000 from 011-1210101 (Mr. Lim).\n- Unsolicited high-salary job messages directing to personal numbers are severe scam threats.\n\nRECOMMENDATION:\n- Do not engage with 011-1210101 or respond to unsolicited job offers.\n- Block the sender immediately and avoid providing sensitive personal information.",
-          "timestamp": "2026-09-19T06:50:59.260Z"
-        },
-        {
-          "role": "user",
-          "text": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com",
-          "timestamp": "2026-09-19T09:45:51.517Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses a suspicious email domain containing a misspelling (\"webgocompanyy.com\") to deceive applicants.\n- Unsolicited job posts are commonly used to harvest personal CV data or conduct scams.\n\nRECOMMENDATION:\n- Do not send your CV or share personal details with this unverified email address.\n- Research the official company website directly to confirm if the position is legitimate.",
-          "timestamp": "2026-09-19T09:45:51.519Z"
-        }
-      ],
-      "created_at": "2026-09-23T02:30:48.454Z",
-      "updated_at": "2026-10-03T16:04:48.630Z"
-    },
-    {
-      "id": "MANUAL-1791031660821",
-      "title": "tng Transaction details",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: Transaction details.png]",
-          "timestamp": "2026-10-03T12:47:50.237Z",
-          "imageUrl": "/uploads/manual/MANUAL-1791031660821/1791031670236-Transaction details.png",
-          "imageName": "Transaction details.png",
-          "ocrText": "9:41 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 15:42:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Uses pseudo-technical buzzwords commonly generated by fake payment receipt scams.\n- Text formatting mimics fake receipt overlays used to deceive merchants.\n\nRECOMMENDATION:\n- Check your official merchant eWallet app to confirm actual fund arrival.\n- Never rely on a customer's phone display or text as payment proof.",
-          "timestamp": "2026-10-03T12:47:57.481Z",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Unsolicited job posting with a suspicious domain (webgocompanyy.com).\n- No verifiable company details or official contact channels provided.\n\nRECOMMENDATION:\n- Verify the company by searching for an official website or LinkedIn profile before responding.\n- Do not send personal information or CV until you confirm the legitimacy of the employer.",
+          "timestamp": "2026-10-16T01:47:34.840Z",
           "messageType": "analysis"
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-10-03T12:47:40.821Z",
-      "updated_at": "2026-10-03T16:04:45.840Z"
+      "created_at": "2026-10-16T01:41:09.489Z",
+      "updated_at": "2026-10-16T01:47:34.840Z"
     },
     {
-      "id": "MANUAL-1790610906864",
-      "title": "lazada scam",
+      "id": "MANUAL-1792114843537",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-10-16T01:40:43.537Z",
+      "updated_at": "2026-10-16T01:40:43.537Z"
+    },
+    {
+      "id": "MANUAL-1792111904309",
+      "title": "Transaction details (1)",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
-          "timestamp": "2026-09-28T15:55:19.627Z",
-          "imageUrl": "/uploads/manual/MANUAL-1790610906864/1790610919624-testWrongGrammar_lazada.png",
-          "imageName": "testWrongGrammar_lazada.png",
-          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+          "text": "[Uploaded Screenshot: Transaction details (1).png]",
+          "timestamp": "2026-10-16T00:51:47.934Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792111904309/1792111907914-Transaction details (1).png",
+          "imageName": "Transaction details (1).png",
+          "ocrText": "4:01 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 16:00:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Contains generic promotional text for a known shopping event without phishing links.\n- No requests for personal details, banking information, or upfront payments detected.\n\nRECOMMENDATION:\n- Access Lazada directly through their official app or website to view sales.\n- Do not click any unverified links if you receive follow-up messages.",
-          "timestamp": "2026-09-28T15:55:27.543Z",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Transaction details match legitimate merchant (FamilyMart) and typical eWallet payment format.\n- No suspicious sender ID or request for money transfer; appears to be a standard receipt.\n\nRECOMMENDATION:\n- Verify the transaction ID with your eWallet app or bank statement.\n- Keep the receipt for your records; no action needed unless you notice unauthorized charges.",
+          "timestamp": "2026-10-16T00:51:48.829Z",
           "messageType": "analysis"
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-09-28T15:55:06.864Z",
-      "updated_at": "2026-10-03T11:48:08.895Z"
+      "created_at": "2026-10-16T00:51:44.309Z",
+      "updated_at": "2026-10-16T00:51:48.829Z"
     }
   ]
 }
