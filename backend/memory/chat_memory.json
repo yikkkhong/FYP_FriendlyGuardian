@@ -1,6 +1,83 @@
 {
-  "activeConversationId": "MANUAL-1792257769818",
+  "activeConversationId": "MANUAL-1792304205296",
   "conversations": [
+    {
+      "id": "MANUAL-1792304205296",
+      "title": "How can I tell if a message or phone call is a s…",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "How can I tell if a message or phone call is a scam?",
+          "timestamp": "2026-10-18T06:32:39.980Z"
+        },
+        {
+          "role": "assistant",
+          "text": "To spot a scam, look for urgent language, requests for money or personal data, and unfamiliar senders. Verify the source by contacting the official organization directly, and avoid clicking suspicious links or sharing sensitive info. If unsure, delete the message and report it.",
+          "timestamp": "2026-10-18T06:32:39.983Z",
+          "messageType": "general"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-18T06:16:45.296Z",
+      "updated_at": "2026-10-18T06:32:39.983Z"
+    },
+    {
+      "id": "MANUAL-1792303957008",
+      "title": "_investment2",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: _investment2.png]",
+          "timestamp": "2026-10-18T06:13:42.032Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792303957008/1792304022030-_investment2.png",
+          "imageName": "_investment2.png",
+          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- The phone number 0123456789 is on the verified blacklist with 100 investment scam reports.\n- The message promises 59.9% profit in 3 days, a classic high‑return bait tactic.\n\nRECOMMENDATION:\n- Block the number 0123456789 immediately and delete the message.\n- Do not transfer any money or provide personal details; report the incident to local authorities.",
+          "timestamp": "2026-10-18T06:13:43.024Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "I've received a scam message that says please send me your money",
+          "timestamp": "2026-10-18T06:16:39.544Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- The message requests money transfer, a classic scam tactic.\n- No legitimate context or verification details provided.\n\nRECOMMENDATION:\n- Do not send any money or personal information.\n- Report the message to local authorities and block the sender.",
+          "timestamp": "2026-10-18T06:16:39.549Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-18T06:12:37.008Z",
+      "updated_at": "2026-10-18T06:16:39.549Z"
+    },
+    {
+      "id": "MANUAL-1792303889532",
+      "title": "pls send me otp",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "pls send me otp",
+          "timestamp": "2026-10-18T06:12:19.644Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Requesting an OTP without context can be a phishing attempt.\n- The phrase is generic and often used by scammers to trick users into revealing codes.\n\nRECOMMENDATION:\n- Verify the source before providing any OTP; only respond to legitimate, verified requests.\n- Do not share OTPs over unsecured channels; use official apps or SMS from trusted institutions.",
+          "timestamp": "2026-10-18T06:12:19.648Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-18T06:11:29.532Z",
+      "updated_at": "2026-10-18T06:12:19.648Z"
+    },
     {
       "id": "MANUAL-1792257769818",
       "title": "Investment",

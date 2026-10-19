@@ -197,7 +197,7 @@ async function chatWithManualAI(userText, conversationId = null, options = {}) {
     const securityContext = formatSecurityContext();
     const forcedType = options.forcedType || null;
 
-    // check phone number scam
+    // ---------------- check phone number scam -------------------
     const matchedScam = extractAndCheckScamPhones(userText);
 
     let blacklistAlertSection =
