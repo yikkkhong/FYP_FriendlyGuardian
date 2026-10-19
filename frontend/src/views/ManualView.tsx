@@ -18,6 +18,11 @@ import {
   CloseIcon,
 } from "../components/icons/Icons";
 import ConfirmModal from "../components/common/ConfirmModal";
+import ChatEmptyState from "../components/chat/ChatEmptyState";
+import ChatMessageList from "../components/chat/ChatMessageList";
+import ChatComposer, {
+  ChatComposerHandle,
+} from "../components/chat/ChatComposer";
 
 export type ManualMessageType = "analysis" | "follow_up" | "general";
 
@@ -53,19 +58,20 @@ interface ManualViewProps {
   onDeleteConversation: (conversationId: string) => void;
 }
 
+// // below this
 const API_ORIGIN = "http://localhost:5000";
 
-function resolveImageUrl(url?: string) {
-  if (!url) return undefined;
-  if (
-    url.startsWith("http://") ||
-    url.startsWith("https://") ||
-    url.startsWith("blob:")
-  ) {
-    return url;
-  }
-  return `${API_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
-}
+// function resolveImageUrl(url?: string) {
+//   if (!url) return undefined;
+//   if (
+//     url.startsWith("http://") ||
+//     url.startsWith("https://") ||
+//     url.startsWith("blob:")
+//   ) {
+//     return url;
+//   }
+//   return `${API_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
+// }
 
 export const ManualView: React.FC<ManualViewProps> = ({
   messages,
@@ -79,56 +85,69 @@ export const ManualView: React.FC<ManualViewProps> = ({
   onRenameConversation,
   onDeleteConversation,
 }) => {
-  const [queryInput, setQueryInput] = useState("");
+  // const [queryInput, setQueryInput] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [menuOpenId, setMenuOpenId] = useState<string | null>(null);
   const [renamingId, setRenamingId] = useState<string | null>(null);
   const [renameValue, setRenameValue] = useState("");
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
-  const [showScrollToBottom, setShowScrollToBottom] = useState(false);
-  const [voicePanelActive, setVoicePanelActive] = useState(false);
-  const [voiceError, setVoiceError] = useState<string | null>(null);
+
+  // const [voicePanelActive, setVoicePanelActive] = useState(false);
+  // const [voiceError, setVoiceError] = useState<string | null>(null);
   const [voiceTranscript, setVoiceTranscript] = useState("");
   const [voiceTranscriptFinal, setVoiceTranscriptFinal] = useState("");
   const [voiceTranscriptInterim, setVoiceTranscriptInterim] = useState("");
-  const [voiceStartTime, setVoiceStartTime] = useState<number | null>(null);
-  const [elapsedTime, setElapsedTime] = useState(0);
-  const voiceInputRef = useRef<VoiceInputHandle>(null);
-  const textBeforeVoiceRef = useRef("");
-  const chatEndRef = useRef<HTMLDivElement | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
+  // const [voiceStartTime, setVoiceStartTime] = useState<number | null>(null);
+  // const [elapsedTime, setElapsedTime] = useState(0);
+  // const voiceInputRef = useRef<VoiceInputHandle>(null);
+  // const textBeforeVoiceRef = useRef("");
+
+  // const fileInputRef = useRef<HTMLInputElement>(null);
   const renameInputRef = useRef<HTMLInputElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const streamViewportRef = useRef<HTMLDivElement>(null);
-  const voiceTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // const voiceTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  // refefence for ChatComposer
+  const composerRef = useRef<ChatComposerHandle>(null);
 
   // ---------- to be a component initial page buttons -------------
   // paste message button
   const handlePaste = async () => {
     try {
       const clipText = await navigator.clipboard.readText();
-      if (!clipText) return;
+      const trimmedText = clipText.trim(); //text without empty space
+      //if no copy text or text is just empty space, then no send
+      if (!clipText || !trimmedText) return;
 
-      const textarea = textareaRef.current;
-      if (!textarea) {
-        setQueryInput(clipText);
-        return;
-      }
+      shouldSpeakNextAIReplyRef.current = false; // in case like user clicked voice input and also clicked paste button
 
-      const start = textarea.selectionStart;
-      const end = textarea.selectionEnd;
-      const nextText =
-        queryInput.substring(0, start) + clipText + queryInput.substring(end);
+      // direct send
+      onSendMessage(trimmedText);
 
-      onSendMessage(nextText);
+      // show at input field
+      //composerRef.current?.appendQueryText(clipText);
 
-      setTimeout(() => {
-        textarea.focus();
-        textarea.setSelectionRange(
-          start + clipText.length,
-          start + clipText.length,
-        );
-      }, 0);
+      // const textarea = textareaRef.current;
+      // if (!textarea) {
+      //   setQueryInput(clipText);
+      //   return;
+      // }
+
+      // const start = textarea.selectionStart;
+      // const end = textarea.selectionEnd;
+      // const nextText =
+      //   queryInput.substring(0, start) + clipText + queryInput.substring(end);
+
+      // onSendMessage(nextText);
+
+      // setTimeout(() => {
+      //   textarea.focus();
+      //   textarea.setSelectionRange(
+      //     start + clipText.length,
+      //     start + clipText.length,
+      //   );
+      // }, 0);
     } catch (err) {
       console.error("No Copied Message:", err);
     }
@@ -136,7 +155,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
   // open file upload button
   const handleOpenExplorer = () => {
-    fileInputRef.current?.click();
+    composerRef.current?.openFilePicker();
   };
 
   let questionIndex = React.useRef(0);
@@ -152,14 +171,14 @@ export const ManualView: React.FC<ManualViewProps> = ({
     const question = questions[questionIndex.current];
     questionIndex.current = (questionIndex.current + 1) % questions.length;
 
-    setQueryInput(question);
+    composerRef.current?.setQueryText(question);
   };
 
   // ---------------------------------------------------------------
 
   // use text to speech hook
   const { speak, stop } = useTextToSpeech();
-  const isVoiceInputRef = useRef(false);
+  // const isVoiceInputRef = useRef(false);
   const shouldSpeakNextAIReplyRef = useRef(false);
   const prevMessagesCountRef = useRef(messages.length);
 
@@ -190,9 +209,9 @@ export const ManualView: React.FC<ManualViewProps> = ({
     shouldSpeakNextAIReplyRef.current = false;
   }, [activeConversationId, stop]);
 
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isLoading]);
+  // useEffect(() => {
+  //   chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  // }, [messages, isLoading]);
 
   useEffect(() => {
     if (renamingId && renameInputRef.current) {
@@ -209,139 +228,120 @@ export const ManualView: React.FC<ManualViewProps> = ({
     }
   }, [menuOpenId]);
 
-  // Auto-growing textarea
-  useEffect(() => {
-    const textarea = textareaRef.current;
-    if (textarea) {
-      textarea.style.height = "auto";
-      textarea.style.height = `${Math.min(textarea.scrollHeight, 150)}px`;
-    }
-  }, [queryInput]);
+  // // Auto-growing textarea
+  // useEffect(() => {
+  //   const textarea = textareaRef.current;
+  //   if (textarea) {
+  //     textarea.style.height = "auto";
+  //     textarea.style.height = `${Math.min(textarea.scrollHeight, 150)}px`;
+  //   }
+  // }, [queryInput]);
 
-  // Voice timer
-  useEffect(() => {
-    if (voicePanelActive && voiceStartTime) {
-      voiceTimerRef.current = setInterval(() => {
-        setElapsedTime(Math.floor((Date.now() - voiceStartTime) / 1000));
-      }, 1000);
-    } else {
-      if (voiceTimerRef.current) {
-        clearInterval(voiceTimerRef.current);
-        voiceTimerRef.current = null;
-      }
-    }
-    return () => {
-      if (voiceTimerRef.current) clearInterval(voiceTimerRef.current);
-    };
-  }, [voicePanelActive, voiceStartTime]);
+  // // Voice timer
+  // useEffect(() => {
+  //   if (voicePanelActive && voiceStartTime) {
+  //     voiceTimerRef.current = setInterval(() => {
+  //       setElapsedTime(Math.floor((Date.now() - voiceStartTime) / 1000));
+  //     }, 1000);
+  //   } else {
+  //     if (voiceTimerRef.current) {
+  //       clearInterval(voiceTimerRef.current);
+  //       voiceTimerRef.current = null;
+  //     }
+  //   }
+  //   return () => {
+  //     if (voiceTimerRef.current) clearInterval(voiceTimerRef.current);
+  //   };
+  // }, [voicePanelActive, voiceStartTime]);
 
-  const formatTime = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, "0")}`;
-  };
+  // const formatTime = (seconds: number) => {
+  //   const mins = Math.floor(seconds / 60);
+  //   const secs = seconds % 60;
+  //   return `${mins}:${secs.toString().padStart(2, "0")}`;
+  // };
 
-  // Scroll to bottom detection
-  useEffect(() => {
-    const viewport = streamViewportRef.current;
-    if (!viewport) return;
+  // const handleVoicePanelStateChange = (isActive: boolean) => {
+  //   setVoicePanelActive(isActive);
+  //   if (isActive) {
+  //     textBeforeVoiceRef.current = queryInput;
+  //     setVoiceStartTime(Date.now());
+  //     setElapsedTime(0);
+  //     setVoiceError(null);
+  //   } else {
+  //     setVoiceStartTime(null);
+  //   }
+  // };
 
-    const handleScroll = () => {
-      const { scrollTop, scrollHeight, clientHeight } = viewport;
-      const isNearBottom = scrollHeight - scrollTop - clientHeight < 100;
-      setShowScrollToBottom(!isNearBottom);
-    };
+  // const handleVoiceInterim = (text: string) => {
+  //   if (!text.trim()) return;
+  //   const prefix = textBeforeVoiceRef.current
+  //     ? `${textBeforeVoiceRef.current} `
+  //     : "";
+  //   setQueryInput(prefix + text);
+  // };
 
-    viewport.addEventListener("scroll", handleScroll);
-    return () => viewport.removeEventListener("scroll", handleScroll);
-  }, []);
+  // const handleVoiceResult = async (text: string) => {
+  //   isVoiceInputRef.current = true;
+  //   const prefix = textBeforeVoiceRef.current
+  //     ? `${textBeforeVoiceRef.current} `
+  //     : "";
+  //   const fullText = prefix + text;
+  //   setQueryInput(fullText);
 
-  const scrollToBottom = () => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  //   try {
+  //     const response = await fetch(`${API_ORIGIN}/api/correct-speech`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ rawText: text }),
+  //     });
 
-  const handleVoicePanelStateChange = (isActive: boolean) => {
-    setVoicePanelActive(isActive);
-    if (isActive) {
-      textBeforeVoiceRef.current = queryInput;
-      setVoiceStartTime(Date.now());
-      setElapsedTime(0);
-      setVoiceError(null);
-    } else {
-      setVoiceStartTime(null);
-    }
-  };
+  //     if (!response.ok) return;
 
-  const handleVoiceInterim = (text: string) => {
-    if (!text.trim()) return;
-    const prefix = textBeforeVoiceRef.current
-      ? `${textBeforeVoiceRef.current} `
-      : "";
-    setQueryInput(prefix + text);
-  };
+  //     const data = await response.json();
+  //     if (data.correctedText) {
+  //       setQueryInput(prefix + data.correctedText);
+  //     }
+  //   } catch (error) {
+  //     console.warn("Speech correction failed, keeping raw transcript:", error);
+  //   }
+  // };
 
-  const handleVoiceResult = async (text: string) => {
-    isVoiceInputRef.current = true;
-    const prefix = textBeforeVoiceRef.current
-      ? `${textBeforeVoiceRef.current} `
-      : "";
-    const fullText = prefix + text;
-    setQueryInput(fullText);
+  // const handleCancelVoice = () => {
+  //   voiceInputRef.current?.cancel();
+  //   setVoicePanelActive(false);
+  //   setVoiceError(null);
+  //   setQueryInput(textBeforeVoiceRef.current);
+  //   textBeforeVoiceRef.current = "";
+  // };
 
-    try {
-      const response = await fetch(`${API_ORIGIN}/api/correct-speech`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ rawText: text }),
-      });
+  // const handleFinishVoice = () => {
+  //   voiceInputRef.current?.stop();
+  //   setVoicePanelActive(false);
+  //   setVoiceError(null);
+  //   textBeforeVoiceRef.current = "";
+  // };
 
-      if (!response.ok) return;
+  // const handleSubmit = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!queryInput.trim() || isLoading) return;
 
-      const data = await response.json();
-      if (data.correctedText) {
-        setQueryInput(prefix + data.correctedText);
-      }
-    } catch (error) {
-      console.warn("Speech correction failed, keeping raw transcript:", error);
-    }
-  };
+  //   if (isVoiceInputRef.current) {
+  //     shouldSpeakNextAIReplyRef.current = true;
+  //     isVoiceInputRef.current = false;
+  //   } else {
+  //     shouldSpeakNextAIReplyRef.current = false;
+  //   }
 
-  const handleCancelVoice = () => {
-    voiceInputRef.current?.cancel();
-    setVoicePanelActive(false);
-    setVoiceError(null);
-    setQueryInput(textBeforeVoiceRef.current);
-    textBeforeVoiceRef.current = "";
-  };
+  //   onSendMessage(queryInput);
+  //   setQueryInput("");
+  // };
 
-  const handleFinishVoice = () => {
-    voiceInputRef.current?.stop();
-    setVoicePanelActive(false);
-    setVoiceError(null);
-    textBeforeVoiceRef.current = "";
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!queryInput.trim() || isLoading) return;
-
-    if (isVoiceInputRef.current) {
-      shouldSpeakNextAIReplyRef.current = true;
-      isVoiceInputRef.current = false;
-    } else {
-      shouldSpeakNextAIReplyRef.current = false;
-    }
-
-    onSendMessage(queryInput);
-    setQueryInput("");
-  };
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file || isLoading) return;
-    onUploadImage(file);
-    if (fileInputRef.current) fileInputRef.current.value = "";
-  };
+  // const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (!file || isLoading) return;
+  //   onUploadImage(file);
+  //   if (fileInputRef.current) fileInputRef.current.value = "";
+  // };
 
   const activeConversation = conversations.find(
     (c) => c.id === activeConversationId,
@@ -609,332 +609,23 @@ export const ManualView: React.FC<ManualViewProps> = ({
           )}
         </header>
 
-        <div
-          ref={streamViewportRef}
-          className="manual-stream-viewport"
-          role="log"
-          aria-live="polite"
-          aria-atomic="false"
-          aria-label="Chat messages"
-        >
-          {messages.length === 0 && !isLoading && (
-            <div className="manual-empty-state">
-              <div className="guardian-orb" aria-hidden="true">
-                <GuardianMark />
-              </div>
-              <h2>Is this a scam?</h2>
-              <p>
-                Paste a suspicious SMS, email, link, or bank account — your
-                Guardian checks it instantly.
-              </p>
-              <div className="manual-suggestion-chips">
-                {/* <button
-                  type="button"
-                  className="manual-suggestion-chip"
-                  onClick={() =>
-                    setQueryInput("Is this bank account number safe?")
-                  }
-                  disabled={isLoading}
-                >
-                  <BankIcon /> Check bank account
-                </button> */}
-                <button
-                  type="button"
-                  className="manual-suggestion-chip"
-                  onClick={() => handlePaste()}
-                  disabled={isLoading}
-                >
-                  <PhoneIcon /> Paste Message
-                </button>
-                <button
-                  type="button"
-                  className="manual-suggestion-chip"
-                  onClick={() => handleOpenExplorer()}
-                  disabled={isLoading}
-                >
-                  <CameraIcon /> Upload Image
-                </button>
-                <button
-                  type="button"
-                  className="manual-suggestion-chip"
-                  onClick={() => handleNextQuestion()}
-                  disabled={isLoading}
-                >
-                  <MenuIcon /> General Question
-                </button>
-              </div>
-              <p className="hero-no-signup">No sign-up needed · Free to use</p>
-            </div>
-          )}
+        <ChatMessageList
+          messages={messages}
+          isLoading={isLoading}
+          onPasteMessage={handlePaste}
+          onUploadImage={handleOpenExplorer}
+          onGeneralQuestion={handleNextQuestion}
+        />
 
-          {messages.map((m, idx) => {
-            const isUser = m.sender === "user";
-            const report = !isUser ? parseReport(m.text) : null;
-            // Structured type from backend; legacy messages without type still
-            // show a risk card when the RISK LEVEL template is present.
-            const isAnalysisMessage =
-              m.messageType === "analysis" ||
-              (m.messageType == null && !!report);
-            const showRiskCard = !isUser && isAnalysisMessage && !!report;
-            // const showRiskCard =
-            //   !isUser &&
-            //   isAnalysisMessage &&
-            //   report &&
-            // RISK_COPY[report.risk];
-            // const riskMeta = showRiskCard ? RISK_COPY[report!.risk] : null;
-            const imageSrc = resolveImageUrl(m.imageUrl);
-
-            return (
-              <div
-                key={`${m.time}-${idx}-${m.imageUrl || m.text.slice(0, 12)}`}
-                className={`manual-msg-row ${isUser ? "user" : "ai"}`}
-              >
-                <div className="manual-msg-meta">
-                  <span className="meta-label">
-                    {isUser ? "You" : "Guardian"}
-                  </span>
-                  <span className="meta-time">{m.time}</span>
-                </div>
-
-                {isUser ? (
-                  <div className="user-query-bubble">
-                    {imageSrc && (
-                      <a
-                        href={imageSrc}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="manual-image-preview-link"
-                      >
-                        <img
-                          src={imageSrc}
-                          alt={m.imageName || "Uploaded screenshot"}
-                          className="manual-image-preview"
-                        />
-                      </a>
-                    )}
-                    {m.text &&
-                      !m.text.startsWith("[Uploaded Screenshot:") &&
-                      m.text}
-                    {m.text?.startsWith("[Uploaded Screenshot:") &&
-                      !imageSrc &&
-                      m.text}
-                    {imageSrc && m.imageName && (
-                      <span className="manual-image-caption">
-                        {m.imageName}
-                      </span>
-                    )}
-                  </div>
-                ) : showRiskCard && report ? (
-                  <ThreatReportCard
-                    report={report!}
-                    isNew={!isUser && idx === messages.length - 1}
-                  />
-                ) : (
-                  // <div className="plain-ai-bubble">{m.text}</div>
-                  <AiResponseCard content={m.text} />
-                )}
-              </div>
-            );
-          })}
-
-          {isLoading && (
-            <div className="manual-loading-row" role="status">
-              <span className="manual-loading-dots" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </span>
-              <span className="manual-loading-text">Checking…</span>
-            </div>
-          )}
-          <div ref={chatEndRef} />
-
-          {showScrollToBottom && (
-            <button
-              type="button"
-              className="scroll-to-bottom-btn"
-              onClick={scrollToBottom}
-              aria-label="Scroll to bottom"
-            >
-              ↓
-            </button>
-          )}
-        </div>
-
-        <div className="manual-composer-wrapper">
-          {/* Floating error pill above composer — non-intrusive, auto-dismissible */}
-          {voiceError && (
-            <div className="voice-error-banner" role="alert" aria-live="polite">
-              <span className="voice-error-text">{voiceError}</span>
-              <button
-                type="button"
-                className="voice-error-retry"
-                onClick={() => {
-                  setVoiceError(null);
-                  voiceInputRef.current?.start();
-                }}
-              >
-                Try again
-              </button>
-              <button
-                type="button"
-                className="voice-error-close"
-                onClick={() => setVoiceError(null)}
-                aria-label="Dismiss error"
-              >
-                x
-              </button>
-            </div>
-          )}
-
-          <form
-            onSubmit={handleSubmit}
-            className={`manual-composer ${voicePanelActive ? "is-voice-listening" : ""}`}
-          >
-            {/* [HIDDEN_FOR_PUBLIC_VERSION] Voice scrim overlay commented out for flat, unblurred experience */}
-            {/* {voicePanelActive && (
-              <div className="voice-scrim" onClick={(e) => e.preventDefault()} />
-            )} */}
-
-            <input
-              type="file"
-              ref={fileInputRef}
-              className="manual-file-input"
-              accept="image/*"
-              onChange={handleImageUpload}
-            />
-
-            {/* Camera slot transforms into ghost Cancel (X) button when voice listening */}
-            {voicePanelActive ? (
-              <button
-                type="button"
-                className="query-cancel-btn"
-                onClick={handleCancelVoice}
-                aria-label="Cancel voice input"
-                title="Cancel voice input"
-              >
-                <CloseIcon />
-              </button>
-            ) : (
-              <button
-                type="button"
-                className="query-upload-btn"
-                onClick={() => fileInputRef.current?.click()}
-                disabled={isLoading}
-                aria-label="Upload suspicious screenshot"
-                title="Upload suspicious screenshot"
-              >
-                <CameraIcon />
-              </button>
-            )}
-
-            <VoiceInputButton
-              ref={voiceInputRef}
-              onResult={handleVoiceResult}
-              onInterim={handleVoiceInterim}
-              lang="en-US"
-              onPanelStateChange={handleVoicePanelStateChange}
-              onError={setVoiceError}
-            />
-
-            {/* Balanced fancy soundwave equalizer animation while user is talking */}
-            {voicePanelActive && (
-              <div
-                className="composer-voice-eq"
-                aria-hidden="true"
-                title="Listening to voice"
-              >
-                <span className="composer-voice-bar" />
-                <span className="composer-voice-bar" />
-                <span className="composer-voice-bar" />
-                <span className="composer-voice-bar" />
-              </div>
-            )}
-
-            {/* [HIDDEN_FOR_PUBLIC_VERSION] Large voice panel card modal commented out in favor of in-place pill transformation */}
-            {/* {voicePanelActive && (
-              <div className="voice-panel-legacy">Legacy voice panel commented out</div>
-            )} */}
-
-            <label htmlFor="manual-query-input" className="sr-only">
-              Message or account to check
-            </label>
-            <textarea
-              ref={textareaRef}
-              id="manual-query-input"
-              placeholder={
-                voicePanelActive
-                  ? "Listening... speak now"
-                  : "Paste a message, ask a follow-up, or describe what you received…"
-              }
-              className="query-input"
-              value={queryInput}
-              aria-live={voicePanelActive ? "polite" : "off"}
-              onChange={(e) => {
-                const val = e.target.value;
-                setQueryInput(val);
-                if (voiceError) setVoiceError(null);
-                if (!val.trim()) {
-                  isVoiceInputRef.current = false;
-                }
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Escape") {
-                  if (voicePanelActive) {
-                    handleCancelVoice();
-                  } else {
-                    setQueryInput("");
-                  }
-                }
-                if (e.key === "Enter" && !e.shiftKey) {
-                  e.preventDefault();
-                  if (voicePanelActive) {
-                    handleFinishVoice();
-                  } else if (queryInput.trim() && !isLoading) {
-                    handleSubmit(e);
-                  }
-                }
-              }}
-              disabled={isLoading}
-              autoComplete="off"
-              rows={1}
-              style={{
-                resize: "none",
-                height: "auto",
-                minHeight: "44px",
-                maxHeight: "150px",
-                overflowY: "auto",
-              }}
-            />
-
-            {/* Live timer when speaking */}
-            {voicePanelActive && (
-              <span className="composer-voice-timer" aria-live="off">
-                {formatTime(elapsedTime)}
-              </span>
-            )}
-
-            {/* Send button becomes Done button when voice listening */}
-            {voicePanelActive ? (
-              <button
-                type="button"
-                className="query-submit-action voice-done-btn"
-                onClick={handleFinishVoice}
-                aria-label="Finish speaking"
-              >
-                Done
-              </button>
-            ) : (
-              <button
-                type="submit"
-                className="query-submit-action"
-                disabled={isLoading || !queryInput.trim()}
-              >
-                {isLoading ? "…" : "Send"}
-              </button>
-            )}
-          </form>
-        </div>
+        <ChatComposer
+          ref={composerRef}
+          isLoading={isLoading}
+          onSendMessage={(text, isVoice) => {
+            shouldSpeakNextAIReplyRef.current = isVoice;
+            onSendMessage(text);
+          }}
+          onUploadImage={onUploadImage}
+        />
       </section>
 
       {confirmDeleteId && (

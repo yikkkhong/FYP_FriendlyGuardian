@@ -1,6 +1,113 @@
 {
-  "activeConversationId": "MANUAL-1792304205296",
+  "activeConversationId": "MANUAL-1792427361284",
   "conversations": [
+    {
+      "id": "MANUAL-1792427361284",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-10-19T16:29:21.284Z",
+      "updated_at": "2026-10-19T16:29:21.284Z"
+    },
+    {
+      "id": "MANUAL-1792420884205",
+      "title": "_investment2",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: _investment2.png]",
+          "timestamp": "2026-10-19T15:08:06.676Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1792422486673-_investment2.png",
+          "imageName": "_investment2.png",
+          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises 59.9% profit in 3 days, a classic high‑return bait tactic.\n\nRECOMMENDATION:\n- Block the number and delete the message immediately.\n- Do not transfer any money or share personal information.",
+          "timestamp": "2026-10-19T15:08:07.804Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "100 people reported?? woww",
+          "timestamp": "2026-10-19T15:08:25.099Z"
+        },
+        {
+          "role": "assistant",
+          "text": "It’s normal to see many reports for a known scam; that confirms the risk. Avoid any contact or transfer, and block the number. If you’re unsure, you can also report it to your local consumer protection agency.",
+          "timestamp": "2026-10-19T15:08:25.103Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: Transaction details (1).png]",
+          "timestamp": "2026-10-19T16:18:24.644Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1792426704643-Transaction details (1).png",
+          "imageName": "Transaction details (1).png",
+          "ocrText": "4:01 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 16:00:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No suspicious links, phone numbers, or offers.\n- Contains standard transaction details and verification markers.\n\nRECOMMENDATION:\n- Keep the receipt for your records.\n- Verify the transaction with FamilyMart if you have any doubts.",
+          "timestamp": "2026-10-19T16:18:26.728Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-19T14:41:24.205Z",
+      "updated_at": "2026-10-19T16:18:26.728Z"
+    },
+    {
+      "id": "MANUAL-1792420292157",
+      "title": "onPasteMessage={handlePaste} onUploadImage={hand…",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "onPasteMessage={handlePaste}\n  onUploadImage={handleOpenExplorer}\n  onGeneralQuestion={handleNextQuestion}",
+          "timestamp": "2026-10-19T14:31:34.977Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No personal or financial data present.\n- Code appears to be standard event handlers.\n\nRECOMMENDATION:\n- Verify that the functions referenced are secure and not exposing sensitive data.\n- Ensure proper validation for pasted content and uploaded images to prevent injection attacks.",
+          "timestamp": "2026-10-19T14:31:34.987Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: _investment2.png]",
+          "timestamp": "2026-10-19T14:32:35.976Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420292157/1792420355974-_investment2.png",
+          "imageName": "_investment2.png",
+          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on verified blacklist with 100 investment scam reports.\n- Message promises high returns in 3 days, classic bait tactic.\n\nRECOMMENDATION:\n- Block the number immediately and do not respond or transfer money.\n- Report the message to local authorities and your telecom provider.",
+          "timestamp": "2026-10-19T14:32:37.453Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-10-19T14:32:49.668Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420292157/1792420369666-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No personal or financial data or contact details included.\n- Message appears to be a generic promotional announcement.\n\nRECOMMENDATION:\n- Verify the source (official Lazada channel) before clicking any links.\n- Treat as normal marketing; no immediate action required.",
+          "timestamp": "2026-10-19T14:32:50.142Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-10-19T14:31:32.157Z",
+      "updated_at": "2026-10-19T14:32:50.142Z"
+    },
     {
       "id": "MANUAL-1792304205296",
       "title": "zxzxzx",
