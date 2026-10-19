@@ -92,15 +92,15 @@ process.on("exit", () => {
 app.use("/api", setupManualRoutes({ upload, scanImageWithLocalOCR }));
 
 //get history api
-app.get("/api/history", (req, res) => {
-  const history = LTM.getAllIncidents();
+// app.get("/api/history", (req, res) => {
+//   const history = LTM.getAllIncidents();
 
-  res.json({
-    success: true,
-    count: history.length,
-    data: history,
-  });
-});
+//   res.json({
+//     success: true,
+//     count: history.length,
+//     data: history,
+//   });
+// });
 
 // socket io connection
 io.on("connection", (socket) => {
