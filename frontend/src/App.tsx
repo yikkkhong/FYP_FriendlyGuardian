@@ -8,11 +8,11 @@ import ManualView, {
   ManualMessage,
   ManualMessageType,
 } from "./views/ManualView";
-import { Header } from "./components/Header";
+import { Header } from "./components/common/Header";
 import {
   Notification,
   Notification as NotificationType,
-} from "./components/Notification";
+} from "./components/common/Notification";
 
 // interface ScamAlertData {
 //   text: string;

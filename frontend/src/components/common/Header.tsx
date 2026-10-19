@@ -27,7 +27,9 @@ export const Header: React.FC<HeaderProps> = ({
   isLoading = false,
 }) => {
   const [textSize, setTextSize] = useState<"normal" | "large">(() => {
-    return (localStorage.getItem("text-size") as "normal" | "large") || "normal";
+    return (
+      (localStorage.getItem("text-size") as "normal" | "large") || "normal"
+    );
   });
   const [scrolled, setScrolled] = useState(false);
 
@@ -97,7 +99,11 @@ export const Header: React.FC<HeaderProps> = ({
               type="button"
               className="text-size-toggle"
               onClick={toggleTextSize}
-              aria-label={textSize === "normal" ? "Increase text size" : "Decrease text size"}
+              aria-label={
+                textSize === "normal"
+                  ? "Increase text size"
+                  : "Decrease text size"
+              }
               title={textSize === "normal" ? "Larger text" : "Normal text"}
             >
               {textSize === "normal" ? "A+" : "A-"}

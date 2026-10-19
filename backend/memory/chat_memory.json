@@ -3,31 +3,9 @@
   "conversations": [
     {
       "id": "MANUAL-1792304205296",
-      "title": "How can I tell if a message or phone call is a s…",
-      "summary": "",
+      "title": "zxzxzx",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None mentioned.  \n- **Suspicious phone numbers:** None mentioned.  \n- **Scam tactics:** Pretending to be a friend, asking for identity proof, using urgent or vague language, and requesting personal data. Advice: verify identity through known contacts or social media, avoid sharing sensitive info, and report suspicious interactions.",
       "messages": [
-        {
-          "role": "user",
-          "text": "How can I tell if a message or phone call is a scam?",
-          "timestamp": "2026-10-18T06:32:39.980Z"
-        },
-        {
-          "role": "assistant",
-          "text": "To spot a scam, look for urgent language, requests for money or personal data, and unfamiliar senders. Verify the source by contacting the official organization directly, and avoid clicking suspicious links or sharing sensitive info. If unsure, delete the message and report it.",
-          "timestamp": "2026-10-18T06:32:39.983Z",
-          "messageType": "general"
-        },
-        {
-          "role": "user",
-          "text": "how if someone tell me he is my friend, but i don't have his number",
-          "timestamp": "2026-10-19T08:10:37.267Z"
-        },
-        {
-          "role": "assistant",
-          "text": "If someone claims to be your friend but you don't have their number, verify their identity by asking for mutual contacts, checking their social media profile, or contacting them through a known platform. If they still can't provide proof, treat the interaction with caution and avoid sharing personal info.",
-          "timestamp": "2026-10-19T08:10:37.270Z",
-          "messageType": "general"
-        },
         {
           "role": "user",
           "text": "can they still scam if i call my friend real number?",
@@ -63,11 +41,59 @@
           "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises 59.9% profit in 3 days, classic high‑return bait.\n\nRECOMMENDATION:\n- Block the number and do not respond or send money.\n- Report the message to your bank and local authorities.",
           "timestamp": "2026-10-19T08:34:48.107Z",
           "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-10-19T09:02:28.595Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792304205296/1792400548593-hiring4.png",
+          "imageName": "hiring4.png",
+          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Generic job ad with no company details or contact info.\n- Email domain (webgocompanyy.com) appears unverified and could be spoofed.\n\nRECOMMENDATION:\n- Verify the company’s legitimacy by searching for an official website and contact details.\n- Do not send personal information or CV to the provided email until you confirm the employer’s authenticity.",
+          "timestamp": "2026-10-19T09:02:29.842Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Please send me a scam",
+          "timestamp": "2026-10-19T09:02:51.588Z"
+        },
+        {
+          "role": "assistant",
+          "text": "I’m sorry, but I can’t help with that.",
+          "timestamp": "2026-10-19T09:02:51.590Z",
+          "messageType": "general"
         }
       ],
-      "archived_messages": [],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "How can I tell if a message or phone call is a scam?",
+          "timestamp": "2026-10-18T06:32:39.980Z"
+        },
+        {
+          "role": "assistant",
+          "text": "To spot a scam, look for urgent language, requests for money or personal data, and unfamiliar senders. Verify the source by contacting the official organization directly, and avoid clicking suspicious links or sharing sensitive info. If unsure, delete the message and report it.",
+          "timestamp": "2026-10-18T06:32:39.983Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "how if someone tell me he is my friend, but i don't have his number",
+          "timestamp": "2026-10-19T08:10:37.267Z"
+        },
+        {
+          "role": "assistant",
+          "text": "If someone claims to be your friend but you don't have their number, verify their identity by asking for mutual contacts, checking their social media profile, or contacting them through a known platform. If they still can't provide proof, treat the interaction with caution and avoid sharing personal info.",
+          "timestamp": "2026-10-19T08:10:37.270Z",
+          "messageType": "general"
+        }
+      ],
       "created_at": "2026-10-18T06:16:45.296Z",
-      "updated_at": "2026-10-19T08:34:48.107Z"
+      "updated_at": "2026-10-19T09:55:23.191Z"
     },
     {
       "id": "MANUAL-1792303957008",
