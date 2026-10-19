@@ -12,16 +12,6 @@ const readline = require("readline");
 
 require("dotenv").config();
 
-// import memory
-const { LTM } = require("./memory/securityMemory");
-
-// companion mode module
-const {
-  initLocalAI,
-  registerCompanionSocket,
-  setupCompanionRoutes,
-} = require("./AI/CompanionMode/companionHandler");
-
 // manual mode module
 const {
   registerManualSocket,
@@ -98,9 +88,6 @@ process.on("exit", () => {
   if (ocrProcess) ocrProcess.kill();
 });
 
-// use companion mode routes
-app.use("/api", setupCompanionRoutes(io));
-
 // use manual mode routes
 app.use("/api", setupManualRoutes({ upload, scanImageWithLocalOCR }));
 
@@ -119,8 +106,7 @@ app.get("/api/history", (req, res) => {
 io.on("connection", (socket) => {
   console.log("⚡ [Socket.IO] React Frontend Connected:", socket.id);
 
-  //register companion/manual mode socket listener
-  registerCompanionSocket(socket, io);
+  //register manual mode socket listener
   registerManualSocket(socket, io);
 
   socket.on("disconnect", () => {
@@ -132,5 +118,4 @@ io.on("connection", (socket) => {
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`🚀 Hybrid Guardian Server running on http://localhost:${PORT}`);
-  initLocalAI();
 });

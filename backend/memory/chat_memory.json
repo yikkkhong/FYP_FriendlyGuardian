@@ -16,11 +16,58 @@
           "text": "To spot a scam, look for urgent language, requests for money or personal data, and unfamiliar senders. Verify the source by contacting the official organization directly, and avoid clicking suspicious links or sharing sensitive info. If unsure, delete the message and report it.",
           "timestamp": "2026-10-18T06:32:39.983Z",
           "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "how if someone tell me he is my friend, but i don't have his number",
+          "timestamp": "2026-10-19T08:10:37.267Z"
+        },
+        {
+          "role": "assistant",
+          "text": "If someone claims to be your friend but you don't have their number, verify their identity by asking for mutual contacts, checking their social media profile, or contacting them through a known platform. If they still can't provide proof, treat the interaction with caution and avoid sharing personal info.",
+          "timestamp": "2026-10-19T08:10:37.270Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "can they still scam if i call my friend real number?",
+          "timestamp": "2026-10-19T08:26:13.036Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Calling your friend’s real number can help verify identity, but scammers can spoof numbers or use voice‑changing tech. Always confirm details (mutual contacts, recent messages) and be cautious if the caller requests sensitive info or money. If anything feels off, hang up and verify through another trusted channel.",
+          "timestamp": "2026-10-19T08:26:13.039Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "he replied me hey i am your real friend, yea its real me requesting money from you",
+          "timestamp": "2026-10-19T08:28:50.155Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims identity without proof, typical scam tactic.\n- Requests money directly, urgent tone.\n\nRECOMMENDATION:\n- Verify identity via known contact channels before sending money.\n- Do not transfer funds; report the message to your bank and local authorities.",
+          "timestamp": "2026-10-19T08:28:50.159Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: _investment2.png]",
+          "timestamp": "2026-10-19T08:34:46.748Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792304205296/1792398886745-_investment2.png",
+          "imageName": "_investment2.png",
+          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises 59.9% profit in 3 days, classic high‑return bait.\n\nRECOMMENDATION:\n- Block the number and do not respond or send money.\n- Report the message to your bank and local authorities.",
+          "timestamp": "2026-10-19T08:34:48.107Z",
+          "messageType": "analysis"
         }
       ],
       "archived_messages": [],
       "created_at": "2026-10-18T06:16:45.296Z",
-      "updated_at": "2026-10-18T06:32:39.983Z"
+      "updated_at": "2026-10-19T08:34:48.107Z"
     },
     {
       "id": "MANUAL-1792303957008",

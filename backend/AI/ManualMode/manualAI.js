@@ -1,9 +1,4 @@
-// temporary switch to groq as gemini api not available for now, will remain groq if groq fit better
-// const { GoogleGenAI } = require("@google/genai");
 const Groq = require("groq-sdk");
-
-// const apiKey = process.env.GEMINI_API_KEY;
-// const ai = new GoogleGenAI({ apiKey });
 
 const apiKey = process.env.GROQ_API_KEY;
 const ai = new Groq({ apiKey });
@@ -14,7 +9,6 @@ const aiModel = "openai/gpt-oss-20b";
 // minimaxai/minimax-m2.7 (for benchmark)
 // openai/gpt-oss-safeguard-20b (safety-focused, heavy rate-limited)
 
-const { STM, LTM } = require("../../memory/securityMemory.js");
 const chatMemory = require("../../memory/chatMemory.js");
 
 // -------- sample data for phone number scam -------------
@@ -71,37 +65,6 @@ function extractAndCheckScamPhones(rawText = "") {
   }
 
   return null;
-}
-
-function formatSecurityContext() {
-  const currentScams = STM?.getRecentScamAlerts?.() || [];
-  const historicalScams = LTM?.getRecentScamHistory?.(5) || [];
-
-  if (currentScams.length === 0 && historicalScams.length === 0) {
-    return "No recorded scam incidents in security database.";
-  }
-
-  let text = "";
-  if (currentScams.length > 0) {
-    text += "CURRENT INTERCEPTED ALERTS (STM):\n";
-    text +=
-      currentScams
-        .map(
-          (s) =>
-            `• Account: ${s.detected_account || "N/A"} | Sender: ${s.sender || "N/A"} | Reason: ${s.reason}`,
-        )
-        .join("\n") + "\n\n";
-  }
-  if (historicalScams.length > 0) {
-    text += "HISTORICAL SCAM/MULE DATABASE (LTM):\n";
-    text += historicalScams
-      .map(
-        (s) =>
-          `• Account: ${s.detected_account || "N/A"} | Sender: ${s.sender || "N/A"} | Reason: ${s.reason}`,
-      )
-      .join("\n");
-  }
-  return text.trim();
 }
 
 function createTimer(label) {
@@ -194,7 +157,6 @@ async function chatWithManualAI(userText, conversationId = null, options = {}) {
     }
 
     const historyText = chatMemory.getChatContext(activeId);
-    const securityContext = formatSecurityContext();
     const forcedType = options.forcedType || null;
 
     // ---------------- check phone number scam -------------------
@@ -227,11 +189,6 @@ The user may submit suspicious messages for analysis, or ask follow-up questions
 VERIFIED BLACKLIST CHECK (REAL-TIME MATCH)
 ========================================
 ${blacklistAlertSection}
-
-========================================
-SECURITY DATABASE (STM & LTM)
-========================================
-${securityContext}
 
 ========================================
 CONVERSATION MEMORY
@@ -286,16 +243,6 @@ Other rules:
 4. Keep analysis bullet points under 15 words each.
 `;
 
-    // const response = await ai.models.generateContent({
-    //   model: "gemini-3.6-flash",
-    //   contents: prompt,
-    //   config: {
-    //     temperature: 0.2,
-    //   },
-    // });
-
-    // const rawReply = response.text.trim();
-
     const completion = await ai.chat.completions.create({
       model: aiModel,
       messages: [
@@ -309,11 +256,6 @@ Other rules:
       reasoning_effort: "low",
     });
 
-    // console.log(
-    //   "👀 [GROQ RAW MESSAGE]:",
-    //   JSON.stringify(completion.choices[0]?.message),
-    // );
-
     const msg = completion.choices[0]?.message;
     const rawReply = (
       msg?.content ||
@@ -321,7 +263,6 @@ Other rules:
       msg?.reasoning_content ||
       ""
     ).trim();
-    //const rawReply = completion.choices[0]?.message?.content?.trim() || "";
 
     //console.log("🤖 [DEBUG RAW REPLY]:\n", rawReply);
 
@@ -394,12 +335,6 @@ Old Messages:
 ${text}
 `;
 
-  // const res = await ai.models.generateContent({
-  //   model: "gemini-3.6-flash",
-  //   contents: prompt,
-  // });
-  // return res.text.trim();
-
   const completion = await ai.chat.completions.create({
     model: aiModel,
     messages: [
@@ -413,8 +348,6 @@ ${text}
     reasoning_effort: "low",
   });
 
-  // const rawReply = completion.choices[0]?.message?.content?.trim() || "";
-  // return rawReply;
   const msg = completion.choices[0]?.message;
   const rawReply = (
     msg?.content ||
