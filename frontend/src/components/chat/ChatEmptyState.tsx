@@ -34,16 +34,6 @@ export const ChatEmptyState: React.FC<ChatEmptyStateProps> = ({
         checks it instantly.
       </p>
       <div className="manual-suggestion-chips">
-        {/* <button
-                  type="button"
-                  className="manual-suggestion-chip"
-                  onClick={() =>
-                    setQueryInput("Is this bank account number safe?")
-                  }
-                  disabled={isLoading}
-                >
-                  <BankIcon /> Check bank account
-                </button> */}
         <button
           type="button"
           className="manual-suggestion-chip"
