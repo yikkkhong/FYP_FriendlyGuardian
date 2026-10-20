@@ -15,30 +15,19 @@ import {
 } from "./components/common/Notification";
 
 // css styles import
-import "./styles/header.css";
-import "./styles/notification.css";
-import "./styles/confirm-modal.css";
-
-// interface ScamAlertData {
-//   text: string;
-//   sender: string;
-//   detected_account: string;
-//   reason: string;
-//   baymax_message: string;
-//   // suggested_emotion: EmotionState;
-//   timestamp: string;
-// }
+// import "./styles/header.css";
+// import "./styles/notification.css";
+// import "./styles/confirm-modal.css";
+// import "./styles/chat/threat-card.css";
+// import "./styles/chat/response-card.css";
+import "./styles/chat/chat-message.css";
 
 let socket: Socket;
 
 const App: React.FC = () => {
-  // const [appMode, setAppMode] = useState<"ELDERLY" | "SME">("SME");
-
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [blockedCount, setBlockedCount] = useState<number>(12);
   const [notifications, setNotifications] = useState<NotificationType[]>([]);
-
-  //const [chatInput, setChatInput] = useState<string>("");
 
   // Manual Mode
   const [manualMessages, setManualMessages] = useState<ManualMessage[]>([]);
@@ -358,15 +347,6 @@ const App: React.FC = () => {
 
   return (
     <div className="canvas-root" data-mode={"SME"}>
-      {/* [HIDDEN_FOR_PUBLIC_VERSION] Aurora gradient blobs and film-grain overlay commented out for flat original look
-      <div className="aurora-bg" aria-hidden="true">
-        <div className="aurora-orb aurora-orb-1" />
-        <div className="aurora-orb aurora-orb-2" />
-        <div className="aurora-orb aurora-orb-3" />
-      </div>
-      <div className="film-grain" aria-hidden="true" />
-      */}
-
       {/* top nav bar */}
       <Header
         isConnected={isConnected}
@@ -376,42 +356,6 @@ const App: React.FC = () => {
         onNewConversation={handleNewManualConversation}
         isLoading={isManualLoading}
       />
-      {/*     <header className="control-bar-wrapper">
-        <div className="control-bar">
-          <div className="brand-group">
-            <span className="brand-pill">Friendly Guardian</span>
-            <div className="connection-indicator">
-              <span
-                className={`pulse-dot ${isConnected ? "online" : "offline"}`}
-              />
-              <span className="status-label">
-                {isConnected ? "ONLINE" : "OFFLINE"}
-              </span>
-            </div>
-          </div>*/}
-
-      {/* top navigation bar to switch mode */}
-      {/* <nav className="mode-segmented-pill">
-            <button
-              onClick={() => setAppMode("ELDERLY")}
-              className={`segment-btn ${appMode === "ELDERLY" ? "selected" : ""}`}
-            >
-              Companion
-            </button>
-            <button
-              onClick={() => {
-                setAppMode("SME");
-                if (socket && socket.connected) {
-                  socket.emit("manual_list_conversations");
-                }
-              }}
-              className={`segment-btn ${appMode === "SME" ? "selected" : ""}`}
-            >
-              Manual
-            </button>
-          </nav> 
-        </div>
-      </header>*/}
 
       <main className="stage-viewport">
         {/* ) : ( */}
@@ -428,7 +372,6 @@ const App: React.FC = () => {
           onRenameConversation={handleRenameManualConversation}
           onDeleteConversation={handleDeleteManualConversation}
         />
-        {/* )} */}
       </main>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-
+import "../../styles/chat/threat-card.css";
 export type RiskKey = "HIGH" | "MEDIUM" | "LOW" | "SAFE";
 
 const RISK_COPY: Record<
@@ -118,7 +118,7 @@ export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
   }, [segments]);
 
   const [streamedLength, setStreamedLength] = useState(() =>
-    isNew ? 0 : totalLength
+    isNew ? 0 : totalLength,
   );
 
   useEffect(() => {
@@ -180,9 +180,11 @@ export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
   const headlineData = getSegment("headline");
   const guidanceData = getSegment("guidance");
 
-  const hasStartedWhy = report.why.some((_, i) => getSegment(`why-${i}`).isVisible);
+  const hasStartedWhy = report.why.some(
+    (_, i) => getSegment(`why-${i}`).isVisible,
+  );
   const hasStartedRecs = report.recommendations.some(
-    (_, i) => getSegment(`rec-${i}`).isVisible
+    (_, i) => getSegment(`rec-${i}`).isVisible,
   );
 
   return (
@@ -198,12 +200,20 @@ export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
         <div className="report-verdict-copy">
           <h3>
             {headlineData.text}
-            {headlineData.isTyping && <span className="streaming-cursor" aria-hidden="true">▍</span>}
+            {headlineData.isTyping && (
+              <span className="streaming-cursor" aria-hidden="true">
+                ▍
+              </span>
+            )}
           </h3>
           {(guidanceData.text || guidanceData.isTyping) && (
             <p>
               {guidanceData.text}
-              {guidanceData.isTyping && <span className="streaming-cursor" aria-hidden="true">▍</span>}
+              {guidanceData.isTyping && (
+                <span className="streaming-cursor" aria-hidden="true">
+                  ▍
+                </span>
+              )}
             </p>
           )}
         </div>
@@ -219,7 +229,11 @@ export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
               return (
                 <li key={i}>
                   {seg.text}
-                  {seg.isTyping && <span className="streaming-cursor" aria-hidden="true">▍</span>}
+                  {seg.isTyping && (
+                    <span className="streaming-cursor" aria-hidden="true">
+                      ▍
+                    </span>
+                  )}
                 </li>
               );
             })}
@@ -237,7 +251,11 @@ export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
               return (
                 <li key={i}>
                   {seg.text}
-                  {seg.isTyping && <span className="streaming-cursor" aria-hidden="true">▍</span>}
+                  {seg.isTyping && (
+                    <span className="streaming-cursor" aria-hidden="true">
+                      ▍
+                    </span>
+                  )}
                 </li>
               );
             })}

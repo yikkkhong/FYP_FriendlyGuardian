@@ -1,0 +1,186 @@
+.threat-report-card {
+  background: #fff;
+  border: 1px solid var(--manual-border);
+  border-left: 4px solid var(--manual-primary);
+  border-radius: 14px;
+  padding: 16px 16px 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: none;
+}
+
+.threat-report-card.risk-high {
+  border-left-color: var(--manual-danger);
+  background: linear-gradient(180deg, var(--manual-danger-bg) 0%, #fff 50%);
+}
+
+.threat-report-card.risk-medium {
+  border-left-color: var(--manual-warn);
+  background: linear-gradient(180deg, var(--manual-warn-bg) 0%, #fff 50%);
+}
+
+.threat-report-card.risk-low,
+.threat-report-card.risk-safe {
+  border-left-color: var(--manual-safe);
+  background: linear-gradient(180deg, var(--manual-safe-bg) 0%, #fff 50%);
+}
+
+.threat-report-card.risk-medium .report-list.alert-list li::before {
+  background: var(--manual-warn);
+}
+
+.threat-report-card.risk-low .report-list.alert-list li::before,
+.threat-report-card.risk-safe .report-list.alert-list li::before {
+  background: var(--manual-safe);
+}
+
+/* Verdict glow on threat cards */
+.threat-report-card.risk-high {
+  animation: verdict-appear var(--dur-slow) var(--ease-out) both;
+  box-shadow: 0 0 0 0 rgba(185, 28, 28, 0);
+  transition: box-shadow var(--dur-base) var(--ease-smooth);
+}
+.threat-report-card.risk-high:hover {
+  box-shadow: 0 0 24px rgba(185, 28, 28, 0.14);
+}
+
+.threat-report-card.risk-medium {
+  animation: verdict-appear var(--dur-slow) var(--ease-out) both;
+}
+.threat-report-card.risk-medium:hover {
+  box-shadow: 0 0 24px rgba(180, 83, 9, 0.14);
+}
+
+.threat-report-card.risk-low,
+.threat-report-card.risk-safe {
+  animation: verdict-appear var(--dur-slow) var(--ease-out) both;
+}
+.threat-report-card.risk-low:hover,
+.threat-report-card.risk-safe:hover {
+  box-shadow: 0 0 24px rgba(4, 120, 87, 0.14);
+}
+
+@keyframes verdict-appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.report-verdict {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.report-verdict-copy h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--manual-text);
+  margin-bottom: 4px;
+}
+
+.report-verdict-copy p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--manual-muted);
+}
+
+.risk-level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 7px 11px;
+  border-radius: 999px;
+}
+
+.manual-risk-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.risk-level-badge.high {
+  background: rgba(185, 28, 28, 0.12);
+  color: var(--manual-danger);
+  border: 1px solid rgba(185, 28, 28, 0.28);
+}
+
+.risk-level-badge.medium {
+  background: rgba(180, 83, 9, 0.12);
+  color: var(--manual-warn);
+  border: 1px solid rgba(180, 83, 9, 0.28);
+}
+
+.risk-level-badge.low,
+.risk-level-badge.safe {
+  background: rgba(4, 120, 87, 0.12);
+  color: var(--manual-safe);
+  border: 1px solid rgba(4, 120, 87, 0.28);
+}
+
+.report-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-section-action {
+  background: #f8fffd;
+  border: 1px solid var(--manual-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--manual-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.report-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-list li {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--manual-text);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.report-list li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+  background: var(--manual-primary);
+}
+
+.report-list.alert-list li::before {
+  background: var(--manual-danger);
+}
+
+.report-list.action-list li::before {
+  background: var(--manual-cta);
+}

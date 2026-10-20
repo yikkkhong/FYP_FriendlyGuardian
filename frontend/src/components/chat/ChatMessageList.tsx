@@ -8,6 +8,8 @@ import ChatEmptyState from "./ChatEmptyState";
 import { ManualMessage } from "../../views/ManualView";
 import ChatMessageItem from "./ChatMessageItem";
 
+import "../../styles/chat/chat-message.css";
+
 const API_ORIGIN = "http://localhost:5000";
 
 function resolveImageUrl(url?: string) {

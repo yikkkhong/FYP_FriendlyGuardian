@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/chat/response-card.css";
 
 interface AiResponseCardProps {
   content: string;

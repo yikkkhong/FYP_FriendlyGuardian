@@ -1,6 +1,105 @@
 {
-  "activeConversationId": "MANUAL-1792420884205",
+  "activeConversationId": "MANUAL-1792514454905",
   "conversations": [
+    {
+      "id": "MANUAL-1792514454905",
+      "title": "How can I tell if a message or phone call is a s…",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None identified.  \n- **Suspicious phone numbers:** None mentioned.  \n- **Scam tactics noted:** Urgent money requests, lack of identity verification, vague language (“pls give me RM1”), typical high‑risk phishing patterns, and an additional trivial user query that adds no new evidence.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "how?",
+          "timestamp": "2026-10-20T16:42:48.691Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Sure! To verify a sender’s identity, look up their contact info independently (e.g., official website or known number) and compare it to what they provided. If you’re unsure, call the official number yourself or ask a trusted friend to confirm before sharing any money or personal details.",
+          "timestamp": "2026-10-20T16:42:48.695Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "check my code why only threat report got streaming and normal response card no streaming",
+          "timestamp": "2026-10-20T16:45:24.899Z"
+        },
+        {
+          "role": "assistant",
+          "text": "It sounds like your code is correctly streaming the threat report but not the normal response card. Check that the normal response card is being added to the same streaming context and that its content type matches the expected format. Also verify that any conditional logic isn’t inadvertently skipping the normal card during the streaming phase.",
+          "timestamp": "2026-10-20T16:45:24.902Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "ok",
+          "timestamp": "2026-10-20T16:51:48.915Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Got it! If you have any more questions or need clarification on the previous analysis, just let me know.",
+          "timestamp": "2026-10-20T16:51:48.917Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "hi",
+          "timestamp": "2026-10-20T16:52:16.080Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Hello! How can I help you today?",
+          "timestamp": "2026-10-20T16:52:16.083Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "hi",
+          "timestamp": "2026-10-20T16:52:21.875Z"
+        },
+        {
+          "role": "assistant",
+          "text": "general\nHello! How can I help you today?",
+          "timestamp": "2026-10-20T16:52:21.878Z",
+          "messageType": "general"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "How can I tell if a message or phone call is a scam?",
+          "timestamp": "2026-10-20T16:40:59.314Z"
+        },
+        {
+          "role": "assistant",
+          "text": "To spot a scam, look for urgent requests, unknown sender, spelling errors, and offers that seem too good to be true. Verify contact details independently, and never share personal or financial info over unsolicited calls or texts. If unsure, hang up and call the official number from a trusted source.",
+          "timestamp": "2026-10-20T16:40:59.318Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "pls give me RM1",
+          "timestamp": "2026-10-20T16:41:05.402Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited request for money with no context or identity verification.\n- Vague language (“pls give me RM1”) typical of scam or phishing attempts.\n\nRECOMMENDATION:\n- Do not send money; block or report the sender.\n- Verify the sender’s identity through an independent channel before considering any payment.",
+          "timestamp": "2026-10-20T16:41:05.405Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "how>?",
+          "timestamp": "2026-10-20T16:41:20.994Z"
+        },
+        {
+          "role": "assistant",
+          "text": "It looks like you’re asking for clarification. Could you let me know what specific part you’d like help with?",
+          "timestamp": "2026-10-20T16:41:20.997Z",
+          "messageType": "general"
+        }
+      ],
+      "created_at": "2026-10-20T16:40:54.905Z",
+      "updated_at": "2026-10-20T16:52:22.418Z"
+    },
     {
       "id": "MANUAL-1792420884205",
       "title": "_investment2",
