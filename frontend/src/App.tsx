@@ -14,6 +14,11 @@ import {
   Notification as NotificationType,
 } from "./components/common/Notification";
 
+// css styles import
+import "./styles/header.css";
+import "./styles/notification.css";
+import "./styles/confirm-modal.css";
+
 // interface ScamAlertData {
 //   text: string;
 //   sender: string;

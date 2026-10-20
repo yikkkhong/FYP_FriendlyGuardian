@@ -1,0 +1,158 @@
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text-size-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--manual-border);
+  border-radius: 10px;
+  background: var(--manual-surface);
+  color: var(--manual-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  transition:
+    background-color var(--motion-fast) var(--ease-smooth),
+    border-color var(--motion-fast) var(--ease-smooth),
+    transform var(--motion-fast) var(--ease-press);
+}
+
+.text-size-toggle:hover:not(:disabled) {
+  background: var(--manual-primary-soft);
+  border-color: #99f6e4;
+}
+
+.text-size-toggle:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.text-size-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.control-bar-wrapper {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.control-bar {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 6px 14px 6px 18px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-line);
+  border-radius: 999px;
+  box-shadow: var(--shadow-tactile);
+}
+
+.brand-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-pill {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--ink-primary);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+}
+
+.connection-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 10px;
+  border-left: 1px solid var(--border-line);
+}
+
+.pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.pulse-dot.online {
+  background-color: var(--accent-green);
+  box-shadow: 0 0 8px rgba(5, 150, 105, 0.5);
+}
+.pulse-dot.offline {
+  background-color: var(--accent-red);
+}
+
+.status-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  font-family: ui-monospace, monospace;
+}
+
+/* Header-level "New check" pill button */
+.header-new-check-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border: 1.5px solid var(--manual-border);
+  border-radius: 999px;
+  background: var(--manual-surface);
+  color: var(--manual-text);
+  font: inherit;
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color var(--dur-fast) var(--ease-smooth),
+    border-color var(--dur-fast) var(--ease-smooth),
+    transform var(--dur-fast) var(--ease-press),
+    box-shadow var(--dur-fast) var(--ease-smooth);
+}
+
+.header-new-check-btn:hover:not(:disabled) {
+  background: var(--manual-primary-soft);
+  border-color: #99f6e4;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.1);
+}
+
+.header-new-check-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.header-new-check-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.header-new-check-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.header-new-check-btn .btn-label {
+  display: inline;
+}
+
+/* [HIDDEN_FOR_PUBLIC_VERSION] Mini new chat button for header — replaced by pill */
+.manual-new-chat-mini {
+  display: none; /* hidden; functionality moved to header-new-check-btn */
+}

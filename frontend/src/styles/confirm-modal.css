@@ -1,0 +1,60 @@
+.manual-confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 80;
+  padding: 16px;
+}
+
+.manual-confirm-dialog {
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px 22px 18px;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+}
+
+.manual-confirm-dialog h2 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--manual-text);
+  margin-bottom: 8px;
+}
+
+.manual-confirm-dialog p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--manual-muted);
+  margin-bottom: 18px;
+}
+
+.manual-confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.manual-confirm-cancel,
+.manual-confirm-delete {
+  border: none;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.manual-confirm-cancel {
+  background: #f1f5f4;
+  color: var(--manual-text);
+}
+
+.manual-confirm-delete {
+  background: var(--manual-danger);
+  color: #fff;
+}

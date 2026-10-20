@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Notification, Notification as NotificationType } from "./Notification";
 
+import "../../styles/header.css";
+
 interface HeaderProps {
   isConnected: boolean; // only to know socket is connected or no
   notifications?: NotificationType[];
