@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import "../../styles/notification.css";
 
 export interface Notification {
   id: string;

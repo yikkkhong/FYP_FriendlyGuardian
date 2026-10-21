@@ -1,0 +1,213 @@
+/* Composer wrapper: fully transparent, anchors composer to bottom */
+.manual-composer-wrapper {
+  background: none !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 30;
+  pointer-events: none;
+  padding-bottom: max(20px, env(safe-area-inset-bottom));
+  padding-top: 8px;
+}
+
+.manual-composer {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 28px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 24px -8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  gap: 8px;
+  width: calc(100% - 32px);
+  max-width: 1000px;
+  margin: 0 16px;
+  padding: 6px 8px 6px 12px;
+  box-sizing: border-box;
+  transition:
+    box-shadow var(--motion-fast) var(--ease-smooth),
+    border-color var(--motion-fast) var(--ease-smooth);
+}
+
+.manual-composer:focus-within {
+  box-shadow:
+    0 0 0 3px rgba(15, 118, 110, 0.18),
+    0 8px 24px -8px rgba(0, 0, 0, 0.12);
+  border-color: rgba(15, 118, 110, 0.35);
+}
+
+/* =============================================================
+ * PHASE 3b — COMPOSER POLISH
+ * =========================================================== */
+.manual-composer {
+  border-radius: 28px !important;
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 24px -8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.manual-composer:focus-within {
+  box-shadow:
+    0 0 0 3px rgba(15, 118, 110, 0.18),
+    0 8px 24px -8px rgba(0, 0, 0, 0.12) !important;
+  border-color: rgba(15, 118, 110, 0.35) !important;
+}
+
+/* Send button: spring-in when text is present */
+.manual-workspace .query-submit-action:not(:disabled) {
+  animation: send-spring var(--dur-base) var(--ease-spring-bouncy);
+}
+
+@keyframes send-spring {
+  from {
+    transform: scale(0.9);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* ========================= */
+/* query input */
+/* =========================== */
+
+.manual-file-input {
+  display: none;
+}
+
+.manual-workspace .query-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 17px;
+  line-height: 24px;
+  color: var(--manual-text);
+  background: transparent;
+  font-family: inherit;
+  min-width: 0;
+  padding: 10px 8px;
+  margin: 0;
+  display: block;
+}
+
+.manual-workspace .query-input::placeholder {
+  color: #94a3b8;
+  line-height: 24px;
+}
+
+.manual-workspace .query-submit-action {
+  height: 44px;
+  border-radius: 22px;
+  padding: 0 20px;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    opacity var(--motion-fast) var(--ease-smooth),
+    background-color var(--motion-fast) var(--ease-smooth),
+    transform var(--motion-fast) var(--ease-press);
+  font-family: inherit;
+}
+
+.manual-workspace .query-submit-action:disabled {
+  background-color: #e2e8f0;
+  color: #94a3b8;
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.manual-workspace .query-submit-action:not(:disabled) {
+  background-color: #0f766e;
+  color: #ffffff;
+  opacity: 1;
+}
+
+.manual-workspace .query-submit-action:hover:not(:disabled) {
+  background-color: #0d6861;
+}
+
+.manual-workspace .query-submit-action:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.manual-workspace .query-submit-action:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Camera and mic buttons: IDENTICAL 44x44 transparent circles with 22px brand teal icons */
+.manual-workspace .query-upload-btn,
+.manual-workspace .query-voice-btn {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 50% !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #0f766e !important;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--ease-smooth),
+    transform var(--motion-fast) var(--ease-press);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.manual-workspace .query-upload-btn:hover:not(:disabled),
+.manual-workspace .query-voice-btn:hover:not(:disabled) {
+  background: rgba(15, 118, 110, 0.08) !important;
+}
+
+.manual-workspace .query-upload-btn:active:not(:disabled),
+.manual-workspace .query-voice-btn:active:not(:disabled) {
+  transform: scale(0.94) !important;
+}
+
+.manual-workspace .query-upload-btn:disabled,
+.manual-workspace .query-voice-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+/* when using voice input, red color bg, soft animation */
+.manual-workspace .query-voice-btn.is-listening {
+  color: var(--manual-danger);
+  background-color: var(--manual-danger-bg);
+  animation: pulse-voice 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-voice {
+  0%,
+  100% {
+    transform: scale(1);
+    background-color: var(--manual-danger-bg);
+  }
+  50% {
+    transform: scale(1.08);
+    background-color: #fee2e2;
+  }
+}

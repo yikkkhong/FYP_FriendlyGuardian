@@ -15,12 +15,7 @@ import {
 } from "./components/common/Notification";
 
 // css styles import
-// import "./styles/header.css";
-// import "./styles/notification.css";
-// import "./styles/confirm-modal.css";
-// import "./styles/chat/threat-card.css";
-// import "./styles/chat/response-card.css";
-import "./styles/chat/chat-message.css";
+import "./index.css";
 
 let socket: Socket;
 

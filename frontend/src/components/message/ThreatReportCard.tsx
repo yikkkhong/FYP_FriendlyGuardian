@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import "../../styles/chat/threat-card.css";
+
 export type RiskKey = "HIGH" | "MEDIUM" | "LOW" | "SAFE";
 
 const RISK_COPY: Record<

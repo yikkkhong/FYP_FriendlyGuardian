@@ -2,13 +2,11 @@
 // such as scrolling, what happened after user pressed the 3 default button, when should show the empty/initial state
 
 import React, { useState, useRef, useEffect } from "react";
-import ThreatReportCard, { parseReport } from "../scam/ThreatReportCard";
-import { AiResponseCard } from "../scam/AiResponseCard";
+import ThreatReportCard, { parseReport } from "../message/ThreatReportCard";
+import { AiResponseCard } from "../message/AiResponseCard";
 import ChatEmptyState from "./ChatEmptyState";
 import { ManualMessage } from "../../views/ManualView";
 import ChatMessageItem from "./ChatMessageItem";
-
-import "../../styles/chat/chat-message.css";
 
 const API_ORIGIN = "http://localhost:5000";
 

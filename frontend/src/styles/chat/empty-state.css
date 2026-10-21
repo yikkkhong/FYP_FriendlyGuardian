@@ -1,0 +1,274 @@
+.manual-empty-state {
+  margin: auto;
+  text-align: center;
+  max-width: 480px;
+  padding: 48px 24px;
+  /* Staggered per-element entrance animations handle the reveal instead */
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.manual-empty-mark {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 20px;
+  animation: scale-in var(--motion-medium) var(--ease-spring);
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.manual-empty-state h2 {
+  /* Overridden by Phase 3b rule below with clamp + entrance animation */
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--manual-text);
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.manual-empty-state p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--manual-muted);
+  margin-bottom: 24px;
+}
+
+/* Suggestion chips for empty state */
+.manual-suggestion-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+/* =============================================================
+ * PHASE 3a — GUARDIAN ORB
+ * =========================================================== */
+.guardian-orb {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #5eead4, #0f766e 60%, #134e4a);
+  box-shadow:
+    0 0 0 10px rgba(15, 118, 110, 0.1),
+    0 0 32px rgba(15, 118, 110, 0.28),
+    inset 0 6px 16px rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+  animation: orb-breathe 4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.guardian-orb .manual-empty-mark {
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  animation: none;
+}
+
+/* override the SVG inner circles for white-on-orb look */
+.guardian-orb .manual-empty-mark circle:first-child {
+  fill: rgba(255, 255, 255, 0.15);
+}
+.guardian-orb .manual-empty-mark circle:nth-child(2) {
+  fill: rgba(255, 255, 255, 0.25);
+}
+
+@keyframes orb-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow:
+      0 0 0 10px rgba(15, 118, 110, 0.1),
+      0 0 32px rgba(15, 118, 110, 0.28),
+      inset 0 6px 16px rgba(255, 255, 255, 0.22);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow:
+      0 0 0 14px rgba(15, 118, 110, 0.07),
+      0 0 48px rgba(15, 118, 110, 0.22),
+      inset 0 6px 16px rgba(255, 255, 255, 0.22);
+  }
+}
+
+/* =============================================================
+ * PHASE 3b — HERO HEADLINE + STAGGERED ENTRANCE
+ * =========================================================== */
+
+/* Override hero headline to use clamp size */
+.manual-empty-state h2 {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--manual-text);
+  margin-bottom: 14px;
+  line-height: 1.15;
+  /* stagger item 2 */
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(4px);
+  animation: hero-enter var(--dur-slow) var(--ease-out) 0.07s forwards;
+}
+
+.manual-empty-state p:not(.hero-no-signup) {
+  opacity: 0;
+  transform: translateY(14px);
+  filter: blur(4px);
+  animation: hero-enter var(--dur-slow) var(--ease-out) 0.14s forwards;
+}
+
+.guardian-orb {
+  opacity: 0;
+  animation:
+    hero-enter var(--dur-slow) var(--ease-out) 0s forwards,
+    orb-breathe 4s ease-in-out 0.7s infinite;
+}
+
+.manual-suggestion-chips {
+  opacity: 0;
+  animation: hero-enter var(--dur-slow) var(--ease-out) 0.21s forwards;
+}
+
+.hero-no-signup {
+  opacity: 0;
+  animation: hero-enter var(--dur-slow) var(--ease-out) 0.28s forwards;
+}
+
+@keyframes hero-enter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* No sign-up line styling */
+.hero-no-signup {
+  font-size: 13px;
+  color: var(--manual-muted);
+  margin-top: 20px;
+  letter-spacing: 0.01em;
+}
+
+/* ========================================== */
+/* suggestion chip */
+/* ------------------------------------------ */
+.manual-suggestion-chip {
+  border: 1px solid var(--manual-border);
+  background: var(--manual-surface);
+  color: var(--manual-text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--ease-smooth),
+    border-color var(--motion-fast) var(--ease-smooth),
+    transform var(--motion-fast) var(--ease-press),
+    box-shadow var(--motion-fast) var(--ease-smooth);
+  animation: chip-fade-in var(--motion-medium) var(--ease-spring) backwards;
+}
+
+.manual-suggestion-chip:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.manual-suggestion-chip:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.manual-suggestion-chip:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.manual-suggestion-chip:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes chip-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.manual-suggestion-chip:hover:not(:disabled) {
+  background: var(--manual-primary-soft);
+  border-color: #99f6e4;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.1);
+}
+
+.manual-suggestion-chip:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.manual-suggestion-chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.manual-suggestion-chip:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* =============================================================
+ * PHASE 3b — SOLID WHITE CHIPS (NO BLUR, BRAND BORDER)
+ * =========================================================== */
+.manual-suggestion-chip {
+  background: #ffffff !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(15, 118, 110, 0.18) !important;
+  font-size: 14px;
+  min-height: 44px;
+  box-shadow: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.manual-suggestion-chip svg {
+  color: #0f766e;
+  stroke: #0f766e;
+  flex-shrink: 0;
+}
+
+.manual-suggestion-chip:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 118, 110, 0.1) !important;
+  background: #ffffff !important;
+  border-color: #0f766e !important;
+}
+
+.manual-suggestion-chip:active:not(:disabled) {
+  transform: scale(0.97);
+}

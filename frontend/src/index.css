@@ -1,3 +1,13 @@
+@import "./styles/common/header.css";
+@import "./styles/common/notification.css";
+@import "./styles/common/confirm-modal.css";
+@import "./styles/message/threat-card.css";
+@import "./styles/message/response-card.css";
+@import "./styles/message/chat-message.css";
+@import "./styles/chat/empty-state.css";
+@import "./styles/chat/chat-composer.css";
+@import "./styles/chat/input/voice-input.css";
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

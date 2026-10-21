@@ -2,8 +2,8 @@
 
 // src/components/chat/ChatMessageItem.tsx
 import React from "react";
-import ThreatReportCard, { parseReport } from "../scam/ThreatReportCard";
-import { AiResponseCard } from "../scam/AiResponseCard";
+import ThreatReportCard, { parseReport } from "../message/ThreatReportCard";
+import { AiResponseCard } from "../message/AiResponseCard";
 import { ManualMessage } from "../../views/ManualView";
 
 const API_ORIGIN = "http://localhost:5000";
