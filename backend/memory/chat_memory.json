@@ -1,14 +1,48 @@
 {
-  "activeConversationId": "MANUAL-1792589956146",
+  "activeConversationId": "MANUAL-1792733932618",
   "conversations": [
     {
-      "id": "MANUAL-1792589956146",
-      "title": "New check",
+      "id": "MANUAL-1792733932618",
+      "title": "pls send me your bank acc num urgent",
       "summary": "",
-      "messages": [],
+      "messages": [
+        {
+          "role": "user",
+          "text": "pls send me your bank acc num urgent",
+          "timestamp": "2026-10-23T05:40:41.851Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Detected risk signals: Urgency / Threat Tactic.\n- Suspicious patterns detected in message.\n\nRECOMMENDATION:\n- Verify the sender independently through official websites or phone numbers.\n- Avoid sharing sensitive information or documents until verified.",
+          "timestamp": "2026-10-23T05:40:41.855Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "send me ur bank acc num when u free",
+          "timestamp": "2026-10-23T05:41:08.816Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- The text is asking for a specific piece of information without any indication of a scam.\n\nRECOMMENDATION:\n- Stay cautious and double-check details if anything feels unusual.\n- Keep records of the message for your reference.",
+          "timestamp": "2026-10-23T05:41:08.819Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "pls send me your bank acc num when u r free",
+          "timestamp": "2026-10-23T05:41:53.408Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Urgent request for bank account number.\n- Repeated solicitation without context.\n\nRECOMMENDATION:\n- Do not share any banking details; verify identity via official channels.\n- Report the request to your bank and consider blocking the sender.",
+          "timestamp": "2026-10-23T05:41:53.413Z",
+          "messageType": "analysis"
+        }
+      ],
       "archived_messages": [],
-      "created_at": "2026-10-21T13:39:16.146Z",
-      "updated_at": "2026-10-21T13:39:16.146Z"
+      "created_at": "2026-10-23T05:38:52.618Z",
+      "updated_at": "2026-10-23T05:41:53.413Z"
     },
     {
       "id": "MANUAL-1792420884205",

@@ -1,4 +1,5 @@
 const Groq = require("groq-sdk");
+const { analyzeScamOffline } = require("../localAiBridge.js");
 
 const apiKey = process.env.GROQ_API_KEY;
 const ai = new Groq({ apiKey });
@@ -243,26 +244,35 @@ Other rules:
 4. Keep analysis bullet points under 15 words each.
 `;
 
-    const completion = await ai.chat.completions.create({
-      model: aiModel,
-      messages: [
+    let rawReply = "";
+    try {
+      const completion = await ai.chat.completions.create(
         {
-          role: "user",
-          content: prompt,
+          model: aiModel,
+          messages: [
+            {
+              role: "user",
+              content: prompt,
+            },
+          ],
+          temperature: 0.2,
+          max_completion_tokens: 350,
+          reasoning_effort: "low",
         },
-      ],
-      temperature: 0.2,
-      max_completion_tokens: 350,
-      reasoning_effort: "low",
-    });
+        { timeout: 5000 },
+      );
 
-    const msg = completion.choices[0]?.message;
-    const rawReply = (
-      msg?.content ||
-      msg?.reasoning ||
-      msg?.reasoning_content ||
-      ""
-    ).trim();
+      const msg = completion.choices[0]?.message;
+      rawReply = (
+        msg?.content ||
+        msg?.reasoning ||
+        msg?.reasoning_content ||
+        ""
+      ).trim();
+    } catch (cloudErr) {
+      console.log("Fault Tolerance: API error / Network offline");
+      rawReply = await analyzeScamOffline(userText, matchedScam);
+    }
 
     //console.log("🤖 [DEBUG RAW REPLY]:\n", rawReply);
 
