@@ -1,5 +1,5 @@
 from PIL import Image
 
-for filename in ["AI.png", "ai_1.png", "ai_2.png", "ai_3.png"]:
+for filename in ["notPlainColor2.jfif"]:
     with Image.open("samples/" + filename) as img:
         print(filename, "Actual format:", img.format)
