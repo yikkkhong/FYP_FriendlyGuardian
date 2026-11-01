@@ -12,6 +12,7 @@ import React, {
 import VoiceInputButton, { VoiceInputHandle } from "../common/VoiceInputButton";
 import { CameraIcon, CloseIcon } from "../icons/Icons";
 import ImagePreview from "../widgets/ImagePreview";
+import { handlePasteImage } from "../../utils/pasteUtils";
 
 const API_ORIGIN = "http://localhost:5000";
 
@@ -341,6 +342,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
           <textarea
             ref={textareaRef}
             id="manual-query-input"
+            onPaste={(e) => handlePasteImage(e, handleSelectFile)}
             placeholder={
               voicePanelActive
                 ? "Listening... speak now"

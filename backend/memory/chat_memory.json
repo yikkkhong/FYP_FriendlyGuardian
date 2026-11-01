@@ -1,58 +1,6 @@
 {
-  "activeConversationId": "MANUAL-1793529849217",
+  "activeConversationId": "MANUAL-1792733932618",
   "conversations": [
-    {
-      "id": "MANUAL-1793529849217",
-      "title": "_investment2",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: _investment2.png]",
-          "timestamp": "2026-11-01T10:57:42.827Z",
-          "imageUrl": "/uploads/manual/MANUAL-1793529849217/1793530662825-_investment2.png",
-          "imageName": "_investment2.png",
-          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises 59.9% profit in 3 days, a classic high‑return bait tactic.\n\nRECOMMENDATION:\n- Block the number immediately and delete the message.\n- Do not transfer any money or share personal details; report the contact to local authorities.",
-          "timestamp": "2026-11-01T10:57:43.634Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: hiring4.png]",
-          "timestamp": "2026-11-01T10:59:51.539Z",
-          "imageUrl": "/uploads/manual/MANUAL-1793529849217/1793530791538-hiring4.png",
-          "imageName": "hiring4.png",
-          "ocrText": "WE ARE HIRING !!! Open Positions -Content Manager -Graphic Designer Send Your CV to hello@webgocompanyy.com"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- Generic job posting, no financial request or personal data beyond CV.\n- Email domain appears legitimate, no known blacklist.\n\nRECOMMENDATION:\n- Verify the company’s website and contact details before sending CV.\n- Use a separate email address and avoid sharing sensitive personal info until you confirm legitimacy.",
-          "timestamp": "2026-11-01T10:59:52.373Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: prize.png]",
-          "timestamp": "2026-11-01T11:05:14.518Z",
-          "imageUrl": "/uploads/manual/MANUAL-1793529849217/1793531114506-prize.png",
-          "imageName": "prize.png",
-          "ocrText": "CONGRATS!! WDn RM9999 Contact us to get it https://faceebook.com"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Claims a prize (RM9999) with no verification, typical scam bait.\n- URL \"https://faceebook.com\" is misspelled, likely phishing.\n\nRECOMMENDATION:\n- Do not click the link or respond; block the sender.\n- Report the message to local authorities and your service provider.",
-          "timestamp": "2026-11-01T11:05:15.926Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-11-01T10:44:09.217Z",
-      "updated_at": "2026-11-01T11:05:15.926Z"
-    },
     {
       "id": "MANUAL-1792733932618",
       "title": "pls send me your bank acc num urgent",

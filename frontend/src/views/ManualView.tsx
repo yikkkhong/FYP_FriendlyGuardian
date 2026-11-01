@@ -9,6 +9,7 @@ import ChatComposer, {
 import useTextToSpeech from "../hooks/useTextToSpeech";
 import useAutoSpeakReply from "../hooks/useAutoSpeakReply";
 import useConversationManage from "../hooks/useConversationManage";
+import { handleEmptyStatePaste } from "../utils/pasteUtils";
 
 export type ManualMessageType = "analysis" | "follow_up" | "general";
 
@@ -97,24 +98,6 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
   // ---------- empty/initial page buttons -------------
   // paste message button
-  const handlePaste = async () => {
-    try {
-      const clipText = await navigator.clipboard.readText();
-      const trimmedText = clipText.trim(); //text without empty space
-      //if no copy text or text is just empty space, then no send
-      if (!clipText || !trimmedText) return;
-
-      markNextReplyToSpeak(false); // in case like user clicked voice input and also clicked paste button
-
-      // direct send
-      onSendMessage(trimmedText);
-
-      // show at input field
-      //composerRef.current?.appendQueryText(clipText);
-    } catch (err) {
-      console.error("No Copied Message:", err);
-    }
-  };
 
   // open file upload button
   const handleOpenExplorer = () => {
@@ -308,7 +291,13 @@ export const ManualView: React.FC<ManualViewProps> = ({
         <ChatMessageList
           messages={messages}
           isLoading={isLoading}
-          onPasteMessage={handlePaste}
+          onPasteMessage={() =>
+            handleEmptyStatePaste(
+              onSendMessage,
+              markNextReplyToSpeak,
+              onUploadImage,
+            )
+          }
           onUploadImage={handleOpenExplorer}
           onGeneralQuestion={handleNextQuestion}
         />
