@@ -11,6 +11,7 @@ import React, {
 } from "react";
 import VoiceInputButton, { VoiceInputHandle } from "../common/VoiceInputButton";
 import { CameraIcon, CloseIcon } from "../icons/Icons";
+import ImagePreview from "../widgets/ImagePreview";
 
 const API_ORIGIN = "http://localhost:5000";
 
@@ -40,6 +41,40 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
     const fileInputRef = useRef<HTMLInputElement>(null);
     const voiceInputRef = useRef<VoiceInputHandle>(null);
     const voiceTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+    // Image upload state
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
+    // Cleanup preview URL when component unmounts or when a new file is selected
+    useEffect(() => {
+      return () => {
+        if (previewUrl) URL.revokeObjectURL(previewUrl);
+      };
+    }, [previewUrl]);
+
+    // Receive the selected file, generate a preview URL, and stage it.
+    const handleSelectFile = (file: File) => {
+      if (!file.type.startsWith("image/")) return;
+      // Revoke the previous preview URL (the image) if it exists
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+
+      setSelectedFile(file);
+      setPreviewUrl(URL.createObjectURL(file));
+
+      // go to textarea after selected file
+      setTimeout(() => {
+        textareaRef.current?.focus();
+      }, 50);
+    };
+
+    // 2. image preview state remove selected file
+    const handleRemoveFile = () => {
+      setSelectedFile(null);
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      setPreviewUrl(null);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    };
 
     // let outside code
     useImperativeHandle(ref, () => ({
@@ -172,18 +207,26 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
 
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      if (!queryInput.trim() || isLoading) return;
+      if ((!queryInput.trim() && !selectedFile) || isLoading) return; // no send if no text file and is loading
 
-      const wasVoice = isVoiceInputRef.current;
-      onSendMessage(queryInput, wasVoice);
-      setQueryInput("");
-      isVoiceInputRef.current = false;
+      if (selectedFile) {
+        onUploadImage(selectedFile);
+        handleRemoveFile();
+      }
+
+      if (queryInput.trim()) {
+        const wasVoice = isVoiceInputRef.current;
+        onSendMessage(queryInput, wasVoice);
+        setQueryInput("");
+        isVoiceInputRef.current = false;
+      }
     };
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (!file || isLoading) return;
-      onUploadImage(file);
+      handleSelectFile(file);
+      // onUploadImage(file);
       if (fileInputRef.current) fileInputRef.current.value = "";
     };
 
@@ -230,6 +273,15 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
             accept="image/*"
             onChange={handleImageUpload}
           />
+
+          {/* image preview card */}
+          {selectedFile && previewUrl && (
+            <ImagePreview
+              file={selectedFile}
+              previewUrl={previewUrl}
+              onRemove={handleRemoveFile}
+            />
+          )}
 
           {/* Camera slot transforms into ghost Cancel (X) button when voice listening */}
           {voicePanelActive ? (
@@ -317,7 +369,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
                 e.preventDefault();
                 if (voicePanelActive) {
                   handleFinishVoice();
-                } else if (queryInput.trim() && !isLoading) {
+                } else if (queryInput.trim() || (selectedFile && !isLoading)) {
                   handleSubmit(e);
                 }
               }
@@ -355,7 +407,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
             <button
               type="submit"
               className="query-submit-action"
-              disabled={isLoading || !queryInput.trim()}
+              disabled={isLoading || (!queryInput.trim() && !selectedFile)}
             >
               {isLoading ? "…" : "Send"}
             </button>
