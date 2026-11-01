@@ -222,11 +222,13 @@ const App: React.FC = () => {
     }
   };
 
-  const handleUploadImage = async (file: File) => {
+  const handleUploadImage = async (file: File, queryText: string = "") => {
     setIsManualLoading(true);
 
     const conversationId = activeManualConversationId;
     const localPreview = URL.createObjectURL(file);
+
+    const isAiCheck = /is this ai/i.test(queryText.trim());
 
     setManualMessages((prev) => [
       ...prev,
@@ -246,46 +248,82 @@ const App: React.FC = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/manual-scan-image", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await res.json();
+      if (isAiCheck) {
+        const res = await fetch(
+          "http://localhost:5000/api/analyze-plain-color",
+          {
+            method: "POST",
+            body: formData,
+          },
+        );
+        const data = await res.json();
 
-      if (data.conversations) {
-        setManualConversations(data.conversations);
-      }
-      if (data.conversationId) {
-        setActiveManualConversationId(data.conversationId);
-      }
+        // format text for ThreatReportCard to trigger card display automatically
+        const riskLevel = data.isReal ? "SAFE" : "HIGH";
+        const verdict = data.isReal
+          ? "REAL (Physical Authentic)"
+          : "AI GENERATED";
+        const detail = data.isReal
+          ? `Solid background pixels verified authentic (Uniform ratio: ${data.dominantRatio}%).`
+          : `Background noise variance detected, matching AI generative patterns (Dominant ratio: ${data.dominantRatio}%).`;
 
-      // Prefer server-synced message list (includes persistent image URL)
-      if (Array.isArray(data.messages) && data.messages.length > 0) {
-        setManualMessages(data.messages);
-      } else if (data.analysis) {
-        setManualMessages((prev) => {
-          const next = [...prev];
-          const lastUserIdx = [...next]
-            .reverse()
-            .findIndex(
-              (m) => m.sender === "user" && m.imageUrl === localPreview,
-            );
-          if (lastUserIdx !== -1) {
-            const idx = next.length - 1 - lastUserIdx;
-            next[idx] = {
-              ...next[idx],
-              imageUrl: data.imageUrl || next[idx].imageUrl,
-              imageName: data.imageName || next[idx].imageName,
-            };
-          }
-          next.push({
+        const formattedCard = [
+          `RISK LEVEL: ${riskLevel}`,
+          `WHY:\n- Verdict: ${verdict}\n- ${detail}`,
+          `RECOMMENDATION:\n- ${data.isReal ? "File background verified authentic." : "Likely AI-generated or tampered. Proceed with caution."}`,
+        ].join("\n\n");
+
+        setManualMessages((prev) => [
+          ...prev,
+          {
             sender: "ai",
-            text: data.analysis,
-            messageType: data.messageType || "analysis",
-            time: data.timestamp || new Date().toLocaleTimeString(),
-          });
-          return next;
+            text: formattedCard,
+            messageType: "analysis",
+            time: new Date().toLocaleTimeString(),
+          },
+        ]);
+      } else {
+        const res = await fetch("http://localhost:5000/api/manual-scan-image", {
+          method: "POST",
+          body: formData,
         });
+        const data = await res.json();
+
+        if (data.conversations) {
+          setManualConversations(data.conversations);
+        }
+        if (data.conversationId) {
+          setActiveManualConversationId(data.conversationId);
+        }
+
+        // Prefer server-synced message list (includes persistent image URL)
+        if (Array.isArray(data.messages) && data.messages.length > 0) {
+          setManualMessages(data.messages);
+        } else if (data.analysis) {
+          setManualMessages((prev) => {
+            const next = [...prev];
+            const lastUserIdx = [...next]
+              .reverse()
+              .findIndex(
+                (m) => m.sender === "user" && m.imageUrl === localPreview,
+              );
+            if (lastUserIdx !== -1) {
+              const idx = next.length - 1 - lastUserIdx;
+              next[idx] = {
+                ...next[idx],
+                imageUrl: data.imageUrl || next[idx].imageUrl,
+                imageName: data.imageName || next[idx].imageName,
+              };
+            }
+            next.push({
+              sender: "ai",
+              text: data.analysis,
+              messageType: data.messageType || "analysis",
+              time: data.timestamp || new Date().toLocaleTimeString(),
+            });
+            return next;
+          });
+        }
       }
     } catch (err) {
       console.error("Image upload failed:", err);

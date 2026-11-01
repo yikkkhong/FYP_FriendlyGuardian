@@ -117,6 +117,11 @@ import json
 import os
 import sys
 
+
+# Suppress PaddlePaddle C++ INFO and WARNING logs
+os.environ["GLOG_minloglevel"] = "2"
+os.environ["FLAGS_allocator_strategy"] = "naive_best_fit"
+
 # force stdout use UTF-8
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")

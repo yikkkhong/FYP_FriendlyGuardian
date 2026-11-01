@@ -1,48 +1,29 @@
 {
-  "activeConversationId": "MANUAL-1792733932618",
+  "activeConversationId": "MANUAL-1793547103766",
   "conversations": [
     {
-      "id": "MANUAL-1792733932618",
-      "title": "pls send me your bank acc num urgent",
+      "id": "MANUAL-1793547103766",
+      "title": "notPlainColor",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "pls send me your bank acc num urgent",
-          "timestamp": "2026-10-23T05:40:41.851Z"
+          "text": "[Uploaded Screenshot: notPlainColor.png]",
+          "timestamp": "2026-11-01T16:21:43.759Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793547103766/1793550103755-notPlainColor.png",
+          "imageName": "notPlainColor.png",
+          "ocrText": "REAL"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Detected risk signals: Urgency / Threat Tactic.\n- Suspicious patterns detected in message.\n\nRECOMMENDATION:\n- Verify the sender independently through official websites or phone numbers.\n- Avoid sharing sensitive information or documents until verified.",
-          "timestamp": "2026-10-23T05:40:41.855Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "send me ur bank acc num when u free",
-          "timestamp": "2026-10-23T05:41:08.816Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- The text is asking for a specific piece of information without any indication of a scam.\n\nRECOMMENDATION:\n- Stay cautious and double-check details if anything feels unusual.\n- Keep records of the message for your reference.",
-          "timestamp": "2026-10-23T05:41:08.819Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "pls send me your bank acc num when u r free",
-          "timestamp": "2026-10-23T05:41:53.408Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Urgent request for bank account number.\n- Repeated solicitation without context.\n\nRECOMMENDATION:\n- Do not share any banking details; verify identity via official channels.\n- Report the request to your bank and consider blocking the sender.",
-          "timestamp": "2026-10-23T05:41:53.413Z",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No suspicious content or contact details provided.\n- The single word \"REAL\" lacks context for a scam.\n\nRECOMMENDATION:\n- Provide more details if you suspect a specific message or contact.\n- Verify any links or numbers before sharing.",
+          "timestamp": "2026-11-01T16:21:44.954Z",
           "messageType": "analysis"
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-10-23T05:38:52.618Z",
-      "updated_at": "2026-10-23T05:41:53.413Z"
+      "created_at": "2026-11-01T15:31:43.766Z",
+      "updated_at": "2026-11-01T16:21:44.954Z"
     },
     {
       "id": "MANUAL-1792420884205",

@@ -1,9 +1,10 @@
-
-
 from pathlib import Path
 import cv2
 import numpy as np
 import pymupdf
+
+import json
+import sys
 
 SAMPLES = Path("samples")
 RESULTS = Path("results")

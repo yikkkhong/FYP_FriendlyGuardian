@@ -59,6 +59,12 @@ const ocrLineReader = readline.createInterface({ input: ocrProcess.stdout });
 let pendingOcrRequests = [];
 
 ocrLineReader.on("line", (line) => {
+  const trimmed = line.trim();
+
+  if (!trimmed.startsWith("{") || !trimmed.endsWith("}")) {
+    // console.log("ℹ️ [PaddleOCR Info]:", trimmed);
+    return;
+  }
   try {
     const data = JSON.parse(line.trim());
     if (data.status === "READY") {
@@ -90,6 +96,9 @@ process.on("exit", () => {
 
 // use manual mode routes
 app.use("/api", setupManualRoutes({ upload, scanImageWithLocalOCR }));
+
+const imageAnalysisRoute = require("./routes/imageAnalysis");
+app.use("/api", imageAnalysisRoute(upload));
 
 //get history api
 // app.get("/api/history", (req, res) => {

@@ -35,7 +35,7 @@ export const handleEmptyStatePaste = async (
         const file = new File([blob], `paste-${Date.now()}.png`, {
           type: imgType,
         });
-        onSelectImage(file); // Different paths, same result, both pass a `File` to this function.
+        onSelectImage(file); // Different paths, same result, both pass a `File` to this function
         return;
       }
 

@@ -25,7 +25,7 @@ export interface ChatComposerHandle {
 interface ChatComposerProps {
   isLoading: boolean;
   onSendMessage: (message: string, isFromVoice: boolean) => void;
-  onUploadImage: (file: File) => void;
+  onUploadImage: (file: File, queryText?: string) => void;
 }
 
 export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
@@ -56,12 +56,22 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
 
     // Receive the selected file, generate a preview URL, and stage it.
     const handleSelectFile = (file: File) => {
-      if (!file.type.startsWith("image/")) return;
-      // Revoke the previous preview URL (the image) if it exists
-      if (previewUrl) URL.revokeObjectURL(previewUrl);
+      const isImage = file.type.startsWith("image/");
+      const isPdf =
+        file.type === "application/pdf" || file.name.endsWith(".pdf");
+
+      if (!isImage && !isPdf) return;
 
       setSelectedFile(file);
+
+      // if (!file.type.startsWith("image/")) return;
+      // if (isImage) {
+      // Revoke the previous preview URL (the image) if it exists
+      if (previewUrl) URL.revokeObjectURL(previewUrl);
       setPreviewUrl(URL.createObjectURL(file));
+      // } else {
+      //   setPreviewUrl(null); // No preview for pdf
+      // }
 
       // go to textarea after selected file
       setTimeout(() => {
@@ -210,9 +220,22 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
       e.preventDefault();
       if ((!queryInput.trim() && !selectedFile) || isLoading) return; // no send if no text file and is loading
 
+      const text = queryInput.trim();
+
+      // if its upload file, then send the text
       if (selectedFile) {
-        onUploadImage(selectedFile);
+        onUploadImage(selectedFile, text);
         handleRemoveFile();
+        setQueryInput("");
+        return;
+      }
+
+      // just text
+      if (text) {
+        const wasVoice = isVoiceInputRef.current;
+        onSendMessage(text, wasVoice);
+        setQueryInput("");
+        isVoiceInputRef.current = false;
       }
 
       if (queryInput.trim()) {
@@ -271,7 +294,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
             type="file"
             ref={fileInputRef}
             className="manual-file-input"
-            accept="image/*"
+            accept="image/*, application/pdf"
             onChange={handleImageUpload}
           />
 

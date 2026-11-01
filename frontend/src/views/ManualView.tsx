@@ -38,7 +38,7 @@ interface ManualViewProps {
   conversations: ManualConversationSummary[];
   activeConversationId: string | null;
   onSendMessage: (message: string) => void;
-  onUploadImage: (file: File) => void;
+  onUploadImage: (file: File, queryText?: string) => void;
   onNewConversation: () => void;
   onSelectConversation: (conversationId: string) => void;
   onRenameConversation: (conversationId: string, title: string) => void;
