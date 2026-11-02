@@ -42,6 +42,11 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
     message.imageName?.toLowerCase().endsWith(".pdf") ||
     imageSrc?.toLowerCase().endsWith(".pdf");
 
+  const isDefaultUploadText =
+    message.text?.startsWith("[Uploaded Screenshot:") ||
+    message.text?.startsWith("[Uploaded image]");
+  const shouldShowText = message.text && !isDefaultUploadText;
+
   return (
     <div className={`manual-msg-row ${isUser ? "user" : "ai"}`}>
       <div className="manual-msg-meta">
@@ -96,7 +101,7 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
               )}
             </a>
           )}
-          {message.text &&
+          {/* {message.text &&
             !message.text.startsWith("[Uploaded Screenshot:") &&
             message.text}
           {message.text?.startsWith("[Uploaded Screenshot:") &&
@@ -104,6 +109,15 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
             message.text}
           {imageSrc && message.imageName && (
             <span className="manual-image-caption">{message.imageName}</span>
+          )}
+          </div> */}
+          {/* show text message also with image/file uploaded */}
+          {shouldShowText && (
+            <div
+              style={{ marginTop: imageSrc ? "8px" : "0", lineHeight: "1.5" }}
+            >
+              {message.text}
+            </div>
           )}
         </div>
       ) : showRiskCard && report ? (

@@ -234,7 +234,7 @@ const App: React.FC = () => {
       ...prev,
       {
         sender: "user",
-        text: "",
+        text: queryText,
         imageUrl: localPreview,
         imageName: file.name,
         time: new Date().toLocaleTimeString(),
@@ -243,6 +243,10 @@ const App: React.FC = () => {
 
     const formData = new FormData();
     formData.append("image", file);
+
+    if (queryText) {
+      formData.append("queryText", queryText);
+    }
     if (conversationId) {
       formData.append("conversationId", conversationId);
     }
@@ -348,7 +352,8 @@ const App: React.FC = () => {
         return next;
       });
     } finally {
-      URL.revokeObjectURL(localPreview);
+      // comment cause it affect pdf file to be opened in new tab, if revokeObjectURL, the pdf file will be blank
+      // URL.revokeObjectURL(localPreview);
       setIsManualLoading(false);
     }
   };

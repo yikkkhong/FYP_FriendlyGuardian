@@ -202,9 +202,19 @@ function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
 
         const extractedText = ocrResult.text || "";
 
+        // when upload image/file, get the message also
+        const queryText = req.body?.queryText || "";
+        const fallbackText = imageName
+          ? `[Uploaded Screenshot: ${imageName}]`
+          : "[Uploaded image]";
+        const finalMessageText = queryText.trim()
+          ? queryText.trim()
+          : fallbackText;
+
         // Store user image message (visible in history)
         chatMemory.addMessage(
           "user",
+          finalMessageText,
           imageName
             ? `[Uploaded Screenshot: ${imageName}]`
             : "[Uploaded image]",

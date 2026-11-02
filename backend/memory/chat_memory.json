@@ -4,22 +4,8 @@
     {
       "id": "MANUAL-1792420884205",
       "title": "_investment2",
-      "summary": "",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None mentioned.  \n- **Suspicious phone numbers:** 012‑3456789 (verified blacklist, 100+ investment scam reports).  \n- **Scam tactics:** High‑return promise (59.9% profit in 3 days), classic bait.  \n\n**Recommendation:** Block the number, delete the message, and avoid any money transfer or personal data sharing.",
       "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: _investment2.png]",
-          "timestamp": "2026-10-19T15:08:06.676Z",
-          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1792422486673-_investment2.png",
-          "imageName": "_investment2.png",
-          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises 59.9% profit in 3 days, a classic high‑return bait tactic.\n\nRECOMMENDATION:\n- Block the number and delete the message immediately.\n- Do not transfer any money or share personal information.",
-          "timestamp": "2026-10-19T15:08:07.804Z",
-          "messageType": "analysis"
-        },
         {
           "role": "user",
           "text": "100 people reported?? woww",
@@ -44,11 +30,66 @@
           "text": "RISK LEVEL: LOW\n\nWHY:\n- No suspicious links, phone numbers, or offers.\n- Contains standard transaction details and verification markers.\n\nRECOMMENDATION:\n- Keep the receipt for your records.\n- Verify the transaction with FamilyMart if you have any doubts.",
           "timestamp": "2026-10-19T16:18:26.728Z",
           "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: AI.png]",
+          "timestamp": "2026-11-02T16:48:19.020Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1793638099017-AI.png",
+          "imageName": "AI.png"
+        },
+        {
+          "role": "assistant",
+          "text": "No readable text detected in this image. Try a clearer screenshot.",
+          "timestamp": "2026-11-02T16:48:19.023Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: real.pdf]",
+          "timestamp": "2026-11-02T16:52:01.958Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1793638321956-real.pdf",
+          "imageName": "real.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "No readable text detected in this image. Try a clearer screenshot.",
+          "timestamp": "2026-11-02T16:52:01.963Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: notPlainColor.png]",
+          "timestamp": "2026-11-02T16:52:22.201Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1793638342200-notPlainColor.png",
+          "imageName": "notPlainColor.png",
+          "ocrText": "REAL"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No new content or suspicious details provided.\n- The term \"REAL\" alone does not indicate a scam.\n\nRECOMMENDATION:\n- If you intended to share additional information, please paste it here for review.\n- Otherwise, no action needed.",
+          "timestamp": "2026-11-02T16:52:23.041Z",
+          "messageType": "analysis"
         }
       ],
-      "archived_messages": [],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: _investment2.png]",
+          "timestamp": "2026-10-19T15:08:06.676Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1792422486673-_investment2.png",
+          "imageName": "_investment2.png",
+          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises 59.9% profit in 3 days, a classic high‑return bait tactic.\n\nRECOMMENDATION:\n- Block the number and delete the message immediately.\n- Do not transfer any money or share personal information.",
+          "timestamp": "2026-10-19T15:08:07.804Z",
+          "messageType": "analysis"
+        }
+      ],
       "created_at": "2026-10-19T14:41:24.205Z",
-      "updated_at": "2026-10-19T16:18:26.728Z"
+      "updated_at": "2026-11-02T16:52:23.957Z"
     },
     {
       "id": "MANUAL-1792420292157",
