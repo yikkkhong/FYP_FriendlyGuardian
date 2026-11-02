@@ -162,3 +162,91 @@ export function GuardianMark(props: IconProps) {
     </svg>
   );
 }
+
+export function FileIcon() {
+  return (
+    <svg
+      viewBox="0 0 64 64"
+      width="34"
+      height="34"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ display: "block" }}
+    >
+      {/* Folder back panel */}
+      <path
+        d="M8 18C8 16 9.5 14.5 11.5 14.5H22L27 19.5H50.5C52.5 19.5 54 21 54 23V42C54 44 52.5 45.5 50.5 45.5H11.5C9.5 45.5 8 44 8 42V18Z"
+        fill="#FBBF24"
+        stroke="#1E293B"
+        strokeWidth="3.2"
+        strokeLinejoin="round"
+      />
+
+      {/* Exposed white document sheet */}
+      <rect
+        x="13.5"
+        y="15.5"
+        width="34"
+        height="24"
+        rx="2.5"
+        fill="#FFFFFF"
+        stroke="#1E293B"
+        strokeWidth="2.8"
+        strokeLinejoin="round"
+      />
+
+      {/* lines inside the paper */}
+      <line
+        x1="19"
+        y1="21.5"
+        x2="34"
+        y2="21.5"
+        stroke="#94A3B8"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+      <line
+        x1="19"
+        y1="26"
+        x2="28"
+        y2="26"
+        stroke="#CBD5E1"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
+
+      {/* Folder front panel (3D perspective effect) */}
+      <path
+        d="M16 25L55.5 25C57.2 25 58.4 26.4 58 28.1L52.8 46.8C52.4 47.9 51.4 48.7 50.2 48.7H10.5C8.9 48.7 7.7 47.3 8.1 45.7L13.6 27C14 25.8 14.9 25 16 25Z"
+        fill="#F59E0B"
+        stroke="#1E293B"
+        strokeWidth="3.2"
+        strokeLinejoin="round"
+      />
+
+      {/* Front-view 3D-style custom PDF red sticker badge */}
+      <rect
+        x="21"
+        y="32.5"
+        width="22"
+        height="11"
+        rx="2.5"
+        fill="#EF4444"
+        stroke="#1E293B"
+        strokeWidth="1.8"
+      />
+      <text
+        x="32"
+        y="41"
+        fill="#FFFFFF"
+        fontSize="7.5"
+        fontWeight="900"
+        fontFamily="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+        textAnchor="middle"
+        letterSpacing="0.4"
+      >
+        PDF
+      </text>
+    </svg>
+  );
+}

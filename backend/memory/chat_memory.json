@@ -1,30 +1,6 @@
 {
-  "activeConversationId": "MANUAL-1793547103766",
+  "activeConversationId": "MANUAL-1792420884205",
   "conversations": [
-    {
-      "id": "MANUAL-1793547103766",
-      "title": "notPlainColor",
-      "summary": "",
-      "messages": [
-        {
-          "role": "user",
-          "text": "[Uploaded Screenshot: notPlainColor.png]",
-          "timestamp": "2026-11-01T16:21:43.759Z",
-          "imageUrl": "/uploads/manual/MANUAL-1793547103766/1793550103755-notPlainColor.png",
-          "imageName": "notPlainColor.png",
-          "ocrText": "REAL"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- No suspicious content or contact details provided.\n- The single word \"REAL\" lacks context for a scam.\n\nRECOMMENDATION:\n- Provide more details if you suspect a specific message or contact.\n- Verify any links or numbers before sharing.",
-          "timestamp": "2026-11-01T16:21:44.954Z",
-          "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [],
-      "created_at": "2026-11-01T15:31:43.766Z",
-      "updated_at": "2026-11-01T16:21:44.954Z"
-    },
     {
       "id": "MANUAL-1792420884205",
       "title": "_investment2",

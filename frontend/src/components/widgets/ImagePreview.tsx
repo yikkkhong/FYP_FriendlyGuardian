@@ -1,6 +1,6 @@
 // src/components/widgets/ImagePreview.tsx
 import React from "react";
-import { CloseIcon } from "../icons/Icons";
+import { CloseIcon, FileIcon } from "../icons/Icons";
 
 interface ImagePreviewProps {
   file: File;
@@ -13,6 +13,9 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
   previewUrl,
   onRemove,
 }) => {
+  const isPdf =
+    file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+
   return (
     <div
       style={{
@@ -35,23 +38,27 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
           height: "52px",
           borderRadius: "8px",
           overflow: "hidden",
-          backgroundColor: "#e5e7eb",
+          backgroundColor: isPdf ? "#FEF3C7" : "#e5e7eb",
           flexShrink: 0,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
-        <img
-          src={previewUrl}
-          alt={file.name}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
+        {isPdf ? (
+          <FileIcon />
+        ) : (
+          <img
+            src={previewUrl}
+            alt={file.name}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        )}
       </div>
 
       {/* file name and size data */}

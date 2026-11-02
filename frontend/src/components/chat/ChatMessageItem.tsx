@@ -5,6 +5,7 @@ import React from "react";
 import ThreatReportCard, { parseReport } from "../message/ThreatReportCard";
 import { AiResponseCard } from "../message/AiResponseCard";
 import { ManualMessage } from "../../views/ManualView";
+import { FileIcon } from "../icons/Icons";
 
 const API_ORIGIN = "http://localhost:5000";
 
@@ -37,6 +38,10 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
   const showRiskCard = !isUser && isAnalysisMessage && !!report;
   const imageSrc = resolveImageUrl(message.imageUrl);
 
+  const isPdf =
+    message.imageName?.toLowerCase().endsWith(".pdf") ||
+    imageSrc?.toLowerCase().endsWith(".pdf");
+
   return (
     <div className={`manual-msg-row ${isUser ? "user" : "ai"}`}>
       <div className="manual-msg-meta">
@@ -52,12 +57,43 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
               target="_blank"
               rel="noreferrer"
               className="manual-image-preview-link"
+              style={
+                isPdf
+                  ? {
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "12px",
+                      padding: "8px 14px 8px 10px",
+                      backgroundColor: "#FEF3C7",
+                      borderRadius: "10px",
+                      textDecoration: "none",
+                      color: "inherit",
+                      border: "1px solid #FDE68A",
+                    }
+                  : undefined
+              }
             >
-              <img
-                src={imageSrc}
-                alt={message.imageName || "Uploaded screenshot"}
-                className="manual-image-preview"
-              />
+              {isPdf ? (
+                <>
+                  <FileIcon />
+                  <span
+                    style={{
+                      fontSize: "14.5px",
+                      fontWeight: 600,
+                      color: "#1E293B",
+                      wordBreak: "break-all",
+                    }}
+                  >
+                    {message.imageName || "Document.pdf"}
+                  </span>
+                </>
+              ) : (
+                <img
+                  src={imageSrc}
+                  alt={message.imageName || "Uploaded screenshot"}
+                  className="manual-image-preview"
+                />
+              )}
             </a>
           )}
           {message.text &&
