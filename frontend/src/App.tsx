@@ -262,30 +262,40 @@ const App: React.FC = () => {
         );
         const data = await res.json();
 
-        // format text for ThreatReportCard to trigger card display automatically
-        const riskLevel = data.isReal ? "SAFE" : "HIGH";
-        const verdict = data.isReal
-          ? "REAL (Physical Authentic)"
-          : "AI GENERATED";
-        const detail = data.isReal
-          ? `Solid background pixels verified authentic (Uniform ratio: ${data.dominantRatio}%).`
-          : `Background noise variance detected, matching AI generative patterns (Dominant ratio: ${data.dominantRatio}%).`;
+        // // format text for ThreatReportCard to trigger card display automatically
+        // const riskLevel = data.isReal ? "SAFE" : "HIGH";
+        // const verdict = data.isReal
+        //   ? "REAL (Physical Authentic)"
+        //   : "AI GENERATED";
+        // const detail = data.isReal
+        //   ? `Solid background pixels verified authentic (Uniform ratio: ${data.dominantRatio}%).`
+        //   : `Background noise variance detected, matching AI generative patterns (Dominant ratio: ${data.dominantRatio}%).`;
 
-        const formattedCard = [
-          `RISK LEVEL: ${riskLevel}`,
-          `WHY:\n- Verdict: ${verdict}\n- ${detail}`,
-          `RECOMMENDATION:\n- ${data.isReal ? "File background verified authentic." : "Likely AI-generated or tampered. Proceed with caution."}`,
-        ].join("\n\n");
+        // const formattedCard = [
+        //   `RISK LEVEL: ${riskLevel}`,
+        //   `WHY:\n- Verdict: ${verdict}\n- ${detail}`,
+        //   `RECOMMENDATION:\n- ${data.isReal ? "File background verified authentic." : "Likely AI-generated or tampered. Proceed with caution."}`,
+        // ].join("\n\n");
 
-        setManualMessages((prev) => [
-          ...prev,
-          {
-            sender: "ai",
-            text: formattedCard,
-            messageType: "analysis",
-            time: new Date().toLocaleTimeString(),
-          },
-        ]);
+        // setManualMessages((prev) => [
+        //   ...prev,
+        //   {
+        //     sender: "ai",
+        //     text: formattedCard,
+        //     messageType: "analysis",
+        //     time: new Date().toLocaleTimeString(),
+        //   },
+        // ]);
+
+        if (data.conversations) {
+          setManualConversations(data.conversations);
+        }
+        if (data.conversationId) {
+          setActiveManualConversationId(data.conversationId);
+        }
+        if (Array.isArray(data.messages) && data.messages.length > 0) {
+          setManualMessages(data.messages);
+        }
       } else {
         const res = await fetch("http://localhost:5000/api/manual-scan-image", {
           method: "POST",

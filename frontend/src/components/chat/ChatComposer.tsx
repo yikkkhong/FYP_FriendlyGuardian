@@ -238,12 +238,12 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
         isVoiceInputRef.current = false;
       }
 
-      if (queryInput.trim()) {
-        const wasVoice = isVoiceInputRef.current;
-        onSendMessage(queryInput, wasVoice);
-        setQueryInput("");
-        isVoiceInputRef.current = false;
-      }
+      // if (queryInput.trim()) {
+      //   const wasVoice = isVoiceInputRef.current;
+      //   onSendMessage(queryInput, wasVoice);
+      //   setQueryInput("");
+      //   isVoiceInputRef.current = false;
+      // }
     };
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {

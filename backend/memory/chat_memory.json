@@ -1,30 +1,201 @@
 {
-  "activeConversationId": "MANUAL-1792420884205",
+  "activeConversationId": "MANUAL-1793702900288",
   "conversations": [
     {
-      "id": "MANUAL-1792420884205",
-      "title": "_investment2",
-      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None mentioned.  \n- **Suspicious phone numbers:** 012‑3456789 (verified blacklist, 100+ investment scam reports).  \n- **Scam tactics:** High‑return promise (59.9% profit in 3 days), classic bait.  \n\n**Recommendation:** Block the number, delete the message, and avoid any money transfer or personal data sharing.",
+      "id": "MANUAL-1793702900288",
+      "title": "how do you know its a phishing?",
+      "summary": "**Scam Inspection Summary**\n\n- Suspected bank accounts: none listed.  \n- Suspicious phone numbers: 0123456789 (blacklisted, 100 investment‑scam reports).  \n- Scam tactics: high‑return bait promising 59.9% profit in 3 days; misspelled phishing domain “priize.com”; vague “Click to get” prompts; obfuscated link; lack of verifiable sender details.  \n- Recommendation: block the phone number, avoid clicking the link, verify legitimate domains, and report both to authorities and telecom providers.",
       "messages": [
         {
           "role": "user",
-          "text": "100 people reported?? woww",
-          "timestamp": "2026-10-19T15:08:25.099Z"
+          "text": "how do you know its a phishing?",
+          "timestamp": "2026-11-03T11:27:51.850Z"
         },
         {
           "role": "assistant",
-          "text": "It’s normal to see many reports for a known scam; that confirms the risk. Avoid any contact or transfer, and block the number. If you’re unsure, you can also report it to your local consumer protection agency.",
-          "timestamp": "2026-10-19T15:08:25.103Z",
+          "text": "The misspelled domain “priize.com” is a common phishing tactic—legitimate sites use “prize.com.” The lack of context and the vague “Click to get” prompt are classic phishing cues. Always verify the domain against the official site and avoid clicking unknown links.",
+          "timestamp": "2026-11-03T11:27:51.853Z",
           "messageType": "follow_up"
         },
         {
           "role": "user",
-          "text": "[Uploaded Screenshot: Transaction details (1).png]",
-          "timestamp": "2026-10-19T16:18:24.644Z",
-          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1792426704643-Transaction details (1).png",
-          "imageName": "Transaction details (1).png",
-          "ocrText": "4:01 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 16:00:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
+          "text": "how do you know its ai?",
+          "timestamp": "2026-11-03T12:16:37.947Z"
         },
+        {
+          "role": "assistant",
+          "text": "The assessment was based on typical phishing indicators: a misspelled domain, vague call‑to‑action, and no verifiable sender details. These patterns match known scam templates in our database, triggering a high‑risk flag.",
+          "timestamp": "2026-11-03T12:16:37.951Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Misspelled domain “faceebook.com” indicates spoofing.\n- Claim of winning RM9999 with vague contact instructions is classic lure.\n\nRECOMMENDATION:\n- Do not click the link; block the sender if possible.\n- Verify the legitimate site (facebook.com) and report the message to your provider.",
+          "timestamp": "2026-11-03T12:16:51.780Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Domain \"webgocompanyy.com\" is misspelled, likely spoofing a legitimate site.\n- Generic job posting with no company details or verification, typical spam pattern.\n\nRECOMMENDATION:\n- Do not send your CV; verify the company via official website or LinkedIn.\n- Report the message to your email provider and consider blocking the sender.",
+          "timestamp": "2026-11-03T12:19:56.307Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testHandWriting.png]",
+          "timestamp": "2026-11-03T12:20:48.379Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793708448377-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Vague job details, misspelled “Cootac” suggests spoofing.\n- Unusual phone format “T:01]-12345” lacks legitimate contact info.\n\nRECOMMENDATION:\n- Do not respond or provide personal info.\n- Verify the employer via official website or LinkedIn before engaging.",
+          "timestamp": "2026-11-03T12:20:49.775Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "if these kind of scam, but show RM3000 salary, is it scam then?",
+          "timestamp": "2026-11-03T12:34:06.061Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793709246059-testHandWriting.png",
+          "imageName": "testHandWriting.png",
+          "ocrText": "Hiring Rm XXX Salary Cootac: T:01]-12345"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Vague job details and misspelled “Cootac” suggest spoofing.\n- Phone format “T:01]-12345” lacks legitimate contact info.\n\nRECOMMENDATION:\n- Do not respond or provide personal info.\n- Verify the employer via official website or LinkedIn before engaging.",
+          "timestamp": "2026-11-03T12:34:07.097Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-04T07:42:37.716Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793778157715-Gemini_Generated_Image_77537y77537y7753.jfif",
+          "imageName": "Gemini_Generated_Image_77537y77537y7753.jfif"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 33.53%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-04T07:42:37.719Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Invoice details are consistent and professional.\n- No suspicious contact info or payment instructions.\n\nRECOMMENDATION:\n- Verify the sender’s email domain matches the business.\n- Keep a copy for your records.",
+          "timestamp": "2026-11-03T10:48:27.846Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on verified blacklist with 100 investment scam reports.\n- Message promises unrealistic 59.9% profit in 3 days, classic high‑return bait.\n\nRECOMMENDATION:\n- Block the number immediately and do not respond.\n- Report the message to local authorities and your telecom provider.",
+          "timestamp": "2026-11-03T10:48:40.145Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- URL \"priize.com\" is misspelled, likely phishing domain.\n- Message lacks context, uses vague “Clicl t get” prompting action.\n\nRECOMMENDATION:\n- Do not click the link; block the sender if possible.\n- Verify the legitimate domain (e.g., prize.com) and report the message to your provider.",
+          "timestamp": "2026-11-03T11:23:00.268Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "how do you know its a phishing?",
+          "timestamp": "2026-11-03T11:27:51.373Z"
+        },
+        {
+          "role": "assistant",
+          "text": "We flagged it as phishing because the domain is misspelled, the link is obfuscated, and the message lacks any verifiable sender details. These are classic red‑flags that trigger a high‑risk assessment.",
+          "timestamp": "2026-11-03T11:27:51.378Z",
+          "messageType": "follow_up"
+        }
+      ],
+      "created_at": "2026-11-03T10:48:20.288Z",
+      "updated_at": "2026-11-04T07:42:37.719Z"
+    },
+    {
+      "id": "MANUAL-1793708395493",
+      "title": "New check",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: hiring4.png]",
+          "timestamp": "2026-11-03T12:19:55.496Z"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-03T12:19:55.493Z",
+      "updated_at": "2026-11-03T12:19:55.498Z"
+    },
+    {
+      "id": "MANUAL-1793708210707",
+      "title": "New check",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize.png]",
+          "timestamp": "2026-11-03T12:16:50.709Z"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-03T12:16:50.707Z",
+      "updated_at": "2026-11-03T12:16:50.711Z"
+    },
+    {
+      "id": "MANUAL-1793704978032",
+      "title": "New check",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize2.png]",
+          "timestamp": "2026-11-03T11:22:58.034Z"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-03T11:22:58.032Z",
+      "updated_at": "2026-11-03T11:22:58.037Z"
+    },
+    {
+      "id": "MANUAL-1793702919363",
+      "title": "New check",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: _investment2.png]",
+          "timestamp": "2026-11-03T10:48:39.365Z"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-03T10:48:39.363Z",
+      "updated_at": "2026-11-03T10:48:39.367Z"
+    },
+    {
+      "id": "MANUAL-1793702906904",
+      "title": "New check",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: real_variation.png]",
+          "timestamp": "2026-11-03T10:48:26.906Z"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-03T10:48:26.904Z",
+      "updated_at": "2026-11-03T10:48:26.909Z"
+    },
+    {
+      "id": "MANUAL-1792420884205",
+      "title": "_investment2",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** None mentioned.  \n- **Suspicious phone numbers:** 012‑3456789 (blacklisted, 100+ investment scam reports).  \n- **Scam tactics:** High‑return promise (59.9% profit in 3 days), classic bait.  \n- **Additional note:** 100 users reported the same scam, confirming its prevalence.  \n\n**Recommendation:** Block the number, delete the message, and avoid any money transfer or personal data sharing.",
+      "messages": [
         {
           "role": "assistant",
           "text": "RISK LEVEL: LOW\n\nWHY:\n- No suspicious links, phone numbers, or offers.\n- Contains standard transaction details and verification markers.\n\nRECOMMENDATION:\n- Keep the receipt for your records.\n- Verify the transaction with FamilyMart if you have any doubts.",
@@ -70,6 +241,26 @@
           "text": "RISK LEVEL: LOW\n\nWHY:\n- No new content or suspicious details provided.\n- The term \"REAL\" alone does not indicate a scam.\n\nRECOMMENDATION:\n- If you intended to share additional information, please paste it here for review.\n- Otherwise, no action needed.",
           "timestamp": "2026-11-02T16:52:23.041Z",
           "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: _investment2.png]",
+          "timestamp": "2026-11-02T16:59:41.661Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1793638781659-_investment2.png",
+          "imageName": "_investment2.png",
+          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone number 012-3456789 is on verified blacklist with 100+ investment scam reports.\n- Message promises 59.9% profit in 3 days, classic high‑return bait tactic.\n\nRECOMMENDATION:\n- Block the number immediately and delete the message.\n- Do not transfer money or share personal information; report the scam to local consumer protection.",
+          "timestamp": "2026-11-02T16:59:43.059Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Standard invoice format with no suspicious links or offers.\n- No blacklisted numbers or known scam patterns present.\n\nRECOMMENDATION:\n- Keep the invoice for your records.\n- Verify the details with Studio ABC if you have any doubts.",
+          "timestamp": "2026-11-03T10:47:50.549Z",
+          "messageType": "analysis"
         }
       ],
       "archived_messages": [
@@ -86,10 +277,44 @@
           "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises 59.9% profit in 3 days, a classic high‑return bait tactic.\n\nRECOMMENDATION:\n- Block the number and delete the message immediately.\n- Do not transfer any money or share personal information.",
           "timestamp": "2026-10-19T15:08:07.804Z",
           "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "100 people reported?? woww",
+          "timestamp": "2026-10-19T15:08:25.099Z"
+        },
+        {
+          "role": "assistant",
+          "text": "It’s normal to see many reports for a known scam; that confirms the risk. Avoid any contact or transfer, and block the number. If you’re unsure, you can also report it to your local consumer protection agency.",
+          "timestamp": "2026-10-19T15:08:25.103Z",
+          "messageType": "follow_up"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: Transaction details (1).png]",
+          "timestamp": "2026-10-19T16:18:24.644Z",
+          "imageUrl": "/uploads/manual/MANUAL-1792420884205/1792426704643-Transaction details (1).png",
+          "imageName": "Transaction details (1).png",
+          "ocrText": "4:01 TransactionDetails PaymentSuccessful&Verified Securepayment signature confirmed ? ETMVSReal-Time Integrity Check:PASSED MERCHANT NAME VERIFIED FamilyMartMidValley RM18.50 Date & Time 30 Sep 2026, 16:00:10 MYT Payment Method eWalletBalance Transaction ID TNG-20260930-8839120 Ledger Sync Synchronized acrossPayNet& Status Merchant Switch TechnicalValidationTrace Expanded ^ AuthVerified LedgerDebited MerchantAcknowledged in28ms Share Receipt Done"
         }
       ],
       "created_at": "2026-10-19T14:41:24.205Z",
-      "updated_at": "2026-11-02T16:52:23.957Z"
+      "updated_at": "2026-11-03T10:47:51.356Z"
+    },
+    {
+      "id": "MANUAL-1793702869402",
+      "title": "New check",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: real_variation.png]",
+          "timestamp": "2026-11-03T10:47:49.404Z"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-03T10:47:49.401Z",
+      "updated_at": "2026-11-03T10:47:49.406Z"
     },
     {
       "id": "MANUAL-1792420292157",

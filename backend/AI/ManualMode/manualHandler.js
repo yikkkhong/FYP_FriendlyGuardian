@@ -215,9 +215,9 @@ function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
         chatMemory.addMessage(
           "user",
           finalMessageText,
-          imageName
-            ? `[Uploaded Screenshot: ${imageName}]`
-            : "[Uploaded image]",
+          // imageName
+          //   ? `[Uploaded Screenshot: ${imageName}]`
+          //   : "[Uploaded image]",
           conversationId,
           {
             imageUrl,

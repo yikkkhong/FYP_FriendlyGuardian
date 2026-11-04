@@ -1,6 +1,33 @@
 const express = require("express");
 const { spawn } = require("child_process");
 const path = require("path");
+const fs = require("fs");
+const chatMemory = require("../memory/chatMemory");
+
+// [新增] 将临时上传的图片永久保存到对应 conversation 的文件夹中
+function persistUploadedImage(file, conversationId) {
+  const safeName = String(file.originalname || "upload.png").replace(
+    /[^\w.\-()+\s]/g,
+    "_",
+  );
+  const destDir = path.join(chatMemory.getManualUploadRoot(), conversationId);
+  if (!fs.existsSync(destDir)) {
+    fs.mkdirSync(destDir, { recursive: true });
+  }
+
+  const filename = `${Date.now()}-${safeName}`;
+  const destPath = path.join(destDir, filename);
+
+  try {
+    fs.renameSync(file.path, destPath);
+  } catch {
+    fs.copyFileSync(file.path, destPath);
+    fs.unlink(file.path, () => {});
+  }
+
+  const imageUrl = `/uploads/manual/${conversationId}/${filename}`;
+  return { destPath, imageUrl, imageName: file.originalname || safeName };
+}
 
 function setupImageAnalysisRoute(upload) {
   const router = express.Router();
@@ -40,7 +67,60 @@ function setupImageAnalysisRoute(upload) {
         }
 
         if (result) {
-          res.json({ success: true, ...result });
+          // ==========================================
+          // [新增] 模拟普通聊天的 Memory 存储逻辑
+          // ==========================================
+          let conversationId =
+            req.body?.conversationId || chatMemory.getActiveConversationId();
+          if (!conversationId || !chatMemory.getConversation(conversationId)) {
+            conversationId = chatMemory.createConversation("New check").id;
+          }
+
+          // 1. 持久化保存图片
+          const { imageUrl, imageName } = persistUploadedImage(
+            req.file,
+            conversationId,
+          );
+
+          // 2. 存入 User 的发言
+          const queryText = req.body?.queryText || "";
+          const fallbackText = imageName
+            ? `[Uploaded Screenshot: ${imageName}]`
+            : "[Uploaded image]";
+          const finalMessageText = queryText.trim()
+            ? queryText.trim()
+            : fallbackText;
+
+          chatMemory.addMessage("user", finalMessageText, conversationId, {
+            imageUrl,
+            imageName,
+          });
+
+          // 3. 构造并存入 AI 的分析结果
+          const riskLevel = result.isReal ? "SAFE" : "HIGH";
+          const verdict = result.isReal
+            ? "REAL (Physical Authentic)"
+            : "AI GENERATED";
+          const detail = result.isReal
+            ? `Solid background pixels verified authentic (Uniform ratio: ${result.dominantRatio}%).`
+            : `Background noise variance detected, matching AI generative patterns (Dominant ratio: ${result.dominantRatio}%).`;
+          const rec = result.isReal
+            ? "File background verified authentic."
+            : "Likely AI-generated or tampered. Proceed with caution.";
+
+          const formattedCard = `RISK LEVEL: ${riskLevel}\n\nWHY:\n- Verdict: ${verdict}\n- ${detail}\n\nRECOMMENDATION:\n- ${rec}`;
+
+          chatMemory.addMessage("assistant", formattedCard, conversationId, {
+            messageType: "analysis",
+          });
+
+          res.json({
+            success: true,
+            ...result,
+            conversationId,
+            conversations: chatMemory.getAllConversations(),
+            messages: chatMemory.toClientMessages(conversationId),
+          });
         } else {
           res.status(500).json({ error: "Failed to parse Python result" });
         }
