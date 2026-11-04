@@ -4,7 +4,7 @@ const path = require("path");
 const fs = require("fs");
 const chatMemory = require("../memory/chatMemory");
 
-// [新增] 将临时上传的图片永久保存到对应 conversation 的文件夹中
+// save temporarily uploaded images to memory
 function persistUploadedImage(file, conversationId) {
   const safeName = String(file.originalname || "upload.png").replace(
     /[^\w.\-()+\s]/g,
@@ -67,22 +67,19 @@ function setupImageAnalysisRoute(upload) {
         }
 
         if (result) {
-          // ==========================================
-          // [新增] 模拟普通聊天的 Memory 存储逻辑
-          // ==========================================
+          // save to memory
           let conversationId =
             req.body?.conversationId || chatMemory.getActiveConversationId();
           if (!conversationId || !chatMemory.getConversation(conversationId)) {
             conversationId = chatMemory.createConversation("New check").id;
           }
 
-          // 1. 持久化保存图片
           const { imageUrl, imageName } = persistUploadedImage(
             req.file,
             conversationId,
           );
 
-          // 2. 存入 User 的发言
+          // save user's text message
           const queryText = req.body?.queryText || "";
           const fallbackText = imageName
             ? `[Uploaded Screenshot: ${imageName}]`
@@ -96,7 +93,7 @@ function setupImageAnalysisRoute(upload) {
             imageName,
           });
 
-          // 3. 构造并存入 AI 的分析结果
+          // ai analysis result
           const riskLevel = result.isReal ? "SAFE" : "HIGH";
           const verdict = result.isReal
             ? "REAL (Physical Authentic)"

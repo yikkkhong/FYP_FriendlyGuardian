@@ -120,36 +120,81 @@
 .user-query-bubble {
   background: #0f172a;
   color: #fff;
-  padding: 14px 18px;
+  padding: 12px 18px;
   border-radius: 18px 18px 6px 18px;
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.55;
+  width: fit-content;
+  max-width: min(100%, 560px);
+  box-sizing: border-box;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* group of image and text message bubble */
+.user-bubble-group {
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 8px;
+  max-width: 100%;
+}
+
+/* bubble image */
+.user-media-bubble.is-image {
+  background: #0f172a;
+  padding: 8px; /* frame inside margin */
+  border-radius: 18px 18px 6px 18px; /* circle corner */
+
+  width: fit-content; /* width = image size, no extra space on right side */
+  max-width: calc(360px + 16px); /* max width = image size + padding */
+  box-sizing: border-box;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* bubble pdf */
+.user-media-bubble.is-pdf {
+  display: inline-flex;
   max-width: 100%;
 }
 
 .manual-image-preview-link {
   display: block;
-  border-radius: 10px;
-  overflow: hidden;
   line-height: 0;
+  text-decoration: none;
+  max-width: 100%;
 }
 
+/* image itself control */
 .manual-image-preview {
-  display: block;
-  max-width: min(100%, 320px);
-  max-height: 240px;
+  /* display: block;
+  max-width: min(100%, 420px);
+  max-height: 280px;
   width: auto;
   height: auto;
   object-fit: contain;
   background: #1e293b;
+  border-radius: 10px; */
+
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%; /* Strictly limited to the available space within the parent container (360px) */
+  max-height: 280px; /* height limit */
+  object-fit: contain;
+  border-radius: 10px;
 }
 
 .manual-image-caption {
   font-size: 12px;
   opacity: 0.75;
+  margin-top: 6px; /* spacing to break free from the affect of `line-height: 0` */
+  line-height: 1.4;
+  word-break: break-all;
 }
 
 /* AI analysing loading animation */

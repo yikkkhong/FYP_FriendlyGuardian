@@ -55,51 +55,55 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
       </div>
 
       {isUser ? (
-        <div className="user-query-bubble">
+        <div className="user-bubble-group">
           {imageSrc && (
-            <a
-              href={imageSrc}
-              target="_blank"
-              rel="noreferrer"
-              className="manual-image-preview-link"
-              style={
-                isPdf
-                  ? {
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "12px",
-                      padding: "8px 14px 8px 10px",
-                      backgroundColor: "#FEF3C7",
-                      borderRadius: "10px",
-                      textDecoration: "none",
-                      color: "inherit",
-                      border: "1px solid #FDE68A",
-                    }
-                  : undefined
-              }
+            <div
+              className={`user-media-bubble ${isPdf ? "is-pdf" : "is-image"}`}
             >
-              {isPdf ? (
-                <>
-                  <FileIcon />
-                  <span
-                    style={{
-                      fontSize: "14.5px",
-                      fontWeight: 600,
-                      color: "#1E293B",
-                      wordBreak: "break-all",
-                    }}
-                  >
-                    {message.imageName || "Document.pdf"}
-                  </span>
-                </>
-              ) : (
-                <img
-                  src={imageSrc}
-                  alt={message.imageName || "Uploaded screenshot"}
-                  className="manual-image-preview"
-                />
-              )}
-            </a>
+              <a
+                href={imageSrc}
+                target="_blank"
+                rel="noreferrer"
+                className="manual-image-preview-link"
+                style={
+                  isPdf
+                    ? {
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        padding: "8px 14px 8px 10px",
+                        backgroundColor: "#FEF3C7",
+                        borderRadius: "10px",
+                        textDecoration: "none",
+                        color: "inherit",
+                        border: "1px solid #FDE68A",
+                      }
+                    : undefined
+                }
+              >
+                {isPdf ? (
+                  <>
+                    <FileIcon />
+                    <span
+                      style={{
+                        fontSize: "14.5px",
+                        fontWeight: 600,
+                        color: "#1E293B",
+                        wordBreak: "break-all",
+                      }}
+                    >
+                      {message.imageName || "Document.pdf"}
+                    </span>
+                  </>
+                ) : (
+                  <img
+                    src={imageSrc}
+                    alt={message.imageName || "Uploaded screenshot"}
+                    className="manual-image-preview"
+                  />
+                )}
+              </a>
+            </div>
           )}
           {/* {message.text &&
             !message.text.startsWith("[Uploaded Screenshot:") &&
@@ -113,11 +117,7 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
           </div> */}
           {/* show text message also with image/file uploaded */}
           {shouldShowText && (
-            <div
-              style={{ marginTop: imageSrc ? "8px" : "0", lineHeight: "1.5" }}
-            >
-              {message.text}
-            </div>
+            <div className="user-query-bubble">{message.text}</div>
           )}
         </div>
       ) : showRiskCard && report ? (

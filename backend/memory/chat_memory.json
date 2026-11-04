@@ -80,6 +80,32 @@
           "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 33.53%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
           "timestamp": "2026-11-04T07:42:37.719Z",
           "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: AIcyan.png]",
+          "timestamp": "2026-11-04T08:53:34.949Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793782414947-AIcyan.png",
+          "imageName": "AIcyan.png"
+        },
+        {
+          "role": "assistant",
+          "text": "No readable text detected in this image. Try a clearer screenshot.",
+          "timestamp": "2026-11-04T08:53:34.953Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-04T11:47:14.124Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793792834122-notPlainColor2.jfif",
+          "imageName": "notPlainColor2.jfif"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 4.86%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-04T11:47:14.127Z",
+          "messageType": "analysis"
         }
       ],
       "archived_messages": [
@@ -114,7 +140,7 @@
         }
       ],
       "created_at": "2026-11-03T10:48:20.288Z",
-      "updated_at": "2026-11-04T07:42:37.719Z"
+      "updated_at": "2026-11-04T11:47:14.127Z"
     },
     {
       "id": "MANUAL-1793708395493",
