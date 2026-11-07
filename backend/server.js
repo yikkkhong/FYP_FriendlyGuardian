@@ -97,8 +97,11 @@ process.on("exit", () => {
 // use manual mode routes
 app.use("/api", setupManualRoutes({ upload, scanImageWithLocalOCR }));
 
+// const imageAnalysisRoute = require("./routes/imageAnalysis");
+// app.use("/api", imageAnalysisRoute(upload));
+
 const imageAnalysisRoute = require("./routes/imageAnalysis");
-app.use("/api", imageAnalysisRoute(upload));
+app.use("/api", imageAnalysisRoute(upload, scanImageWithLocalOCR));
 
 //get history api
 // app.get("/api/history", (req, res) => {

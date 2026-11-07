@@ -4,8 +4,106 @@
     {
       "id": "MANUAL-1793702900288",
       "title": "how do you know its a phishing?",
-      "summary": "**Scam Inspection Summary**\n\n- Suspected bank accounts: none listed.  \n- Suspicious phone numbers: 0123456789 (blacklisted, 100 investment‑scam reports).  \n- Scam tactics: high‑return bait promising 59.9% profit in 3 days; misspelled phishing domain “priize.com”; vague “Click to get” prompts; obfuscated link; lack of verifiable sender details.  \n- Recommendation: block the phone number, avoid clicking the link, verify legitimate domains, and report both to authorities and telecom providers.",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** none listed.  \n- **Suspicious phone numbers:** 0123456789 (blacklisted, 100 investment‑scam reports).  \n- **Scam tactics:** high‑return bait (59.9% profit in 3 days), misspelled domains (“priize.com”, “faceebook.com”, “webgocompanyy.com”), vague “Click to get” prompts, obfuscated links, generic job offers with misspelled titles (“Cootac”), and AI‑generated content warnings.  \n- **Recommendation:** block the phone number, avoid links, verify domains and employers, and report to authorities and telecom providers.",
       "messages": [
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-06T14:40:43.821Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793976043820-real2.pdf",
+          "imageName": "real2.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 99.4%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-06T14:40:43.826Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T05:18:01.203Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794028681201-real2.pdf",
+          "imageName": "real2.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-07T05:18:01.208Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T05:18:52.186Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794028732175-real.pdf",
+          "imageName": "real.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 99.53%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T05:18:52.189Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: real2.pdf]",
+          "timestamp": "2026-11-07T05:20:58.053Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794028858049-real2.pdf",
+          "imageName": "real2.pdf",
+          "ocrText": "InvoiceNoTableNoLogo To ABC Company 1234 Jalan Besar Malaysia Item 1 Item 2 Total Price RM1000 This is for testing only"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- No suspicious sender or phone number mentioned.\n- Content appears to be a generic test invoice, no red flags.\n\nRECOMMENDATION:\n- Verify the sender’s email address or contact details before sending.\n- Ensure the invoice format matches your company’s standard template.",
+          "timestamp": "2026-11-07T05:20:58.907Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize.png]",
+          "timestamp": "2026-11-07T05:21:10.183Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794028870181-prize.png",
+          "imageName": "prize.png",
+          "ocrText": "CONGRATS!! WDn RM9999 Contact us to get it https://faceebook.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Promises large reward (RM9999) with vague claim.\n- Uses misspelled domain “faceebook.com” typical of phishing.\n\nRECOMMENDATION:\n- Do not click the link; block or report the domain.\n- Verify the offer through official channels before responding.",
+          "timestamp": "2026-11-07T05:21:10.956Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Invoice details are consistent and professional.\n- No suspicious contact info or payment instructions.\n\nRECOMMENDATION:\n- Verify the sender’s email domain matches the business.\n- Keep a copy for your records.",
+          "timestamp": "2026-11-03T10:48:27.846Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on verified blacklist with 100 investment scam reports.\n- Message promises unrealistic 59.9% profit in 3 days, classic high‑return bait.\n\nRECOMMENDATION:\n- Block the number immediately and do not respond.\n- Report the message to local authorities and your telecom provider.",
+          "timestamp": "2026-11-03T10:48:40.145Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- URL \"priize.com\" is misspelled, likely phishing domain.\n- Message lacks context, uses vague “Clicl t get” prompting action.\n\nRECOMMENDATION:\n- Do not click the link; block the sender if possible.\n- Verify the legitimate domain (e.g., prize.com) and report the message to your provider.",
+          "timestamp": "2026-11-03T11:23:00.268Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "how do you know its a phishing?",
+          "timestamp": "2026-11-03T11:27:51.373Z"
+        },
+        {
+          "role": "assistant",
+          "text": "We flagged it as phishing because the domain is misspelled, the link is obfuscated, and the message lacks any verifiable sender details. These are classic red‑flags that trigger a high‑risk assessment.",
+          "timestamp": "2026-11-03T11:27:51.378Z",
+          "messageType": "follow_up"
+        },
         {
           "role": "user",
           "text": "how do you know its a phishing?",
@@ -106,41 +204,49 @@
           "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 4.86%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
           "timestamp": "2026-11-04T11:47:14.127Z",
           "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [
+        },
         {
-          "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Invoice details are consistent and professional.\n- No suspicious contact info or payment instructions.\n\nRECOMMENDATION:\n- Verify the sender’s email domain matches the business.\n- Keep a copy for your records.",
-          "timestamp": "2026-11-03T10:48:27.846Z",
-          "messageType": "analysis"
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-06T14:17:35.990Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793974655987-real.pdf",
+          "imageName": "real.pdf"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on verified blacklist with 100 investment scam reports.\n- Message promises unrealistic 59.9% profit in 3 days, classic high‑return bait.\n\nRECOMMENDATION:\n- Block the number immediately and do not respond.\n- Report the message to local authorities and your telecom provider.",
-          "timestamp": "2026-11-03T10:48:40.145Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- URL \"priize.com\" is misspelled, likely phishing domain.\n- Message lacks context, uses vague “Clicl t get” prompting action.\n\nRECOMMENDATION:\n- Do not click the link; block the sender if possible.\n- Verify the legitimate domain (e.g., prize.com) and report the message to your provider.",
-          "timestamp": "2026-11-03T11:23:00.268Z",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 98.49%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-06T14:17:35.994Z",
           "messageType": "analysis"
         },
         {
           "role": "user",
-          "text": "how do you know its a phishing?",
-          "timestamp": "2026-11-03T11:27:51.373Z"
+          "text": "is this ai",
+          "timestamp": "2026-11-06T14:17:57.652Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793974677650-ai_1.png",
+          "imageName": "ai_1.png"
         },
         {
           "role": "assistant",
-          "text": "We flagged it as phishing because the domain is misspelled, the link is obfuscated, and the message lacks any verifiable sender details. These are classic red‑flags that trigger a high‑risk assessment.",
-          "timestamp": "2026-11-03T11:27:51.378Z",
-          "messageType": "follow_up"
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 41.55%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-06T14:17:57.659Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-06T14:18:23.999Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1793974703997-realExcel.pdf",
+          "imageName": "realExcel.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 98.75%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-06T14:18:24.001Z",
+          "messageType": "analysis"
         }
       ],
       "created_at": "2026-11-03T10:48:20.288Z",
-      "updated_at": "2026-11-04T11:47:14.127Z"
+      "updated_at": "2026-11-07T05:21:11.723Z"
     },
     {
       "id": "MANUAL-1793708395493",
