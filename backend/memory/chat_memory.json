@@ -4,8 +4,103 @@
     {
       "id": "MANUAL-1793702900288",
       "title": "how do you know its a phishing?",
-      "summary": "**Scam Inspection Summary**\n\n- Suspected bank accounts: none listed.  \n- Suspicious phone numbers: 0123456789 (blacklisted, 100 investment‑scam reports).  \n- Scam tactics: high‑return bait promising 59.9% profit in 3 days; misspelled phishing domain “priize.com”; vague “Click to get” prompts; obfuscated link; lack of verifiable sender details.  \n- Recommendation: block the phone number, avoid clicking the link, verify legitimate domains, and report both to authorities and telecom providers.",
+      "summary": "**Scam Inspection Summary**\n\n- **Suspected bank accounts:** none.  \n- **Suspicious phone numbers:** none.  \n- **Scam tactics:** repeated “is this ai” prompts flagged as high‑risk AI‑generated content; no investment claims, misspelled domains, or contact links.  \n\n**Recommendation:** No new blocking required; continue monitoring for genuine phishing indicators.",
       "messages": [
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T11:57:05.294Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794052625291-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-07T11:57:05.297Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T12:16:41.076Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794053801073-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-07T12:16:41.080Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T12:17:03.118Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794053823117-ai_1.png",
+          "imageName": "ai_1.png"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 50.91%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T12:17:03.122Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: testWrongGrammar_lazada.png]",
+          "timestamp": "2026-11-07T12:17:13.005Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794053833002-testWrongGrammar_lazada.png",
+          "imageName": "testWrongGrammar_lazada.png",
+          "ocrText": "LAZADA BIG SALE Lowest Price ONLY In 10 Oct"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Generic promotional wording, no contact details or links.\n- No suspicious financial or personal data requests.\n\nRECOMMENDATION:\n- Verify the sender’s identity against official Lazada channels.\n- Do not click any embedded links; use the official app or website instead.",
+          "timestamp": "2026-11-07T12:17:13.936Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "so is that ai promotion  image?",
+          "timestamp": "2026-11-07T12:18:44.942Z"
+        },
+        {
+          "role": "assistant",
+          "text": "It’s likely a standard promotional image; no red flags or suspicious links were noted. If you’re unsure, compare the image to official Lazada assets or check the source URL for authenticity.",
+          "timestamp": "2026-11-07T12:18:44.946Z",
+          "messageType": "follow_up"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Invoice details are consistent and professional.\n- No suspicious contact info or payment instructions.\n\nRECOMMENDATION:\n- Verify the sender’s email domain matches the business.\n- Keep a copy for your records.",
+          "timestamp": "2026-11-03T10:48:27.846Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on verified blacklist with 100 investment scam reports.\n- Message promises unrealistic 59.9% profit in 3 days, classic high‑return bait.\n\nRECOMMENDATION:\n- Block the number immediately and do not respond.\n- Report the message to local authorities and your telecom provider.",
+          "timestamp": "2026-11-03T10:48:40.145Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- URL \"priize.com\" is misspelled, likely phishing domain.\n- Message lacks context, uses vague “Clicl t get” prompting action.\n\nRECOMMENDATION:\n- Do not click the link; block the sender if possible.\n- Verify the legitimate domain (e.g., prize.com) and report the message to your provider.",
+          "timestamp": "2026-11-03T11:23:00.268Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "how do you know its a phishing?",
+          "timestamp": "2026-11-03T11:27:51.373Z"
+        },
+        {
+          "role": "assistant",
+          "text": "We flagged it as phishing because the domain is misspelled, the link is obfuscated, and the message lacks any verifiable sender details. These are classic red‑flags that trigger a high‑risk assessment.",
+          "timestamp": "2026-11-03T11:27:51.378Z",
+          "messageType": "follow_up"
+        },
         {
           "role": "user",
           "text": "how do you know its a phishing?",
@@ -106,41 +201,221 @@
           "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 4.86%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
           "timestamp": "2026-11-04T11:47:14.127Z",
           "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [
+        },
         {
-          "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Invoice details are consistent and professional.\n- No suspicious contact info or payment instructions.\n\nRECOMMENDATION:\n- Verify the sender’s email domain matches the business.\n- Keep a copy for your records.",
-          "timestamp": "2026-11-03T10:48:27.846Z",
-          "messageType": "analysis"
+          "role": "user",
+          "text": "[Uploaded Screenshot: real.pdf]",
+          "timestamp": "2026-11-07T05:55:26.150Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794030926149-real.pdf",
+          "imageName": "real.pdf",
+          "ocrText": "NO. 00001 INVOICE Date: 27 October 2026 Billed to: Studio ABC 123 Jalan Besar Nilai, Malaysia hello@studioabc.com Item Quantity Price Amount Logo 1 RM100 RM100 Poster 2 RM50 RM100 Total RM200 Payment Method: Cash Note: Thank you for choosing us!"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on verified blacklist with 100 investment scam reports.\n- Message promises unrealistic 59.9% profit in 3 days, classic high‑return bait.\n\nRECOMMENDATION:\n- Block the number immediately and do not respond.\n- Report the message to local authorities and your telecom provider.",
-          "timestamp": "2026-11-03T10:48:40.145Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- URL \"priize.com\" is misspelled, likely phishing domain.\n- Message lacks context, uses vague “Clicl t get” prompting action.\n\nRECOMMENDATION:\n- Do not click the link; block the sender if possible.\n- Verify the legitimate domain (e.g., prize.com) and report the message to your provider.",
-          "timestamp": "2026-11-03T11:23:00.268Z",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Invoice format is standard business practice.\n- No suspicious links, phone numbers, or misspelled domains.\n\nRECOMMENDATION:\n- Verify the sender’s email and address against known contacts.\n- Keep a copy for records; no immediate action needed.",
+          "timestamp": "2026-11-07T05:55:26.872Z",
           "messageType": "analysis"
         },
         {
           "role": "user",
-          "text": "how do you know its a phishing?",
-          "timestamp": "2026-11-03T11:27:51.373Z"
+          "text": "[Uploaded Screenshot: _investment2.png]",
+          "timestamp": "2026-11-07T09:22:21.838Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794043341836-_investment2.png",
+          "imageName": "_investment2.png",
+          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
         },
         {
           "role": "assistant",
-          "text": "We flagged it as phishing because the domain is misspelled, the link is obfuscated, and the message lacks any verifiable sender details. These are classic red‑flags that trigger a high‑risk assessment.",
-          "timestamp": "2026-11-03T11:27:51.378Z",
-          "messageType": "follow_up"
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on verified blacklist with 100+ investment‑scam reports.\n- Message promises 59.9% profit in 3 days, classic high‑return bait tactic.\n\nRECOMMENDATION:\n- Block the number immediately and do not respond or transfer money.\n- Report the message to local authorities and your telecom provider.",
+          "timestamp": "2026-11-07T09:22:22.981Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: real.pdf]",
+          "timestamp": "2026-11-07T09:22:31.958Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794043351952-real.pdf",
+          "imageName": "real.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "No readable text detected in this image. Try a clearer screenshot.",
+          "timestamp": "2026-11-07T09:22:31.965Z",
+          "messageType": "general"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T09:30:35.320Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794043835315-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 100%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T09:30:35.328Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T09:40:30.279Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794044430275-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 100%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T09:40:30.298Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T09:41:41.605Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794044501603-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 100%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T09:41:41.614Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T09:54:01.100Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794045241096-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 100%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T09:54:01.105Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T09:55:12.561Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794045312556-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-07T09:55:12.567Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: realText.pdf]",
+          "timestamp": "2026-11-07T09:56:03.819Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794045363813-realText.pdf",
+          "imageName": "realText.pdf",
+          "ocrText": "INVOICE TEXT ONLY To ABC Company 123, Jalan ABC Malaysia ITEM 1 ITEM 2 Total Price RM1000 No table, no image, only text in this invoice"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Standard invoice format with no links or contact numbers.\n- No high‑return or investment promises.\n\nRECOMMENDATION:\n- Verify the sender’s email/physical address against known contacts.\n- Keep a copy for records; no immediate action needed.",
+          "timestamp": "2026-11-07T09:56:04.621Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T09:56:46.629Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794045406626-real.pdf",
+          "imageName": "real.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 99.54%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T09:56:46.643Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T09:57:03.303Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794045423301-image.png",
+          "imageName": "image.png"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-07T09:57:03.310Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T09:59:53.462Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794045593460-image.png",
+          "imageName": "image.png"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 22.84%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T09:59:53.467Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T10:13:03.502Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794046383495-Gemini_Generated_Image_oenompoenompoeno.jfif",
+          "imageName": "Gemini_Generated_Image_oenompoenompoeno.jfif"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 88.82%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T10:13:03.506Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T10:13:35.630Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794046415628-image.png",
+          "imageName": "image.png"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 99.98%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-07T10:13:35.634Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T11:54:57.091Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794052497088-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 100%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T11:54:57.096Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-07T11:56:34.007Z",
+          "imageUrl": "/uploads/manual/MANUAL-1793702900288/1794052593995-realText.pdf",
+          "imageName": "realText.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 100%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-07T11:56:34.011Z",
+          "messageType": "analysis"
         }
       ],
       "created_at": "2026-11-03T10:48:20.288Z",
-      "updated_at": "2026-11-04T11:47:14.127Z"
+      "updated_at": "2026-11-07T12:18:45.358Z"
     },
     {
       "id": "MANUAL-1793708395493",

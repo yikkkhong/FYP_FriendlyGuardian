@@ -117,6 +117,11 @@ import json
 import os
 import sys
 
+from pathlib import Path
+import cv2
+import numpy as np
+
+from paddleocr import PaddleOCR
 
 # Suppress PaddlePaddle C++ INFO and WARNING logs
 os.environ["GLOG_minloglevel"] = "2"
@@ -126,28 +131,60 @@ os.environ["FLAGS_allocator_strategy"] = "naive_best_fit"
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8")
 
-from paddleocr import PaddleOCR
-
 # load memory once
 ocr = PaddleOCR(use_angle_cls=False, lang="ch", show_log=False)
 
+# Temporary folder for images with text transparent layer
+TEMP_TRANSPARENT_DIR = Path(os.path.dirname(__file__)) / "temp_transparent"
+TEMP_TRANSPARENT_DIR.mkdir(exist_ok=True)
+DILATE_KERNEL_SIZE = 12  #Expand the mask to cover anti-aliased edges of large text
 
 def extract_text_from_image(image_path):
     if not os.path.exists(image_path):
         return {"success": False, "text": "", "error": "Image file not found"}
 
     try:
-        result = ocr.ocr(image_path, cls=False)
+        # Use imdecode to read images, including multer temp files without extensions
+        img_data = np.fromfile(image_path, dtype=np.uint8)
+        bgr_image = cv2.imdecode(img_data, cv2.IMREAD_COLOR)
+        if bgr_image is None:
+            return {"success": False, "text": "", "error": "Unable to decode image"}
+        
+        result = ocr.ocr(bgr_image, cls=False)
         extracted_lines = []
+        text_boxes = []  # collect text bounding boxes
 
         if result and result[0]:
             for line in result[0]:
+                text_boxes.append(line[0])
                 text = line[1][0].strip()
                 if text:
                     extracted_lines.append(text)
 
+        # Make text areas transparent (Alpha = 0)
+        h, w = bgr_image.shape[:2]
+        bgra_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2BGRA)
+
+        if text_boxes:
+            text_mask = np.zeros((h, w), dtype=np.uint8)
+            for box in text_boxes:
+                pts = np.array(box, dtype=np.int32).reshape((-1, 1, 2))
+                cv2.fillPoly(text_mask, [pts], 255)
+
+            kernel = cv2.getStructuringElement(
+                cv2.MORPH_RECT, (DILATE_KERNEL_SIZE, DILATE_KERNEL_SIZE)
+            )
+            text_mask = cv2.dilate(text_mask, kernel)
+            bgra_image[text_mask > 0, 3] = 0
+
+        transparent_path = TEMP_TRANSPARENT_DIR / f"{Path(image_path).stem}_transparent.png"
+        cv2.imwrite(str(transparent_path), bgra_image)
+
         full_text = " ".join(extracted_lines)
-        return {"success": True, "text": full_text, "error": None}
+        return {"success": True, 
+                "text": full_text,
+                "transparent_image_path": str(transparent_path.resolve()), 
+                "error": None}
     except Exception as e:
         return {"success": False, "text": "", "error": str(e)}
 

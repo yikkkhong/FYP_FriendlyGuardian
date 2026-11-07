@@ -90,15 +90,49 @@ function scanImageWithLocalOCR(imagePath) {
   });
 }
 
+// general function convert pdf to png from python, if needed
+const pdfConverterScript = path.join(__dirname, "python/pdf_converter.py");
+
+function convertPdfIfNeeded(filePath) {
+  return new Promise((resolve, reject) => {
+    const proc = spawn(pythonExecutable, [pdfConverterScript, filePath]);
+    let stdout = "";
+    proc.stdout.on("data", (d) => {
+      stdout += d.toString();
+    });
+    proc.on("close", () => {
+      try {
+        const lines = stdout.trim().split("\n");
+        const lastLine = lines[lines.length - 1].trim();
+        const data = JSON.parse(lastLine);
+        if (data.success) {
+          resolve(data); // { success: true, is_pdf: boolean, image_path: string }
+        } else {
+          reject(new Error(data.error || "PDF conversion failed"));
+        }
+      } catch (err) {
+        reject(err);
+      }
+    });
+  });
+}
+// =========================================================================
+
 process.on("exit", () => {
   if (ocrProcess) ocrProcess.kill();
 });
 
 // use manual mode routes
-app.use("/api", setupManualRoutes({ upload, scanImageWithLocalOCR }));
+app.use(
+  "/api",
+  setupManualRoutes({ upload, scanImageWithLocalOCR, convertPdfIfNeeded }),
+);
 
 const imageAnalysisRoute = require("./routes/imageAnalysis");
-app.use("/api", imageAnalysisRoute(upload));
+app.use(
+  "/api",
+  imageAnalysisRoute({ upload, scanImageWithLocalOCR, convertPdfIfNeeded }),
+);
 
 //get history api
 // app.get("/api/history", (req, res) => {

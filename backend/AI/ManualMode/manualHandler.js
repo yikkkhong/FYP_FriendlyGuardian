@@ -168,7 +168,11 @@ function registerManualSocket(socket, io) {
 // ==========================================
 // 2. Manual Mode Express API routes (ocr + analyse)
 // ==========================================
-function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
+function setupManualRoutes({
+  upload,
+  scanImageWithLocalOCR,
+  convertPdfIfNeeded,
+}) {
   router.post(
     "/manual-scan-image",
     upload.single("image"),
@@ -189,11 +193,30 @@ function setupManualRoutes({ upload, scanImageWithLocalOCR }) {
       }
 
       const timer = createTimer("AI Analyse Image Time");
+      let convertedPngPath = null;
 
       try {
         // OCR from temp multer path first, then move to persistent location
         const tempPath = req.file.path;
-        const ocrResult = await scanImageWithLocalOCR(tempPath);
+
+        // if uploaded file is pdf, then convert to png first
+        const pdfRes = await convertPdfIfNeeded(tempPath);
+        if (pdfRes.is_pdf) {
+          convertedPngPath = pdfRes.image_path;
+        }
+
+        const ocrResult = await scanImageWithLocalOCR(pdfRes.image_path);
+
+        // Clean up temporary files (no need for transparent images in normal mode)
+        if (convertedPngPath && fs.existsSync(convertedPngPath)) {
+          fs.unlink(convertedPngPath, () => {});
+        }
+        if (
+          ocrResult?.transparent_image_path &&
+          fs.existsSync(ocrResult.transparent_image_path)
+        ) {
+          fs.unlink(ocrResult.transparent_image_path, () => {});
+        }
 
         const { imageUrl, imageName } = persistUploadedImage(
           req.file,
