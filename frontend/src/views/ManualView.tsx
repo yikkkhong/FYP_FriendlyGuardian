@@ -216,9 +216,9 @@ export const ManualView: React.FC<ManualViewProps> = ({
   return (
     <div className="manual-workspace">
       <section className="manual-main" aria-label="Scam check workspace">
-        <header className="manual-main-header">
-          {/* [HIDDEN_FOR_PUBLIC_VERSION] Title+subtitle hidden when empty — hero already conveys the same */}
-          {hasMessages && (
+        {/* [HIDDEN_FOR_PUBLIC_VERSION] Title+subtitle hidden when empty — hero already conveys the same */}
+        {hasMessages && (
+          <header className="manual-main-header">
             <div className="manual-title-row">
               {renamingId === activeConversationId ? (
                 <input
@@ -285,8 +285,8 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 </div>
               )}
             </div>
-          )}
-        </header>
+          </header>
+        )}
 
         <ChatMessageList
           messages={messages}

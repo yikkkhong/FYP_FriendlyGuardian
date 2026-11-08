@@ -2,7 +2,7 @@
   margin: auto;
   text-align: center;
   max-width: 480px;
-  padding: 48px 24px;
+  padding: 16px 20px;
   /* Staggered per-element entrance animations handle the reveal instead */
 }
 
@@ -58,6 +58,15 @@
   gap: 10px;
   justify-content: center;
   margin-top: 24px;
+}
+
+/* mascot icon - replaced with guardian orb ady */
+.mascot-icon {
+  width: 110px; /* 72px ~ 88px is good */
+  height: 110px;
+  object-fit: contain; /* Ensure vector graphics are scaled proportionally without stretching */
+  display: block;
+  margin: 0 auto 16px; /* Keep a clear but closer gap before the headline. */
 }
 
 /* =============================================================
@@ -147,6 +156,20 @@
 }
 
 .manual-suggestion-chips {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 520px) {
+  .manual-suggestion-chips {
+    grid-template-columns: 1fr;
+  }
+}
+
+.manual-suggestion-chips {
   opacity: 0;
   animation: hero-enter var(--dur-slow) var(--ease-out) 0.21s forwards;
 }
@@ -166,9 +189,11 @@
 
 /* No sign-up line styling */
 .hero-no-signup {
-  font-size: 13px;
-  color: var(--manual-muted);
+  font-size: 14.5px !important;
+  /* color: var(--manual-muted); */
+  color: #abb7c8 !important;
   margin-top: 20px;
+  margin-bottom: 0;
   letter-spacing: 0.01em;
 }
 
@@ -271,4 +296,18 @@
 
 .manual-suggestion-chip:active:not(:disabled) {
   transform: scale(0.97);
+}
+
+.manual-suggestion-chip {
+  min-width: 0;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 8px;
+  font-size: 13px;
+}
+
+.hero-no-signup {
+  margin: 24px 0 0;
+  color: #64748b;
+  font-weight: 500;
 }

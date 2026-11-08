@@ -1,9 +1,10 @@
 /* ---- Scroll View ---- */
 
-.manual-stream-viewport {
+.manual-workspace .manual-stream-viewport {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 8px 28px 20px;
   display: flex;
   flex-direction: column;
@@ -13,15 +14,39 @@
   margin: 0 auto;
 }
 
-.manual-stream-viewport::-webkit-scrollbar {
+.manual-workspace .manual-stream-viewport:has(.manual-empty-state) {
+  overflow-y: hidden;
+}
+
+.manual-workspace .manual-stream-viewport::-webkit-scrollbar {
   width: 6px;
 }
-.manual-stream-viewport::-webkit-scrollbar-track {
+
+.manual-workspace .manual-stream-viewport::-webkit-scrollbar-track {
   background: transparent;
 }
-.manual-stream-viewport::-webkit-scrollbar-thumb {
-  background: #b7d8d1;
+
+.manual-workspace .manual-stream-viewport::-webkit-scrollbar-thumb {
+  background: rgba(15, 118, 110, 0.25);
   border-radius: 999px;
+  transition: background-color 0.2s ease;
+}
+
+/* lightest color */
+.manual-workspace
+  .manual-stream-viewport.is-scrolling::-webkit-scrollbar-thumb {
+  background-color: rgba(15, 118, 110, 0.5) !important;
+}
+
+/* medium color */
+.manual-workspace .manual-stream-viewport:not(:hover)::-webkit-scrollbar-thumb {
+  background-color: rgba(15, 118, 110, 0.5) !important;
+}
+
+/* darkest color */
+.manual-workspace .manual-stream-viewport::-webkit-scrollbar-thumb:hover,
+.manual-workspace .manual-stream-viewport::-webkit-scrollbar-thumb:active {
+  background-color: rgba(15, 118, 110, 0.85) !important;
 }
 
 /* Scroll to bottom button */

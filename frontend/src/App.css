@@ -74,11 +74,11 @@ body {
 }
 
 [data-text-size="large"] .manual-empty-state h2 {
-  font-size: 1.75rem;
+  font-size: 3.75rem;
 }
 
 [data-text-size="large"] .manual-empty-state p {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 [data-text-size="large"] .manual-suggestion-chip {
@@ -96,6 +96,14 @@ body {
 
 [data-text-size="large"] .ai-insight-card {
   font-size: 17px;
+}
+
+[data-text-size="large"] .mascot-icon {
+  width: 210px; /* 72px ~ 88px is good */
+  height: 210px;
+  object-fit: contain; /* Ensure vector graphics are scaled proportionally without stretching */
+  display: block;
+  margin: 0 auto 16px; /* Keep a clear but closer gap before the headline. */
 }
 
 /* moved to header.css */
@@ -172,6 +180,12 @@ body {
 }
 
 .canvas-root[data-mode="SME"] .stage-viewport {
+  /* Make the viewport fill the remaining height of the parent while maintaining a flex layout */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Prevent content from overflowing and breaking the viewport layout. */
+
   align-items: stretch;
   justify-content: stretch;
   padding: 0;
@@ -501,6 +515,9 @@ body {
   border-radius: 0;
   padding: 0;
   box-shadow: none;
+
+  height: 100%;
+  flex: 1;
 }
 
 .manual-main-header {

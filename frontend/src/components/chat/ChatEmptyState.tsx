@@ -25,13 +25,17 @@ export const ChatEmptyState: React.FC<ChatEmptyStateProps> = ({
 }) => {
   return (
     <div className="manual-empty-state">
-      <div className="guardian-orb" aria-hidden="true">
+      {/* <div className="guardian-orb" aria-hidden="true">
         <GuardianMark />
-      </div>
+      </div> */}
+      <img src="/mascot.svg" alt="Guardian" className="mascot-icon" />
       <h2>Is this a scam?</h2>
+      {/* <p>
+        Paste a suspicious SMS, email, link, or bank account <br />
+        Your Guardian AI checks it instantly
+      </p> */}
       <p>
-        Paste a suspicious SMS, email, link, or bank account — your Guardian
-        checks it instantly.
+        ... or just an AI generated image? <br />
       </p>
       <div className="manual-suggestion-chips">
         <button
@@ -59,10 +63,10 @@ export const ChatEmptyState: React.FC<ChatEmptyStateProps> = ({
           onClick={onGeneralQuestion}
           disabled={isLoading}
         >
-          <MenuIcon /> General Question
+          <MenuIcon /> Ask Guardian
         </button>
       </div>
-      <p className="hero-no-signup">No sign-up needed · Free to use</p>
+      <p className="hero-no-signup">No sign up needed · Free to use</p>
     </div>
   );
 };

@@ -369,7 +369,8 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
             placeholder={
               voicePanelActive
                 ? "Listening... speak now"
-                : "Paste a message, ask a follow-up, or describe what you received…"
+                : // : "Paste a message, ask a follow-up, or describe what you received…"
+                  "Paste a suspicious message or image..."
             }
             className="query-input"
             value={queryInput}

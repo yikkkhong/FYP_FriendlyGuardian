@@ -12,8 +12,8 @@
   justify-content: center;
   z-index: 30;
   pointer-events: none;
-  padding-bottom: max(20px, env(safe-area-inset-bottom));
-  padding-top: 8px;
+  padding-bottom: max(38px, env(safe-area-inset-bottom));
+  padding-top: 12px;
 }
 
 .manual-composer {

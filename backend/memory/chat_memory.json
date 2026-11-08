@@ -1,6 +1,42 @@
 {
-  "activeConversationId": "MANUAL-1793702900288",
+  "activeConversationId": "MANUAL-1794145838379",
   "conversations": [
+    {
+      "id": "MANUAL-1794145838379",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-11-08T13:50:38.379Z",
+      "updated_at": "2026-11-08T13:50:38.379Z"
+    },
+    {
+      "id": "MANUAL-1794145837740",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-11-08T13:50:37.740Z",
+      "updated_at": "2026-11-08T13:50:37.740Z"
+    },
+    {
+      "id": "MANUAL-1794145836845",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-11-08T13:50:36.845Z",
+      "updated_at": "2026-11-08T13:50:36.845Z"
+    },
+    {
+      "id": "MANUAL-1794142610581",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-11-08T12:56:50.581Z",
+      "updated_at": "2026-11-08T12:56:50.581Z"
+    },
     {
       "id": "MANUAL-1793702900288",
       "title": "how do you know its a phishing?",

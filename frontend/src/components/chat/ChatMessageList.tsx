@@ -41,6 +41,9 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
   const streamViewportRef = useRef<HTMLDivElement>(null);
   const chatEndRef = useRef<HTMLDivElement | null>(null);
 
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   // scroll to bottom when got new message
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -55,10 +58,19 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
       const { scrollTop, scrollHeight, clientHeight } = viewport;
       const isNearBottom = scrollHeight - scrollTop - clientHeight < 100;
       setShowScrollToBottom(!isNearBottom);
+
+      setIsScrolling(true);
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+      scrollTimerRef.current = setTimeout(() => {
+        setIsScrolling(false);
+      }, 1000);
     };
 
-    viewport.addEventListener("scroll", handleScroll);
-    return () => viewport.removeEventListener("scroll", handleScroll);
+    viewport.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      viewport.removeEventListener("scroll", handleScroll);
+      if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
+    };
   }, []);
 
   const scrollToBottom = () => {
@@ -68,7 +80,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
   return (
     <div
       ref={streamViewportRef}
-      className="manual-stream-viewport"
+      className={`manual-stream-viewport ${isScrolling ? "is-scrolling" : ""}`}
       role="log"
       aria-live="polite"
       aria-atomic="false"
