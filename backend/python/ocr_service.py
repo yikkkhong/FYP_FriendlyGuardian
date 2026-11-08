@@ -139,6 +139,39 @@ TEMP_TRANSPARENT_DIR = Path(os.path.dirname(__file__)) / "temp_transparent"
 TEMP_TRANSPARENT_DIR.mkdir(exist_ok=True)
 DILATE_KERNEL_SIZE = 12  #Expand the mask to cover anti-aliased edges of large text
 
+def detect_table_lines(image: np.ndarray, text_mask: np.ndarray) -> np.ndarray:
+    """Detect horizontal and vertical lines using morphological operations"""
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+    # 1. Remove OCR-detected text to avoid false line detection
+    clean = gray.copy()
+    clean[text_mask > 0] = 255
+
+    # 2. Convert dark pixels to white and the background to black
+    _, binary = cv2.threshold(clean, 240, 255, cv2.THRESH_BINARY_INV)
+    height, width = binary.shape
+
+    # 3. Create horizontal and vertical kernels based on image size
+    h_len = max(25, width // 40)
+    v_len = max(25, height // 40)
+    horizontal_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (h_len, 1))
+    vertical_kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (1, v_len))
+
+    # 4. Extract horizontal and vertical lines
+    horizontal = cv2.morphologyEx(binary, cv2.MORPH_OPEN, horizontal_kernel)
+    vertical = cv2.morphologyEx(binary, cv2.MORPH_OPEN, vertical_kernel)
+
+    # 5. Combine both line masks
+    table_mask = cv2.bitwise_or(horizontal, vertical)
+
+    # 6. Expand the mask to cover anti-aliased line edges
+    table_mask = cv2.dilate(
+        table_mask, np.ones((7, 7), np.uint8), iterations=1
+    )
+
+    return table_mask
+
+
 def extract_text_from_image(image_path):
     if not os.path.exists(image_path):
         return {"success": False, "text": "", "error": "Image file not found"}
@@ -149,6 +182,8 @@ def extract_text_from_image(image_path):
         bgr_image = cv2.imdecode(img_data, cv2.IMREAD_COLOR)
         if bgr_image is None:
             return {"success": False, "text": "", "error": "Unable to decode image"}
+
+        h, w = bgr_image.shape[:2]
         
         result = ocr.ocr(bgr_image, cls=False)
         extracted_lines = []
@@ -161,9 +196,27 @@ def extract_text_from_image(image_path):
                 if text:
                     extracted_lines.append(text)
 
+        text_mask = np.zeros((h, w), dtype=np.uint8)
+        if text_boxes:
+            for box in text_boxes:
+                pts = np.array(box, dtype=np.int32).reshape((-1, 1, 2))
+                cv2.fillPoly(text_mask, [pts], 255)
+
+            kernel = cv2.getStructuringElement(
+                cv2.MORPH_RECT, (DILATE_KERNEL_SIZE, DILATE_KERNEL_SIZE)
+            )
+            text_mask = cv2.dilate(text_mask, kernel)
+
+        # detect table lines
+        table_mask = detect_table_lines(bgr_image, text_mask)
+
+        # combine text and table line masks
+        full_mask = cv2.bitwise_or(text_mask, table_mask)
+
         # Make text areas transparent (Alpha = 0)
-        h, w = bgr_image.shape[:2]
+        # h, w = bgr_image.shape[:2]
         bgra_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2BGRA)
+        bgra_image[full_mask > 0, 3] = 0
 
         if text_boxes:
             text_mask = np.zeros((h, w), dtype=np.uint8)
@@ -188,6 +241,9 @@ def extract_text_from_image(image_path):
     except Exception as e:
         return {"success": False, "text": "", "error": str(e)}
 
+def extract_image(target_image):
+    extract_text_from_image(target_image)
+    detect_table_lines(target_image,)
 
 if __name__ == "__main__":
     # send to node.js
@@ -200,5 +256,6 @@ if __name__ == "__main__":
             continue
 
         output = extract_text_from_image(target_image)
+        # output = extract_image(target_image)
         # ensure result immediately push to pipeline, so no stuck
         print(json.dumps(output, ensure_ascii=False), flush=True)
