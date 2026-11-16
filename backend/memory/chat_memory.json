@@ -3,12 +3,73 @@
   "conversations": [
     {
       "id": "MANUAL-1794145838379",
-      "title": "New check",
+      "title": "pls give me RM10000 urgent",
       "summary": "",
-      "messages": [],
+      "messages": [
+        {
+          "role": "user",
+          "text": "pls give me RM10000 urgent",
+          "timestamp": "2026-11-15T17:25:41.133Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Detected risk signals: Financial/Percentage Figure, Urgency / Threat Tactic.\n- The user is requesting a large amount of money urgently, which could lead to financial loss\n\nRECOMMENDATION:\n- Do not click any links, transfer money, or share OTP/personal details.\n- Block the sender immediately and report to your bank or authorities.",
+          "timestamp": "2026-11-15T17:25:41.150Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-15T17:26:17.072Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794145838379/1794763577069-realGrey.pdf",
+          "imageName": "realGrey.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-15T17:26:17.078Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: prize2.png]",
+          "timestamp": "2026-11-15T17:26:36.286Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794145838379/1794763596284-prize2.png",
+          "imageName": "prize2.png",
+          "ocrText": "Clicl t get RMI000U https://priize.com"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: MEDIUM\n\nWHY:\n- Detected risk signals: Contains URL/Link.\n- The link contains a malicious URL, which could lead to unauthorized access or download of\n\nRECOMMENDATION:\n- Verify the sender independently through official websites or phone numbers.\n- Avoid sharing sensitive information or documents until verified.",
+          "timestamp": "2026-11-15T17:26:38.237Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "hi",
+          "timestamp": "2026-11-15T17:34:48.682Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- The text is a simple greeting, which is not typically associated with scams.\n\nRECOMMENDATION:\n- Stay cautious and double-check details if anything feels unusual.\n- Keep records of the message for your reference.",
+          "timestamp": "2026-11-15T17:34:48.687Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "halo",
+          "timestamp": "2026-11-15T17:36:02.487Z"
+        },
+        {
+          "role": "assistant",
+          "text": "Hi! How can I help you today?",
+          "timestamp": "2026-11-15T17:36:02.491Z",
+          "messageType": "general"
+        }
+      ],
       "archived_messages": [],
       "created_at": "2026-11-08T13:50:38.379Z",
-      "updated_at": "2026-11-08T13:50:38.379Z"
+      "updated_at": "2026-11-15T17:36:02.491Z"
     },
     {
       "id": "MANUAL-1794145837740",

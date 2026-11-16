@@ -95,12 +95,19 @@ const App: React.FC = () => {
       "manual_chat_response",
       (data: {
         message: string;
+        usedLocalFallback?: boolean;
         messageType?: ManualMessageType;
         timestamp?: string;
         conversationId?: string | null;
         title?: string;
         conversations?: ManualConversationSummary[];
       }) => {
+        if (data.usedLocalFallback) {
+          addNotification(
+            "Network or cloud AI service problem. Fault tolerance activated: using the local AI model to continue analysis.",
+            "warning",
+          );
+        }
         const currentId = activeManualConversationIdRef.current;
         if (
           data.conversationId &&
@@ -302,6 +309,13 @@ const App: React.FC = () => {
           body: formData,
         });
         const data = await res.json();
+
+        if (data.usedLocalFallback) {
+          addNotification(
+            "Network or cloud AI service problem. Fault tolerance activated: using the local AI model to continue analysis.",
+            "warning",
+          );
+        }
 
         if (data.conversations) {
           setManualConversations(data.conversations);

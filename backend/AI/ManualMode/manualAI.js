@@ -245,6 +245,7 @@ Other rules:
 `;
 
     let rawReply = "";
+    let usedLocalFallback = false;
     try {
       const completion = await ai.chat.completions.create(
         {
@@ -271,6 +272,7 @@ Other rules:
       ).trim();
     } catch (cloudErr) {
       console.log("Fault Tolerance: API error / Network offline");
+      usedLocalFallback = true;
       rawReply = await analyzeScamOffline(userText, matchedScam);
     }
 
@@ -315,6 +317,7 @@ Other rules:
 
     return {
       message: reply,
+      usedLocalFallback,
       messageType,
       conversationId: activeId,
       title: conversation?.title || "New check",

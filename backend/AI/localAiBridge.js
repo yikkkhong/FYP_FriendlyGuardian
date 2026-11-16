@@ -25,7 +25,7 @@ lineReader.on("line", (line) => {
     const data = JSON.parse(line.trim());
     if (data.status === "READY") {
       console.log(
-        "⚡ [Local AI Engine] Qwen2.5-0.5B-Instruct loaded in CPU memory.",
+        `⚡ [Local AI Engine] Qwen2.5-0.5B-Instruct Q4_K_M ready on ${data.device}.`,
       );
       return;
     }

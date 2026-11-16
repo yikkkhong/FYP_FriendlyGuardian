@@ -142,6 +142,7 @@ function registerManualSocket(socket, io) {
 
       socket.emit("manual_chat_response", {
         message: result.message,
+        usedLocalFallback: result.usedLocalFallback,
         messageType: result.messageType,
         timestamp: new Date().toLocaleTimeString(),
         conversationId: result.conversationId,
@@ -290,6 +291,7 @@ function setupManualRoutes({
         res.json({
           extractedText,
           analysis: aiAnalysis.message,
+          usedLocalFallback: aiAnalysis.usedLocalFallback,
           messageType: aiAnalysis.messageType || "analysis",
           timestamp: new Date().toLocaleTimeString(),
           conversationId: aiAnalysis.conversationId,
