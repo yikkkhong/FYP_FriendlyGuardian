@@ -172,6 +172,31 @@ def detect_table_lines(image: np.ndarray, text_mask: np.ndarray) -> np.ndarray:
     return table_mask
 
 
+def detect_graphics(image: np.ndarray) -> np.ndarray:
+    """Box compact, high-contrast foreground on the invoice paper."""
+    height, width = image.shape[:2]
+    scale = min(height, width)
+    # Estimate paper colour on a small grid. Smooth only the detection copy.
+    paper = np.median(image[::16, ::16], axis=(0, 1)).astype(np.uint8)
+    smooth = cv2.medianBlur(image, 3)
+    contrast = cv2.absdiff(smooth, tuple(map(float, paper)) + (0.0,))
+    ink = (contrast.max(axis=2) >= 35).astype(np.uint8)
+    radius = max(1, round(scale * 0.002))
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * radius + 1,) * 2)
+    joined = cv2.morphologyEx(ink, cv2.MORPH_CLOSE, kernel)
+    contours, _ = cv2.findContours(joined, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    mask = np.zeros((height, width), dtype=np.uint8)
+    for contour in contours:
+        x, y, w, h = cv2.boundingRect(contour)
+        if min(w, h) < max(8, scale * 0.018) or max(w, h) > 8 * min(w, h):
+            continue
+        # Sparse frames and large grids must leave their interiors available.
+        if w * h > 0.15 * width * height or ink[y:y+h, x:x+w].mean() < 0.15:
+            continue
+        mask[max(0, y-radius):y+h+radius, max(0, x-radius):x+w+radius] = 255
+    return mask
+
+
 def extract_text_from_image(image_path):
     if not os.path.exists(image_path):
         return {"success": False, "text": "", "error": "Image file not found"}
@@ -210,25 +235,10 @@ def extract_text_from_image(image_path):
         # detect table lines
         table_mask = detect_table_lines(bgr_image, text_mask)
 
-        # combine text and table line masks
         full_mask = cv2.bitwise_or(text_mask, table_mask)
-
-        # Make text areas transparent (Alpha = 0)
-        # h, w = bgr_image.shape[:2]
+        full_mask |= detect_graphics(bgr_image)
         bgra_image = cv2.cvtColor(bgr_image, cv2.COLOR_BGR2BGRA)
-        bgra_image[full_mask > 0, 3] = 0
-
-        if text_boxes:
-            text_mask = np.zeros((h, w), dtype=np.uint8)
-            for box in text_boxes:
-                pts = np.array(box, dtype=np.int32).reshape((-1, 1, 2))
-                cv2.fillPoly(text_mask, [pts], 255)
-
-            kernel = cv2.getStructuringElement(
-                cv2.MORPH_RECT, (DILATE_KERNEL_SIZE, DILATE_KERNEL_SIZE)
-            )
-            text_mask = cv2.dilate(text_mask, kernel)
-            bgra_image[text_mask > 0, 3] = 0
+        bgra_image[:, :, 3] = cv2.bitwise_not(full_mask)
 
         transparent_path = TEMP_TRANSPARENT_DIR / f"{Path(image_path).stem}_transparent.png"
         cv2.imwrite(str(transparent_path), bgra_image)
