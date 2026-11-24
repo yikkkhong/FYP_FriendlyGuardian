@@ -117,6 +117,7 @@ const App: React.FC = () => {
         message: string;
         usedLocalFallback?: boolean;
         messageType?: ManualMessageType;
+        sources?: ManualMessage["sources"];
         timestamp?: string;
         conversationId?: string | null;
         title?: string;
@@ -147,6 +148,7 @@ const App: React.FC = () => {
             sender: "ai",
             text: data.message,
             messageType: data.messageType,
+            sources: data.sources,
             time: data.timestamp || new Date().toLocaleTimeString(),
           },
         ]);
@@ -371,6 +373,7 @@ const App: React.FC = () => {
               sender: "ai",
               text: data.analysis,
               messageType: data.messageType || "analysis",
+              sources: data.sources,
               time: data.timestamp || new Date().toLocaleTimeString(),
             });
             return next;
@@ -444,6 +447,8 @@ const App: React.FC = () => {
     const entries = manualMessages.map(message => [
       `[${message.time}] ${message.sender === "user" ? "User" : "Guardian"}`,
       message.text,
+      ...(message.sources || []).map(source => `Source: ${source.url}`),
+      message.forensicImageUrl && `Pixel noise map: ${message.forensicImageUrl}`,
       message.imageName && `Attachment: ${message.imageName}`,
       message.imageUrl && !message.imageUrl.startsWith("blob:") && message.imageUrl,
     ].filter(Boolean).join("\n"));

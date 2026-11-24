@@ -46,7 +46,8 @@ def load_image(filepath: str) -> np.ndarray:
     return image
 
 
-def analyze_plain_color(image: np.ndarray) -> dict:
+def analyze_plain_color(image: np.ndarray, heatmap_out_path=None) -> dict:
+    mask = None
     # rgb = cv2.cvtColor(region, cv2.COLOR_BGR2RGB)
     # h, w, _ = rgb.shape
     # total_pixels = h * w
@@ -55,13 +56,15 @@ def analyze_plain_color(image: np.ndarray) -> dict:
     if len(image.shape) == 3 and image.shape[2] == 4:
         bgr = image[:, :, :3]
         alpha = image[:, :, 3]
-        valid_bgr = bgr[alpha > 0]
-        rgb = cv2.cvtColor(valid_bgr.reshape(-1, 1, 3), cv2.COLOR_BGR2RGB).reshape(-1, 3)
+        mask = alpha > 0
+        rgb = bgr[mask][:, ::-1]
     else:
         rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB).reshape(-1, 3)
 
     total_pixels = len(rgb)
     if total_pixels == 0:
+        if heatmap_out_path:
+            cv2.imencode(".png", np.zeros_like(image[:, :, :3]))[1].tofile(heatmap_out_path)
         result_data = {"isReal": False, "dominantRatio": 0.0, "uniqueColors": 0}
         print(json.dumps(result_data))
         return result_data
@@ -81,6 +84,20 @@ def analyze_plain_color(image: np.ndarray) -> dict:
     unique_colors = len(unique_packed)
 
     dominant_color_idx = np.argmax(counts)
+    if heatmap_out_path:
+        packed = int(unique_packed[dominant_color_idx])
+        dominant_color = [(packed >> shift) & 255 for shift in (16, 8, 0)]
+        diff = np.max(np.abs(pixels - dominant_color), axis=1)
+        intensity = np.zeros(image.shape[:2], dtype=np.uint8)
+        amplified = np.clip(diff * 20, 0, 255).astype(np.uint8)
+        if mask is None:
+            intensity = amplified.reshape(intensity.shape)
+        else:
+            intensity[mask] = amplified
+        heatmap = cv2.applyColorMap(intensity, cv2.COLORMAP_TURBO)
+        if mask is not None:
+            heatmap[~mask] = 24
+        cv2.imencode(".png", heatmap)[1].tofile(heatmap_out_path)
     dominant_count = counts[dominant_color_idx]
     dominant_ratio = (dominant_count / total_pixels) * 100.0
 
@@ -111,4 +128,4 @@ if __name__ == "__main__":
         target_path = input("Enter the filename: ").strip()
 
     image = load_image(target_path)
-    analyze_plain_color(image)
+    analyze_plain_color(image, sys.argv[2] if len(sys.argv) > 2 else None)

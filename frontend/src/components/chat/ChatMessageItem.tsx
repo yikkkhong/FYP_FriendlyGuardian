@@ -21,11 +21,18 @@ function resolveImageUrl(url?: string) {
   return `${API_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
 }
 
-export interface AttachmentPreview {
+export interface WebSource {
+  url: string;
+  title: string;
+  summary: string;
+}
+
+export type AttachmentPreview = {
   src: string;
   name: string;
   isPdf: boolean;
-}
+  heatmap?: boolean;
+} | { name: string; sources: WebSource[]; isPdf?: false };
 
 interface ChatMessageItemProps {
   message: ManualMessage;
@@ -39,6 +46,8 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
   onPreviewAttachment,
 }) => {
   const isUser = message.sender === "user";
+  const sources = message.sources;
+  const forensicImageUrl = resolveImageUrl(message.forensicImageUrl);
   const report = !isUser ? parseReport(message.text) : null;
   const isAnalysisMessage =
     message.messageType === "analysis" ||
@@ -142,7 +151,8 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
           )}
         </div>
       ) : showRiskCard && report ? (
-        <ThreatReportCard report={report!} speechOwner={message} isNew={!isUser && isLatest} />
+        <ThreatReportCard report={report} speechOwner={message} isNew={isLatest}
+          sources={sources} forensicImageUrl={forensicImageUrl} onPreviewAttachment={onPreviewAttachment} />
       ) : (
         // <div className="plain-ai-bubble">{m.text}</div>
         <AiResponseCard content={message.text} />

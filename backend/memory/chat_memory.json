@@ -1,29 +1,46 @@
 {
-  "activeConversationId": "MANUAL-1795526414944",
+  "activeConversationId": "MANUAL-1795529776715",
   "conversations": [
     {
-      "id": "MANUAL-1795526414944",
-      "title": "sample1",
+      "id": "MANUAL-1795529776715",
+      "title": "Maybank announces 50% cashback giveaway! Claim y…",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "[Uploaded Screenshot: sample1.pdf]",
-          "timestamp": "2026-11-24T13:20:18.181Z",
-          "imageUrl": "/uploads/manual/MANUAL-1795526414944/1795526418178-sample1.pdf",
-          "imageName": "sample1.pdf",
-          "ocrText": "TechMart Solutions INVOICE Invoice No: INV0001 Bill to 100, Jalan Besar 10 Petaling Jaya, Malaysia No. Description Unit Price Amount Qty (RM) (RM) Wireless Mouse 1 49.00 49.00 1 2 USB Keyboard 1 79.00 79.00 HDMI Cable (2m) 3 29.00 29.00 1 Subtotal (RM) 157.00 Tax (6%) 9.42 Total Due (RM) 166.42"
+          "text": "Maybank announces 50% cashback giveaway! Claim your free reward at maybank-claim-bonus.xyz",
+          "timestamp": "2026-11-24T14:16:17.790Z"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: LOW\n\nWHY:\n- Detected risk signals: Financial/Percentage Figure.\n- The invoice amount is significantly higher than expected, indicating potential fraud or unauthorized transactions.\n\nRECOMMENDATION:\n- Stay cautious and double-check details if anything feels unusual.\n- Keep records of the message for your reference.",
-          "timestamp": "2026-11-24T13:20:21.296Z",
-          "messageType": "analysis"
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- The URL maybank-claim-bonus.xyz is not an official Maybank domain.\n- Official Maybank cashback offers are posted on maybank2u.com.my, not on a third‑party site.\n\nRECOMMENDATION:\n- Do not click the link or provide any personal information.\n- Verify any offer by visiting the official Maybank website or contacting Maybank customer service directly.",
+          "timestamp": "2026-11-24T14:16:17.797Z",
+          "messageType": "analysis",
+          "sources": [
+            {
+              "id": 1,
+              "url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/cashback-for-you.page",
+              "title": "By Invitation Only: Start Spending with your Maybank Credit Card for RM50 Cash Back | Maybank Malaysia",
+              "summary": "Note: This campaign is applicable for Maybank/Maybank Islamic Cardmembers who received invitation to participate through Short Messaging Service (SMS), Notification Letter and/or Electronic Direct Mailer (EDM).\n\n## Offer\n\nGet rewarded with RM50 Cash Back when you spend a cumulative amount of RM350 or more on eligible Retail and Online transactions with your Maybank/Maybank Islamic Credit Card. [...] # \\[By Invitation Only] Get Rewarded with RM50 Cash Back When You Spend\n\nExclusive with Maybank/Maybank Islamic Credit Cards\n\nCampaign Period: 23 September 2026 – 7 November 2026\n\nALL PROMOTIONS\n\n## Campaign Mechanics & Reward\n\nStart spending at your favourite stores or make any online retail pur"
+            },
+            {
+              "id": 2,
+              "url": "https://www.facebook.com/Maybank/posts/like-the-sound-of-rm50000-cash-prize-you-could-be-in-the-running-to-win-it-with-/1458154369758662",
+              "title": "Maybank on Facebook: \"Like the sound of RM50,000 Cash Prize? You could be in the running to win it with the Maybank Save D…\"",
+              "summary": "The more you save/invest or spend, the closer you could be to cash rewards of up to RM50,000.\n\nDiscover more at \n\nCampaign Period: 1 November 2026 - 28 February 2027. Terms and conditions apply.\n\nImages shown are for illustration purposes only. Maybank and Maybank Islamic are members of PIDM. Protection by PIDM is subject to insurability criteria. Please refer to the list of insured deposits displayed at Maybank2u website for further details. [...] [Image: A yellow promotional image with the text \"DISCOVER MORE WAYS TO BOOST YOUR ENTRIES\" in bold black letters. Below, a white pill-shaped box contains a yellow magnifying glass icon and the URL \"maybank.my/savedebit\". The campaign period reads"
+            },
+            {
+              "id": 3,
+              "url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/online_banking/maeturns5.page",
+              "title": "MAE Turns 5 | Maybank Malaysia",
+              "summary": "WE TURN 5, YOU\n\nEARN REWARDS .\n\nWITH MAE WALLET\n\nAND MORE!\n\n## Celebrating 5 years together with captivating rewards!\n\n \n\nYou may earn  \n5.50% p.a. bonus\n\nwhen you make an eligible   \n transaction with MAE Wallet\n\n \n\nEnjoy up to RM50 OFF\n\nwhen you check out via   \n Maybank2u Online Banking   \n at   \n participating stores or   \n platforms\n\nGet up to RM15 cashback\n\nwhen you complete 5 QR   \n payments (min. RM15 each)   \n via Scan & Pay with MAE\n\n \n\n# YOU MAY EARN 5.50% P.A. BONUS"
+            }
+          ]
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-11-24T13:20:14.944Z",
-      "updated_at": "2026-11-24T13:20:21.296Z"
+      "created_at": "2026-11-24T14:16:16.715Z",
+      "updated_at": "2026-11-24T14:16:17.797Z"
     },
     {
       "id": "MANUAL-1795508396601",

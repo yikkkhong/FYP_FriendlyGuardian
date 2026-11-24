@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
+import type { AttachmentPreview, WebSource } from "../chat/ChatMessageItem";
 import useTextToSpeech, { ReportSpeechRate } from "../../hooks/useTextToSpeech";
 
 export type RiskKey = "HIGH" | "MEDIUM" | "LOW" | "SAFE";
@@ -26,6 +27,19 @@ const RISK_COPY: Record<
     label: "Looks safe",
     headline: "No strong scam signals found.",
     guidance: "You can proceed, but keep normal security habits.",
+  },
+};
+
+const MEDIA_AUTH_COPY: Partial<typeof RISK_COPY> = {
+  HIGH: {
+    ...RISK_COPY.HIGH,
+    headline: "Possible AI-generated or edited file.",
+    guidance: "Treat this document with caution and verify its source.",
+  },
+  SAFE: {
+    ...RISK_COPY.SAFE,
+    headline: "No obvious AI generation signals found.",
+    guidance: "The file appears clean, though standard verification is still advised.",
   },
 };
 
@@ -87,6 +101,9 @@ function RiskIcon({ risk }: { risk: RiskKey }) {
 }
 
 interface ThreatReportCardProps {
+  sources?: WebSource[];
+  forensicImageUrl?: string;
+  onPreviewAttachment: (preview: AttachmentPreview, trigger: HTMLButtonElement) => void;
   speechOwner: object;
   report: {
     risk: RiskKey;
@@ -99,9 +116,14 @@ interface ThreatReportCardProps {
 export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
   report,
   speechOwner,
+  sources,
+  forensicImageUrl,
+  onPreviewAttachment,
   isNew = false,
 }) => {
-  const riskMeta = RISK_COPY[report.risk];
+  const isMediaAuthCheck = report.why.some(w => /AI (?:image )?generation/i.test(w));
+  const riskMeta = (isMediaAuthCheck ? MEDIA_AUTH_COPY[report.risk] : undefined)
+    ?? RISK_COPY[report.risk];
   // The same control owns manual playback and this message's automatic guidance.
   const { speak, stop, enabled, speechOwner: activeOwner } = useTextToSpeech();
   const rate = React.useContext(ReportSpeechRate);
@@ -286,6 +308,28 @@ export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
               );
             })}
           </ul>
+        </div>
+      )}
+      {(Boolean(sources?.length) || forensicImageUrl) && (
+        <div className="report-evidence">
+          {sources && sources.length > 0 && (
+            <button type="button" onClick={e => onPreviewAttachment({ name: "Web sources", sources }, e.currentTarget)}>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" />
+              </svg>
+              <span>Web Sources</span>
+            </button>
+          )}
+          {forensicImageUrl && (
+            <button type="button" onClick={e => onPreviewAttachment({
+              name: "Pixel noise map", src: forensicImageUrl, heatmap: true, isPdf: false,
+            }, e.currentTarget)}>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 8V3h5m8 0h5v5m0 8v5h-5m-8 0H3v-5M8 10h8m-8 4h8m-6-6v8m4-8v8" />
+              </svg>
+              <span>Pixel Noise Map</span>
+            </button>
+          )}
         </div>
       )}
     </article>

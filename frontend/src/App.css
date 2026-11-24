@@ -648,6 +648,88 @@ body {
   text-align: center;
 }
 
+.report-evidence, .evidence-reader nav {
+  display: flex;
+  gap: 8px;
+}
+.report-evidence {
+  position: absolute;
+  bottom: 14px;
+  right: 16px;
+  z-index: 5;
+}
+.report-evidence button, .evidence-reader button, .evidence-reader a {
+  font: inherit;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: var(--manual-primary);
+  background: rgba(15, 118, 110, 0.06);
+  border: 1px solid rgba(15, 118, 110, 0.2);
+  cursor: pointer;
+}
+.report-evidence button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 32px;
+  height: 32px;
+  padding: 0 7px;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #0f766e;
+  background: rgba(15, 118, 110, 0.08);
+  transition: max-width 0.25s cubic-bezier(0.22, 1, 0.36, 1), padding 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.report-evidence svg {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.evidence-summary {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 16px;
+  padding: 12px 16px 12px 32px;
+  border-radius: 10px;
+  background: #f8fafc;
+  line-height: 1.6;
+  list-style: disc;
+}
+.evidence-summary:empty { display: none; }
+.report-evidence button:is(:hover, :focus-visible) {
+  max-width: 180px;
+  padding: 0 12px;
+  background: #f2faf8;
+  box-shadow: -4px 4px 12px rgba(15, 23, 42, 0.08);
+  border-color: var(--manual-primary);
+}
+.evidence-reader {
+  padding: 16px;
+  overflow: auto;
+  background: #f8fafc;
+  flex: 1;
+}
+.evidence-reader nav { overflow-x: auto; padding-bottom: 12px; }
+.evidence-reader button[aria-pressed="true"] { background: var(--manual-primary); color: white; }
+.evidence-reader article {
+  padding: 20px;
+  border: 1px solid var(--manual-border);
+  border-radius: 12px;
+  background: white;
+  overflow-wrap: anywhere;
+}
+.evidence-reader p { margin: 12px 0; line-height: 1.55; }
+.evidence-reader .source-url, .heatmap-caption { color: var(--manual-muted); font-size: 13px; }
+.evidence-reader a { display: inline-block; text-decoration: none; }
+.heatmap-caption { padding: 12px 24px; line-height: 1.5; }
+
 /* Use the full workspace width on narrow screens to keep PDFs readable. */
 @media (max-width: 680px) {
   .manual-preview-drawer {

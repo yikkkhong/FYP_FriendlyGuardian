@@ -2,7 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { CloseIcon, MoreIcon } from "../components/icons/Icons";
 import ConfirmModal from "../components/common/ConfirmModal";
 import ChatMessageList from "../components/chat/ChatMessageList";
-import type { AttachmentPreview } from "../components/chat/ChatMessageItem";
+import type {
+  AttachmentPreview,
+  WebSource,
+} from "../components/chat/ChatMessageItem";
 import ChatComposer, {
   ChatComposerHandle,
 } from "../components/chat/ChatComposer";
@@ -14,6 +17,8 @@ import { handleEmptyStatePaste } from "../utils/pasteUtils";
 export type ManualMessageType = "analysis" | "follow_up" | "general";
 
 export interface ManualMessage {
+  sources?: WebSource[];
+  forensicImageUrl?: string;
   sender: "user" | "ai";
   text: string;
   time: string;
@@ -44,6 +49,20 @@ interface ManualViewProps {
   onResetProfile: () => void;
 }
 
+function summaryPoints(summary: string) {
+  const cleaned = summary
+    .replace(/\[([^\]]+)\]\(https?:\/\/[^)]+\)/g, "$1")
+    .replace(/\[[^\]]*\]|[#*`]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return cleaned
+    .split(/(?<=[.!?])\s+/)
+    .filter(Boolean)
+    .slice(0, 4)
+    .map((point) =>
+      point.length > 140 ? point.slice(0, 137).trimEnd() + "..." : point,
+    );
+}
 
 function pdfPreviewUrl(src: string) {
   const url = new URL(src);
@@ -69,6 +88,9 @@ export const ManualView: React.FC<ManualViewProps> = ({
   // Keep the attachment mounted while the drawer closes.
   const [preview, setPreview] = useState<AttachmentPreview | null>(null);
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [sourceIndex, setSourceIndex] = useState(0);
+  const source =
+    preview && "sources" in preview ? preview.sources[sourceIndex] : null;
   const [readyPdf, setReadyPdf] = useState<AttachmentPreview | null>(null);
   const previewTrigger = useRef<HTMLButtonElement | null>(null);
   const closePreviewButton = useRef<HTMLButtonElement>(null);
@@ -84,7 +106,9 @@ export const ManualView: React.FC<ManualViewProps> = ({
   useEffect(() => {
     setReadyPdf(null);
     if (!previewOpen || !preview?.isPdf) return;
-    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280;
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ? 0
+      : 280;
     const timer = window.setTimeout(() => setReadyPdf(preview), delay);
     return () => window.clearTimeout(timer);
   }, [preview, previewOpen]);
@@ -218,7 +242,6 @@ export const ManualView: React.FC<ManualViewProps> = ({
   const activeTitle = activeConversation?.title || "New check";
   const hasMessages = messages.length > 0;
 
-
   // const beginRename = (conversation: ManualConversationSummary) => {
   //   setRenamingId(conversation.id);
   //   setRenameValue(conversation.title || "New check");
@@ -309,14 +332,26 @@ export const ManualView: React.FC<ManualViewProps> = ({
                           Rename
                         </button>
                         {/* Active conversation tools use the existing overflow menu. */}
-                        <button type="button" role="menuitem" onClick={() => {
-                          setMenuOpenId(null);
-                          onExportReport();
-                        }}>Export Report</button>
-                        <button type="button" role="menuitem" onClick={() => {
-                          setMenuOpenId(null);
-                          setConfirmReset(true);
-                        }}>Reset Profile</button>
+                        <button
+                          type="button"
+                          role="menuitem"
+                          onClick={() => {
+                            setMenuOpenId(null);
+                            onExportReport();
+                          }}
+                        >
+                          Export Report
+                        </button>
+                        <button
+                          type="button"
+                          role="menuitem"
+                          onClick={() => {
+                            setMenuOpenId(null);
+                            setConfirmReset(true);
+                          }}
+                        >
+                          Reset Profile
+                        </button>
                         <button
                           type="button"
                           role="menuitem"
@@ -335,8 +370,18 @@ export const ManualView: React.FC<ManualViewProps> = ({
 
         <ChatMessageList
           onPreviewAttachment={(attachment, trigger) => {
+            const isEvidence = "sources" in attachment || attachment.heatmap;
+            if (
+              isEvidence &&
+              previewOpen &&
+              previewTrigger.current === trigger
+            ) {
+              closePreview();
+              return;
+            }
             previewTrigger.current = trigger;
             setPreview(attachment);
+            setSourceIndex(0);
             setPreviewOpen(true);
           }}
           messages={messages}
@@ -387,10 +432,46 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 <CloseIcon />
               </button>
             </header>
-            {preview.isPdf ? (
+            {"sources" in preview ? (
+              <section className="evidence-reader">
+                <nav aria-label="Web sources">
+                  {preview.sources.map((item, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      aria-pressed={i === sourceIndex}
+                      onClick={() => setSourceIndex(i)}
+                    >
+                      {new URL(item.url).hostname}
+                    </button>
+                  ))}
+                </nav>
+                {source && (
+                  <article>
+                    <h3>{source.title || new URL(source.url).hostname}</h3>
+                    <p className="source-url">{source.url}</p>
+                    <ul className="evidence-summary">
+                      {summaryPoints(source.summary).map((point, index) => (
+                        <li key={index}>{point}</li>
+                      ))}
+                    </ul>
+                    <a
+                      href={source.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open Live Website ↗
+                    </a>
+                  </article>
+                )}
+              </section>
+            ) : preview.isPdf ? (
               <div className="manual-preview-pdf">
                 {previewOpen && readyPdf === preview ? (
-                  <iframe src={pdfPreviewUrl(preview.src)} title={preview.name} />
+                  <iframe
+                    src={pdfPreviewUrl(preview.src)}
+                    title={preview.name}
+                  />
                 ) : (
                   <div className="manual-preview-pdf-placeholder" role="status">
                     Loading document...
@@ -398,9 +479,19 @@ export const ManualView: React.FC<ManualViewProps> = ({
                 )}
               </div>
             ) : (
-              <div className="manual-preview-image">
-                <img src={preview.src} alt={preview.name} />
-              </div>
+              <>
+                {preview.heatmap && (
+                  <p className="heatmap-caption">
+                    Uniform dark blue shows a consistent plain background.
+                    Bright or multicolored scatter shows pixel variation that
+                    may occur with editing, AI generation, or compression. Dark
+                    gray areas were excluded.
+                  </p>
+                )}
+                <div className="manual-preview-image">
+                  <img src={preview.src} alt={preview.name} />
+                </div>
+              </>
             )}
           </div>
         )}
@@ -418,7 +509,10 @@ export const ManualView: React.FC<ManualViewProps> = ({
           setResetToast(true);
         }}
       />
-      <div role="status" className={resetToast ? "manual-reset-toast" : undefined}>
+      <div
+        role="status"
+        className={resetToast ? "manual-reset-toast" : undefined}
+      >
         {resetToast && "Profile reset to standard mode."}
       </div>
 

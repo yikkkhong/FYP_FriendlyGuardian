@@ -268,6 +268,8 @@ class ChatMemory {
     if (extras.imageName) message.imageName = extras.imageName;
     if (extras.messageType) message.messageType = extras.messageType;
     if (extras.ocrText) message.ocrText = extras.ocrText;
+    if (Array.isArray(extras.sources)) message.sources = extras.sources;
+    if (extras.forensicImageUrl) message.forensicImageUrl = extras.forensicImageUrl;
 
     conversation.messages.push(message);
     conversation.updated_at = new Date().toISOString();
@@ -381,6 +383,8 @@ class ChatMemory {
         : new Date().toLocaleTimeString(),
       imageUrl: m.imageUrl || undefined,
       imageName: m.imageName || undefined,
+      sources: m.sources || [],
+      forensicImageUrl: m.forensicImageUrl,
       messageType: m.messageType || undefined,
     }));
   }

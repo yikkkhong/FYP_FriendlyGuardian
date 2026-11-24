@@ -71,10 +71,19 @@ function setupImageAnalysisRoute({
           : path.join(__dirname, "../python/venv/bin/python");
 
         const scriptPath = path.join(__dirname, "../python/imageAnalysis.py");
+        let conversationId = req.body?.conversationId || chatMemory.getActiveConversationId();
+        if (!conversationId || !chatMemory.getConversation(conversationId)) {
+          conversationId = chatMemory.createConversation("New check").id;
+        }
+        const dir = path.join(chatMemory.getManualUploadRoot(), conversationId);
+        fs.mkdirSync(dir, { recursive: true });
+        const filename = `heatmap-${require("crypto").randomUUID()}.png`;
+        const forensicImageUrl = `/uploads/manual/${conversationId}/${filename}`;
 
         const pyProcess = spawn(pythonExecutable, [
           scriptPath,
           transparentImagePath,
+          path.join(dir, filename),
         ]);
         let stdoutData = "";
 
@@ -104,15 +113,6 @@ function setupImageAnalysisRoute({
 
             if (result) {
               // save to memory
-              let conversationId =
-                req.body?.conversationId ||
-                chatMemory.getActiveConversationId();
-              if (
-                !conversationId ||
-                !chatMemory.getConversation(conversationId)
-              ) {
-                conversationId = chatMemory.createConversation("New check").id;
-              }
 
               const { imageUrl, imageName } = persistUploadedImage(
                 req.file,
@@ -136,16 +136,16 @@ function setupImageAnalysisRoute({
               // ai analysis result
               const riskLevel = result.isReal ? "SAFE" : "HIGH";
               const verdict = result.isReal
-                ? "REAL (Physical Authentic)"
-                : "AI GENERATED";
+                ? "No obvious signs of AI image generation detected."
+                : "Signs of AI generation or digital editing detected.";
               const detail = result.isReal
-                ? `Solid background pixels verified authentic (Uniform ratio: ${result.dominantRatio}%).`
-                : `Background noise variance detected, matching AI generative patterns (Dominant ratio: ${result.dominantRatio}%).`;
+                ? `Clean, uniform document background found (Background consistency: ${result.dominantRatio}%).`
+                : `Unnatural background pixel patterns found (Background consistency: ${result.dominantRatio}%).`;
               const rec = result.isReal
-                ? "File background verified authentic."
-                : "Likely AI-generated or tampered. Proceed with caution.";
+                ? "Visual background looks clean, but always verify the sender and payment details."
+                : "Do not rely on this file alone; verify it directly with the official sender.";
 
-              const formattedCard = `RISK LEVEL: ${riskLevel}\n\nWHY:\n- Verdict: ${verdict}\n- ${detail}\n\nRECOMMENDATION:\n- ${rec}`;
+              const formattedCard = `RISK LEVEL: ${riskLevel}\n\nWHY:\n- ${verdict}\n- ${detail}\n\nRECOMMENDATION:\n- ${rec}`;
 
               chatMemory.addMessage(
                 "assistant",
@@ -153,12 +153,14 @@ function setupImageAnalysisRoute({
                 conversationId,
                 {
                   messageType: "analysis",
+                  forensicImageUrl,
                 },
               );
 
               res.json({
                 success: true,
                 ...result,
+                forensicImageUrl,
                 conversationId,
                 conversations: chatMemory.getAllConversations(),
                 messages: chatMemory.toClientMessages(conversationId),

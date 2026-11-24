@@ -85,23 +85,35 @@ function createTimer(label) {
 
 // Exclude inline reasoning from displayed replies and archived summaries.
 function finalContent(content) {
-  return String(content || "").replace(/<think>[\s\S]*?(?:<\/think>|$)/gi, "").trim();
+  return String(content || "")
+    .replace(/<think>[\s\S]*?(?:<\/think>|$)/gi, "")
+    .trim();
 }
 
 // Local and cloud models can both overshoot the Tier 3 bullet limits.
 function compactTierThreeReport(text, matchedPhone) {
-  const report = text.match(/^RISK LEVEL:\s*(HIGH|MEDIUM|LOW|SAFE)\s+WHY:\s*([\s\S]*?)\s+RECOMMENDATION:\s*([\s\S]*)$/i);
+  const report = text.match(
+    /^RISK LEVEL:\s*(HIGH|MEDIUM|LOW|SAFE)\s+WHY:\s*([\s\S]*?)\s+RECOMMENDATION:\s*([\s\S]*)$/i,
+  );
   if (!report) return text;
-  const shortBullets = section => section.split(/\r?\n/)
-    .filter(line => /^\s*[-*•]\s+/.test(line))
-    .map(line => line.trim().slice(1).trim())
-    .filter(line => line && line.split(/\s+/).length < 8);
-  const reason = shortBullets(report[2])[0] || (matchedPhone
-    ? "This number was reported. Take your time."
-    : "You have time to check this.");
-  const actions = [...new Set([
-    ...shortBullets(report[3]), "Pause before responding.", "Call someone you trust.",
-  ])].slice(0, 2);
+  const shortBullets = (section) =>
+    section
+      .split(/\r?\n/)
+      .filter((line) => /^\s*[-*•]\s+/.test(line))
+      .map((line) => line.trim().slice(1).trim())
+      .filter((line) => line && line.split(/\s+/).length < 8);
+  const reason =
+    shortBullets(report[2])[0] ||
+    (matchedPhone
+      ? "This number was reported. Take your time."
+      : "You have time to check this.");
+  const actions = [
+    ...new Set([
+      ...shortBullets(report[3]),
+      "Pause before responding.",
+      "Call someone you trust.",
+    ]),
+  ].slice(0, 2);
   return `RISK LEVEL: ${report[1].toUpperCase()}\n\nWHY:\n- ${reason}\n\nRECOMMENDATION:\n- ${actions.join("\n- ")}`;
 }
 
@@ -130,7 +142,8 @@ function classifyAndCleanReply(rawReply, options = {}) {
 
   // Keep the first report and discard any restarted section before saving it.
   if (messageType === "analysis") {
-    const headers = /^[ \t*•#>\-]*(RISK LEVEL|WHY|RECOMMENDATION|MESSAGE_TYPE)[ \t]*:/gim;
+    const headers =
+      /^[ \t*•#>\-]*(RISK LEVEL|WHY|RECOMMENDATION|MESSAGE_TYPE)[ \t]*:/gim;
     const seen = new Set();
     let start = 0;
     let end = text.length;
@@ -181,7 +194,11 @@ function classifyAndCleanReply(rawReply, options = {}) {
 
 // 3-tier acoustic profile prompt instructions
 const PROFILE_INSTRUCTIONS = {
-  1: "", // Tier 1: Standard Adult (keep default professional tone)
+  1: `
+SPEAKER PROFILE: Standard Adult
+- Keep each WHY and RECOMMENDATION bullet to one crisp, single-clause sentence on one line, with at most 14 words.
+- Use one point per bullet, even when citing web evidence. Never join sentences or clauses with semicolons.
+`,
   2: `
 SPEAKER PROFILE: Senior (60-75 years old)
 - Use a warm, polite, and reassuring tone.
@@ -256,7 +273,17 @@ WHY:
 RECOMMENDATION:
 - [First physical action, under 8 words]
 - [Second physical action, under 8 words]`
-        : `RISK LEVEL: [HIGH / MEDIUM / LOW / SAFE]
+        : profileTier === 1
+          ? `RISK LEVEL: [HIGH / MEDIUM / LOW / SAFE]
+
+WHY:
+- [First reason. Write one single-clause sentence of at most 14 words.]
+- [Second reason. Write one single-clause sentence of at most 14 words.]
+
+RECOMMENDATION:
+- [First action. Write one single-clause sentence of at most 14 words.]
+- [Second action. Write one single-clause sentence of at most 14 words.]`
+          : `RISK LEVEL: [HIGH / MEDIUM / LOW / SAFE]
 
 WHY:
 - [Direct reason 1]
@@ -398,7 +425,11 @@ If a search returned no evidence, state that the claim could not be verified onl
       );
     }
 
-    chatMemory.addMessage("assistant", reply, activeId, { messageType });
+    const sources = Array.isArray(evidence) ? evidence : [];
+    chatMemory.addMessage("assistant", reply, activeId, {
+      messageType,
+      sources,
+    });
 
     const allMessages = chatMemory.getMessages(activeId);
     if (allMessages.length > chatMemory.maxRecentMessages) {
@@ -421,6 +452,7 @@ If a search returned no evidence, state that the claim could not be verified onl
 
     return {
       message: reply,
+      sources,
       usedLocalFallback,
       messageType,
       conversationId: activeId,
