@@ -129,7 +129,7 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
           )}
         </div>
       ) : showRiskCard && report ? (
-        <ThreatReportCard report={report!} isNew={!isUser && isLatest} />
+        <ThreatReportCard report={report!} speechOwner={message} isNew={!isUser && isLatest} />
       ) : (
         // <div className="plain-ai-bubble">{m.text}</div>
         <AiResponseCard content={message.text} />

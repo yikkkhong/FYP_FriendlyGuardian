@@ -43,6 +43,8 @@ interface ManualViewProps {
   onSelectConversation: (conversationId: string) => void;
   onRenameConversation: (conversationId: string, title: string) => void;
   onDeleteConversation: (conversationId: string) => void;
+  onExportReport: () => void;
+  onResetProfile: () => void;
 }
 
 const API_ORIGIN = "http://localhost:5000";
@@ -58,6 +60,8 @@ export const ManualView: React.FC<ManualViewProps> = ({
   onSelectConversation,
   onRenameConversation,
   onDeleteConversation,
+  onExportReport,
+  onResetProfile,
 }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   // const [menuOpenId, setMenuOpenId] = useState<string | null>(null);
@@ -272,6 +276,15 @@ export const ManualView: React.FC<ManualViewProps> = ({
                         >
                           Rename
                         </button>
+                        {/* Active conversation tools use the existing overflow menu. */}
+                        <button type="button" role="menuitem" onClick={() => {
+                          setMenuOpenId(null);
+                          onExportReport();
+                        }}>Export Report</button>
+                        <button type="button" role="menuitem" onClick={() => {
+                          setMenuOpenId(null);
+                          onResetProfile();
+                        }}>Reset Profile</button>
                         <button
                           type="button"
                           role="menuitem"

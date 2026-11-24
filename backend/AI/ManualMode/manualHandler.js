@@ -166,6 +166,8 @@ function registerManualSocket(socket, io) {
       const result = await chatWithManualAI(
         data.text,
         data.conversationId || null,
+        // Use the client's session tier for typed follow-ups.
+        { audioProfile: [1, 2, 3].includes(data.tier) ? { tier: data.tier } : undefined },
       );
 
       socket.emit("manual_chat_response", {

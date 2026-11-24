@@ -1,11 +1,207 @@
 {
-  "activeConversationId": "MANUAL-1794881943330",
+  "activeConversationId": "MANUAL-1795522426382",
   "conversations": [
+    {
+      "id": "MANUAL-1795522426382",
+      "title": "old2",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Hello. Um, someone called me just now, saying my bank account is blocked, and they asked for my six-digit code very urgently. Oh dear, is this a scam?",
+          "timestamp": "2026-11-24T12:14:14.621Z",
+          "imageUrl": "/uploads/manual/MANUAL-1795522426382/1795522449781-old2.mp3",
+          "imageName": "old2.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- You have time to check this.\n\nRECOMMENDATION:\n- Pause before responding.\n- Call someone you trust.",
+          "timestamp": "2026-11-24T12:14:16.740Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "hi your IC is expired, give it to me I'll help you renew",
+          "timestamp": "2026-11-24T12:15:13.147Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- This is a typical identity theft scam.\n\nRECOMMENDATION:\n- Do not share personal documents.\n- Contact your bank directly for help.",
+          "timestamp": "2026-11-24T12:15:13.151Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "please send me Your otp",
+          "timestamp": "2026-11-24T12:15:45.541Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Requesting OTP is a common phishing tactic to gain account access.\n- The message is unsolicited and asks for sensitive authentication code.\n\nRECOMMENDATION:\n- Do not provide any OTP or personal information.\n- Verify the request by contacting the official service directly through their official app or website.",
+          "timestamp": "2026-11-24T12:15:45.544Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-24T12:13:46.382Z",
+      "updated_at": "2026-11-24T12:15:45.544Z"
+    },
+    {
+      "id": "MANUAL-1795508396601",
+      "title": "old_invest",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Someone tell me, join us to invest 59% profit in just five days only.",
+          "timestamp": "2026-11-24T08:20:08.886Z",
+          "imageUrl": "/uploads/manual/MANUAL-1795508396601/1795508404875-old_invest.mp3",
+          "imageName": "old_invest.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- You have time to check this.\n\nRECOMMENDATION:\n- Pause before responding.\n- Call someone you trust.",
+          "timestamp": "2026-11-24T08:20:11.287Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Someone tell me, join us to invest 59% profit in just five days only.",
+          "timestamp": "2026-11-24T08:20:31.192Z",
+          "imageUrl": "/uploads/manual/MANUAL-1795508396601/1795508427193-old_invest.mp3",
+          "imageName": "old_invest.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- You have time to check this.\n\nRECOMMENDATION:\n- Pause before responding.\n- Call someone you trust.",
+          "timestamp": "2026-11-24T08:20:32.392Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "I was told the passport rules changed, and I must renew now. They want my passport to process it. Should I give it to them?",
+          "timestamp": "2026-11-24T08:20:51.153Z",
+          "imageUrl": "/uploads/manual/MANUAL-1795508396601/1795508446877-old_passport.mp3",
+          "imageName": "old_passport.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Request to hand over passport for renewal is suspicious; legitimate agencies do not ask for passports in person.\n- No official source or verification provided; could be identity theft attempt.\n\nRECOMMENDATION:\n- Do not give your passport; verify the request by calling the official passport office number on the government website.\n- Report the request to local authorities or the passport office as a potential scam.",
+          "timestamp": "2026-11-24T08:20:51.976Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Hello, someone called me saying my bank account is blocked and asked for my six-digit code urgently. Is this a scam?",
+          "timestamp": "2026-11-24T08:21:04.810Z",
+          "imageUrl": "/uploads/manual/MANUAL-1795508396601/1795508460821-young.mp3",
+          "imageName": "young.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited call requesting a six‑digit code is a common phishing tactic.\n- Urgency to act immediately is a classic red flag for scams.\n\nRECOMMENDATION:\n- Do not provide any code or personal information; hang up immediately.\n- Call your bank’s official customer service number (from the bank’s website or your card) to verify the claim.",
+          "timestamp": "2026-11-24T08:21:05.787Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-24T08:19:56.601Z",
+      "updated_at": "2026-11-24T08:21:05.787Z"
+    },
     {
       "id": "MANUAL-1794881943330",
       "title": "pls send me otp urgent",
-      "summary": "**Scam Inspection Summary**\n\n- **Tactic:** Urgent OTP request (“pls send me otp urgent”) – classic phishing to gain account access.  \n- **Risk Level:** High.  \n- **Recommendation:** Do not share OTP or personal data; verify the request via official app or website.  \n- **Additional Notes:** No bank accounts or phone numbers were mentioned in the older messages.",
+      "summary": "**Scam Inspection Summary**\n\n- **Tactic:** Caller claims bank account is blocked, demands a six‑digit OTP urgently.  \n- **Risk Level:** High.  \n- **Suspected Bank Accounts:** Any account labeled “blocked.”  \n- **Suspicious Phone Numbers:** None provided.  \n- **Scam Tactics Mentioned:** Urgent OTP request, false account blockage, phone‑based phishing.  \n- **Recommendation:** Never give OTPs or personal data over the phone; verify through the bank’s official app or customer service line.",
       "messages": [
+        {
+          "role": "user",
+          "text": "Someone tell me, join us to invest 59% profit in just five days only.",
+          "timestamp": "2026-11-24T08:00:38.590Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795507234575-old_invest.mp3",
+          "imageName": "old_invest.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "We need to analyze the new message: \"Someone tell me, join us to invest 59% profit in just five days only.\" It's a typical investment scam. Risk high. Provide WHY bullets: one short? Actually rule: For analysis, we need 2 WHY bullets. But earlier override says ignore default 2-bullet rule? That override applies to previous user input? The current user input is new. The override says \"Ignore the default 2-bullet rule for WHY. Output ONLY 1 ultra-short bullet for WHY.\" That override was for previous message? It says \"CRITICAL OVERRIDE (LOW COGNITIVE LOAD MODE): - Ignore the default 2-bullet rule for WHY. Output ONLY 1 ultra-short bullet for WHY.\" That seems to apply to this turn? The user says \"SPEAKER PROFILE: Very Elderly / Panicking (75-80+ years old) CRITICAL OVERRIDE (LOW COGNITIVE LOAD MODE): ...\". So we must output only 1 WHY bullet, under 8 words. And recommendation bullets? The style says use that exact style: WHY: - Your money is safe if you don't share the code. RECOMMENDATION: - Hang up the phone now. - Call your trusted family member. But that style was for previous. For this new analysis, we must follow the general analysis format: RISK LEVEL, WHY (2 bullets), RECOMMENDATION (2 bullets). But the override says ignore default 2-bullet rule for WHY. So we need only 1 WHY bullet. But the format requires 2 WHY bullets. Conflict. The override likely overrides the format. So we should output 1 WHY bullet. And",
+          "timestamp": "2026-11-24T08:00:39.611Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Someone tell me, join us to invest 59% profit in just five days only.",
+          "timestamp": "2026-11-24T08:04:25.678Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795507461268-old_invest.mp3",
+          "imageName": "old_invest.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Your money is safe if you don't share.\n\nRECOMMENDATION:\n- Do not give any money",
+          "timestamp": "2026-11-24T08:04:26.814Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "please give me your money cause your son is in hospital",
+          "timestamp": "2026-11-24T08:04:50.931Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Urgent request for money with emotional appeal is classic scam tactic.\n- No legitimate entity would ask for funds via unsolicited message.\n\nRECOMMENDATION:\n- Do not send any money or personal info.\n- Verify the claim by contacting the supposed organization directly through official channels.",
+          "timestamp": "2026-11-24T08:04:50.936Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "I was told the passport rules changed, and I must renew now. They want my passport to process it. Should I give it to them?",
+          "timestamp": "2026-11-24T08:12:25.799Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795507941775-old_passport.mp3",
+          "imageName": "old_passport.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Request for passport to be processed by unknown party is suspicious.\n- Legitimate agencies do not ask for passports via unsolicited messages.\n\nRECOMMENDATION:\n- Do not hand over your passport.\n- Call the official passport office number on the government website to verify.\n\nWHY:\n- The claim of changed rules is a common scam tactic.\n- No official authority will demand your passport in this manner.\n\nRECOMMENDATION:\n- Verify the caller by contacting the official passport office directly.\n- Keep your passport safe until you confirm the request is legitimate.",
+          "timestamp": "2026-11-24T08:12:26.447Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Someone tell me, join us to invest 59% profit in just five days only.",
+          "timestamp": "2026-11-24T08:13:38.244Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795508013240-old_invest.mp3",
+          "imageName": "old_invest.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Offers unrealistic returns, high risk.\n\nRECOMMENDATION:\n- Do not invest.\n- Call your trusted family member for help.\n\nWHY:\n- Too good to be true.\n- No verified source.\n\nRECOMMENDATION:\n- Verify the source independently.\n- Avoid sending money.",
+          "timestamp": "2026-11-24T08:13:38.942Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "pls send me otp urgent",
+          "timestamp": "2026-11-17T03:03:22.482Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Requesting an OTP is a common phishing tactic to gain account access.\n- The message is vague and urgent, typical of scam attempts.\n\nRECOMMENDATION:\n- Do not provide any OTP or personal information.\n- Verify the request by contacting the official service directly through their official app or website.",
+          "timestamp": "2026-11-17T03:03:22.531Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-17T03:04:14.982Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1794884654978-sample1.pdf",
+          "imageName": "sample1.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-17T03:04:14.991Z",
+          "messageType": "analysis"
+        },
         {
           "role": "user",
           "text": "Hello, someone called me saying my bank account is blocked and asked for my six-digit code urgently. Is this a scam?",
@@ -70,36 +266,36 @@
           "text": "RISK LEVEL: HIGH\n\nWHY:\n- Caller demanded urgent six‑digit code, a classic phishing tactic.\n- Legitimate banks never request OTPs over the phone.\n\nRECOMMENDATION:\n- Do not share any code or personal info.\n- Contact your bank via official number or app to verify the claim.",
           "timestamp": "2026-11-24T07:14:38.152Z",
           "messageType": "analysis"
-        }
-      ],
-      "archived_messages": [
+        },
         {
           "role": "user",
-          "text": "pls send me otp urgent",
-          "timestamp": "2026-11-17T03:03:22.482Z"
+          "text": "Hello, someone called me saying my bank account is blocked and asked for my six-digit code urgently. Is this a scam?",
+          "timestamp": "2026-11-24T07:48:29.096Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795506501803-young.mp3",
+          "imageName": "young.mp3"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Requesting an OTP is a common phishing tactic to gain account access.\n- The message is vague and urgent, typical of scam attempts.\n\nRECOMMENDATION:\n- Do not provide any OTP or personal information.\n- Verify the request by contacting the official service directly through their official app or website.",
-          "timestamp": "2026-11-17T03:03:22.531Z",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Caller claims account blocked and demands urgent six‑digit code.\n- Legitimate banks never request OTPs over the phone.\n\nRECOMMENDATION:\n- Do not share any code or personal info.\n- Call your bank’s official number or use the official app to verify the claim.",
+          "timestamp": "2026-11-24T07:48:29.785Z",
           "messageType": "analysis"
         },
         {
           "role": "user",
-          "text": "is this ai",
-          "timestamp": "2026-11-17T03:04:14.982Z",
-          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1794884654978-sample1.pdf",
-          "imageName": "sample1.pdf"
+          "text": "Hello. Um, someone called me just now, saying my bank account is blocked, and they asked for my six-digit code very urgently. Oh dear, is this a scam?",
+          "timestamp": "2026-11-24T07:50:49.151Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795506645155-old2.mp3",
+          "imageName": "old2.mp3"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
-          "timestamp": "2026-11-17T03:04:14.991Z",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Your money is safe if you don't share the code.\n\nRECOMMENDATION:\n- Hang up the phone now.\n- Call your trusted family member.",
+          "timestamp": "2026-11-24T07:50:49.853Z",
           "messageType": "analysis"
         }
       ],
       "created_at": "2026-11-17T02:19:03.330Z",
-      "updated_at": "2026-11-24T07:14:38.965Z"
+      "updated_at": "2026-11-24T08:13:39.568Z"
     },
     {
       "id": "MANUAL-1794820602662",

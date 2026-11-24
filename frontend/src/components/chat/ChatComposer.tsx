@@ -10,7 +10,7 @@ import React, {
   forwardRef,
 } from "react";
 import VoiceInputButton, { VoiceInputHandle } from "../common/VoiceInputButton";
-import { CameraIcon, CloseIcon } from "../icons/Icons";
+import { PaperclipIcon, CloseIcon } from "../icons/Icons";
 import ImagePreview from "../widgets/ImagePreview";
 import { handlePasteImage } from "../../utils/pasteUtils";
 
@@ -326,10 +326,10 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
               className="query-upload-btn"
               onClick={() => fileInputRef.current?.click()}
               disabled={isLoading}
-              aria-label="Upload suspicious screenshot"
-              title="Upload suspicious screenshot"
+              aria-label="Upload image, PDF, or audio"
+              title="Upload image, PDF, or audio"
             >
-              <CameraIcon />
+              <PaperclipIcon />
             </button>
           )}
 

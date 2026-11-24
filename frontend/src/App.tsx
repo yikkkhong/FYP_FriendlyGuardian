@@ -9,7 +9,7 @@ import ManualView, {
   ManualMessageType,
 } from "./views/ManualView";
 import { Header } from "./components/common/Header";
-import useTextToSpeech from "./hooks/useTextToSpeech";
+import useTextToSpeech, { ReportSpeechRate } from "./hooks/useTextToSpeech";
 import {
   Notification,
   Notification as NotificationType,
@@ -29,21 +29,24 @@ const App: React.FC = () => {
     localStorage.setItem("text-size", textSize);
   }, [textSize]);
 
-  const { speak } = useTextToSpeech();
+  // The learned tier lives only in the current session.
+  const [sessionTier, setSessionTier] = useState(1);
+  const [manualMessages, setManualMessages] = useState<ManualMessage[]>([]);
+  const { speak, stop } = useTextToSpeech();
   const [pendingGuidance, setPendingGuidance] = useState("");
   useEffect(() => {
     if (pendingGuidance) {
       const lang = /[\u4e00-\u9fff]/.test(pendingGuidance) ? "zh-CN" : "en-US";
-      speak(pendingGuidance, lang, 0.80);
+      const latestMessage = manualMessages[manualMessages.length - 1];
+      speak(pendingGuidance, lang, 0.80, latestMessage);
       setPendingGuidance("");
     }
-  }, [pendingGuidance, speak]);
+  }, [pendingGuidance, manualMessages, speak]);
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [blockedCount, setBlockedCount] = useState<number>(12);
   const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
   // Manual Mode
-  const [manualMessages, setManualMessages] = useState<ManualMessage[]>([]);
   const [isManualLoading, setIsManualLoading] = useState<boolean>(false);
   const [manualConversations, setManualConversations] = useState<
     ManualConversationSummary[]
@@ -192,6 +195,7 @@ const App: React.FC = () => {
 
   const handleNewManualConversation = () => {
     if (!socket || !socket.connected) return;
+    setSessionTier(1);
     setIsManualLoading(false);
     socket.emit("manual_new_conversation");
   };
@@ -230,6 +234,7 @@ const App: React.FC = () => {
 
     if (socket && socket.connected) {
       socket.emit("manual_chat", {
+        tier: sessionTier,
         text,
         conversationId: conversationId || undefined,
       });
@@ -331,6 +336,9 @@ const App: React.FC = () => {
         const data = await res.json();
 
         if (!res.ok) throw new Error(data.error || "Upload failed.");
+        if (isAudio && [1, 2, 3].includes(data.audioProfile?.tier)) {
+          setSessionTier(data.audioProfile.tier);
+        }
         if (isAudio && data.audioProfile?.tier === 3) {
           setTextSize("large");
           addNotification("Senior Care Mode activated (Large text & slow voice guidance).", "info");
@@ -430,6 +438,37 @@ const App: React.FC = () => {
     );
   };
 
+  // Clear adaptive settings on shared devices without changing the conversation.
+  const handleResetProfile = () => {
+    setSessionTier(1);
+    setTextSize("normal");
+    setPendingGuidance("");
+    stop();
+    addNotification("User profile reset to standard mode.", "info");
+  };
+
+  // Export the active chat locally, including its saved attachment references.
+  const handleExportReport = () => {
+    const title = manualConversations.find(c => c.id === activeManualConversationId)?.title || "New check";
+    const now = new Date();
+    const entries = manualMessages.map(message => [
+      `[${message.time}] ${message.sender === "user" ? "User" : "Guardian"}`,
+      message.text,
+      message.imageName && `Attachment: ${message.imageName}`,
+      message.imageUrl && !message.imageUrl.startsWith("blob:") && message.imageUrl,
+    ].filter(Boolean).join("\n"));
+    const report = ["Friendly Guardian Incident Report", title, `Exported: ${now.toLocaleString()}`,
+      "", entries.join("\n\n")].join("\n");
+    const url = URL.createObjectURL(new Blob([report], { type: "text/plain;charset=utf-8" }));
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `FriendlyGuardian-Report-${now.toLocaleDateString("sv-SE")}.txt`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  };
+
   const handleClearAllNotifications = () => {
     setNotifications([]);
   };
@@ -449,6 +488,7 @@ const App: React.FC = () => {
       />
 
       <main className="stage-viewport">
+        <ReportSpeechRate.Provider value={textSize === "large" || sessionTier === 3 ? 0.80 : 0.95}>
         {/* ) : ( */}
         <ManualView
           blockedCount={blockedCount}
@@ -462,7 +502,10 @@ const App: React.FC = () => {
           onSelectConversation={handleSelectManualConversation}
           onRenameConversation={handleRenameManualConversation}
           onDeleteConversation={handleDeleteManualConversation}
+          onExportReport={handleExportReport}
+          onResetProfile={handleResetProfile}
         />
+        </ReportSpeechRate.Provider>
       </main>
     </div>
   );

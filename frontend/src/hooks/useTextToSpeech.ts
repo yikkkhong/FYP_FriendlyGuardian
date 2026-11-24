@@ -1,14 +1,28 @@
-import { useState, useEffect, useCallback } from "react";
+import { createContext, useState, useEffect, useCallback, useSyncExternalStore } from "react";
+
+// Browser narration is shared. Identify the message that owns the current utterance.
+export const ReportSpeechRate = createContext(0.95);
+let current: { utterance: SpeechSynthesisUtterance; owner?: object } | null = null;
+const listeners = new Set<() => void>();
+function setCurrent(next: typeof current) {
+  current = next;
+  listeners.forEach(notify => notify());
+}
+function subscribe(notify: () => void) {
+  listeners.add(notify);
+  return () => { listeners.delete(notify); };
+}
+const snapshot = () => current;
 
 export default function useTextToSpeech(defaultLang = "zh-CN") {
   // The switch state is stored in `localStorage`, so it persists after a page refresh (meaning if an elderly person turns it on once, it stays on).
   const [enabled, setEnabled] = useState(() => {
-    return localStorage.getItem("tts-enabled") !== "false";
+    return typeof localStorage === "undefined" || localStorage.getItem("tts-enabled") !== "false";
   });
-  const [speaking, setSpeaking] = useState(false);
+  const active = useSyncExternalStore(subscribe, snapshot, () => null);
 
   const speak = useCallback(
-    (text: string, lang?: string, rate = 0.95) => {
+    (text: string, lang?: string, rate = 0.95, owner?: object) => {
       if (!enabled || !("speechSynthesis" in window)) return;
       window.speechSynthesis.cancel(); // stop speech if other speaking
 
@@ -19,9 +33,10 @@ export default function useTextToSpeech(defaultLang = "zh-CN") {
       const u = new SpeechSynthesisUtterance(clean);
       u.lang = lang ?? defaultLang;
       u.rate = rate;
-      u.onend = () => setSpeaking(false);
-      u.onerror = () => setSpeaking(false);
-      setSpeaking(true);
+      u.onend = u.onerror = () => {
+        if (current?.utterance === u) setCurrent(null);
+      };
+      setCurrent({ utterance: u, owner });
       window.speechSynthesis.speak(u);
     },
     [enabled, defaultLang],
@@ -29,7 +44,7 @@ export default function useTextToSpeech(defaultLang = "zh-CN") {
 
   const stop = useCallback(() => {
     window.speechSynthesis?.cancel();
-    setSpeaking(false);
+    setCurrent(null);
   }, []);
 
   const toggleEnabled = useCallback(() => {
@@ -45,5 +60,5 @@ export default function useTextToSpeech(defaultLang = "zh-CN") {
     if (!enabled) stop();
   }, [enabled, stop]);
 
-  return { enabled, speaking, speak, stop, toggleEnabled };
+  return { enabled, speaking: !!active, speechOwner: active?.owner, speak, stop, toggleEnabled };
 }

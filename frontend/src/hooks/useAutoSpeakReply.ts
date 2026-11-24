@@ -34,7 +34,8 @@ export function useAutoSpeakReply({
 
         // Determine the language of the message based on whether it contains Chinese characters
         const isChinese = /[\u4e00-\u9fa5]/.test(latestMsg.text);
-        speak(latestMsg.text, isChinese ? "zh-CN" : "en-US");
+        // Let this report's button stop voice-triggered replies too.
+        speak(latestMsg.text, isChinese ? "zh-CN" : "en-US", undefined, latestMsg);
       }
     }
     prevMessagesCountRef.current = messages.length;

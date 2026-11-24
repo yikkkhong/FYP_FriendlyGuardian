@@ -74,9 +74,20 @@
 }
 
 .report-verdict {
+  /* Reserve the corner for playback in both horizontal and stacked layouts. */
+  position: relative;
+  padding-inline-end: 38px;
   display: flex;
   align-items: flex-start;
   gap: 12px;
+}
+
+.report-verdict .report-speech-button {
+  position: absolute;
+  opacity: 1;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  color: var(--manual-accent, #14776c);
 }
 
 .report-verdict-copy h3 {

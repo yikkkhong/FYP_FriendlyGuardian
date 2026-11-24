@@ -2,6 +2,17 @@ import React from "react";
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {}
 
+// One attachment control accepts images, documents, and recordings.
+export function PaperclipIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+      strokeLinejoin="round" aria-hidden="true" {...props}>
+      <path d="m21 11-9 9a6 6 0 0 1-8.5-8.5l10-10a4 4 0 0 1 5.7 5.7l-10 10a2 2 0 0 1-2.8-2.8l9-9" />
+    </svg>
+  );
+}
+
 export function CameraIcon(props: IconProps) {
   return (
     <svg

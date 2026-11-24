@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
+import useTextToSpeech, { ReportSpeechRate } from "../../hooks/useTextToSpeech";
 
 export type RiskKey = "HIGH" | "MEDIUM" | "LOW" | "SAFE";
 
@@ -34,7 +35,10 @@ export function parseReport(rawText: string) {
 
   const risk = riskMatch[1].toUpperCase() as RiskKey;
   const whyMatch = rawText.match(/WHY:\s*([\s\S]*?)(?=RECOMMENDATION:|$)/i);
-  const recMatch = rawText.match(/RECOMMENDATION:\s*([\s\S]*?)$/i);
+  // Older saved replies can restart a report after the first action list.
+  const recMatch = rawText.match(
+    /RECOMMENDATION:([\s\S]*?)(?=\r?\n[ \t*•#>\-]*(?:WHY|RISK LEVEL|RECOMMENDATION|MESSAGE_TYPE)[ \t]*:|$)/i,
+  );
 
   const parseBullets = (str: string | undefined) =>
     str
@@ -83,6 +87,7 @@ function RiskIcon({ risk }: { risk: RiskKey }) {
 }
 
 interface ThreatReportCardProps {
+  speechOwner: object;
   report: {
     risk: RiskKey;
     why: string[];
@@ -93,9 +98,14 @@ interface ThreatReportCardProps {
 
 export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
   report,
+  speechOwner,
   isNew = false,
 }) => {
   const riskMeta = RISK_COPY[report.risk];
+  // The same control owns manual playback and this message's automatic guidance.
+  const { speak, stop, enabled, speechOwner: activeOwner } = useTextToSpeech();
+  const rate = React.useContext(ReportSpeechRate);
+  const isSpeaking = activeOwner === speechOwner;
   const hasStreamedRef = useRef(!isNew);
 
   const segments = useMemo(() => {
@@ -193,6 +203,22 @@ export const ThreatReportCard: React.FC<ThreatReportCardProps> = ({
       aria-label={`Risk result: ${riskMeta.label}`}
     >
       <div className="report-verdict">
+        <button className="manual-icon-btn report-speech-button" type="button"
+          aria-label={isSpeaking ? "Stop reading report" : "Read report aloud"}
+          title={isSpeaking ? "Stop reading report" : "Read report aloud"}
+          disabled={!enabled || typeof window === "undefined" || !window.speechSynthesis}
+          onClick={() => {
+            if (isSpeaking) return stop();
+            const narration = [riskMeta.headline, "Why.", ...report.why,
+              "What to do next.", ...report.recommendations].join("\n");
+            speak(narration, /[\u4e00-\u9fff]/.test(narration) ? "zh-CN" : "en-US", rate, speechOwner);
+          }}>
+          <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true">
+            {isSpeaking ? <rect x="5" y="5" width="14" height="14" rx="2" fill="currentColor" /> :
+              <path d="M3 9h4l5-4v14l-5-4H3z M16 8a6 6 0 0 1 0 8 M19 5a10 10 0 0 1 0 14"
+                fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" />}
+          </svg>
+        </button>
         <div className={`risk-level-badge ${report.risk.toLowerCase()}`}>
           <RiskIcon risk={report.risk} />
           <span>{riskMeta.label}</span>
