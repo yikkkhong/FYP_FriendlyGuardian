@@ -60,7 +60,9 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
       const isPdf =
         file.type === "application/pdf" || file.name.endsWith(".pdf");
 
-      if (!isImage && !isPdf) return;
+      const isAudio = file.type.startsWith("audio/");
+
+      if (!isImage && !isPdf && !isAudio) return;
 
       setSelectedFile(file);
 
@@ -294,7 +296,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
             type="file"
             ref={fileInputRef}
             className="manual-file-input"
-            accept="image/*, application/pdf"
+            accept="image/*, application/pdf, audio/*"
             onChange={handleImageUpload}
           />
 

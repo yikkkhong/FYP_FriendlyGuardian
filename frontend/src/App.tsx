@@ -9,6 +9,7 @@ import ManualView, {
   ManualMessageType,
 } from "./views/ManualView";
 import { Header } from "./components/common/Header";
+import useTextToSpeech from "./hooks/useTextToSpeech";
 import {
   Notification,
   Notification as NotificationType,
@@ -20,6 +21,23 @@ import "./index.css";
 let socket: Socket;
 
 const App: React.FC = () => {
+  const [textSize, setTextSize] = useState<"normal" | "large">(() =>
+    localStorage.getItem("text-size") === "large" ? "large" : "normal",
+  );
+  useEffect(() => {
+    document.documentElement.setAttribute("data-text-size", textSize);
+    localStorage.setItem("text-size", textSize);
+  }, [textSize]);
+
+  const { speak } = useTextToSpeech();
+  const [pendingGuidance, setPendingGuidance] = useState("");
+  useEffect(() => {
+    if (pendingGuidance) {
+      const lang = /[\u4e00-\u9fff]/.test(pendingGuidance) ? "zh-CN" : "en-US";
+      speak(pendingGuidance, lang, 0.80);
+      setPendingGuidance("");
+    }
+  }, [pendingGuidance, speak]);
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [blockedCount, setBlockedCount] = useState<number>(12);
   const [notifications, setNotifications] = useState<NotificationType[]>([]);
@@ -235,7 +253,8 @@ const App: React.FC = () => {
     const conversationId = activeManualConversationId;
     const localPreview = URL.createObjectURL(file);
 
-    const isAiCheck = /is this ai/i.test(queryText.trim());
+    const isAudio = file.type.startsWith("audio/");
+    const isAiCheck = !isAudio && /is this ai/i.test(queryText.trim());
 
     setManualMessages((prev) => [
       ...prev,
@@ -249,7 +268,7 @@ const App: React.FC = () => {
     ]);
 
     const formData = new FormData();
-    formData.append("image", file);
+    formData.append(isAudio ? "audio" : "image", file);
 
     if (queryText) {
       formData.append("queryText", queryText);
@@ -304,11 +323,19 @@ const App: React.FC = () => {
           setManualMessages(data.messages);
         }
       } else {
-        const res = await fetch("http://localhost:5000/api/manual-scan-image", {
+        const endpoint = isAudio ? "manual-scan-audio" : "manual-scan-image";
+        const res = await fetch(`http://localhost:5000/api/${endpoint}`, {
           method: "POST",
           body: formData,
         });
         const data = await res.json();
+
+        if (!res.ok) throw new Error(data.error || "Upload failed.");
+        if (isAudio && data.audioProfile?.tier === 3) {
+          setTextSize("large");
+          addNotification("Senior Care Mode activated (Large text & slow voice guidance).", "info");
+          setPendingGuidance(data.analysis || "");
+        }
 
         if (data.usedLocalFallback) {
           addNotification(
@@ -354,7 +381,7 @@ const App: React.FC = () => {
         }
       }
     } catch (err) {
-      console.error("Image upload failed:", err);
+      console.error("Manual upload failed:", err);
       setManualMessages((prev) => {
         const next = [...prev];
         for (let i = next.length - 1; i >= 0; i -= 1) {
@@ -369,7 +396,7 @@ const App: React.FC = () => {
         }
         next.push({
           sender: "ai",
-          text: "Failed to upload or inspect image. Please try again.",
+          text: `Failed to upload or inspect ${isAudio ? "audio" : "image"}. Please try again.`,
           messageType: "general",
           time: new Date().toLocaleTimeString(),
         });
@@ -411,6 +438,8 @@ const App: React.FC = () => {
     <div className="canvas-root" data-mode={"SME"}>
       {/* top nav bar */}
       <Header
+        textSize={textSize}
+        toggleTextSize={() => setTextSize(size => size === "normal" ? "large" : "normal")}
         isConnected={isConnected}
         notifications={notifications}
         onMarkAsRead={handleMarkAsRead}

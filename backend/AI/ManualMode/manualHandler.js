@@ -3,9 +3,37 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const { spawn } = require("child_process");
+const Groq = require("groq-sdk");
 
 const { chatWithManualAI, clearManualHistory } = require("./manualAI");
 const chatMemory = require("../../memory/chatMemory");
+
+function runAudioProfiler(destPath, wordCount) {
+  const pythonDir = path.resolve(__dirname, "../../python");
+  const python = path.join(pythonDir, "venv",
+    process.platform === "win32" ? "Scripts/python.exe" : "bin/python");
+  return new Promise((resolve, reject) => {
+    const child = spawn(python, [
+      path.join(pythonDir, "audio_profiler.py"), destPath, String(wordCount),
+    ], { stdio: ["ignore", "pipe", "inherit"] });
+    let output = "";
+    child.stdout.setEncoding("utf8");
+    child.stdout.on("data", chunk => { output += chunk; });
+    child.on("error", reject);
+    child.on("close", code => {
+      try {
+        const profile = JSON.parse(output.trim().split(/\r?\n/).pop());
+        if (code !== 0 || !profile.success) {
+          throw new Error(profile.error || "Audio profiling failed.");
+        }
+        resolve(profile);
+      } catch (err) {
+        reject(err);
+      }
+    });
+  });
+}
 
 function createTimer(label) {
   const start = performance.now();
@@ -317,6 +345,58 @@ function setupManualRoutes({
       // console.log("Data returned from image:", response.data);
     },
   );
+
+  router.post("/manual-scan-audio", upload.single("audio"), async (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({ error: "No audio file provided." });
+    }
+
+    try {
+      let conversationId =
+        req.body?.conversationId || chatMemory.getActiveConversationId();
+      if (!conversationId || !chatMemory.getConversation(conversationId)) {
+        conversationId = chatMemory.createConversation("New check").id;
+      } else {
+        chatMemory.switchConversation(conversationId);
+      }
+
+      const { destPath, imageUrl, imageName } = persistUploadedImage(req.file, conversationId);
+      const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+      const transcription = await groq.audio.transcriptions.create({
+        file: fs.createReadStream(destPath),
+        model: "whisper-large-v3-turbo",
+      });
+      const transcript = transcription.text.trim();
+      const wordCount = transcript ? transcript.split(/\s+/u).length : 0;
+      const audioProfile = await runAudioProfiler(destPath, wordCount);
+      console.log(
+        `🎙️ [Audio Profiler] Tier ${audioProfile.tier} (${audioProfile.profile}) | WPM: ${audioProfile.wpm} | Reason: ${audioProfile.reason}`,
+      );
+
+      chatMemory.addMessage("user", transcript || "[Uploaded Audio]", conversationId, {
+        imageUrl, imageName,
+      });
+      const aiAnalysis = await chatWithManualAI(transcript, conversationId, {
+        forcedType: "analysis", skipUserPersist: true, audioProfile,
+      });
+      res.json({
+        transcript,
+        audioProfile,
+        analysis: aiAnalysis.message,
+        usedLocalFallback: aiAnalysis.usedLocalFallback,
+        messageType: aiAnalysis.messageType || "analysis",
+        timestamp: new Date().toLocaleTimeString(),
+        conversationId: aiAnalysis.conversationId,
+        title: aiAnalysis.title,
+        conversations: chatMemory.getAllConversations(),
+        messages: chatMemory.toClientMessages(aiAnalysis.conversationId),
+      });
+    } catch (err) {
+      if (fs.existsSync(req.file.path)) fs.unlink(req.file.path, () => {});
+      console.error("Manual audio scan failed:", err.message);
+      res.status(500).json({ error: "Failed to analyze uploaded audio." });
+    }
+  });
 
   return router;
 }

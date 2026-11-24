@@ -8,7 +8,7 @@ export default function useTextToSpeech(defaultLang = "zh-CN") {
   const [speaking, setSpeaking] = useState(false);
 
   const speak = useCallback(
-    (text: string, lang?: string) => {
+    (text: string, lang?: string, rate = 0.95) => {
       if (!enabled || !("speechSynthesis" in window)) return;
       window.speechSynthesis.cancel(); // stop speech if other speaking
 
@@ -18,7 +18,7 @@ export default function useTextToSpeech(defaultLang = "zh-CN") {
         .replace(/https?:\/\/\S+/g, "link");
       const u = new SpeechSynthesisUtterance(clean);
       u.lang = lang ?? defaultLang;
-      u.rate = 0.95; // speak speed, 1 is normal, 0.5 is slow, 2 is fast
+      u.rate = rate;
       u.onend = () => setSpeaking(false);
       u.onerror = () => setSpeaking(false);
       setSpeaking(true);

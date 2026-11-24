@@ -37,6 +37,9 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
     (message.messageType == null && !!report);
   const showRiskCard = !isUser && isAnalysisMessage && !!report;
   const imageSrc = resolveImageUrl(message.imageUrl);
+  const audioExtension = /\.(mp3|wav|m4a|ogg|webm)$/i;
+  const isAudio = audioExtension.test(message.imageName || "") ||
+    audioExtension.test(imageSrc?.split(/[?#]/)[0] || "");
 
   const isPdf =
     message.imageName?.toLowerCase().endsWith(".pdf") ||
@@ -56,7 +59,12 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
 
       {isUser ? (
         <div className="user-bubble-group">
-          {imageSrc && (
+          {imageSrc && isAudio && (
+            <div className="user-media-bubble">
+              <audio controls src={imageSrc} style={{ maxWidth: "280px" }} />
+            </div>
+          )}
+          {imageSrc && !isAudio && (
             <div
               className={`user-media-bubble ${isPdf ? "is-pdf" : "is-image"}`}
             >

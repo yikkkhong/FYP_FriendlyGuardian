@@ -1,6 +1,277 @@
 {
-  "activeConversationId": "MANUAL-1794145838379",
+  "activeConversationId": "MANUAL-1794881943330",
   "conversations": [
+    {
+      "id": "MANUAL-1794881943330",
+      "title": "pls send me otp urgent",
+      "summary": "**Scam Inspection Summary**\n\n- **Tactic:** Urgent OTP request (“pls send me otp urgent”) – classic phishing to gain account access.  \n- **Risk Level:** High.  \n- **Recommendation:** Do not share OTP or personal data; verify the request via official app or website.  \n- **Additional Notes:** No bank accounts or phone numbers were mentioned in the older messages.",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Hello, someone called me saying my bank account is blocked and asked for my six-digit code urgently. Is this a scam?",
+          "timestamp": "2026-11-24T07:02:32.357Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795503724907-young.mp3",
+          "imageName": "young.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited call claiming account blocked is classic phishing tactic.\n- Urgent request for a six‑digit code is a common method to steal credentials.\n\nRECOMMENDATION:\n- Do not share any code or personal info over the phone.\n- Call your bank’s official number or use the official app to verify the claim.",
+          "timestamp": "2026-11-24T07:02:33.044Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Hello. Someone called me saying my bank account is blocked and asked for my six-digit code urgently. Is this a scam?",
+          "timestamp": "2026-11-24T07:02:53.350Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795503767599-old.mp3",
+          "imageName": "old.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited call claiming account blocked is classic phishing tactic.\n- Urgent request for a six‑digit code is a common method to steal credentials.\n\nRECOMMENDATION:\n- Do not share any code or personal info over the phone.\n- Call your bank’s official number or use the official app to verify the claim.",
+          "timestamp": "2026-11-24T07:02:54.045Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Hello. Um, someone called me just now, saying my bank account is blocked, and they asked for my six-digit code very urgently. Oh dear, is this a scam?",
+          "timestamp": "2026-11-24T07:06:51.638Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795504007222-old2.mp3",
+          "imageName": "old2.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Caller claimed account blocked and demanded urgent six‑digit code.\n- Urgent request for a personal code is a classic scam tactic.\n\nRECOMMENDATION:\n- Do not share any code or personal information.\n- Call the official bank number printed on the back of your card or use the bank’s official app to verify the claim.",
+          "timestamp": "2026-11-24T07:06:52.357Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Hello. Um, someone called me just now, saying my bank account is blocked, and they asked for my six-digit code very urgently. Oh dear, is this a scam?",
+          "timestamp": "2026-11-24T07:14:18.668Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795504453919-old2.mp3",
+          "imageName": "old2.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Please don't worry, your money is safe if you don't share the code.\n- Real banks will never call to ask for your 6‑digit code.\n\nRECOMMENDATION:\n- Hang up the phone right now and do not give any numbers.\n- Call your son, daughter, or a trusted family member to help you check.",
+          "timestamp": "2026-11-24T07:14:19.469Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "Hello, someone called me saying my bank account is blocked and asked for my six-digit code urgently. Is this a scam?",
+          "timestamp": "2026-11-24T07:14:37.467Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1795504472813-young.mp3",
+          "imageName": "young.mp3"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Caller demanded urgent six‑digit code, a classic phishing tactic.\n- Legitimate banks never request OTPs over the phone.\n\nRECOMMENDATION:\n- Do not share any code or personal info.\n- Contact your bank via official number or app to verify the claim.",
+          "timestamp": "2026-11-24T07:14:38.152Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [
+        {
+          "role": "user",
+          "text": "pls send me otp urgent",
+          "timestamp": "2026-11-17T03:03:22.482Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Requesting an OTP is a common phishing tactic to gain account access.\n- The message is vague and urgent, typical of scam attempts.\n\nRECOMMENDATION:\n- Do not provide any OTP or personal information.\n- Verify the request by contacting the official service directly through their official app or website.",
+          "timestamp": "2026-11-17T03:03:22.531Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-17T03:04:14.982Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794881943330/1794884654978-sample1.pdf",
+          "imageName": "sample1.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-17T03:04:14.991Z",
+          "messageType": "analysis"
+        }
+      ],
+      "created_at": "2026-11-17T02:19:03.330Z",
+      "updated_at": "2026-11-24T07:14:38.965Z"
+    },
+    {
+      "id": "MANUAL-1794820602662",
+      "title": "_sample",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-16T09:17:00.907Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794820602662/1794820620905-_sample.pdf",
+          "imageName": "_sample.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-16T09:17:00.916Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-17T02:17:40.932Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794820602662/1794881860926-sample1.pdf",
+          "imageName": "sample1.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-17T02:17:40.941Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-17T02:18:00.685Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794820602662/1794881880670-sample2.png",
+          "imageName": "sample2.png"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 55.01%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-17T02:18:00.694Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-16T09:16:42.662Z",
+      "updated_at": "2026-11-17T02:18:00.694Z"
+    },
+    {
+      "id": "MANUAL-1794819875004",
+      "title": "Investment Ad Poster",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "someone send me this..",
+          "timestamp": "2026-11-16T09:04:47.549Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794819875004/1794819887547-_investment2.png",
+          "imageName": "_investment2.png",
+          "ocrText": "INVEST NOW 59.9% profit in just 3 days Contat 012-3456789"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Phone 0123456789 is on the verified blacklist with 100 investment scam reports.\n- Message promises unrealistic 59.9% profit in 3 days, a classic high‑return bait.\n\nRECOMMENDATION:\n- Block the number and delete the message immediately.\n- Do not transfer any money or share personal details; report the contact to local authorities.",
+          "timestamp": "2026-11-16T09:04:52.331Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-16T09:04:35.004Z",
+      "updated_at": "2026-11-16T09:05:02.102Z"
+    },
+    {
+      "id": "MANUAL-1794819778561",
+      "title": "Checking AI Generated Image",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "is this AI",
+          "timestamp": "2026-11-16T09:04:03.784Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794819778561/1794819843783-_ai.png",
+          "imageName": "_ai.png"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 55.69%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-16T09:04:03.791Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-16T09:02:58.561Z",
+      "updated_at": "2026-11-16T09:04:19.485Z"
+    },
+    {
+      "id": "MANUAL-1794809434635",
+      "title": "pls send me RM1000 urgent",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "pls send me RM1000 urgent",
+          "timestamp": "2026-11-16T06:11:04.345Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Detected risk signals: Financial/Percentage Figure, Urgency / Threat Tactic.\n- The user is requesting a payment of RM1000 urgently, which is a high-risk\n\nRECOMMENDATION:\n- Do not click any links, transfer money, or share OTP/personal details.\n- Block the sender immediately and report to your bank or authorities.",
+          "timestamp": "2026-11-16T06:11:04.351Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-16T06:12:05.057Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794809434635/1794809525054-_sample.pdf",
+          "imageName": "_sample.pdf"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: SAFE\n\nWHY:\n- Verdict: REAL (Physical Authentic)\n- Solid background pixels verified authentic (Uniform ratio: 100%).\n\nRECOMMENDATION:\n- File background verified authentic.",
+          "timestamp": "2026-11-16T06:12:05.063Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "is this ai",
+          "timestamp": "2026-11-16T06:14:34.438Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794809434635/1794809674436-_ai.png",
+          "imageName": "_ai.png"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Verdict: AI GENERATED\n- Background noise variance detected, matching AI generative patterns (Dominant ratio: 55.69%).\n\nRECOMMENDATION:\n- Likely AI-generated or tampered. Proceed with caution.",
+          "timestamp": "2026-11-16T06:14:34.441Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: gemini.png]",
+          "timestamp": "2026-11-16T06:55:57.378Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794809434635/1794812157374-gemini.png",
+          "imageName": "gemini.png",
+          "ocrText": "Get Your Free Gemini Plus !! Real! Google"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- The text is a phishing attempt, as it asks for a free download of a service\n\nRECOMMENDATION:\n- Stay cautious and double-check details if anything feels unusual.\n- Keep records of the message for your reference.",
+          "timestamp": "2026-11-16T06:55:59.997Z",
+          "messageType": "analysis"
+        },
+        {
+          "role": "user",
+          "text": "[Uploaded Screenshot: gemini.png]",
+          "timestamp": "2026-11-16T06:57:15.387Z",
+          "imageUrl": "/uploads/manual/MANUAL-1794809434635/1794812235385-gemini.png",
+          "imageName": "gemini.png",
+          "ocrText": "Get Your Free Gemini Plus !! Real! Google"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Claims free Gemini Plus, a paid service, indicating possible phishing.\n- Uses “Real! Google” to create false legitimacy.\n\nRECOMMENDATION:\n- Do not click any links or provide personal info.\n- Verify the offer directly through the official Gemini or Google website.",
+          "timestamp": "2026-11-16T06:57:16.317Z",
+          "messageType": "analysis"
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-16T06:10:34.635Z",
+      "updated_at": "2026-11-16T06:57:16.317Z"
+    },
     {
       "id": "MANUAL-1794145838379",
       "title": "pls give me RM10000 urgent",

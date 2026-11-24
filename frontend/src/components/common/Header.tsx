@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Notification, Notification as NotificationType } from "./Notification";
 
 interface HeaderProps {
+  textSize: "normal" | "large";
+  toggleTextSize: () => void;
   isConnected: boolean; // only to know socket is connected or no
   notifications?: NotificationType[];
   onMarkAsRead?: (id: string) => void;
@@ -19,6 +21,8 @@ function PlusIcon() {
 }
 
 export const Header: React.FC<HeaderProps> = ({
+  textSize,
+  toggleTextSize,
   isConnected,
   notifications = [],
   onMarkAsRead,
@@ -26,17 +30,7 @@ export const Header: React.FC<HeaderProps> = ({
   onNewConversation,
   isLoading = false,
 }) => {
-  const [textSize, setTextSize] = useState<"normal" | "large">(() => {
-    return (
-      (localStorage.getItem("text-size") as "normal" | "large") || "normal"
-    );
-  });
   const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    localStorage.setItem("text-size", textSize);
-    document.documentElement.setAttribute("data-text-size", textSize);
-  }, [textSize]);
 
   // Add is-scrolled class when page has been scrolled
   useEffect(() => {
@@ -57,10 +51,6 @@ export const Header: React.FC<HeaderProps> = ({
       viewport?.removeEventListener("scroll", handleViewportScroll);
     };
   }, []);
-
-  const toggleTextSize = () => {
-    setTextSize((prev) => (prev === "normal" ? "large" : "normal"));
-  };
 
   return (
     <header className={`control-bar-wrapper${scrolled ? " is-scrolled" : ""}`}>

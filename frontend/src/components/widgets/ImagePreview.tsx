@@ -15,6 +15,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
 }) => {
   const isPdf =
     file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+  const isAudio = file.type.startsWith("audio/");
 
   return (
     <div
@@ -45,7 +46,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
           justifyContent: "center",
         }}
       >
-        {isPdf ? (
+        {isPdf || isAudio ? (
           <FileIcon />
         ) : (
           <img
@@ -95,8 +96,8 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
           e.stopPropagation();
           onRemove();
         }}
-        aria-label="Remove image"
-        title="Remove image"
+        aria-label={isAudio ? "Remove audio" : "Remove image"}
+        title={isAudio ? "Remove audio" : "Remove image"}
         style={{
           background: "#4b5563",
           border: "none",
