@@ -1,50 +1,29 @@
 {
-  "activeConversationId": "MANUAL-1795522426382",
+  "activeConversationId": "MANUAL-1795526414944",
   "conversations": [
     {
-      "id": "MANUAL-1795522426382",
-      "title": "old2",
+      "id": "MANUAL-1795526414944",
+      "title": "sample1",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "Hello. Um, someone called me just now, saying my bank account is blocked, and they asked for my six-digit code very urgently. Oh dear, is this a scam?",
-          "timestamp": "2026-11-24T12:14:14.621Z",
-          "imageUrl": "/uploads/manual/MANUAL-1795522426382/1795522449781-old2.mp3",
-          "imageName": "old2.mp3"
+          "text": "[Uploaded Screenshot: sample1.pdf]",
+          "timestamp": "2026-11-24T13:20:18.181Z",
+          "imageUrl": "/uploads/manual/MANUAL-1795526414944/1795526418178-sample1.pdf",
+          "imageName": "sample1.pdf",
+          "ocrText": "TechMart Solutions INVOICE Invoice No: INV0001 Bill to 100, Jalan Besar 10 Petaling Jaya, Malaysia No. Description Unit Price Amount Qty (RM) (RM) Wireless Mouse 1 49.00 49.00 1 2 USB Keyboard 1 79.00 79.00 HDMI Cable (2m) 3 29.00 29.00 1 Subtotal (RM) 157.00 Tax (6%) 9.42 Total Due (RM) 166.42"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- You have time to check this.\n\nRECOMMENDATION:\n- Pause before responding.\n- Call someone you trust.",
-          "timestamp": "2026-11-24T12:14:16.740Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "hi your IC is expired, give it to me I'll help you renew",
-          "timestamp": "2026-11-24T12:15:13.147Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- This is a typical identity theft scam.\n\nRECOMMENDATION:\n- Do not share personal documents.\n- Contact your bank directly for help.",
-          "timestamp": "2026-11-24T12:15:13.151Z",
-          "messageType": "analysis"
-        },
-        {
-          "role": "user",
-          "text": "please send me Your otp",
-          "timestamp": "2026-11-24T12:15:45.541Z"
-        },
-        {
-          "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Requesting OTP is a common phishing tactic to gain account access.\n- The message is unsolicited and asks for sensitive authentication code.\n\nRECOMMENDATION:\n- Do not provide any OTP or personal information.\n- Verify the request by contacting the official service directly through their official app or website.",
-          "timestamp": "2026-11-24T12:15:45.544Z",
+          "text": "RISK LEVEL: LOW\n\nWHY:\n- Detected risk signals: Financial/Percentage Figure.\n- The invoice amount is significantly higher than expected, indicating potential fraud or unauthorized transactions.\n\nRECOMMENDATION:\n- Stay cautious and double-check details if anything feels unusual.\n- Keep records of the message for your reference.",
+          "timestamp": "2026-11-24T13:20:21.296Z",
           "messageType": "analysis"
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-11-24T12:13:46.382Z",
-      "updated_at": "2026-11-24T12:15:45.544Z"
+      "created_at": "2026-11-24T13:20:14.944Z",
+      "updated_at": "2026-11-24T13:20:21.296Z"
     },
     {
       "id": "MANUAL-1795508396601",

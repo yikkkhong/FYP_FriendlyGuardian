@@ -21,14 +21,22 @@ function resolveImageUrl(url?: string) {
   return `${API_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
 }
 
+export interface AttachmentPreview {
+  src: string;
+  name: string;
+  isPdf: boolean;
+}
+
 interface ChatMessageItemProps {
   message: ManualMessage;
   isLatest: boolean;
+  onPreviewAttachment: (preview: AttachmentPreview, trigger: HTMLButtonElement) => void;
 }
 
 export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
   message,
   isLatest,
+  onPreviewAttachment,
 }) => {
   const isUser = message.sender === "user";
   const report = !isUser ? parseReport(message.text) : null;
@@ -43,7 +51,7 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
 
   const isPdf =
     message.imageName?.toLowerCase().endsWith(".pdf") ||
-    imageSrc?.toLowerCase().endsWith(".pdf");
+    imageSrc?.split(/[?#]/)[0].toLowerCase().endsWith(".pdf");
 
   const isDefaultUploadText =
     message.text?.startsWith("[Uploaded Screenshot:") ||
@@ -68,11 +76,16 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
             <div
               className={`user-media-bubble ${isPdf ? "is-pdf" : "is-image"}`}
             >
-              <a
-                href={imageSrc}
-                target="_blank"
-                rel="noreferrer"
+              {/* Open attachments in the workspace while audio keeps its own controls. */}
+              <button
+                type="button"
                 className="manual-image-preview-link"
+                aria-label={`Preview ${message.imageName || (isPdf ? "PDF" : "image")}`}
+                onClick={(event) => onPreviewAttachment({
+                  src: imageSrc,
+                  name: message.imageName || (isPdf ? "Document.pdf" : "Uploaded image"),
+                  isPdf: Boolean(isPdf),
+                }, event.currentTarget)}
                 style={
                   isPdf
                     ? {
@@ -110,7 +123,7 @@ export const ChatMessageItem: React.FC<ChatMessageItemProps> = ({
                     className="manual-image-preview"
                   />
                 )}
-              </a>
+              </button>
             </div>
           )}
           {/* {message.text &&

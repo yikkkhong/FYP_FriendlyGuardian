@@ -52,8 +52,8 @@
 /* Scroll to bottom button */
 .scroll-to-bottom-btn {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 96px;
+  right: 24px;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -188,6 +188,11 @@
 }
 
 .manual-image-preview-link {
+  /* Preserve the attachment bubble styling for the preview button. */
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
   display: block;
   line-height: 0;
   text-decoration: none;

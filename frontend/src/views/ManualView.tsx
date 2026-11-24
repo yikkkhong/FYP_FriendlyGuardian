@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { MoreIcon } from "../components/icons/Icons";
+import { CloseIcon, MoreIcon } from "../components/icons/Icons";
 import ConfirmModal from "../components/common/ConfirmModal";
 import ChatMessageList from "../components/chat/ChatMessageList";
+import type { AttachmentPreview } from "../components/chat/ChatMessageItem";
 import ChatComposer, {
   ChatComposerHandle,
 } from "../components/chat/ChatComposer";
 
-import useTextToSpeech from "../hooks/useTextToSpeech";
 import useAutoSpeakReply from "../hooks/useAutoSpeakReply";
 import useConversationManage from "../hooks/useConversationManage";
 import { handleEmptyStatePaste } from "../utils/pasteUtils";
@@ -32,22 +32,27 @@ export interface ManualConversationSummary {
 }
 
 interface ManualViewProps {
-  blockedCount: number;
   messages: ManualMessage[];
   isLoading: boolean;
   conversations: ManualConversationSummary[];
   activeConversationId: string | null;
   onSendMessage: (message: string) => void;
   onUploadImage: (file: File, queryText?: string) => void;
-  onNewConversation: () => void;
-  onSelectConversation: (conversationId: string) => void;
   onRenameConversation: (conversationId: string, title: string) => void;
   onDeleteConversation: (conversationId: string) => void;
   onExportReport: () => void;
   onResetProfile: () => void;
 }
 
-const API_ORIGIN = "http://localhost:5000";
+
+function pdfPreviewUrl(src: string) {
+  const url = new URL(src);
+  const options = new URLSearchParams(url.hash.slice(1));
+  options.set("navpanes", "0");
+  options.set("view", "FitH");
+  url.hash = options.toString();
+  return url.href;
+}
 
 export const ManualView: React.FC<ManualViewProps> = ({
   messages,
@@ -56,14 +61,47 @@ export const ManualView: React.FC<ManualViewProps> = ({
   activeConversationId,
   onSendMessage,
   onUploadImage,
-  onNewConversation,
-  onSelectConversation,
   onRenameConversation,
   onDeleteConversation,
   onExportReport,
   onResetProfile,
 }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  // Keep the attachment mounted while the drawer closes.
+  const [preview, setPreview] = useState<AttachmentPreview | null>(null);
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [readyPdf, setReadyPdf] = useState<AttachmentPreview | null>(null);
+  const previewTrigger = useRef<HTMLButtonElement | null>(null);
+  const closePreviewButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    setPreviewOpen(false);
+    setPreview(null);
+  }, [activeConversationId]);
+  useEffect(() => {
+    if (previewOpen) closePreviewButton.current?.focus();
+  }, [previewOpen]);
+
+  // Give the drawer's 250 ms slide time to finish before starting the PDF viewer.
+  useEffect(() => {
+    setReadyPdf(null);
+    if (!previewOpen || !preview?.isPdf) return;
+    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 280;
+    const timer = window.setTimeout(() => setReadyPdf(preview), delay);
+    return () => window.clearTimeout(timer);
+  }, [preview, previewOpen]);
+
+  const closePreview = () => {
+    setPreviewOpen(false);
+    previewTrigger.current?.focus();
+  };
+
+  // Confirm the reset before changing shared-device preferences.
+  const [confirmReset, setConfirmReset] = useState(false);
+  const [resetToast, setResetToast] = useState(false);
+  useEffect(() => {
+    if (!resetToast) return;
+    const timer = window.setTimeout(() => setResetToast(false), 3500);
+    return () => window.clearTimeout(timer);
+  }, [resetToast]);
   // const [menuOpenId, setMenuOpenId] = useState<string | null>(null);
   // const [renamingId, setRenamingId] = useState<string | null>(null);
   // const [renameValue, setRenameValue] = useState("");
@@ -180,12 +218,6 @@ export const ManualView: React.FC<ManualViewProps> = ({
   const activeTitle = activeConversation?.title || "New check";
   const hasMessages = messages.length > 0;
 
-  const selectConversation = (id: string) => {
-    if (id === activeConversationId || isLoading) return;
-    onSelectConversation(id);
-    setSidebarOpen(false);
-    setMenuOpenId(null);
-  };
 
   // const beginRename = (conversation: ManualConversationSummary) => {
   //   setRenamingId(conversation.id);
@@ -283,7 +315,7 @@ export const ManualView: React.FC<ManualViewProps> = ({
                         }}>Export Report</button>
                         <button type="button" role="menuitem" onClick={() => {
                           setMenuOpenId(null);
-                          onResetProfile();
+                          setConfirmReset(true);
                         }}>Reset Profile</button>
                         <button
                           type="button"
@@ -302,6 +334,11 @@ export const ManualView: React.FC<ManualViewProps> = ({
         )}
 
         <ChatMessageList
+          onPreviewAttachment={(attachment, trigger) => {
+            previewTrigger.current = trigger;
+            setPreview(attachment);
+            setPreviewOpen(true);
+          }}
           messages={messages}
           isLoading={isLoading}
           onPasteMessage={() =>
@@ -326,6 +363,64 @@ export const ManualView: React.FC<ManualViewProps> = ({
           onUploadImage={onUploadImage}
         />
       </section>
+
+      <aside
+        className={`manual-preview-drawer${previewOpen ? " is-open" : ""}`}
+        aria-label="Attachment preview"
+        aria-hidden={!previewOpen}
+        onKeyDown={(event) => {
+          if (event.key === "Escape") closePreview();
+        }}
+      >
+        {preview && (
+          <div className="manual-preview-content">
+            <header className="manual-preview-header">
+              <span title={preview.name}>{preview.name}</span>
+              <button
+                ref={closePreviewButton}
+                type="button"
+                className="manual-icon-btn manual-preview-close"
+                aria-label="Close attachment preview"
+                disabled={!previewOpen}
+                onClick={closePreview}
+              >
+                <CloseIcon />
+              </button>
+            </header>
+            {preview.isPdf ? (
+              <div className="manual-preview-pdf">
+                {previewOpen && readyPdf === preview ? (
+                  <iframe src={pdfPreviewUrl(preview.src)} title={preview.name} />
+                ) : (
+                  <div className="manual-preview-pdf-placeholder" role="status">
+                    Loading document...
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div className="manual-preview-image">
+                <img src={preview.src} alt={preview.name} />
+              </div>
+            )}
+          </div>
+        )}
+      </aside>
+
+      <ConfirmModal
+        isOpen={confirmReset}
+        title="Reset user profile?"
+        description="This resets adaptive voice/text settings back to standard mode."
+        confirmText="Reset Profile"
+        onCancel={() => setConfirmReset(false)}
+        onConfirm={() => {
+          setConfirmReset(false);
+          onResetProfile();
+          setResetToast(true);
+        }}
+      />
+      <div role="status" className={resetToast ? "manual-reset-toast" : undefined}>
+        {resetToast && "Profile reset to standard mode."}
+      </div>
 
       {confirmDeleteId && (
         <ConfirmModal

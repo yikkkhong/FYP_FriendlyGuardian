@@ -2,25 +2,9 @@
 // such as scrolling, what happened after user pressed the 3 default button, when should show the empty/initial state
 
 import React, { useState, useRef, useEffect } from "react";
-import ThreatReportCard, { parseReport } from "../message/ThreatReportCard";
-import { AiResponseCard } from "../message/AiResponseCard";
 import ChatEmptyState from "./ChatEmptyState";
 import { ManualMessage } from "../../views/ManualView";
-import ChatMessageItem from "./ChatMessageItem";
-
-const API_ORIGIN = "http://localhost:5000";
-
-function resolveImageUrl(url?: string) {
-  if (!url) return undefined;
-  if (
-    url.startsWith("http://") ||
-    url.startsWith("https://") ||
-    url.startsWith("blob:")
-  ) {
-    return url;
-  }
-  return `${API_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
-}
+import ChatMessageItem, { AttachmentPreview } from "./ChatMessageItem";
 
 interface ChatMessageListProps {
   messages: ManualMessage[];
@@ -28,6 +12,7 @@ interface ChatMessageListProps {
   onPasteMessage: () => void;
   onUploadImage: () => void;
   onGeneralQuestion: () => void;
+  onPreviewAttachment: (preview: AttachmentPreview, trigger: HTMLButtonElement) => void;
 }
 
 export const ChatMessageList: React.FC<ChatMessageListProps> = ({
@@ -36,6 +21,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
   onPasteMessage,
   onUploadImage,
   onGeneralQuestion,
+  onPreviewAttachment,
 }) => {
   const [showScrollToBottom, setShowScrollToBottom] = useState(false);
   const streamViewportRef = useRef<HTMLDivElement>(null);
@@ -78,6 +64,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
   };
 
   return (
+    <>
     <div
       ref={streamViewportRef}
       className={`manual-stream-viewport ${isScrolling ? "is-scrolling" : ""}`}
@@ -99,6 +86,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
         <ChatMessageItem
           key={`${m.time}-${idx}-${m.imageUrl || m.text.slice(0, 12)}`}
           message={m}
+          onPreviewAttachment={onPreviewAttachment}
           isLatest={idx === messages.length - 1}
         />
       ))}
@@ -114,6 +102,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
         </div>
       )}
       <div ref={chatEndRef} />
+    </div>
 
       {showScrollToBottom && (
         <button
@@ -125,7 +114,7 @@ export const ChatMessageList: React.FC<ChatMessageListProps> = ({
           ↓
         </button>
       )}
-    </div>
+    </>
   );
 };
 

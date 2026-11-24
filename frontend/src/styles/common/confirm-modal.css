@@ -39,7 +39,8 @@
 }
 
 .manual-confirm-cancel,
-.manual-confirm-delete {
+.manual-confirm-delete,
+.manual-confirm-accept {
   border: none;
   border-radius: 10px;
   font: inherit;
@@ -56,5 +57,11 @@
 
 .manual-confirm-delete {
   background: var(--manual-danger);
+  color: #fff;
+}
+
+/* Profile reset uses the workspace's standard confirmation color. */
+.manual-confirm-accept {
+  background: var(--manual-primary);
   color: #fff;
 }

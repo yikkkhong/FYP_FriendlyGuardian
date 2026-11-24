@@ -96,6 +96,8 @@ class ChatMemory {
   }
 
   ensureActiveConversation() {
+    // A cleared selection represents the empty home state.
+    if (this.activeConversationId === null) return null;
     const store = this.readStore();
     if (
       this.activeConversationId &&
@@ -363,7 +365,7 @@ class ChatMemory {
       (c) => c.id !== conversationId,
     );
     if (this.activeConversationId === conversationId) {
-      this.activeConversationId = store.conversations[0]?.id || null;
+      this.activeConversationId = null;
     }
     this.writeStore(store);
     removeDirSafe(path.join(MANUAL_UPLOAD_ROOT, conversationId));

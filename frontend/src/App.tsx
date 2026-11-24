@@ -43,7 +43,6 @@ const App: React.FC = () => {
     }
   }, [pendingGuidance, manualMessages, speak]);
   const [isConnected, setIsConnected] = useState<boolean>(false);
-  const [blockedCount, setBlockedCount] = useState<number>(12);
   const [notifications, setNotifications] = useState<NotificationType[]>([]);
 
   // Manual Mode
@@ -198,16 +197,6 @@ const App: React.FC = () => {
     setSessionTier(1);
     setIsManualLoading(false);
     socket.emit("manual_new_conversation");
-  };
-
-  const handleSelectManualConversation = (conversationId: string) => {
-    if (
-      !socket ||
-      !socket.connected ||
-      conversationId === activeManualConversationId
-    )
-      return;
-    socket.emit("manual_switch_conversation", { conversationId });
   };
 
   const handleRenameManualConversation = (
@@ -444,7 +433,8 @@ const App: React.FC = () => {
     setTextSize("normal");
     setPendingGuidance("");
     stop();
-    addNotification("User profile reset to standard mode.", "info");
+    // Keep the confirmation in notification history after the toast fades.
+    addNotification("Profile reset to standard mode.", "info");
   };
 
   // Export the active chat locally, including its saved attachment references.
@@ -491,15 +481,12 @@ const App: React.FC = () => {
         <ReportSpeechRate.Provider value={textSize === "large" || sessionTier === 3 ? 0.80 : 0.95}>
         {/* ) : ( */}
         <ManualView
-          blockedCount={blockedCount}
           messages={manualMessages}
           isLoading={isManualLoading}
           conversations={manualConversations}
           activeConversationId={activeManualConversationId}
           onSendMessage={handleSendManualMessage}
           onUploadImage={handleUploadImage}
-          onNewConversation={handleNewManualConversation}
-          onSelectConversation={handleSelectManualConversation}
           onRenameConversation={handleRenameManualConversation}
           onDeleteConversation={handleDeleteManualConversation}
           onExportReport={handleExportReport}
