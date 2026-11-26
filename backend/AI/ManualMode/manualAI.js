@@ -353,9 +353,10 @@ Other rules:
     const evidence = await searchClaim(userText);
     let rawReply = "";
     let usedLocalFallback = false;
+    const groqStarted = Date.now();
+    let incompleteReason;
     try {
-      const completion = await ai.chat.completions.create(
-        {
+      const request = {
           model: aiModel,
           messages: [
             {
@@ -382,14 +383,27 @@ If a search returned no evidence, state that the claim could not be verified onl
           temperature: 0,
           max_completion_tokens: 500,
           reasoning_effort: "low",
-        },
-        { timeout: 5000 },
-      );
+      };
+      const requestOptions = { timeout: 20000, maxRetries: 1 };
+      let completion = await ai.chat.completions.create(request, requestOptions);
 
       // A truncated or reasoning-only completion goes through the offline fallback.
-      const choice = completion.choices[0];
+      let choice = completion.choices[0];
       rawReply = finalContent(choice?.message?.content);
+      // A reasoning-only response can finish normally. Explicitly request the final answer.
+      if (!rawReply || choice?.finish_reason === "length") {
+        console.info("[Manual] Retrying incomplete Groq reply.");
+        completion = await ai.chat.completions.create(
+          { ...request, max_completion_tokens: 1000, messages: [
+            ...request.messages,
+            { role: "user", content: "Please write the finished user-facing answer now. Begin with MESSAGE_TYPE and include the requested body." },
+          ] }, requestOptions,
+        );
+        choice = completion.choices[0];
+        rawReply = finalContent(choice?.message?.content);
+      }
       if (!rawReply || choice.finish_reason === "length") {
+        incompleteReason = choice?.finish_reason === "length" ? "token limit" : "empty final content";
         throw new Error("Incomplete analysis reply");
       }
       const cited = new Set();
@@ -400,9 +414,14 @@ If a search returned no evidence, state that the claim could not be verified onl
         return source.url;
       });
     } catch (cloudErr) {
-      console.log("Fault Tolerance: API error / Network offline");
+      console.warn("[Manual] Groq fallback", {
+        reason: incompleteReason || cloudErr.name,
+        status: cloudErr.status,
+        requestId: cloudErr.request_id,
+        elapsedMs: Date.now() - groqStarted,
+      });
       usedLocalFallback = true;
-      rawReply = await analyzeScamOffline(userText, matchedScam);
+      rawReply = await analyzeScamOffline(userText, matchedScam, profileTier);
     }
 
     //console.log("🤖 [DEBUG RAW REPLY]:\n", rawReply);

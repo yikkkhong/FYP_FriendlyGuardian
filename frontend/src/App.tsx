@@ -125,7 +125,7 @@ const App: React.FC = () => {
       }) => {
         if (data.usedLocalFallback) {
           addNotification(
-            "Network or cloud AI service problem. Fault tolerance activated: using the local AI model to continue analysis.",
+            "The cloud analysis could not complete. Your local AI provided this reply.",
             "warning",
           );
         }
@@ -338,7 +338,7 @@ const App: React.FC = () => {
 
         if (data.usedLocalFallback) {
           addNotification(
-            "Network or cloud AI service problem. Fault tolerance activated: using the local AI model to continue analysis.",
+            "The cloud analysis could not complete. Your local AI provided this reply.",
             "warning",
           );
         }

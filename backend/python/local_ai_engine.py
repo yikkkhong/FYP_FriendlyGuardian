@@ -104,7 +104,7 @@ if __name__ == "__main__":
             # anti-fraud detection in an offline state
             elif task == "scam_fallback":
                 matched_phone = req.get("matchedPhone", None)
-                res = analyze_scam_offline(text, matched_phone, generate_with_local_ai)
+                res = analyze_scam_offline(text, matched_phone, generate_with_local_ai, req.get("tier", 1))
                 print(json.dumps({"ok": True, "result": res}, ensure_ascii=False), flush=True)
             else:
                 print(json.dumps({"ok": False, "error": f"Unknown task: {task}"}), flush=True)

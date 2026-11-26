@@ -86,13 +86,17 @@ SYSTEM_PROMPT = (
 )
 
 
-def analyze_scam_offline(raw_text: str, matched_phone: dict, generate_fn) -> str:
+def analyze_scam_offline(raw_text: str, matched_phone: dict, generate_fn, tier=1) -> str:
     """Offline Fallback Analysis Combining System Clues and Lightweight Models"""
     # if phone number found from scam database, directly return this
     if matched_phone:
         phone = matched_phone.get("phone", "Unknown")
         scam_type = matched_phone.get("scam_type", "Scam")
         count = matched_phone.get("report_count", 0)
+        if tier == 3:
+            return ("MESSAGE_TYPE: analysis\nRISK LEVEL: HIGH\n\nWHY:\n"
+                    "- This number was reported. Take your time.\n\nRECOMMENDATION:\n"
+                    "- Block this number.\n- Call someone you trust.")
         return (
             "MESSAGE_TYPE: analysis\n"
             "RISK LEVEL: HIGH\n\n"
@@ -102,6 +106,7 @@ def analyze_scam_offline(raw_text: str, matched_phone: dict, generate_fn) -> str
             "RECOMMENDATION:\n"
             "- Block the number immediately and do not transfer any money.\n"
             "- Report this incident to your bank or local authorities."
+            + ("\n- Use the number printed on your card when calling your bank." if tier == 2 else "")
         )
 
     # Extract "cheat sheets" using non-generative fuzzy matching
@@ -133,6 +138,13 @@ def analyze_scam_offline(raw_text: str, matched_phone: dict, generate_fn) -> str
     why_bullets.append(f"- {ai_reason}")
 
     recs = RECOMMENDATIONS_MAP.get(final_risk, RECOMMENDATIONS_MAP["MEDIUM"])
+    if tier == 2:
+        recs = [*recs, "Ask someone you trust to review the message with you."]
+    elif tier == 3:
+        if len(ai_reason.split()) > 7:
+            ai_reason = "You have time to check this."
+        why_bullets = [f"- {ai_reason}"]
+        recs = ["Put the message aside.", "Call someone you trust."]
     rec_bullets = [f"- {r}" for r in recs]
 
     return (

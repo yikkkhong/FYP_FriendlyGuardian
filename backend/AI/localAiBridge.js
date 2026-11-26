@@ -61,10 +61,11 @@ function correctSpeechText(rawText) {
 }
 
 // to use when offline / api got problem
-function analyzeScamOffline(rawText, matchedPhone = null) {
+function analyzeScamOffline(rawText, matchedPhone = null, tier = 1) {
   return runLocalAITask("scam_fallback", {
     text: rawText,
     matchedPhone,
+    tier,
   });
 }
 
