@@ -3,12 +3,25 @@
   "conversations": [
     {
       "id": "MANUAL-1795845704219",
-      "title": "New check",
+      "title": "What is a scam?",
       "summary": "",
-      "messages": [],
+      "messages": [
+        {
+          "role": "user",
+          "text": "What is a scam?",
+          "timestamp": "2026-11-28T07:26:21.770Z"
+        },
+        {
+          "role": "assistant",
+          "text": "A scam is a deceptive scheme designed to trick people into giving money, personal information, or access to accounts. Scammers often use urgency, false promises, or impersonation to manipulate victims. Avoid sharing sensitive data unless you verify the source independently.",
+          "timestamp": "2026-11-28T07:26:21.776Z",
+          "messageType": "general",
+          "sources": []
+        }
+      ],
       "archived_messages": [],
       "created_at": "2026-11-28T06:01:44.219Z",
-      "updated_at": "2026-11-28T06:01:44.219Z"
+      "updated_at": "2026-11-28T07:26:21.776Z"
     },
     {
       "id": "MANUAL-1795842856228",

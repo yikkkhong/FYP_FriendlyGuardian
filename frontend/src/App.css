@@ -51,12 +51,15 @@ body {
 }
 
 .canvas-root {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  min-height: -webkit-fill-available;
   display: flex;
   flex-direction: column;
   position: relative;
   background: #f7faf9;
+  overflow: hidden;
 }
 
 /* Large text mode for accessibility */
@@ -125,6 +128,7 @@ body {
   width: 100%;
   justify-content: stretch;
   padding: 0;
+  padding-top: env(safe-area-inset-top, 0px);
   z-index: 40;
   pointer-events: auto;
   background: rgba(255, 255, 255, 0.85);
