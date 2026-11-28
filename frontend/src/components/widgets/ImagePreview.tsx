@@ -19,6 +19,7 @@ export const ImagePreview: React.FC<ImagePreviewProps> = ({
 
   return (
     <div
+      className="composer-attachment-preview"
       style={{
         display: "inline-flex",
         alignItems: "center",

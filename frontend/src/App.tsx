@@ -60,7 +60,7 @@ const App: React.FC = () => {
   }, [activeManualConversationId]);
 
   useEffect(() => {
-    socket = io("http://localhost:5000");
+    socket = io();
 
     socket.on("connect", () => {
       setIsConnected(true);
@@ -276,7 +276,7 @@ const App: React.FC = () => {
     try {
       if (isAiCheck) {
         const res = await fetch(
-          "http://localhost:5000/api/analyze-plain-color",
+          "/api/analyze-plain-color",
           {
             method: "POST",
             body: formData,
@@ -320,7 +320,7 @@ const App: React.FC = () => {
         }
       } else {
         const endpoint = isAudio ? "manual-scan-audio" : "manual-scan-image";
-        const res = await fetch(`http://localhost:5000/api/${endpoint}`, {
+        const res = await fetch(`/api/${endpoint}`, {
           method: "POST",
           body: formData,
         });

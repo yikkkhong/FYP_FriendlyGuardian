@@ -1,41 +1,104 @@
 {
-  "activeConversationId": "MANUAL-1795676973930",
+  "activeConversationId": "MANUAL-1795845704219",
   "conversations": [
     {
-      "id": "MANUAL-1795676973930",
-      "title": "tier1",
+      "id": "MANUAL-1795845704219",
+      "title": "New check",
+      "summary": "",
+      "messages": [],
+      "archived_messages": [],
+      "created_at": "2026-11-28T06:01:44.219Z",
+      "updated_at": "2026-11-28T06:01:44.219Z"
+    },
+    {
+      "id": "MANUAL-1795842856228",
+      "title": "WhatsApp JKR Negeri Sembilan",
       "summary": "",
       "messages": [
         {
           "role": "user",
-          "text": "Hello, someone called me saying my bank account is blocked and asked for my six-digit code urgently. Is this a scam?",
-          "timestamp": "2026-11-26T07:09:37.663Z",
-          "imageUrl": "/uploads/manual/MANUAL-1795676973930/1795676973935-tier1.mp3",
-          "imageName": "tier1.mp3"
+          "text": "[Uploaded Screenshot: whatsapp.PNG]",
+          "timestamp": "2026-11-28T05:14:18.699Z",
+          "imageUrl": "/uploads/manual/MANUAL-1795842856228/1795842858697-whatsapp.PNG",
+          "imageName": "whatsapp.PNG",
+          "ocrText": "Today Good morning. I am Encik Ahmad Zulkifli from JKR Negeri Sembilan We need an urgent catering quotation for 250 pax on 15 Dec 2026 (8:00 AM- 4:30 PM). Please reply here on WhatsApp as our .gov.my email is under maintenance.Also,please help purchase3OunitsofOsimAir Purifiers from our appointed supplier (+60 11-2849 7731) and include it in your invoice—we will reimburse you with a 15% commission once you pay their deposit before 4:00 PM today. 1:09PM"
         },
         {
           "role": "assistant",
-          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited call requesting a six‑digit code is a common phishing tactic.  \n- Legitimate banks never ask for such codes over the phone.\n\nRECOMMENDATION:\n- Do not provide any code or personal information.  \n- Call your bank’s official number to verify the call’s authenticity.",
-          "timestamp": "2026-11-26T07:09:38.960Z",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Unsolicited commission request from a purported government official.\n- Urgent payment deadline and use of WhatsApp bypass official channels.\n\nRECOMMENDATION:\n- Verify the sender’s identity through official JKR Negeri Sembilan channels before responding.\n- Do not provide any payment or personal information until confirmation is obtained.",
+          "timestamp": "2026-11-28T05:14:24.046Z",
           "messageType": "analysis",
           "sources": []
         },
         {
           "role": "user",
-          "text": "I have already given the 6 digit code, what should I do now?",
-          "timestamp": "2026-11-26T07:11:09.717Z"
+          "text": "How to verify the sender through JKR Negeri Sembilan channel?",
+          "timestamp": "2026-11-28T05:24:35.569Z"
         },
         {
           "role": "assistant",
-          "text": "You should immediately contact your bank’s official support line and report the incident.  \nAsk them to block any unauthorized activity and monitor your account for suspicious transactions.",
-          "timestamp": "2026-11-26T07:11:09.721Z",
-          "messageType": "follow_up",
+          "text": "To verify the sender, call the official JKR Negeri Sembilan switchboard or email the public relations office using the contact details on their official website. Ask for confirmation of the request and the identity of the person who sent the message. If possible, request a written confirmation from the official JKR email address.",
+          "timestamp": "2026-11-28T05:24:35.572Z",
+          "messageType": "general",
+          "sources": []
+        },
+        {
+          "role": "user",
+          "text": "[LHDN Malaysia] Your SME tax refund of RM4,850 (Ref: `LHDN/2026/SME-992`) is approved—verify your company bank details at `[http://mytax-hasil-claim.com](http://mytax-hasil-claim.com)` before 5:00 PM today to avoid forfeiture.",
+          "timestamp": "2026-11-28T05:35:14.749Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- Detected risk signals: Contains URL/Link, Financial/Percentage Figure.\n- The refund amount is relatively small and the initial risk is low, indicating that the user\n\nRECOMMENDATION:\n- Do not click any links, transfer money, or share OTP/personal details.\n- Block the sender immediately and report to your bank or authorities.",
+          "timestamp": "2026-11-28T05:35:14.753Z",
+          "messageType": "analysis",
           "sources": []
         }
       ],
       "archived_messages": [],
-      "created_at": "2026-11-26T07:09:33.930Z",
-      "updated_at": "2026-11-26T07:11:09.721Z"
+      "created_at": "2026-11-28T05:14:16.228Z",
+      "updated_at": "2026-11-28T05:35:14.753Z"
+    },
+    {
+      "id": "MANUAL-1795678934853",
+      "title": "Maybank 50% Cashback Giveaway",
+      "summary": "",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Maybank announces 50% cashback giveaway! Claim your free reward at maybank-claim-bonus.xyz",
+          "timestamp": "2026-11-26T07:42:16.744Z"
+        },
+        {
+          "role": "assistant",
+          "text": "RISK LEVEL: HIGH\n\nWHY:\n- The claim references a 50% cashback giveaway, which is not supported by any official Maybank promotion. https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/cashback-for-you.page\n- The provided URL (maybank-claim-bonus.xyz) is not an official Maybank domain, indicating a potential phishing site. \n\nRECOMMENDATION:\n- Do not click the link or provide any personal information.  \n- Report the message to Maybank’s official support channels and block the sender.",
+          "timestamp": "2026-11-26T07:42:16.750Z",
+          "messageType": "analysis",
+          "sources": [
+            {
+              "id": 1,
+              "url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/maybank_cards/cashback-for-you.page",
+              "title": "By Invitation Only: Start Spending with your Maybank Credit Card for RM50 Cash Back | Maybank Malaysia",
+              "summary": "Note: This campaign is applicable for Maybank/Maybank Islamic Cardmembers who received invitation to participate through Short Messaging Service (SMS), Notification Letter and/or Electronic Direct Mailer (EDM).\n\n## Offer\n\nGet rewarded with RM50 Cash Back when you spend a cumulative amount of RM350 or more on eligible Retail and Online transactions with your Maybank/Maybank Islamic Credit Card. [...] # \\[By Invitation Only] Get Rewarded with RM50 Cash Back When You Spend\n\nExclusive with Maybank/Maybank Islamic Credit Cards\n\nCampaign Period: 23 September 2026 – 7 November 2026\n\nALL PROMOTIONS\n\n## Campaign Mechanics & Reward\n\nStart spending at your favourite stores or make any online retail pur"
+            },
+            {
+              "id": 2,
+              "url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/promotion_listing.page",
+              "title": "Promotions | Maybank Malaysia",
+              "summary": "Invest in ASNB via MAE app or Maybank2u website, stand a chance to win ASNB units up to RM250\n\nExclusive with Maybank Credit Cards via 0% EzyPay/-i Instalment Plan\n\nExclusively for Maybank Mastercard Debit Cards\n\nExclusively for Maybank Credit and Charge Cards\n\nSaving or spending with Maybank could win you Cash Reward up to RM50,000\n\nEarn 1 entry with every 10 QR payments via your MAE DuitNow QR\n\nMake an e/IFD-i placement via the MAE app, Maybank2u web or visit your nearest branch. [...] Enjoy up to 5% unlimited cashback when you shop on the SofaX App.\n\nExclusive for all Maybank Credit Cards\n\nExclusively for all Maybank Cards including Regional Cards"
+            },
+            {
+              "id": 3,
+              "url": "https://www.maybank2u.com.my/maybank2u/malaysia/en/personal/promotions/online_banking/maeturns5.page",
+              "title": "MAE Turns 5 | Maybank Malaysia",
+              "summary": "WE TURN 5, YOU\n\nEARN REWARDS .\n\nWITH MAE WALLET\n\nAND MORE!\n\n## Celebrating 5 years together with captivating rewards!\n\n \n\nYou may earn  \n5.50% p.a. bonus\n\nwhen you make an eligible   \n transaction with MAE Wallet\n\n \n\nEnjoy up to RM50 OFF\n\nwhen you check out via   \n Maybank2u Online Banking   \n at   \n participating stores or   \n platforms\n\nGet up to RM15 cashback\n\nwhen you complete 5 QR   \n payments (min. RM15 each)   \n via Scan & Pay with MAE\n\n \n\n# YOU MAY EARN 5.50% P.A. BONUS"
+            }
+          ]
+        }
+      ],
+      "archived_messages": [],
+      "created_at": "2026-11-26T07:42:14.853Z",
+      "updated_at": "2026-11-26T07:43:01.604Z"
     },
     {
       "id": "MANUAL-1795529776715",

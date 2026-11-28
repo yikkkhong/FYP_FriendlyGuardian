@@ -77,7 +77,15 @@ node server.js
 
 ### 4. Open Website
 
-Open browser and enter the link "http://localhost:5173/"
+On the computer running the frontend, open `http://localhost:5173/`.
+
+To open it from a phone on the same Wi-Fi network:
+
+1. Find the computer's local IPv4 address with `ipconfig` on Windows.
+2. Start both the backend (`node server.js`) and frontend (`npm run dev`) on the computer.
+3. On the phone, open `http://<computer-local-ip>:5173/` (for example, `http://192.168.1.23:5173/`).
+
+The frontend proxies API, uploaded-file, and Socket.IO requests to the backend on port 5000. If the phone cannot connect, allow Node.js through the computer's firewall for private networks.
 
 ## Project Status
 

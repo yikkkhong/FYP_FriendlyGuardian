@@ -7,8 +7,6 @@ import { AiResponseCard } from "../message/AiResponseCard";
 import { ManualMessage } from "../../views/ManualView";
 import { FileIcon } from "../icons/Icons";
 
-const API_ORIGIN = "http://localhost:5000";
-
 function resolveImageUrl(url?: string) {
   if (!url) return undefined;
   if (
@@ -18,7 +16,7 @@ function resolveImageUrl(url?: string) {
   ) {
     return url;
   }
-  return `${API_ORIGIN}${url.startsWith("/") ? "" : "/"}${url}`;
+  return `${url.startsWith("/") ? "" : "/"}${url}`;
 }
 
 export interface WebSource {

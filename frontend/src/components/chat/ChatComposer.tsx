@@ -14,8 +14,6 @@ import { PaperclipIcon, CloseIcon } from "../icons/Icons";
 import ImagePreview from "../widgets/ImagePreview";
 import { handlePasteImage } from "../../utils/pasteUtils";
 
-const API_ORIGIN = "http://localhost:5000";
-
 export interface ChatComposerHandle {
   setQueryText: (text: string) => void;
   appendQueryText: (text: string) => void;
@@ -183,7 +181,7 @@ export const ChatComposer = forwardRef<ChatComposerHandle, ChatComposerProps>(
       setQueryInput(fullText);
 
       try {
-        const response = await fetch(`${API_ORIGIN}/api/correct-speech`, {
+        const response = await fetch("/api/correct-speech", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ rawText: text }),
